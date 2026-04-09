@@ -12,11 +12,10 @@
     "homepage": "https://www.eslint-plugin-code-style.org",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Mohamed-Elhawary/eslint-plugin-code-style.git",
-        "directory": "docs/website"
+        "url": "git+https://github.com/ESLint-Plugin-Code-Style/website.git"
     },
     "bugs": {
-        "url": "https://github.com/Mohamed-Elhawary/eslint-plugin-code-style/issues"
+        "url": "https://github.com/ESLint-Plugin-Code-Style/website/issues"
     },
     "keywords": [
         "eslint",

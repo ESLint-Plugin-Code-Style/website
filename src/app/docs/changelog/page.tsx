@@ -11,7 +11,7 @@ import type { VersionEntryInterface } from "@/interfaces";
 export const metadata: Metadata = { title: changelogStringsData.metadataTitle };
 
 const resolveChangelogPathHandler = (): string => {
-    // Try relative path from cwd (local dev: docs/website/ → ../../CHANGELOG.md)
+    // Try relative path from cwd (local dev: website/ → ../plugin/CHANGELOG.md)
     const fromCwd = nodePath.resolve(
         process.cwd(),
         changelogStringsData.changelogRelativePath,

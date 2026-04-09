@@ -400,7 +400,7 @@ const HomePage = () => (
                             {homeStringsData.ctaViewRules}
                         </Link>
                         <a
-                            href="https://github.com/Mohamed-Elhawary/eslint-plugin-code-style"
+                            href="https://github.com/ESLint-Plugin-Code-Style/plugin"
                             rel="noopener noreferrer"
                             style={{ color: "var(--text-secondary)" }}
                             target="_blank"
@@ -944,7 +944,7 @@ const HomePage = () => (
                             {homeStringsData.footerNpm}
                         </a>
                         <a
-                            href="https://github.com/Mohamed-Elhawary/eslint-plugin-code-style"
+                            href="https://github.com/ESLint-Plugin-Code-Style/plugin"
                             rel="noopener noreferrer"
                             style={{ color: "var(--text-secondary)" }}
                             target="_blank"

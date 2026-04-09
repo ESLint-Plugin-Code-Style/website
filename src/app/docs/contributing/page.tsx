@@ -11,7 +11,7 @@ import {
 
 export const metadata: Metadata = { title: contributingStringsData.metadataTitle };
 
-const cloneAndInstall = `git clone https://github.com/Mohamed-Elhawary/eslint-plugin-code-style.git
+const cloneAndInstall = `git clone https://github.com/ESLint-Plugin-Code-Style/plugin.git
 cd eslint-plugin-code-style
 npm install`;
 
@@ -292,7 +292,7 @@ const ContributingPage = () => {
             <ul>
                 <li>
                     <a
-                        href="https://github.com/Mohamed-Elhawary/eslint-plugin-code-style"
+                        href="https://github.com/ESLint-Plugin-Code-Style/plugin"
                         rel="noopener noreferrer"
                         target="_blank"
                     >
@@ -301,7 +301,7 @@ const ContributingPage = () => {
                 </li>
                 <li>
                     <a
-                        href="https://github.com/Mohamed-Elhawary/eslint-plugin-code-style/issues"
+                        href="https://github.com/ESLint-Plugin-Code-Style/plugin/issues"
                         rel="noopener noreferrer"
                         target="_blank"
                     >

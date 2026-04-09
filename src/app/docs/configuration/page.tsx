@@ -14,7 +14,7 @@ export default [
     codeStyle.configs.react,
 ];`,
         description: configurationStringsData.configDescriptionJsReact,
-        github: "https://github.com/Mohamed-Elhawary/eslint-plugin-code-style/blob/main/_tests_/v9/react/.eslintrc.config.js",
+        github: "https://github.com/ESLint-Plugin-Code-Style/plugin/blob/main/_tests_/v9/react/.eslintrc.config.js",
         name: "react",
         rules: 72,
     },
@@ -25,7 +25,7 @@ export default [
     codeStyle.configs["react-ts"],
 ];`,
         description: configurationStringsData.configDescriptionTsReact,
-        github: "https://github.com/Mohamed-Elhawary/eslint-plugin-code-style/blob/main/_tests_/v9/react-ts/.eslintrc.config.js",
+        github: "https://github.com/ESLint-Plugin-Code-Style/plugin/blob/main/_tests_/v9/react-ts/.eslintrc.config.js",
         name: "react-ts",
         rules: 81,
     },
@@ -36,7 +36,7 @@ export default [
     codeStyle.configs["react-tw"],
 ];`,
         description: configurationStringsData.configDescriptionJsReactTailwind,
-        github: "https://github.com/Mohamed-Elhawary/eslint-plugin-code-style/blob/main/_tests_/v9/react-tw/.eslintrc.config.js",
+        github: "https://github.com/ESLint-Plugin-Code-Style/plugin/blob/main/_tests_/v9/react-tw/.eslintrc.config.js",
         name: "react-tw",
         rules: 72,
     },
@@ -47,7 +47,7 @@ export default [
     codeStyle.configs["react-ts-tw"],
 ];`,
         description: configurationStringsData.configDescriptionTsReactTailwind,
-        github: "https://github.com/Mohamed-Elhawary/eslint-plugin-code-style/blob/main/_tests_/v9/react-ts-tw/.eslintrc.config.js",
+        github: "https://github.com/ESLint-Plugin-Code-Style/plugin/blob/main/_tests_/v9/react-ts-tw/.eslintrc.config.js",
         name: "react-ts-tw",
         rules: 81,
     },
@@ -255,7 +255,7 @@ const ConfigurationPage = () => (
         <p>
             {configurationStringsData.v9v10GitHubLinkPrefix}
             <a
-                href="https://github.com/Mohamed-Elhawary/eslint-plugin-code-style/tree/main/recommended-configs/v9"
+                href="https://github.com/ESLint-Plugin-Code-Style/plugin/tree/main/recommended-configs/v9"
                 rel="noopener noreferrer"
                 style={{ color: "var(--text-link)" }}
                 target="_blank"
@@ -264,7 +264,7 @@ const ConfigurationPage = () => (
             </a>
             {" | "}
             <a
-                href="https://github.com/Mohamed-Elhawary/eslint-plugin-code-style/tree/main/recommended-configs/v10"
+                href="https://github.com/ESLint-Plugin-Code-Style/plugin/tree/main/recommended-configs/v10"
                 rel="noopener noreferrer"
                 style={{ color: "var(--text-link)" }}
                 target="_blank"

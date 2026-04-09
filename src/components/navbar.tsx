@@ -18,7 +18,7 @@ const navLinks = [
     },
     {
         external: true,
-        href: "https://github.com/Mohamed-Elhawary/eslint-plugin-code-style",
+        href: "https://github.com/ESLint-Plugin-Code-Style/plugin",
         label: componentStringsData.navLinkGitHub,
     },
 ];

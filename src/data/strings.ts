@@ -397,7 +397,7 @@ export const rulesCategoryStringsData = {
 export const changelogStringsData = {
     bullet: "\u2022",
     changelogFilename: "CHANGELOG.md",
-    changelogRelativePath: "../../CHANGELOG.md",
+    changelogRelativePath: "../plugin/CHANGELOG.md",
     codeHtml: "<code class=\"changelog-code\">$1</code>",
     currentVersionLabel: `Current version: ${pluginConfigData.versionDisplay}.`,
     dateFormatOptions: {

@@ -45,7 +45,7 @@ The official documentation website for [eslint-plugin-code-style](https://www.np
 ### Install
 
 ```bash
-cd docs/website
+cd website
 pnpm install
 ```
 
@@ -77,7 +77,7 @@ Uses the exact `react-ts-tw` recommended ESLint config from the plugin itself.
 ## Project Structure
 
 ```
-docs/website/
+website/
 ├── src/
 │   ├── app/                    # Next.js App Router pages
 │   │   ├── layout.tsx          # Root layout with metadata and theme
@@ -105,18 +105,17 @@ docs/website/
 
 The website is deployed to [Vercel](https://vercel.com) with the custom domain [www.eslint-plugin-code-style.org](https://www.eslint-plugin-code-style.org).
 
-To deploy: push to the `main` branch. Vercel automatically builds and deploys from the `docs/website/` directory.
+To deploy: push to the `main` branch. Vercel automatically builds and deploys.
 
-## Keeping in Sync
+## Sync with Plugin
 
-The website must stay 100% in sync with the plugin. See the [AGENTS.md](../../AGENTS.md) sync checklist for the complete list of data that must be updated when the plugin changes.
-
-Key files:
-- `src/data/config.ts` — Plugin version (single source of truth)
+The website syncs automatically from the plugin's `metadata.json` via GitHub Actions. Three files are auto-generated — do NOT edit manually:
+- `src/data/config.ts` — Plugin version and metadata
 - `src/data/rules.ts` — All 81 rules with metadata and examples
-- `src/data/strings.ts` — All user-facing text content
 - `src/data/navigation.ts` — Sidebar navigation structure
+
+When the plugin repo pushes changes to `metadata.json`, a GitHub Action triggers `scripts/sync-from-plugin.js` which regenerates these files and commits them.
 
 ## License
 
-MIT — see [LICENSE](../../LICENSE) for details.
+MIT
