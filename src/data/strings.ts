@@ -1,15 +1,23 @@
 import { pluginConfigData } from "./config";
-import { categoriesRulesData, configurableRulesData, fixableRulesData, reportOnlyRulesData, totalRulesData, tsOnlyRulesData } from "./rules";
+import {
+    categoriesRulesData,
+    configurableRulesData,
+    fixableRulesData,
+    reportOnlyRulesData,
+    totalRulesData,
+    tsOnlyRulesData,
+} from "./rules";
 
-const jsOnlyRules = totalRulesData - tsOnlyRulesData;
-const categoryCount = categoriesRulesData.length;
+const jsOnlyRulesStringsData = totalRulesData - tsOnlyRulesData;
+
+const categoryCountStringsData = categoriesRulesData.length;
 
 // Homepage strings
 
 export const homeStringsData = {
     badge: pluginConfigData.versionDisplay,
     categoriesSectionSubtitle: "Rules are organized into logical categories for easy discovery and configuration.",
-    categoriesSectionTitle: `${categoryCount} Rule Categories`,
+    categoriesSectionTitle: `${categoryCountStringsData} Rule Categories`,
     ctaGetStarted: "Get Started",
     ctaGitHub: "GitHub",
     ctaInstallationGuide: "Full Installation Guide",
@@ -48,7 +56,7 @@ export const homeStringsData = {
     statsAutoFixable: "Auto-fixable",
     statsAutoFixableValue: `${fixableRulesData}`,
     statsCategories: "Categories",
-    statsCategoriesValue: `${categoryCount}`,
+    statsCategoriesValue: `${categoryCountStringsData}`,
     statsConfigurable: "Configurable",
     statsConfigurableValue: `${configurableRulesData}`,
     statsRules: "Rules",
@@ -63,7 +71,7 @@ export const docsOverviewStringsData = {
     cardInstallationTitle: "Installation",
     cardPhilosophyDescription: "Understand the design decisions behind the plugin: auto-fix first, consistency at scale, and more.",
     cardPhilosophyTitle: "Philosophy",
-    cardRulesDescription: `Browse all ${totalRulesData} rules across ${categoryCount} categories. Each rule includes examples, rationale, and options.`,
+    cardRulesDescription: `Browse all ${totalRulesData} rules across ${categoryCountStringsData} categories. Each rule includes examples, rationale, and options.`,
     cardRulesTitle: "Rules Reference",
     intro: " documentation. Everything you need to install, configure, and use the plugin in your React projects.",
     introPrefix: "Welcome to the ",
@@ -82,7 +90,7 @@ export const gettingStartedStringsData = {
     allRulesNoteTextParser: "@typescript-eslint/parser",
     basicConfigDescription: "Add the plugin to your ",
     basicConfigDescriptionCode: "eslint.config.js",
-    basicConfigDescriptionSuffix: ` using one of the built-in preset configs. This example enables all ${jsOnlyRules} JavaScript/React rules:`,
+    basicConfigDescriptionSuffix: ` using one of the built-in preset configs. This example enables all ${jsOnlyRulesStringsData} JavaScript/React rules:`,
     basicConfigLinkPrefix: "See the ",
     basicConfigLinkSuffix: " for all four preset configs including TypeScript and Tailwind variants.",
     basicConfigLinkText: "Configuration guide",
@@ -293,7 +301,7 @@ export const contributingStringsData = {
     keyFilesBuildConfigCode: "esbuild.config.js",
     keyFilesEntry: " \u2014 Main entry point. Registers all rules and defines the 4 preset configs.",
     keyFilesEntryCode: "src/index.js",
-    keyFilesRules: ` \u2014 ${categoryCount} category files containing all ${totalRulesData} rules.`,
+    keyFilesRules: ` \u2014 ${categoryCountStringsData} category files containing all ${totalRulesData} rules.`,
     keyFilesRulesCode: "src/rules/*.js",
     keyFilesTailwind: " \u2014 Shared utilities for Tailwind-related rules.",
     keyFilesTailwindCode: "src/utils/tailwind.js",
@@ -312,7 +320,7 @@ export const contributingStringsData = {
     nextStepsRulesReferenceSuffix: " \u2014 See existing rules for implementation examples",
     nextStepsTitle: "Next Steps",
     pluginName: "eslint-plugin-code-style",
-    projectStructureDescription: `The plugin is organized into ${categoryCount} category files under `,
+    projectStructureDescription: `The plugin is organized into ${categoryCountStringsData} category files under `,
     projectStructureDescriptionCode: "src/rules/",
     projectStructureDescriptionSuffix: ". Each file exports one or more rule objects:",
     projectStructureTitle: "Project Structure",
@@ -349,14 +357,14 @@ export const rulesIndexStringsData = {
     badgeOptions: "options",
     badgeReportOnly: "report only",
     badgeTs: "TS",
-    intro: ` organized across ${categoryCount} categories. Each rule includes a description, examples, and configuration options where applicable.`,
+    intro: ` organized across ${categoryCountStringsData} categories. Each rule includes a description, examples, and configuration options where applicable.`,
     introPrefix: "Browse all ",
     introSuffix: " rules",
     legendConfigurable: "Has customizable options",
     legendFixable: "Auto-fixable with",
     legendFixableCode: "eslint --fix",
     legendTsOnly: "TypeScript only",
-    metadataDescription: `Browse all ${totalRulesData} ESLint rules organized across ${categoryCount} categories with examples and configuration options.`,
+    metadataDescription: `Browse all ${totalRulesData} ESLint rules organized across ${categoryCountStringsData} categories with examples and configuration options.`,
     metadataTitle: "Rules Reference",
     statAutoFixable: "Auto-fixable",
     statConfigurable: "Configurable",

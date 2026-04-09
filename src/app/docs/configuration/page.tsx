@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { CodeBlock } from "@/components";
 import { codeFilenameValuesEnumsData, codeLanguageValuesEnumsData, configurationStringsData } from "@/data";
-import { totalRulesData, tsOnlyRulesData } from "@/data/rules";
+import { totalRulesData, tsOnlyRulesData } from "@/data";
 
 export const metadata: Metadata = { title: configurationStringsData.metadataTitle };
 

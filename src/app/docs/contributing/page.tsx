@@ -8,7 +8,7 @@ import {
     codeSnippetStringsData,
     contributingStringsData,
 } from "@/data";
-import { totalRulesData, tsOnlyRulesData } from "@/data/rules";
+import { totalRulesData, tsOnlyRulesData } from "@/data";
 
 export const metadata: Metadata = { title: contributingStringsData.metadataTitle };
 
@@ -52,8 +52,9 @@ const projectStructure = `eslint-plugin-code-style/
 │       └── react-ts-tw/
 ├── dist/
 │   └── index.js
-├── docs/
-│   └── website/
+├── rules/
+│   └── *.md
+├── metadata.json
 ├── package.json
 └── esbuild.config.js`;
 
@@ -87,6 +88,8 @@ const arrayCallbackDestructure = {
 
 const testCommand = `cd _tests_/v9/react-ts
 npx eslint . --fix`;
+
+const jsRulesCount = totalRulesData - tsOnlyRulesData;
 
 const ContributingPage = () => {
     const buildCommand = codeSnippetStringsData.npmRunBuild;
@@ -203,7 +206,7 @@ const ContributingPage = () => {
                             <code>{contributingStringsData.titleTestProjectReact}</code>
                         </td>
                         <td>{contributingStringsData.testStackJsReact}</td>
-                        <td>{totalRulesData - tsOnlyRulesData}</td>
+                        <td>{jsRulesCount}</td>
                     </tr>
                     <tr>
                         <td>
@@ -217,7 +220,7 @@ const ContributingPage = () => {
                             <code>{contributingStringsData.titleTestProjectReactTw}</code>
                         </td>
                         <td>{contributingStringsData.testStackJsReactTailwind}</td>
-                        <td>{totalRulesData - tsOnlyRulesData}</td>
+                        <td>{jsRulesCount}</td>
                     </tr>
                     <tr>
                         <td>

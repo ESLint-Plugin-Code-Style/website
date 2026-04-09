@@ -10,10 +10,10 @@ import type { VersionEntryInterface } from "@/interfaces";
 
 export const metadata: Metadata = { title: changelogStringsData.metadataTitle };
 
-const resolveChangelogPathHandler = (): string => {
-    // CHANGELOG.md is synced from the plugin repo into the website root
-    return nodePath.resolve(process.cwd(), changelogStringsData.changelogFilename);
-};
+const resolveChangelogPathHandler = (): string => nodePath.resolve(
+    process.cwd(),
+    changelogStringsData.changelogFilename,
+);
 
 const parseChangelogHandler = (): VersionEntryInterface[] => {
     const changelogPath = resolveChangelogPathHandler();
