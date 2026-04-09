@@ -122,4 +122,4 @@ To run the sync manually: `pnpm sync`
 
 ## License
 
-MIT
+MIT — see [LICENSE](./LICENSE) for details.
