@@ -9,7 +9,7 @@ export const categoriesRulesData = [
         rules: [
             {
                 badExample: "const result = items.map(({ name, value, id }) => `${name}: ${value}`);",
-                description: "When destructuring parameters in array method callbacks, enforces each property on its own line when there are 2 or more properties (TEST SYNC - will revert)",
+                description: "When destructuring parameters in array method callbacks, enforces each property on its own line when there are 2 or more properties",
                 goodExample: `const result = items.map(({
     name,
     value,
