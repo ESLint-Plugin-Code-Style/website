@@ -39,16 +39,16 @@ export const docsNavigationData: NavSectionInterface[] = [
                 title: "Call Expressions",
             },
             {
-                href: "/docs/rules/classes",
-                title: "Classes",
-            },
-            {
                 href: "/docs/rules/comments",
                 title: "Comments",
             },
             {
                 href: "/docs/rules/components",
                 title: "Components",
+            },
+            {
+                href: "/docs/rules/classes",
+                title: "Classes",
             },
             {
                 href: "/docs/rules/control-flow",
@@ -75,12 +75,12 @@ export const docsNavigationData: NavSectionInterface[] = [
                 title: "Objects",
             },
             {
-                href: "/docs/rules/react",
-                title: "React",
-            },
-            {
                 href: "/docs/rules/spacing",
                 title: "Spacing",
+            },
+            {
+                href: "/docs/rules/react",
+                title: "React",
             },
             {
                 href: "/docs/rules/strings",
