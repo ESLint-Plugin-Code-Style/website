@@ -1,6 +1,6 @@
 {
     "name": "eslint-plugin-code-style-docs-website",
-    "description": "Official documentation website for eslint-plugin-code-style — 81 custom ESLint rules for React/JSX projects",
+    "description": "Official documentation website for eslint-plugin-code-style",
     "version": "1.0.0",
     "private": true,
     "type": "module",

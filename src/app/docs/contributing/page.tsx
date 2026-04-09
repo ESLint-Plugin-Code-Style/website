@@ -8,6 +8,7 @@ import {
     codeSnippetStringsData,
     contributingStringsData,
 } from "@/data";
+import { totalRulesData, tsOnlyRulesData } from "@/data/rules";
 
 export const metadata: Metadata = { title: contributingStringsData.metadataTitle };
 
@@ -202,28 +203,28 @@ const ContributingPage = () => {
                             <code>{contributingStringsData.titleTestProjectReact}</code>
                         </td>
                         <td>{contributingStringsData.testStackJsReact}</td>
-                        <td>72</td>
+                        <td>{totalRulesData - tsOnlyRulesData}</td>
                     </tr>
                     <tr>
                         <td>
                             <code>{contributingStringsData.titleTestProjectReactTs}</code>
                         </td>
                         <td>{contributingStringsData.testStackTsReact}</td>
-                        <td>81</td>
+                        <td>{totalRulesData}</td>
                     </tr>
                     <tr>
                         <td>
                             <code>{contributingStringsData.titleTestProjectReactTw}</code>
                         </td>
                         <td>{contributingStringsData.testStackJsReactTailwind}</td>
-                        <td>72</td>
+                        <td>{totalRulesData - tsOnlyRulesData}</td>
                     </tr>
                     <tr>
                         <td>
                             <code>{contributingStringsData.titleTestProjectReactTsTw}</code>
                         </td>
                         <td>{contributingStringsData.testStackTsReactTailwind}</td>
-                        <td>81</td>
+                        <td>{totalRulesData}</td>
                     </tr>
                 </tbody>
             </table>

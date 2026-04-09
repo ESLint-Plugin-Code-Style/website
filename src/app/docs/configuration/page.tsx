@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { CodeBlock } from "@/components";
 import { codeFilenameValuesEnumsData, codeLanguageValuesEnumsData, configurationStringsData } from "@/data";
+import { totalRulesData, tsOnlyRulesData } from "@/data/rules";
 
 export const metadata: Metadata = { title: configurationStringsData.metadataTitle };
 
@@ -16,7 +17,7 @@ export default [
         description: configurationStringsData.configDescriptionJsReact,
         github: "https://github.com/ESLint-Plugin-Code-Style/plugin/blob/main/_tests_/v9/react/.eslintrc.config.js",
         name: "react",
-        rules: 72,
+        rules: totalRulesData - tsOnlyRulesData,
     },
     {
         code: `import codeStyle from "eslint-plugin-code-style";
@@ -27,7 +28,7 @@ export default [
         description: configurationStringsData.configDescriptionTsReact,
         github: "https://github.com/ESLint-Plugin-Code-Style/plugin/blob/main/_tests_/v9/react-ts/.eslintrc.config.js",
         name: "react-ts",
-        rules: 81,
+        rules: totalRulesData,
     },
     {
         code: `import codeStyle from "eslint-plugin-code-style";
@@ -38,7 +39,7 @@ export default [
         description: configurationStringsData.configDescriptionJsReactTailwind,
         github: "https://github.com/ESLint-Plugin-Code-Style/plugin/blob/main/_tests_/v9/react-tw/.eslintrc.config.js",
         name: "react-tw",
-        rules: 72,
+        rules: totalRulesData - tsOnlyRulesData,
     },
     {
         code: `import codeStyle from "eslint-plugin-code-style";
@@ -49,7 +50,7 @@ export default [
         description: configurationStringsData.configDescriptionTsReactTailwind,
         github: "https://github.com/ESLint-Plugin-Code-Style/plugin/blob/main/_tests_/v9/react-ts-tw/.eslintrc.config.js",
         name: "react-ts-tw",
-        rules: 81,
+        rules: totalRulesData,
     },
 ];
 

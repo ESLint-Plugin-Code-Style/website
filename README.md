@@ -29,7 +29,7 @@ The official documentation website for [eslint-plugin-code-style](https://www.np
 - Server-side rendered with per-page SEO metadata (title, description, OpenGraph, Twitter cards)
 - Dark/light mode with system preference detection and zero flash (inline theme script)
 - Responsive layout with collapsible sidebar navigation
-- All 81 rules documented across 17 category pages with good/bad code examples
+- All rules documented across category pages with good/bad code examples
 - Polished code blocks with copy-to-clipboard and syntax display
 - Full ESLint compliance — linted with the plugin's own `react-ts-tw` recommended config (0 errors)
 - All user-facing strings centralized in data files
