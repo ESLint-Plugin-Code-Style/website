@@ -103,24 +103,55 @@ const generateRulesTs = (metadata) => {
         lines.push("    },");
     }
 
-    lines.push("] as CategoryInterface[];");
+    lines.push("];");
+    lines.push("");
+    lines.push("// eslint-disable-next-line code-style/folder-based-naming-convention -- function Handler suffix takes precedence");
+    lines.push("export const getAllRulesRulesDataHandler = (): RuleInterface[] => categoriesRulesData.flatMap(({ rules }) => rules);");
+    lines.push("");
+    lines.push("// eslint-disable-next-line code-style/folder-based-naming-convention -- function Handler suffix takes precedence");
+    lines.push("export const getCategoryBySlugRulesDataHandler = (targetSlug: string): CategoryInterface | undefined => categoriesRulesData.find(({ slug }) => slug === targetSlug);");
+    lines.push("");
+    lines.push("// eslint-disable-next-line code-style/folder-based-naming-convention -- function Handler suffix takes precedence");
+    lines.push("export const getRuleByNameRulesDataHandler = (targetName: string): {");
+    lines.push("    category: CategoryInterface,");
+    lines.push("    rule: RuleInterface,");
+    lines.push("} | undefined => {");
+    lines.push("    for (const currentCategoryRulesData of categoriesRulesData) {");
+    lines.push('        const matchedRulesData = currentCategoryRulesData.rules.find(({ name }) => name === targetName);');
+    lines.push("");
+    lines.push("        if (matchedRulesData) {");
+    lines.push("            return {");
+    lines.push("                category: currentCategoryRulesData,");
+    lines.push("                rule: matchedRulesData,");
+    lines.push("            };");
+    lines.push("        }");
+    lines.push("    }");
+    lines.push("");
+    lines.push("    return undefined;");
+    lines.push("};");
+    lines.push("");
+    lines.push(`export const totalRulesData = ${metadata.totalRules};`);
+    lines.push("");
+    lines.push(`export const fixableRulesData = ${metadata.fixableRules};`);
+    lines.push("");
+    lines.push(`export const configurableRulesData = ${metadata.configurableRules};`);
+    lines.push("");
+    lines.push(`export const reportOnlyRulesData = ${metadata.reportOnlyRules};`);
+    lines.push("");
+    const tsOnlyCount = metadata.categories.reduce((sum, c) => sum + c.rules.filter((r) => r.isTsOnly).length, 0);
+    lines.push(`export const tsOnlyRulesData = ${tsOnlyCount};`);
     lines.push("");
 
     return lines.join("\n");
 };
 
-const generateConfigTs = (metadata) => {
-    const totalRules = metadata.categories.reduce((sum, c) => sum + c.rules.length, 0);
-    const fixableRules = metadata.categories.reduce((sum, c) => sum + c.rules.filter((r) => r.isFixable).length, 0);
-    const configurableRules = metadata.categories.reduce((sum, c) => sum + c.rules.filter((r) => r.isConfigurable).length, 0);
-
-    return `/*
+const generateConfigTs = (metadata) => `/*
  * Central plugin configuration — single source of truth for version and metadata
  * AUTO-GENERATED from plugin metadata.json — do not edit manually
  */
 
 export const pluginConfigData = {
-    description: "${totalRules} custom ESLint rules for enforcing consistent code formatting in React/JSX projects. ${fixableRules} auto-fixable, ${configurableRules} configurable. Built for ESLint ${metadata.eslintVersions} flat config.",
+    description: "${metadata.totalRules} custom ESLint rules for enforcing consistent code formatting in React/JSX projects. ${metadata.fixableRules} auto-fixable, ${metadata.configurableRules} configurable. Built for ESLint ${metadata.eslintVersions} flat config.",
     eslintVersions: ${JSON.stringify(metadata.eslintVersions)},
     githubUrl: ${JSON.stringify(metadata.githubUrl)},
     name: "eslint-plugin-code-style",
@@ -130,7 +161,6 @@ export const pluginConfigData = {
     websiteUrl: ${JSON.stringify(metadata.websiteUrl)},
 };
 `;
-};
 
 const generateNavigationTs = (metadata) => {
     const categoryItems = metadata.categories.map((c) => ({

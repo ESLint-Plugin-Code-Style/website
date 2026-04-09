@@ -1593,4 +1593,39 @@ const useAuth = () => {};`,
         ],
         slug: "variables",
     },
-] as CategoryInterface[];
+];
+
+// eslint-disable-next-line code-style/folder-based-naming-convention -- function Handler suffix takes precedence
+export const getAllRulesRulesDataHandler = (): RuleInterface[] => categoriesRulesData.flatMap(({ rules }) => rules);
+
+// eslint-disable-next-line code-style/folder-based-naming-convention -- function Handler suffix takes precedence
+export const getCategoryBySlugRulesDataHandler = (targetSlug: string): CategoryInterface | undefined => categoriesRulesData.find(({ slug }) => slug === targetSlug);
+
+// eslint-disable-next-line code-style/folder-based-naming-convention -- function Handler suffix takes precedence
+export const getRuleByNameRulesDataHandler = (targetName: string): {
+    category: CategoryInterface,
+    rule: RuleInterface,
+} | undefined => {
+    for (const currentCategoryRulesData of categoriesRulesData) {
+        const matchedRulesData = currentCategoryRulesData.rules.find(({ name }) => name === targetName);
+
+        if (matchedRulesData) {
+            return {
+                category: currentCategoryRulesData,
+                rule: matchedRulesData,
+            };
+        }
+    }
+
+    return undefined;
+};
+
+export const totalRulesData = 81;
+
+export const fixableRulesData = 71;
+
+export const configurableRulesData = 20;
+
+export const reportOnlyRulesData = 10;
+
+export const tsOnlyRulesData = 9;
