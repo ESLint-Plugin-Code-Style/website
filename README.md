@@ -45,6 +45,7 @@ The official documentation website for [eslint-plugin-code-style](https://www.np
 ### Install
 
 ```bash
+git clone https://github.com/ESLint-Plugin-Code-Style/website.git
 cd website
 pnpm install
 ```
@@ -109,12 +110,15 @@ To deploy: push to the `main` branch. Vercel automatically builds and deploys.
 
 ## Sync with Plugin
 
-The website syncs automatically from the plugin's `metadata.json` via GitHub Actions. Three files are auto-generated — do NOT edit manually:
+The website syncs automatically from the plugin repo's `metadata.json` via GitHub Actions. These files are auto-generated — do NOT edit manually:
 - `src/data/config.ts` — Plugin version and metadata
-- `src/data/rules.ts` — All 81 rules with metadata and examples
+- `src/data/rules.ts` — All rules with metadata and examples
 - `src/data/navigation.ts` — Sidebar navigation structure
+- `CHANGELOG.md` — Fetched from plugin repo
 
-When the plugin repo pushes changes to `metadata.json`, a GitHub Action triggers `scripts/sync-from-plugin.js` which regenerates these files and commits them.
+When the plugin repo ([`ESLint-Plugin-Code-Style/plugin`](https://github.com/ESLint-Plugin-Code-Style/plugin)) pushes changes to `metadata.json`, a GitHub Action sends a `repository_dispatch` event to this repo, which triggers `scripts/sync-from-plugin.js`. The script fetches `metadata.json` and `CHANGELOG.md` from GitHub, regenerates the data files, commits, and pushes. Vercel then auto-deploys.
+
+To run the sync manually: `pnpm sync`
 
 ## License
 

@@ -18,7 +18,9 @@ import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const srcDataDir = join(__dirname, "..", "src", "data");
 
-const GITHUB_RAW_URL = "https://raw.githubusercontent.com/ESLint-Plugin-Code-Style/plugin/main/metadata.json";
+const GITHUB_RAW_BASE = "https://raw.githubusercontent.com/ESLint-Plugin-Code-Style/plugin/main";
+const GITHUB_RAW_URL = `${GITHUB_RAW_BASE}/metadata.json`;
+const CHANGELOG_RAW_URL = `${GITHUB_RAW_BASE}/CHANGELOG.md`;
 
 const fetchMetadata = async () => {
     const metadataPath = process.argv[2];
@@ -249,6 +251,31 @@ const main = async () => {
     const navigationTs = generateNavigationTs(metadata);
     writeFileSync(join(srcDataDir, "navigation.ts"), navigationTs);
     console.log("Generated: src/data/navigation.ts");
+
+    // Fetch CHANGELOG.md from plugin repo
+    if (!process.argv[2]) {
+        console.log(`Fetching changelog from: ${CHANGELOG_RAW_URL}`);
+        const changelogResponse = await fetch(CHANGELOG_RAW_URL);
+
+        if (changelogResponse.ok) {
+            const changelog = await changelogResponse.text();
+            writeFileSync(join(__dirname, "..", "CHANGELOG.md"), changelog);
+            console.log("Fetched: CHANGELOG.md");
+        } else {
+            console.warn(`Warning: could not fetch CHANGELOG.md (${changelogResponse.status})`);
+        }
+    } else {
+        // Local mode: copy from sibling plugin repo if it exists
+        const localChangelog = join(process.argv[2], "..", "CHANGELOG.md");
+
+        try {
+            const changelog = readFileSync(localChangelog, "utf-8");
+            writeFileSync(join(__dirname, "..", "CHANGELOG.md"), changelog);
+            console.log(`Copied: CHANGELOG.md from ${localChangelog}`);
+        } catch {
+            console.warn("Warning: could not find local CHANGELOG.md");
+        }
+    }
 
     console.log("Sync complete.");
 };
