@@ -916,16 +916,9 @@ const HomePage = () => (
                             className="mt-1 text-sm"
                             style={{ color: "var(--text-tertiary)" }}
                         >
+                            {homeStringsData.footerCopyright}
+                            {" \u00B7 "}
                             {homeStringsData.footerLicense}
-                            <a
-                                className="font-medium hover:underline"
-                                href={metadataStringsData.authorUrl}
-                                rel="noopener noreferrer"
-                                style={{ color: "var(--text-link)" }}
-                                target="_blank"
-                            >
-                                {homeStringsData.footerAuthorName}
-                            </a>
                         </p>
                     </div>
                     <div className="flex items-center gap-6">
