@@ -286,11 +286,20 @@ const main = async () => {
             }
         }
 
+        // Generate TypeScript-formatted output with trailing commas (not JSON.stringify which omits them)
+        const versionEntriesTs = releaseVersions.map((release) => `    {
+        date: ${JSON.stringify(release.date)},
+        title: ${JSON.stringify(release.title)},
+        version: ${JSON.stringify(release.version)},
+    },`).join("\n");
+
         const versionsTs = `// AUTO-GENERATED from CHANGELOG.md — do not edit manually
 
 import type { ReleaseVersionInterface } from "@/interfaces";
 
-export const releaseVersionsData: ReleaseVersionInterface[] = ${JSON.stringify(releaseVersions, null, 4)};
+export const releaseVersionsData: ReleaseVersionInterface[] = [
+${versionEntriesTs}
+];
 `;
         writeFileSync(join(srcDataDir, "versions.ts"), versionsTs);
         console.log(`Generated: src/data/versions.ts (${releaseVersions.length} releases)`);

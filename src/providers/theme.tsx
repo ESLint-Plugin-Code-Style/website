@@ -2,14 +2,13 @@
 
 import type React from "react";
 import {
-    createContext,
     useCallback,
-    useContext,
     useEffect,
     useMemo,
     useSyncExternalStore,
 } from "react";
 
+import { ThemeContext } from "@/contexts";
 import {
     componentStringsData,
     eventNameValuesEnumsData,
@@ -17,10 +16,7 @@ import {
     methodNameValuesEnumsData,
     themeValuesEnumsData,
 } from "@/data";
-import type { ThemeContextValueInterface } from "@/interfaces";
 import type { ResolvedThemeType, ThemeSnapshotType, ThemeType } from "@/types";
-
-const ThemeContext = createContext<ThemeContextValueInterface | undefined>(undefined);
 
 const getStoredThemeHandler = (): ThemeType => {
     const stored = localStorage.getItem(localStorageKeyValuesEnumsData.theme);
@@ -165,13 +161,4 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     return (
         <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
     );
-};
-
-// eslint-disable-next-line code-style/folder-based-naming-convention -- React hook naming convention
-export const useTheme = (): ThemeContextValueInterface => {
-    const context = useContext(ThemeContext);
-
-    if (!context) throw new Error(componentStringsData.useThemeError);
-
-    return context;
 };

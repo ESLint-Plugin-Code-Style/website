@@ -1,7 +1,5 @@
 "use client";
 
-/* eslint-disable code-style/component-props-inline-type -- Next.js error.tsx prop interface is fixed */
-
 import { useEffect } from "react";
 
 import { errorBoundaryStringsData, inputTypeValuesEnumsData } from "@/data";

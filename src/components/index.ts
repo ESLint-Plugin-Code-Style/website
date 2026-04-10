@@ -6,6 +6,5 @@ export { OfflineIndicator } from "./offline-indicator";
 export { OnThisPage } from "./on-this-page";
 export { ServiceWorkerRegister } from "./service-worker-register";
 export { Sidebar } from "./sidebar";
-export { ThemeProvider, useTheme } from "./theme-provider";
 export { ThemeToggle } from "./theme-toggle";
 export { VersionSelector } from "./version-selector";

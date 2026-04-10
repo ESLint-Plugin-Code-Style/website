@@ -3,8 +3,7 @@
 import { useSyncExternalStore } from "react";
 
 import { componentStringsData, themeValuesEnumsData } from "@/data";
-
-import { useTheme } from "./theme-provider";
+import { useTheme } from "@/hooks";
 
 const emptySubscribeHandler = () => () => {};
 

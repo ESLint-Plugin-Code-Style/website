@@ -1,15 +1,12 @@
-import "./globals.css"; // eslint-disable-line code-style/absolute-imports-only -- Next.js app directory CSS
+import "./globals.css";
 
 import type { Metadata } from "next";
+import Script from "next/script";
 import type React from "react";
 
-import {
-    Navbar,
-    OfflineIndicator,
-    ServiceWorkerRegister,
-    ThemeProvider,
-} from "@/components";
+import { Navbar, OfflineIndicator, ServiceWorkerRegister } from "@/components";
 import { layoutStringsData, metadataStringsData } from "@/data";
+import { ThemeProvider } from "@/providers";
 
 export const metadata: Metadata = {
     authors: [
@@ -67,6 +64,11 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
                 <OfflineIndicator />
                 <ServiceWorkerRegister />
             </ThemeProvider>
+            <Script
+                data-library="/eslint-plugin-code-style/plugin"
+                src="https://context7.com/widget.js"
+                strategy="afterInteractive"
+            />
         </body>
     </html>
 );
