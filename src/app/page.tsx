@@ -7,7 +7,6 @@ import {
     codeLanguageValuesEnumsData,
     codeSnippetStringsData,
     homeStringsData,
-    pluginConfigData,
 } from "@/data";
 
 export const metadata: Metadata = { title: homeStringsData.metadataTitle };
@@ -915,7 +914,7 @@ const HomePage = () => (
                         {" \u00B7 "}
                         <a
                             className="hover:underline"
-                            href={`${pluginConfigData.githubUrl}/blob/main/LICENSE`}
+                            href="https://github.com/ESLint-Plugin-Code-Style/website/blob/main/LICENSE"
                             rel="noopener noreferrer"
                             style={{ color: "var(--text-tertiary)" }}
                             target="_blank"

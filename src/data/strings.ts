@@ -37,7 +37,7 @@ export const homeStringsData = {
     featureZeroDepsDescription: "No external runtime dependencies. Lightweight and fast, with no supply-chain concerns.",
     featureZeroDepsTitle: "Zero Dependencies",
     footerChangelog: "Changelog",
-    footerCopyright: "\u00A9 2025 eslint-plugin-code-style",
+    footerCopyright: `\u00A9 ${new Date().getFullYear()} eslint-plugin-code-style. All rights reserved`,
     footerGitHub: "GitHub",
     footerLicense: "MIT License",
     footerNpm: "npm",
