@@ -49,8 +49,8 @@ importers:
         specifier: ^3.3.1
         version: 3.3.1(eslint@9.39.4(jiti@2.6.1))
       eslint-plugin-code-style:
-        specifier: ^3.0.0
-        version: 3.0.0(eslint@9.39.4(jiti@2.6.1))
+        specifier: ^3.1.1
+        version: 3.1.1(eslint@9.39.4(jiti@2.6.1))
       eslint-plugin-import-x:
         specifier: ^4.16.2
         version: 4.16.2(@typescript-eslint/utils@8.57.2(eslint@9.39.4(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.4(jiti@2.6.1))
@@ -982,8 +982,8 @@ packages:
     peerDependencies:
       eslint: '>=9.0.0'
 
-  eslint-plugin-code-style@3.0.0:
-    resolution: {integrity: sha512-EbGbS3JvMduSqWOzUrzKvdb5gLenLg2N080TWxp7nzWLC68RMwTale74tH9ZP5g3+VuM+szxnaQ/H8Jo3SbrDA==}
+  eslint-plugin-code-style@3.1.1:
+    resolution: {integrity: sha512-nNzPRue/vJ8QVLXxlVPca68VHqu7K9Oo5x2N/aD7VIe4VHAGUdXtK8CYjKZ4cZ1kkigde/LPUfpGHzO8AHc9qQ==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       eslint: '>=9.0.0'
@@ -2900,7 +2900,7 @@ snapshots:
       is-glob: 4.0.3
       micromatch: 4.0.8
 
-  eslint-plugin-code-style@3.0.0(eslint@9.39.4(jiti@2.6.1)):
+  eslint-plugin-code-style@3.1.1(eslint@9.39.4(jiti@2.6.1)):
     dependencies:
       eslint: 9.39.4(jiti@2.6.1)
 
