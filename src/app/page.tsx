@@ -911,18 +911,22 @@ const HomePage = () => (
                 >
                     <p className="text-sm">
                         <span className="gradient-text font-bold">{homeStringsData.footerCopyright}</span>
-                        {" \u00B7 "}
+                    </p>
+                    <div className="flex items-center gap-6">
                         <a
-                            className="hover:underline"
                             href="https://github.com/ESLint-Plugin-Code-Style/website/blob/main/LICENSE"
                             rel="noopener noreferrer"
-                            style={{ color: "var(--text-tertiary)" }}
+                            style={{ color: "var(--text-secondary)" }}
                             target="_blank"
+                            className="
+                                text-sm
+                                font-medium
+                                transition-colors
+                                duration-200
+                            "
                         >
                             {homeStringsData.footerLicense}
                         </a>
-                    </p>
-                    <div className="flex items-center gap-6">
                         <a
                             href="https://www.npmjs.com/package/eslint-plugin-code-style"
                             rel="noopener noreferrer"

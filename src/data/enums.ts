@@ -28,7 +28,22 @@ export const codeLanguageValuesEnumsData = {
 } as const;
 
 // Event names
-export const eventNameValuesEnumsData = { change: "change" } as const;
+export const eventNameValuesEnumsData = {
+    change: "change",
+    keydown: "keydown",
+    mousedown: "mousedown",
+    offline: "offline",
+    online: "online",
+} as const;
+
+// Keyboard keys
+export const keyboardKeyValuesEnumsData = { escape: "Escape" } as const;
+
+// HTML input types
+export const inputTypeValuesEnumsData = {
+    button: "button",
+    text: "text",
+} as const;
 
 // Local storage keys
 export const localStorageKeyValuesEnumsData = { theme: "theme" } as const;

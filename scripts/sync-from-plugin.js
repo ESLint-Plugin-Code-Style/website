@@ -252,6 +252,50 @@ const main = async () => {
     writeFileSync(join(srcDataDir, "navigation.ts"), navigationTs);
     console.log("Generated: src/data/navigation.ts");
 
+    // Generate versions.ts from CHANGELOG.md (only releases with version range)
+    const changelogPath = join(__dirname, "..", "CHANGELOG.md");
+    let changelogContent = "";
+
+    try {
+        changelogContent = readFileSync(changelogPath, "utf-8");
+    } catch {
+        // CHANGELOG.md not yet written, will be on next pass
+    }
+
+    if (changelogContent) {
+        const versionRegex = /^## \[(\d+\.\d+\.\d+)\] - (\d{4}-\d{2}-\d{2})$/gm;
+        const releaseVersions = [];
+        let match;
+
+        while ((match = versionRegex.exec(changelogContent)) !== null) {
+            const version = match[1];
+            const date = match[2];
+            const startIdx = match.index;
+            const nextMatch = changelogContent.slice(startIdx + match[0].length).match(/^## \[/m);
+            const endIdx = nextMatch ? startIdx + match[0].length + nextMatch.index : changelogContent.length;
+            const versionContent = changelogContent.slice(startIdx, endIdx);
+
+            // Only include if it has a version range (i.e., it's a GitHub release)
+            if (versionContent.includes("**Version Range:**")) {
+                const titleMatch = versionContent.match(/\*\*([^V][^*]+)\*\*\n/);
+                releaseVersions.push({
+                    date,
+                    title: titleMatch ? titleMatch[1].trim() : null,
+                    version,
+                });
+            }
+        }
+
+        const versionsTs = `// AUTO-GENERATED from CHANGELOG.md — do not edit manually
+
+import type { ReleaseVersionInterface } from "@/interfaces";
+
+export const releaseVersionsData: ReleaseVersionInterface[] = ${JSON.stringify(releaseVersions, null, 4)};
+`;
+        writeFileSync(join(srcDataDir, "versions.ts"), versionsTs);
+        console.log(`Generated: src/data/versions.ts (${releaseVersions.length} releases)`);
+    }
+
     // Fetch CHANGELOG.md from plugin repo
     if (!process.argv[2]) {
         console.log(`Fetching changelog from: ${CHANGELOG_RAW_URL}`);

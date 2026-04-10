@@ -3,8 +3,12 @@ import "./globals.css"; // eslint-disable-line code-style/absolute-imports-only 
 import type { Metadata } from "next";
 import type React from "react";
 
-import { Navbar } from "@/components";
-import { ThemeProvider } from "@/components";
+import {
+    Navbar,
+    OfflineIndicator,
+    ServiceWorkerRegister,
+    ThemeProvider,
+} from "@/components";
 import { layoutStringsData, metadataStringsData } from "@/data";
 
 export const metadata: Metadata = {
@@ -17,6 +21,7 @@ export const metadata: Metadata = {
     creator: metadataStringsData.authorName,
     description: metadataStringsData.defaultDescription,
     keywords: metadataStringsData.keywords.split(","),
+    manifest: "/manifest.json",
     metadataBase: new URL("https://www.eslint-plugin-code-style.org"),
     openGraph: {
         description: metadataStringsData.ogDescription,
@@ -42,6 +47,8 @@ export const metadata: Metadata = {
     },
 };
 
+export const viewport = { themeColor: "#7c3aed" };
+
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
     <html
         lang="en"
@@ -57,6 +64,8 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
             <ThemeProvider>
                 <Navbar />
                 <main className="pt-16">{children}</main>
+                <OfflineIndicator />
+                <ServiceWorkerRegister />
             </ThemeProvider>
         </body>
     </html>

@@ -1,0 +1,22 @@
+{
+    "name": "eslint-plugin-code-style",
+    "short_name": "code-style",
+    "description": "Documentation for eslint-plugin-code-style — a powerful ESLint plugin for enforcing consistent code formatting and style rules in React/JSX projects.",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "background_color": "#0a0a0a",
+    "theme_color": "#7c3aed",
+    "lang": "en",
+    "dir": "ltr",
+    "categories": ["developer", "productivity", "education"],
+    "icons": [
+        {
+            "src": "/icon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ]
+}

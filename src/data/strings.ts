@@ -37,7 +37,7 @@ export const homeStringsData = {
     featureZeroDepsDescription: "No external runtime dependencies. Lightweight and fast, with no supply-chain concerns.",
     featureZeroDepsTitle: "Zero Dependencies",
     footerChangelog: "Changelog",
-    footerCopyright: `\u00A9 ${new Date().getFullYear()} eslint-plugin-code-style. All rights reserved`,
+    footerCopyright: `\u00A9 ${new Date().getFullYear()} eslint-plugin-code-style`,
     footerGitHub: "GitHub",
     footerLicense: "MIT License",
     footerNpm: "npm",
@@ -479,4 +479,49 @@ export const metadataStringsData = {
     titleTemplate: "%s \u2014 eslint-plugin-code-style",
     twitterDescription: `${totalRulesData} custom ESLint rules for React/JSX. ${fixableRulesData} auto-fixable, ${configurableRulesData} configurable. Zero dependencies.`,
     twitterTitle: "eslint-plugin-code-style",
+};
+
+// 404 page strings
+export const notFoundStringsData = {
+    ctaDocs: "Browse Docs",
+    ctaHome: "Back to Home",
+    description: "The page you're looking for doesn't exist or has been moved. Try heading back home or exploring the documentation.",
+    heading: "Page not found",
+    metadataTitle: "404 — Page Not Found",
+    title: "404",
+};
+
+// Error boundary strings
+export const errorBoundaryStringsData = {
+    consoleErrorPrefix: "Application error:",
+    ctaGoHome: "Go Home",
+    ctaTryAgain: "Try Again",
+    digestLabel: "Digest",
+    errorMessageLabel: "Error message",
+    homeUrl: "/",
+    stackTraceLabel: "Stack trace",
+    subtitle: "An unexpected error occurred while rendering this page.",
+    title: "Something went wrong",
+    unknownError: "An unknown error occurred",
+};
+
+// Offline indicator strings
+export const offlineIndicatorStringsData = { message: "You're offline. Some content may not be available." };
+
+// Version selector strings
+export const versionSelectorStringsData = {
+    ariaLabel: "Select version",
+    ariaLabelList: "Available versions",
+    ariaLabelSearch: "Search versions",
+    currentBadge: "current",
+    noResults: "No versions found",
+    searchPlaceholder: "Search versions...",
+    versionPrefix: "v",
+};
+
+// Offline page strings
+export const offlinePageStringsData = {
+    description: "It looks like you're not connected to the internet. Check your connection and try again.",
+    metadataTitle: "Offline",
+    title: "You're offline",
 };

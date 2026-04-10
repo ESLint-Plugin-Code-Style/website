@@ -6,6 +6,7 @@ import { useState } from "react";
 import { componentStringsData } from "@/data";
 
 import { ThemeToggle } from "./theme-toggle";
+import { VersionSelector } from "./version-selector";
 
 const navLinks = [
     {
@@ -186,23 +187,7 @@ export const Navbar = () => {
                         style={{ backgroundColor: "var(--border-primary)" }}
                     />
                     <ThemeToggle />
-                    <span
-                        className="
-                            ml-2
-                            rounded-md
-                            px-2
-                            py-1
-                            font-mono
-                            text-xs
-                            font-medium
-                        "
-                        style={{
-                            backgroundColor: "var(--bg-badge)",
-                            color: "var(--text-badge)",
-                        }}
-                    >
-                        {componentStringsData.version}
-                    </span>
+                    <VersionSelector />
                 </div>
                 <div
                     className="
@@ -377,22 +362,7 @@ export const Navbar = () => {
                                 py-2
                             "
                         >
-                            <span
-                                className="
-                                    rounded-md
-                                    px-2
-                                    py-1
-                                    font-mono
-                                    text-xs
-                                    font-medium
-                                "
-                                style={{
-                                    backgroundColor: "var(--bg-badge)",
-                                    color: "var(--text-badge)",
-                                }}
-                            >
-                                {componentStringsData.version}
-                            </span>
+                            <VersionSelector />
                         </div>
                     </div>
                 </div>
