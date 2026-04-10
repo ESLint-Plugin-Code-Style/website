@@ -40,9 +40,11 @@ const parseChangelogHandler = (): VersionEntryInterface[] => {
             currentVersion = {
                 date: versionMatch[2],
                 entries: [],
+                fullChangelogUrl: null,
                 isRelease: false,
                 title: null,
                 version: versionMatch[1],
+                versionRange: null,
             };
 
             continue;
@@ -61,9 +63,26 @@ const parseChangelogHandler = (): VersionEntryInterface[] => {
             continue;
         }
 
-        if (line.trim() === changelogStringsData.separator || line.trim() === changelogStringsData.emptyString || line.includes(changelogStringsData.fullChangelogMarker)) continue;
+        if (line.trim() === changelogStringsData.separator || line.trim() === changelogStringsData.emptyString) continue;
 
-        if (line.startsWith(changelogStringsData.versionRangePrefix)) continue;
+        if (line.includes(changelogStringsData.fullChangelogMarker)) {
+            const urlMatch = line.match(/https?:\/\/[^\s)]+/);
+
+            if (urlMatch) currentVersion.fullChangelogUrl = urlMatch[0];
+
+            continue;
+        }
+
+        if (line.startsWith(changelogStringsData.versionRangePrefix)) {
+            currentVersion.versionRange = line.replace(
+                changelogStringsData.versionRangePrefix,
+                "",
+            ).trim();
+
+            currentVersion.isRelease = true;
+
+            continue;
+        }
 
         currentVersion.entries.push(line);
     }
@@ -192,9 +211,11 @@ const ChangelogPage = () => {
                 {versions.map(({
                     date,
                     entries,
+                    fullChangelogUrl,
                     isRelease,
                     title,
                     version,
+                    versionRange,
                 }) => (
                     <div
                         className="rounded-lg border p-6"
@@ -250,7 +271,29 @@ const ChangelogPage = () => {
                                 {title}
                             </p>
                         )}
+                        {versionRange && (
+                            <p
+                                className="mb-4 text-xs"
+                                style={{ color: "var(--text-tertiary)" }}
+                            >
+                                {changelogStringsData.versionRangePrefix}
+                                {" "}
+                                {versionRange}
+                            </p>
+                        )}
                         {renderEntriesHandler(entries)}
+                        {fullChangelogUrl && (
+                            <a
+                                className="mt-4 inline-block text-xs"
+                                href={fullChangelogUrl}
+                                rel="noopener noreferrer"
+                                style={{ color: "var(--text-link)" }}
+                                target="_blank"
+                            >
+                                {changelogStringsData.fullChangelogMarker}
+                                {" \u2192"}
+                            </a>
+                        )}
                     </div>
                 ))}
             </div>
