@@ -7,7 +7,7 @@ import {
     codeLanguageValuesEnumsData,
     codeSnippetStringsData,
     homeStringsData,
-    metadataStringsData,
+    pluginConfigData,
 } from "@/data";
 
 export const metadata: Metadata = { title: homeStringsData.metadataTitle };
@@ -910,17 +910,19 @@ const HomePage = () => (
                         sm:justify-between
                     "
                 >
-                    <div>
-                        <span className="gradient-text text-base font-bold">{metadataStringsData.defaultTitle}</span>
-                        <p
-                            className="mt-1 text-sm"
+                    <p className="text-sm">
+                        <span className="gradient-text font-bold">{homeStringsData.footerCopyright}</span>
+                        {" \u00B7 "}
+                        <a
+                            className="hover:underline"
+                            href={`${pluginConfigData.githubUrl}/blob/main/LICENSE`}
+                            rel="noopener noreferrer"
                             style={{ color: "var(--text-tertiary)" }}
+                            target="_blank"
                         >
-                            {homeStringsData.footerCopyright}
-                            {" \u00B7 "}
                             {homeStringsData.footerLicense}
-                        </p>
-                    </div>
+                        </a>
+                    </p>
                     <div className="flex items-center gap-6">
                         <a
                             href="https://www.npmjs.com/package/eslint-plugin-code-style"
