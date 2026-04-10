@@ -3,12 +3,14 @@
 import { useEffect } from "react";
 
 import { errorBoundaryStringsData, inputTypeValuesEnumsData } from "@/data";
-import type { ErrorBoundaryPropsInterface } from "@/interfaces";
 
-const ErrorBoundaryPage = ({
+const ErrorBoundary = ({
     error,
     reset,
-}: ErrorBoundaryPropsInterface) => {
+}: {
+    error: Error & { digest?: string },
+    reset: () => void,
+}) => {
     const {
         digest,
         message,
@@ -217,4 +219,4 @@ const ErrorBoundaryPage = ({
 };
 
 // eslint-disable-next-line import-x/no-default-export
-export default ErrorBoundaryPage;
+export default ErrorBoundary;

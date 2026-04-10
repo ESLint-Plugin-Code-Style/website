@@ -5,7 +5,7 @@ import { notFoundStringsData } from "@/data";
 
 export const metadata: Metadata = { title: notFoundStringsData.metadataTitle };
 
-const NotFoundPage = () => (
+const NotFound = () => (
     <div
         className="
             flex
@@ -91,4 +91,4 @@ const NotFoundPage = () => (
 );
 
 // eslint-disable-next-line import-x/no-default-export
-export default NotFoundPage;
+export default NotFound;
