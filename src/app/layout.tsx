@@ -169,5 +169,4 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
     </html>
 );
 
-// eslint-disable-next-line import-x/no-default-export
 export default RootLayout;

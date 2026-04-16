@@ -2,6 +2,8 @@
 
 import { motion } from "motion/react";
 
+import { codeSamplesStringsData } from "@/data";
+
 const fieldsBefore = [
     {
         color: "var(--lint-warn)",
@@ -60,7 +62,7 @@ export const TypescriptVignette = () => (
                 leading-tight
             "
         >
-            <span style={{ color: "var(--text-tertiary)" }}>interface User &#123;</span>
+            <span style={{ color: "var(--text-tertiary)" }}>{codeSamplesStringsData.typescriptInterfaceOpen}</span>
             <motion.div
                 animate={{
                     opacity: [
@@ -98,7 +100,7 @@ export const TypescriptVignette = () => (
                         style={{ color: color }}
                     >
                         {name}
-                        : string;
+                        {codeSamplesStringsData.typescriptPropertyTypeAnnotation}
                     </div>
                 ))}
             </motion.div>
@@ -139,7 +141,7 @@ export const TypescriptVignette = () => (
                         style={{ color: color }}
                     >
                         {name}
-                        : string;
+                        {codeSamplesStringsData.typescriptPropertyTypeAnnotation}
                     </div>
                 ))}
             </motion.div>
@@ -147,7 +149,7 @@ export const TypescriptVignette = () => (
                 className="mt-12"
                 style={{ color: "var(--text-tertiary)" }}
             >
-                &#125;
+                {codeSamplesStringsData.typescriptInterfaceClose}
             </span>
         </div>
     </div>

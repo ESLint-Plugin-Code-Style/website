@@ -1,16 +1,24 @@
 export { pluginConfigData } from "./config";
 export {
     badgeVariantValuesEnumsData,
+    buttonTypeValuesEnumsData,
+    cardAsValuesEnumsData,
     cardVariantValuesEnumsData,
     codeFilenameValuesEnumsData,
     codeLanguageValuesEnumsData,
     eventNameValuesEnumsData,
     inputTypeValuesEnumsData,
     keyboardKeyValuesEnumsData,
+    lintButtonSizeValuesEnumsData,
+    lintButtonToneValuesEnumsData,
     lintStatusValuesEnumsData,
     localStorageKeyValuesEnumsData,
+    mediaQueryValuesEnumsData,
     methodNameValuesEnumsData,
+    motionRepeatTypeValuesEnumsData,
+    propertyKeyValuesEnumsData,
     scrollBehaviorValuesEnumsData,
+    sitemapChangeFrequencyValuesEnumsData,
     squiggleVariantValuesEnumsData,
     themeValuesEnumsData,
 } from "./enums";
@@ -30,6 +38,7 @@ export {
 } from "./rules";
 export {
     changelogStringsData,
+    codeSamplesStringsData,
     codeSnippetStringsData,
     componentStringsData,
     configurationStringsData,

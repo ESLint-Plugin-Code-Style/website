@@ -114,5 +114,4 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
     );
 };
 
-// eslint-disable-next-line import-x/no-default-export
 export default DocsLayout;

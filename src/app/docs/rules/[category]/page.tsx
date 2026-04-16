@@ -1,5 +1,3 @@
-/* eslint-disable check-file/folder-naming-convention */
-
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -419,5 +417,4 @@ const CategoryPage = async ({ params }: { params: Promise<{ category: string }> 
     );
 };
 
-// eslint-disable-next-line import-x/no-default-export
 export default CategoryPage;

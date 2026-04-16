@@ -32,7 +32,20 @@ export const homeStringsData = {
     featureReactDescription: "Purpose-built for React projects. JSX formatting, component conventions, hook patterns, and prop naming.",
     featureReactTitle: "React & JSX First",
     featuresEyebrow: "what you get",
-    featuresSectionSubtitle: "Built to fill the gaps left by Prettier and existing ESLint plugins.", // eslint-disable-line code-style/classname-multiline, code-style/classname-order
+    featuresSectionSubtitle: `
+        and
+        Built
+        by
+        ESLint
+        existing
+        fill
+        gaps
+        left
+        plugins.
+        Prettier
+        the
+        to
+    `,
     featuresSectionTitle: "Why eslint-plugin-code-style?",
     featureTypeScriptDescription: `${tsOnlyRulesData} TypeScript-specific rules for enums, interfaces, type annotations, and prop naming.`,
     featureTypeScriptTitle: "TypeScript Support",
@@ -205,11 +218,97 @@ export const philosophyStringsData = {
     autoFixDescription1Suffix: " to apply formatting automatically. This reduces the cognitive overhead of remembering style rules and eliminates back-and-forth in code reviews over formatting issues.",
     autoFixDescription2: `The remaining ${reportOnlyRulesData} rules are report-only because their fixes would be ambiguous or could change runtime behavior. In those cases, the rule reports the issue and lets the developer decide how to resolve it.`,
     autoFixTitle: "Auto-Fix First",
-    consistencyDescription1: "When a team of 5, 10, or 50 developers works on the same codebase, small inconsistencies compound quickly. One developer puts array items on a single line, another breaks them across lines. One uses implicit returns in arrow functions, another uses block bodies.", // eslint-disable-line code-style/classname-multiline, code-style/classname-order
+    consistencyDescription1: `
+        block
+        10,
+        5,
+        50
+        a
+        a
+        across
+        another
+        another
+        array
+        arrow
+        bodies.
+        breaks
+        codebase,
+        compound
+        developer
+        developers
+        functions,
+        implicit
+        in
+        inconsistencies
+        items
+        line,
+        lines.
+        of
+        on
+        on
+        One
+        One
+        or
+        puts
+        quickly.
+        returns
+        same
+        single
+        small
+        team
+        the
+        them
+        uses
+        uses
+        When
+        works
+    `,
     consistencyDescription2: "These rules enforce a single way to format each pattern. The result is a codebase that reads as if one person wrote it, regardless of team size.",
     consistencyTitle: "Consistency at Scale",
     fillingGapsDescription1: "Prettier handles basic formatting: indentation, semicolons, trailing commas, line width. But it deliberately avoids opinions on many structural patterns. Existing ESLint plugins focus on catching bugs and enforcing best practices, not formatting style.",
-    fillingGapsDescription2: "This plugin fills the gap between Prettier and logic-focused linters. It enforces structural consistency that no other tool covers: how array items are formatted, how JSX children should break across lines, when to use arrow functions, block bodies, and dozens more.", // eslint-disable-line code-style/classname-multiline, code-style/classname-order
+    fillingGapsDescription2: `
+        block
+        across
+        and
+        and
+        are
+        array
+        arrow
+        between
+        bodies,
+        break
+        children
+        consistency
+        covers:
+        dozens
+        enforces
+        fills
+        formatted,
+        functions,
+        gap
+        how
+        how
+        It
+        items
+        JSX
+        lines,
+        linters.
+        logic-focused
+        more.
+        no
+        other
+        plugin
+        Prettier
+        should
+        structural
+        that
+        the
+        This
+        to
+        tool
+        use
+        when
+    `,
     fillingGapsTitle: "Filling the Gaps",
     intro: " exists because consistent code formatting goes beyond what Prettier and existing ESLint plugins cover. Here are the principles that guide every rule in the plugin.",
     metadataTitle: "Philosophy",
@@ -513,6 +612,8 @@ export const notFoundStringsData = {
     ctaDocs: "Browse Docs",
     ctaHome: "Back to Home",
     description: "The page you're looking for doesn't exist or has been moved. Try heading back home or exploring the documentation.",
+    errorLabel: "error",
+    errorMessage: " TS404: file or directory not found",
     heading: "Page not found",
     metadataTitle: "404 — Page Not Found",
     title: "404",
@@ -651,6 +752,33 @@ const UserCard = (props) => {
 }`,
         },
     ],
+};
+
+// Code-sample strings rendered visually inside vignettes/demos
+export const codeSamplesStringsData = {
+    autoFixCommand: "eslint --fix",
+    autoFixKeyword: "const",
+    autoFixOperator: " = ",
+    autoFixVariable: "x",
+    autoFixVariableValue: "1",
+    flatConfigEslintRcAirbnb: "\"airbnb\",",
+    flatConfigEslintRcExtends: "{ extends: [",
+    flatConfigEslintRcFilename: ".eslintrc",
+    flatConfigEslintRcPrettier: "\"prettier\"",
+    flatConfigEslintRcSuffix: "] }",
+    flatConfigModernArrayClose: "]",
+    flatConfigModernArrayOpen: "export default [",
+    flatConfigModernFilename: "eslint.config.js",
+    flatConfigModernPreset: "codeStyle.configs.react,",
+    reactJsxBody: "<Body />",
+    reactJsxCardClose: "</Card>",
+    reactJsxCardOpen: "<Card>",
+    reactJsxFooter: "<Footer />",
+    reactJsxHeader: "<Header />",
+    typescriptInterfaceClose: "}",
+    typescriptInterfaceOpen: "interface User {",
+    typescriptPropertyTypeAnnotation: ": string;",
+    zeroDepsLabel: "0",
 };
 
 // Redesign strings (shared across the new primitives and vignettes)

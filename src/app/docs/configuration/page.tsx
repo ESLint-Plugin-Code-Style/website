@@ -291,5 +291,4 @@ const ConfigurationPage = () => (
     </div>
 );
 
-// eslint-disable-next-line import-x/no-default-export
 export default ConfigurationPage;

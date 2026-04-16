@@ -2,16 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import { redesignStringsData } from "@/data";
-
-type DriftEntryType = {
-    delay: number,
-    duration: number,
-    fontSize: number,
-    key: number,
-    left: number,
-    token: string,
-};
+import { eventNameValuesEnumsData, mediaQueryValuesEnumsData, redesignStringsData } from "@/data";
+import type { DriftEntryType } from "@/types";
 
 const minDuration = 22;
 
@@ -21,9 +13,9 @@ const minFont = 11;
 
 const maxFont = 22;
 
-const randomBetweenHandler = (min: number, max: number): number => min + Math.random() * (max - min);
+const getRandomBetweenHandler = (min: number, max: number): number => min + Math.random() * (max - min);
 
-const pickTokenHandler = (): string => {
+const getRandomTokenHandler = (): string => {
     const tokens = redesignStringsData.codeRainTokens;
 
     return tokens[Math.floor(Math.random() * tokens.length)];
@@ -36,22 +28,22 @@ const buildEntriesHandler = (count: number): DriftEntryType[] => Array.from(
         index,
     ) => ({
         delay: -Math.random() * maxDuration,
-        duration: randomBetweenHandler(
+        duration: getRandomBetweenHandler(
             minDuration,
             maxDuration,
         ),
         fontSize: Math.round(
-            randomBetweenHandler(
+            getRandomBetweenHandler(
                 minFont,
                 maxFont,
             ),
         ),
         key: index,
-        left: (index / count) * 100 + randomBetweenHandler(
+        left: (index / count) * 100 + getRandomBetweenHandler(
             -2,
             2,
         ),
-        token: pickTokenHandler(),
+        token: getRandomTokenHandler(),
     }),
 );
 
@@ -66,7 +58,7 @@ export const CodeRain = () => {
         () => {
             if (typeof window === "undefined") return undefined;
 
-            const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+            const mediaQuery = window.matchMedia(mediaQueryValuesEnumsData.prefersReducedMotion);
 
             prefersReducedRef.current = mediaQuery.matches;
 
@@ -85,12 +77,12 @@ export const CodeRain = () => {
             };
 
             mediaQuery.addEventListener(
-                "change",
+                eventNameValuesEnumsData.change,
                 changeHandler,
             );
 
             return () => mediaQuery.removeEventListener(
-                "change",
+                eventNameValuesEnumsData.change,
                 changeHandler,
             );
         },

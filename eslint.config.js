@@ -17,7 +17,11 @@ import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-export default [ // eslint-disable-line
+const srcDir = "src";
+
+const tailwindEntry = "index.css";
+
+export default [
     {
         ignores: [
             ".next/**",
@@ -26,8 +30,11 @@ export default [ // eslint-disable-line
             "coverage/**/*",
             "dist/**",
             "eslint-rules/**",
+            "next-env.d.ts",
             "node_modules/**",
             "public/**/*",
+            "scripts/sync-from-plugin.js",
+            "src/data/rules.ts",
         ],
     },
     js.configs.recommended,
@@ -38,8 +45,8 @@ export default [ // eslint-disable-line
             tailwindcss: {
                 config: join(
                     __dirname,
-                    "src", // eslint-disable-line
-                    "index.css", // eslint-disable-line
+                    srcDir,
+                    tailwindEntry,
                 ),
             },
         },
@@ -441,5 +448,22 @@ export default [ // eslint-disable-line
             },
             react: { version: "detect" },
         },
+    },
+    // Next.js framework exceptions — default exports are required by the framework
+    {
+        files: [
+            "src/app/**/{page,layout,not-found,error,loading,template,route,sitemap,robots,manifest,opengraph-image,apple-icon,icon,twitter-image,default}.{js,jsx,ts,tsx}",
+            "next.config.{js,ts,mjs,cjs}",
+            "middleware.{js,ts}",
+            "instrumentation.{js,ts}",
+            "eslint.config.js",
+            "commitlint.config.js",
+        ],
+        rules: { "import-x/no-default-export": "off" },
+    },
+    // Next.js dynamic-route folders — bracket syntax is required by the file-router
+    {
+        files: ["src/app/**/\\[*\\]/**/*.{ts,tsx,js,jsx}"],
+        rules: { "check-file/folder-naming-convention": "off" },
     },
 ];

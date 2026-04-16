@@ -1,12 +1,12 @@
 import { joinClassesHandler } from "@/lib";
-import type { SquiggleVariantType } from "@/types";
+import type { SquiggleVariantType, SvgWidthType } from "@/types";
 
 const variantColors: Record<SquiggleVariantType, string> = {
     error: "var(--lint-error)",
     fix: "var(--lint-pass)",
 };
 
-export const Squiggle = ({
+export const SquiggleIcon = ({
     className,
     isAnimate,
     strokeWidth,
@@ -17,7 +17,7 @@ export const Squiggle = ({
     isAnimate?: boolean,
     strokeWidth?: number,
     variant: SquiggleVariantType,
-    width?: number | string,
+    width?: SvgWidthType,
 }) => (
     <svg
         aria-hidden="true"

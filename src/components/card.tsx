@@ -1,14 +1,24 @@
 import type { ReactNode } from "react";
 
-import { cardVariantValuesEnumsData } from "@/data";
+import { cardAsValuesEnumsData, cardVariantValuesEnumsData } from "@/data";
 import { joinClassesHandler } from "@/lib";
-import type { CardVariantType } from "@/types";
+import type { CardAsType, CardVariantType } from "@/types";
 
 const classByVariant: Record<CardVariantType, string> = {
     notched: "card-notched",
     note: "card-note",
     tab: "card-tab",
 };
+
+const resolveClassHandler = (
+    variant: CardVariantType,
+    isRotateRight: boolean | undefined,
+    className: string | undefined,
+): string => joinClassesHandler(
+    classByVariant[variant],
+    isRotateRight && variant === cardVariantValuesEnumsData.note && "rotate-right",
+    className,
+);
 
 export const Card = ({
     as,
@@ -17,7 +27,7 @@ export const Card = ({
     isRotateRight,
     variant,
 }: {
-    as?: "article" | "div" | "section",
+    as?: CardAsType,
     children: ReactNode,
     className?: string,
     isRotateRight?: boolean,
@@ -25,17 +35,17 @@ export const Card = ({
 }) => {
     const resolvedVariant: CardVariantType = variant ?? cardVariantValuesEnumsData.tab;
 
-    const Tag = (as ?? "div") as "article" | "div" | "section"; // eslint-disable-line code-style/variable-naming-convention
+    const resolvedAs: CardAsType = as ?? cardAsValuesEnumsData.div;
 
-    return (
-        <Tag
-            className={joinClassesHandler(
-                classByVariant[resolvedVariant],
-                isRotateRight && resolvedVariant === cardVariantValuesEnumsData.note && "rotate-right",
-                className,
-            )}
-        >
-            {children}
-        </Tag>
+    const resolvedClass = resolveClassHandler(
+        resolvedVariant,
+        isRotateRight,
+        className,
     );
+
+    if (resolvedAs === cardAsValuesEnumsData.article) return <article className={resolvedClass}>{children}</article>;
+
+    if (resolvedAs === cardAsValuesEnumsData.section) return <section className={resolvedClass}>{children}</section>;
+
+    return <div className={resolvedClass}>{children}</div>;
 };

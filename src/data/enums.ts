@@ -20,6 +20,14 @@ export const cardVariantValuesEnumsData = {
     tab: "tab",
 } as const;
 
+// Card "as" HTML element values
+
+export const cardAsValuesEnumsData = {
+    article: "article",
+    div: "div",
+    section: "section",
+} as const;
+
 // Squiggle variants
 
 export const squiggleVariantValuesEnumsData = {
@@ -34,6 +42,58 @@ export const lintStatusValuesEnumsData = {
     info: "info",
     pass: "pass",
     warn: "warn",
+} as const;
+
+// Lint button size
+
+export const lintButtonSizeValuesEnumsData = {
+    lg: "lg",
+    md: "md",
+    sm: "sm",
+} as const;
+
+// Lint button tone
+
+export const lintButtonToneValuesEnumsData = {
+    ghost: "ghost",
+    primary: "primary",
+    secondary: "secondary",
+} as const;
+
+// Motion repeat type values (motion library API)
+
+export const motionRepeatTypeValuesEnumsData = {
+    loop: "loop",
+    mirror: "mirror",
+    reverse: "reverse",
+} as const;
+
+// Media query values
+
+export const mediaQueryValuesEnumsData = { prefersReducedMotion: "(prefers-reduced-motion: reduce)" } as const;
+
+// Sitemap change frequency values
+
+export const sitemapChangeFrequencyValuesEnumsData = {
+    always: "always",
+    daily: "daily",
+    hourly: "hourly",
+    monthly: "monthly",
+    never: "never",
+    weekly: "weekly",
+    yearly: "yearly",
+} as const;
+
+// Object keys used at runtime (e.g. prop membership checks)
+
+export const propertyKeyValuesEnumsData = { href: "href" } as const;
+
+// HTML button type attribute values
+
+export const buttonTypeValuesEnumsData = {
+    button: "button",
+    reset: "reset",
+    submit: "submit",
 } as const;
 
 // CodeBlock filenames

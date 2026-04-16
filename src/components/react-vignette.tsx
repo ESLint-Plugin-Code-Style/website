@@ -2,6 +2,8 @@
 
 import { motion } from "motion/react";
 
+import { codeSamplesStringsData } from "@/data";
+
 export const ReactVignette = () => (
     <div
         className="
@@ -30,7 +32,7 @@ export const ReactVignette = () => (
                 leading-tight
             "
         >
-            <span style={{ color: "var(--lint-info)" }}>{"<Card>"}</span>
+            <span style={{ color: "var(--lint-info)" }}>{codeSamplesStringsData.reactJsxCardOpen}</span>
             <motion.span
                 style={{ color: "var(--lint-warn)" }}
                 animate={{
@@ -59,7 +61,7 @@ export const ReactVignette = () => (
                     ],
                 }}
             >
-                {"<Header />"}
+                {codeSamplesStringsData.reactJsxHeader}
             </motion.span>
             <motion.span
                 style={{ color: "var(--lint-pass)" }}
@@ -90,7 +92,7 @@ export const ReactVignette = () => (
                     ],
                 }}
             >
-                {"<Body />"}
+                {codeSamplesStringsData.reactJsxBody}
             </motion.span>
             <motion.span
                 style={{ color: "var(--accent-violet)" }}
@@ -121,9 +123,9 @@ export const ReactVignette = () => (
                     ],
                 }}
             >
-                {"<Footer />"}
+                {codeSamplesStringsData.reactJsxFooter}
             </motion.span>
-            <span style={{ color: "var(--lint-info)" }}>{"</Card>"}</span>
+            <span style={{ color: "var(--lint-info)" }}>{codeSamplesStringsData.reactJsxCardClose}</span>
         </div>
     </div>
 );

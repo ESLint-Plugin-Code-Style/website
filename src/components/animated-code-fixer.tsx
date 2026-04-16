@@ -4,16 +4,9 @@ import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useMemo, useState } from "react";
 
 import { heroDemoSnippetsStringsData, redesignStringsData } from "@/data";
-import { joinClassesHandler } from "@/lib";
-import type { LintStatusType } from "@/types";
+import type { LintStatusType, PillColorType } from "@/types";
 
-const pillColorByStatus: Record<
-    LintStatusType,
-    {
-        background: string,
-        color: string,
-    }
-> = {
+const pillColorByStatus: Record<LintStatusType, PillColorType> = {
     error: {
         background: "var(--lint-error-bg)",
         color: "var(--lint-error)",
@@ -41,18 +34,27 @@ export const AnimatedCodeFixer = () => {
 
     const [isPaused, setIsPaused] = useState(false);
 
-    const totalSteps = heroDemoSnippetsStringsData.steps.length;
-
     const stepDurationMs = 2400;
 
     const typingCharMs = 14;
+
+    const finalDwellExtraMs = 2000;
+
+    const totalSteps = heroDemoSnippetsStringsData.steps.length;
+
+    const isInitialTyping = isTyping && stepIndex === 0;
 
     const activeStep = useMemo(
         () => heroDemoSnippetsStringsData.steps[stepIndex],
         [stepIndex],
     );
 
-    const pillColors = pillColorByStatus[activeStep.pillStatus];
+    const pillColors = useMemo(
+        () => pillColorByStatus[activeStep.pillStatus],
+        [activeStep],
+    );
+
+    const visibleSnippet = isInitialTyping ? typed : activeStep.snippet;
 
     useEffect(
         () => {
@@ -108,7 +110,7 @@ export const AnimatedCodeFixer = () => {
 
             if (isTyping) return undefined;
 
-            const dwell = stepIndex === totalSteps - 1 ? stepDurationMs + 2000 : stepDurationMs;
+            const dwell = stepIndex === totalSteps - 1 ? stepDurationMs + finalDwellExtraMs : stepDurationMs;
 
             const timer = window.setTimeout(
                 () => {
@@ -130,7 +132,6 @@ export const AnimatedCodeFixer = () => {
         [
             isPaused,
             isTyping,
-            stepDurationMs,
             stepIndex,
             totalSteps,
         ],
@@ -169,29 +170,29 @@ export const AnimatedCodeFixer = () => {
             >
                 <div className="flex items-center gap-3">
                     <span
-                    aria-hidden="true"
-                    className="traffic-lights"
-                >
-                    <span />
-                    <span />
-                    <span />
-                </span>
+                        aria-hidden="true"
+                        className="traffic-lights"
+                    >
+                        <span />
+                        <span />
+                        <span />
+                    </span>
                     <span
-                    className="font-mono text-xs"
-                    style={{ color: "rgba(255,255,255,0.6)" }}
-                >
-                    {heroDemoSnippetsStringsData.fileName}
-                </span>
+                        className="font-mono text-xs"
+                        style={{ color: "rgba(255,255,255,0.6)" }}
+                    >
+                        {heroDemoSnippetsStringsData.fileName}
+                    </span>
                 </div>
                 <AnimatePresence mode="wait">
                     <motion.span
-                    key={activeStep.pill}
-                    transition={{ duration: 0.25 }}
-                    animate={{
+                        key={activeStep.pill}
+                        transition={{ duration: 0.25 }}
+                        animate={{
                             opacity: 1,
                             y: 0,
                         }}
-                    className="
+                        className="
                             inline-flex
                             items-center
                             gap-1.5
@@ -202,26 +203,26 @@ export const AnimatedCodeFixer = () => {
                             text-[11px]
                             font-medium
                         "
-                    exit={{
+                        exit={{
                             opacity: 0,
                             y: -4,
                         }}
-                    initial={{
+                        initial={{
                             opacity: 0,
                             y: 4,
                         }}
-                    style={{
+                        style={{
                             backgroundColor: pillColors.background,
                             color: pillColors.color,
                         }}
-                >
-                    <span
+                    >
+                        <span
                             aria-hidden="true"
                             className="size-1.5 rounded-full"
                             style={{ backgroundColor: pillColors.color }}
                         />
-                    {activeStep.pill}
-                </motion.span>
+                        {activeStep.pill}
+                    </motion.span>
                 </AnimatePresence>
             </div>
             <AnimatePresence mode="wait">
@@ -233,13 +234,13 @@ export const AnimatedCodeFixer = () => {
                         opacity: 1,
                         y: 0,
                     }}
-                    className={joinClassesHandler(`
+                    className="
                         overflow-auto
                         p-5
                         font-mono
                         text-[13px]
                         leading-[1.7]
-                    `)}
+                    "
                     exit={{
                         opacity: 0,
                         y: -6,
@@ -249,11 +250,9 @@ export const AnimatedCodeFixer = () => {
                         y: 6,
                     }}
                 >
-                    <code>
-                    {isTyping && stepIndex === 0 ? typed : activeStep.snippet}
-                </code>
-                    {isTyping && stepIndex === 0 ? (
-                    <span
+                    <code>{visibleSnippet}</code>
+                    {isInitialTyping ? (
+                        <span
                             aria-hidden="true"
                             className="blinking-caret"
                         />
@@ -263,16 +262,16 @@ export const AnimatedCodeFixer = () => {
             {isPaused ? (
                 <div
                     className="
-                    pointer-events-none
-                    absolute
-                    inset-x-0
-                    bottom-0
-                    px-4
-                    py-1.5
-                    text-right
-                    font-mono
-                    text-[10px]
-                "
+                        pointer-events-none
+                        absolute
+                        inset-x-0
+                        bottom-0
+                        px-4
+                        py-1.5
+                        text-right
+                        font-mono
+                        text-[10px]
+                    "
                     style={{
                         backgroundColor: "rgba(0,0,0,0.3)",
                         color: "rgba(255,255,255,0.5)",

@@ -1,27 +1,25 @@
 export { AnimatedCodeFixer } from "./animated-code-fixer";
+export { AutoFixVignette } from "./auto-fix-vignette";
 export { Badge } from "./badge";
 export { Card } from "./card";
 export { CodeBlock } from "./code-block";
 export { CodeRain } from "./code-rain";
+export { ConfigsVignette } from "./configs-vignette";
 export { CopyButton } from "./copy-button";
 export { CountUp } from "./count-up";
+export { FlatConfigVignette } from "./flat-config-vignette";
 export { LintButton } from "./lint-button";
 export { MarkerHighlight } from "./marker-highlight";
 export { Navbar } from "./navbar";
 export { OfflineIndicator } from "./offline-indicator";
 export { OnThisPage } from "./on-this-page";
+export { ReactVignette } from "./react-vignette";
 export { SectionDivider } from "./section-divider";
 export { ServiceWorkerRegister } from "./service-worker-register";
 export { Sidebar } from "./sidebar";
 export { SignedSticker } from "./signed-sticker";
-export { Squiggle } from "./squiggle";
+export { SquiggleIcon } from "./squiggle-icon";
 export { ThemeToggle } from "./theme-toggle";
+export { TypescriptVignette } from "./typescript-vignette";
 export { VersionSelector } from "./version-selector";
-export {
-    AutoFixVignette,
-    ConfigsVignette,
-    FlatConfigVignette,
-    ReactVignette,
-    TypescriptVignette,
-    ZeroDepsVignette,
-} from "./vignettes";
+export { ZeroDepsVignette } from "./zero-deps-vignette";

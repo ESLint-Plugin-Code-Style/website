@@ -2,6 +2,8 @@
 
 import { motion } from "motion/react";
 
+import { codeSamplesStringsData } from "@/data";
+
 export const AutoFixVignette = () => (
     <div
         className="
@@ -23,11 +25,11 @@ export const AutoFixVignette = () => (
     >
         <div className="flex flex-col gap-1.5">
             <div className="relative">
-                <span>const</span>
+                <span>{codeSamplesStringsData.autoFixKeyword}</span>
                 {" "}
-                <span style={{ color: "var(--lint-warn)" }}>x</span>
-                {" = "}
-                <span style={{ color: "var(--lint-info)" }}>1</span>
+                <span style={{ color: "var(--lint-warn)" }}>{codeSamplesStringsData.autoFixVariable}</span>
+                {codeSamplesStringsData.autoFixOperator}
+                <span style={{ color: "var(--lint-info)" }}>{codeSamplesStringsData.autoFixVariableValue}</span>
                 <motion.svg
                     aria-hidden="true"
                     fill="none"
@@ -117,7 +119,7 @@ export const AutoFixVignette = () => (
                     ],
                 }}
             >
-                eslint --fix
+                {codeSamplesStringsData.autoFixCommand}
             </motion.div>
         </div>
     </div>

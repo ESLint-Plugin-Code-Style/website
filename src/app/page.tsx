@@ -14,7 +14,7 @@ import {
     ReactVignette,
     SectionDivider,
     SignedSticker,
-    Squiggle,
+    SquiggleIcon,
     TypescriptVignette,
     ZeroDepsVignette,
 } from "@/components";
@@ -24,7 +24,11 @@ import {
     codeLanguageValuesEnumsData,
     codeSnippetStringsData,
     homeStringsData,
+    lintButtonSizeValuesEnumsData,
+    lintButtonToneValuesEnumsData,
+    lintStatusValuesEnumsData,
     redesignStringsData,
+    squiggleVariantValuesEnumsData,
 } from "@/data";
 
 export const metadata: Metadata = { title: homeStringsData.metadataTitle };
@@ -169,38 +173,38 @@ const features = [
     {
         accent: "var(--lint-pass)",
         description: homeStringsData.featureAutoFixDescription,
+        renderVignette: () => <AutoFixVignette />,
         title: homeStringsData.featureAutoFixTitle,
-        Vignette: AutoFixVignette,
     },
     {
         accent: "var(--lint-info)",
         description: homeStringsData.featureReactDescription,
+        renderVignette: () => <ReactVignette />,
         title: homeStringsData.featureReactTitle,
-        Vignette: ReactVignette,
     },
     {
         accent: "var(--accent-violet)",
         description: homeStringsData.featureFlatConfigDescription,
+        renderVignette: () => <FlatConfigVignette />,
         title: homeStringsData.featureFlatConfigTitle,
-        Vignette: FlatConfigVignette,
     },
     {
         accent: "var(--lint-error)",
         description: homeStringsData.featureZeroDepsDescription,
+        renderVignette: () => <ZeroDepsVignette />,
         title: homeStringsData.featureZeroDepsTitle,
-        Vignette: ZeroDepsVignette,
     },
     {
         accent: "var(--lint-warn)",
         description: homeStringsData.featureTypeScriptDescription,
+        renderVignette: () => <TypescriptVignette />,
         title: homeStringsData.featureTypeScriptTitle,
-        Vignette: TypescriptVignette,
     },
     {
         accent: "var(--lint-info)",
         description: homeStringsData.featureConfigsDescription,
+        renderVignette: () => <ConfigsVignette />,
         title: homeStringsData.featureConfigsTitle,
-        Vignette: ConfigsVignette,
     },
 ];
 
@@ -282,7 +286,7 @@ const HomePage = () => (
                         "
                     >
                         <span className="block">
-                            <MarkerHighlight status="warn">{homeStringsData.heroTitle}</MarkerHighlight>
+                            <MarkerHighlight status={lintStatusValuesEnumsData.warn}>{homeStringsData.heroTitle}</MarkerHighlight>
                         </span>
                         <span
                             style={{ color: "var(--text-secondary)" }}
@@ -298,11 +302,11 @@ const HomePage = () => (
                             {homeStringsData.heroTitleSuffix}
                         </span>
                         <span className="relative inline-block w-full">
-                            <Squiggle
-                                isAnimate
+                            <SquiggleIcon
                                 className="-mt-1 h-2 w-1/2"
                                 strokeWidth={1.8}
-                                variant="fix"
+                                variant={squiggleVariantValuesEnumsData.fix}
+                                isAnimate
                             />
                         </span>
                     </h1>
@@ -326,11 +330,7 @@ const HomePage = () => (
                             className="handwritten text-xl"
                             style={{ color: "var(--lint-pass)" }}
                         >
-                            
-                            
-                            ↳ 
-                            {" "}
-                            {homeStringsData.heroCorrection}
+                            {`↳ ${homeStringsData.heroCorrection}`}
                         </span>
                     </div>
                     <p
@@ -354,16 +354,16 @@ const HomePage = () => (
                     >
                         <LintButton
                             href="/docs/getting-started"
-                            size="lg"
-                            tone="primary"
+                            size={lintButtonSizeValuesEnumsData.lg}
+                            tone={lintButtonToneValuesEnumsData.primary}
                         >
                             {homeStringsData.ctaGetStarted}
                             <span aria-hidden="true">→</span>
                         </LintButton>
                         <LintButton
                             href="/docs/rules"
-                            size="lg"
-                            tone="secondary"
+                            size={lintButtonSizeValuesEnumsData.lg}
+                            tone={lintButtonToneValuesEnumsData.secondary}
                         >
                             {homeStringsData.ctaViewRules}
                         </LintButton>
@@ -558,14 +558,14 @@ const HomePage = () => (
                 >
                     {features.map(({
                         description,
+                        renderVignette,
                         title,
-                        Vignette,
                     }) => (
                         <Card
                             key={title}
                             variant={cardVariantValuesEnumsData.tab}
                         >
-                            <Vignette />
+                            {renderVignette()}
                             <h3
                                 style={{ color: "var(--text-primary)" }}
                                 className="
@@ -895,8 +895,8 @@ const HomePage = () => (
                 <div className="mt-12 text-center">
                     <LintButton
                         href="/docs/getting-started"
-                        size="lg"
-                        tone="primary"
+                        size={lintButtonSizeValuesEnumsData.lg}
+                        tone={lintButtonToneValuesEnumsData.primary}
                     >
                         {homeStringsData.ctaInstallationGuide}
                         <span aria-hidden="true">→</span>
@@ -981,5 +981,4 @@ const HomePage = () => (
     </div>
 );
 
-// eslint-disable-next-line import-x/no-default-export
 export default HomePage;

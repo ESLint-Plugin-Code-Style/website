@@ -2,6 +2,8 @@
 
 import { motion } from "motion/react";
 
+import { codeSamplesStringsData } from "@/data";
+
 export const FlatConfigVignette = () => (
     <div
         className="
@@ -50,11 +52,11 @@ export const FlatConfigVignette = () => (
                 ],
             }}
         >
-            <span style={{ color: "var(--text-tertiary)" }}>{".eslintrc"}</span>
-            <span>{"{ extends: ["}</span>
-            <span className="pl-3">{"\"airbnb\","}</span>
-            <span className="pl-3">{"\"prettier\""}</span>
-            <span>{"] }"}</span>
+            <span style={{ color: "var(--text-tertiary)" }}>{codeSamplesStringsData.flatConfigEslintRcFilename}</span>
+            <span>{codeSamplesStringsData.flatConfigEslintRcExtends}</span>
+            <span className="pl-3">{codeSamplesStringsData.flatConfigEslintRcAirbnb}</span>
+            <span className="pl-3">{codeSamplesStringsData.flatConfigEslintRcPrettier}</span>
+            <span>{codeSamplesStringsData.flatConfigEslintRcSuffix}</span>
         </motion.div>
         <motion.div
             animate={{
@@ -91,8 +93,8 @@ export const FlatConfigVignette = () => (
                 ],
             }}
         >
-            <span style={{ color: "var(--text-tertiary)" }}>{"eslint.config.js"}</span>
-            <span>{"export default ["}</span>
+            <span style={{ color: "var(--text-tertiary)" }}>{codeSamplesStringsData.flatConfigModernFilename}</span>
+            <span>{codeSamplesStringsData.flatConfigModernArrayOpen}</span>
             <span
                 style={{ color: "var(--lint-pass)" }}
                 className="
@@ -102,10 +104,10 @@ export const FlatConfigVignette = () => (
                     pl-3
                 "
             >
-                <span>{"codeStyle.configs.react,"}</span>
+                <span>{codeSamplesStringsData.flatConfigModernPreset}</span>
                 <span aria-hidden="true">✓</span>
             </span>
-            <span>{"]"}</span>
+            <span>{codeSamplesStringsData.flatConfigModernArrayClose}</span>
         </motion.div>
     </div>
 );

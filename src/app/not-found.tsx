@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { LintButton } from "@/components";
-import { notFoundStringsData } from "@/data";
+import { lintButtonSizeValuesEnumsData, lintButtonToneValuesEnumsData, notFoundStringsData } from "@/data";
 
 export const metadata: Metadata = { title: notFoundStringsData.metadataTitle };
 
@@ -21,11 +21,8 @@ const NotFound = () => (
             className="mb-6 font-mono text-sm"
             style={{ color: "var(--text-tertiary)" }}
         >
-            <span style={{ color: "var(--lint-error)" }}>error</span>
-            <span>
-                {" "}
-                TS404: file or directory not found
-            </span>
+            <span style={{ color: "var(--lint-error)" }}>{notFoundStringsData.errorLabel}</span>
+            <span>{notFoundStringsData.errorMessage}</span>
         </div>
         <h1
             className="
@@ -69,15 +66,15 @@ const NotFound = () => (
         >
             <LintButton
                 href="/"
-                size="md"
-                tone="primary"
+                size={lintButtonSizeValuesEnumsData.md}
+                tone={lintButtonToneValuesEnumsData.primary}
             >
                 {notFoundStringsData.ctaHome}
             </LintButton>
             <LintButton
                 href="/docs"
-                size="md"
-                tone="secondary"
+                size={lintButtonSizeValuesEnumsData.md}
+                tone={lintButtonToneValuesEnumsData.secondary}
             >
                 {notFoundStringsData.ctaDocs}
             </LintButton>
@@ -85,5 +82,4 @@ const NotFound = () => (
     </div>
 );
 
-// eslint-disable-next-line import-x/no-default-export
 export default NotFound;

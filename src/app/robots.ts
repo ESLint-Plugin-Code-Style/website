@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 import { metadataStringsData } from "@/data";
 
-const robots = (): MetadataRoute.Robots => ({
+const getRobotsHandler = (): MetadataRoute.Robots => ({
     host: metadataStringsData.canonicalUrl,
     rules: [
         {
@@ -14,5 +14,4 @@ const robots = (): MetadataRoute.Robots => ({
     sitemap: `${metadataStringsData.canonicalUrl}/sitemap.xml`,
 });
 
-// eslint-disable-next-line import-x/no-default-export
-export default robots;
+export default getRobotsHandler;

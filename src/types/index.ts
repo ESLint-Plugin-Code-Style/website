@@ -1,5 +1,10 @@
 export type { BadgeVariantType } from "./badge";
-export type { CardVariantType } from "./card";
+export type { ButtonTypeType } from "./button";
+export type { CardAsType, CardVariantType } from "./card";
+export type { ClassInputType } from "./class";
+export type { DriftEntryType } from "./code-rain";
 export type { LintStatusType, SquiggleVariantType } from "./lint";
-export type { LintButtonPropsType } from "./lint-button";
+export type { LintButtonSizeType, LintButtonToneType } from "./lint-button";
+export type { PillColorType } from "./pill";
+export type { SvgWidthType } from "./svg";
 export type { ResolvedThemeType, ThemeSnapshotType, ThemeType } from "./theme";

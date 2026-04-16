@@ -2,6 +2,8 @@
 
 import { motion } from "motion/react";
 
+import { motionRepeatTypeValuesEnumsData } from "@/data";
+
 const configs = [
     {
         color: "var(--lint-info)",
@@ -69,7 +71,7 @@ export const ConfigsVignette = () => (
                         ease: "easeOut",
                         repeat: Infinity,
                         repeatDelay: 2,
-                        repeatType: "mirror",
+                        repeatType: motionRepeatTypeValuesEnumsData.mirror,
                     }}
                 >
                     <span
