@@ -1,3 +1,4 @@
+export { AnimatedCodeFixer } from "./animated-code-fixer";
 export { Badge } from "./badge";
 export { Card } from "./card";
 export { CodeBlock } from "./code-block";
@@ -16,3 +17,11 @@ export { SignedSticker } from "./signed-sticker";
 export { Squiggle } from "./squiggle";
 export { ThemeToggle } from "./theme-toggle";
 export { VersionSelector } from "./version-selector";
+export {
+    AutoFixVignette,
+    ConfigsVignette,
+    FlatConfigVignette,
+    ReactVignette,
+    TypescriptVignette,
+    ZeroDepsVignette,
+} from "./vignettes";
