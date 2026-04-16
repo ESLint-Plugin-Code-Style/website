@@ -49,10 +49,12 @@ const subscribeToThemeHandler = (callback: () => void) => {
 
 const getThemeSnapshotHandler = () => themeStore;
 
-const getThemeServerSnapshotHandler = (): ThemeSnapshotType => ({
+const themeServerSnapshot: ThemeSnapshotType = {
     resolved: themeValuesEnumsData.light,
     theme: themeValuesEnumsData.system,
-});
+};
+
+const getThemeServerSnapshotHandler = (): ThemeSnapshotType => themeServerSnapshot;
 
 const updateThemeStoreHandler = (newTheme: ThemeType) => {
     const resolved = resolveThemeHandler(newTheme);
