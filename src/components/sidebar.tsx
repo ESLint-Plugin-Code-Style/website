@@ -85,19 +85,21 @@ export const Sidebar = ({
                                             <Link
                                                 href={href}
                                                 className={joinClassesHandler(`
-                                                    block
+                                                    flex
+                                                    items-center
+                                                    gap-2
                                                     rounded-md
                                                     px-3
                                                     py-1.5
+                                                    font-mono
                                                     text-[13px]
                                                     font-medium
                                                     transition-all
                                                     duration-150
                                                 `)}
                                                 style={{
-                                                    backgroundColor: isActive ? "var(--bg-tertiary)" : "transparent",
-                                                    borderLeft: isActive ? "2px solid var(--border-active)" : "2px solid transparent",
-                                                    color: isActive ? "var(--text-link)" : "var(--text-secondary)",
+                                                    backgroundColor: isActive ? "var(--lint-info-bg)" : "transparent",
+                                                    color: isActive ? "var(--lint-info)" : "var(--text-secondary)",
                                                 }}
                                                 onClick={onClose}
                                                 onMouseEnter={(e) => {
@@ -123,7 +125,26 @@ export const Sidebar = ({
                                                     }
                                                 }}
                                             >
-                                                {title}
+                                                <span
+                                                    aria-hidden="true"
+                                                    className="select-none"
+                                                    style={{
+                                                        color: isActive ? "var(--lint-info)" : "var(--text-tertiary)",
+                                                        opacity: isActive ? 1 : 0.4,
+                                                    }}
+                                                >
+                                                    {isActive ? "[" : "·"}
+                                                </span>
+                                                <span className="flex-1">{title}</span>
+                                                {isActive ? (
+                                                    <span
+                                                        aria-hidden="true"
+                                                        className="select-none"
+                                                        style={{ color: "var(--lint-info)" }}
+                                                    >
+                                                        ]
+                                                    </span>
+                                                ) : null}
                                             </Link>
                                         </li>
                                     );

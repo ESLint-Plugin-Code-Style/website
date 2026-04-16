@@ -37,20 +37,31 @@ export const CodeBlock = ({
                         flex
                         items-center
                         justify-between
+                        gap-3
                         px-4
                         py-2.5
                     "
                 >
-                    {filename ? (
+                    <div className="flex items-center gap-3">
                         <span
-                            className="font-mono text-xs font-medium"
-                            style={{ color: "var(--text-tertiary)" }}
+                            aria-hidden="true"
+                            className="traffic-lights"
                         >
-                            {filename}
+                            <span />
+                            <span />
+                            <span />
                         </span>
-                    ) : <span />}
+                        {filename ? (
+                            <span
+                                className="font-mono text-xs font-medium"
+                                style={{ color: "var(--text-tertiary)" }}
+                            >
+                                {filename}
+                            </span>
+                        ) : null}
+                    </div>
                     <div className="flex items-center gap-2">
-                        {language && !filename && (
+                        {language && (
                             <span
                                 className="
                                     rounded-md
@@ -69,29 +80,7 @@ export const CodeBlock = ({
                             >
                                 {language}
                             </span>
-                        )
-                        }
-                        {filename && language && (
-                            <span
-                                className="
-                                    rounded-md
-                                    px-2
-                                    py-0.5
-                                    font-mono
-                                    text-[11px]
-                                    font-medium
-                                    tracking-wide
-                                    uppercase
-                                "
-                                style={{
-                                    backgroundColor: "rgba(255, 255, 255, 0.06)",
-                                    color: "var(--text-tertiary)",
-                                }}
-                            >
-                                {language}
-                            </span>
-                        )
-                        }
+                        )}
                         <CopyButton text={code} />
                     </div>
                 </div>

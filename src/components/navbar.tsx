@@ -65,15 +65,28 @@ export const Navbar = () => {
                     "
                 >
                     <span
+                        aria-hidden="true"
+                        className="font-mono text-lg font-bold"
+                        style={{ color: "var(--lint-pass)" }}
+                    >
+                        {">"}
+                    </span>
+                    <span
+                        style={{ color: "var(--text-primary)" }}
                         className="
-                            gradient-text
-                            text-lg
-                            font-bold
+                            font-mono
+                            text-base
+                            font-semibold
                             tracking-tight
                         "
                     >
                         {componentStringsData.brandName}
                     </span>
+                    <span
+                        aria-hidden="true"
+                        className="blinking-caret -ml-1"
+                        style={{ color: "var(--lint-info)" }}
+                    />
                 </Link>
                 <div
                     className="

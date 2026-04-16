@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { Badge } from "@/components";
+import { Badge, CountUp } from "@/components";
 import {
     badgeVariantValuesEnumsData,
     categoriesRulesData,
     configurableRulesData,
     fixableRulesData,
     reportOnlyRulesData,
+    rulesIndexStringsData,
     totalRulesData,
     tsOnlyRulesData,
 } from "@/data";
-import { rulesIndexStringsData } from "@/data";
 
 export const metadata: Metadata = {
     description: rulesIndexStringsData.metadataDescription,
@@ -40,48 +40,56 @@ const RulesPage = () => (
         >
             {[
                 {
+                    accent: "var(--text-secondary)",
                     label: rulesIndexStringsData.statTotal,
                     value: totalRulesData,
                     variant: badgeVariantValuesEnumsData["default"],
                 },
                 {
+                    accent: "var(--lint-pass)",
                     label: rulesIndexStringsData.statAutoFixable,
                     value: fixableRulesData,
-                    variant: badgeVariantValuesEnumsData.success,
+                    variant: badgeVariantValuesEnumsData.lintPass,
                 },
                 {
+                    accent: "var(--lint-info)",
                     label: rulesIndexStringsData.statConfigurable,
                     value: configurableRulesData,
-                    variant: badgeVariantValuesEnumsData.info,
+                    variant: badgeVariantValuesEnumsData.lintInfo,
                 },
                 {
+                    accent: "var(--lint-warn)",
                     label: rulesIndexStringsData.statReportOnly,
                     value: reportOnlyRulesData,
-                    variant: badgeVariantValuesEnumsData.warning,
+                    variant: badgeVariantValuesEnumsData.lintWarn,
                 },
                 {
+                    accent: "var(--accent-violet)",
                     label: rulesIndexStringsData.statTsOnly,
                     value: tsOnlyRulesData,
                     variant: badgeVariantValuesEnumsData.purple,
                 },
             ].map(({
+                accent,
                 label,
                 value,
                 variant,
             }) => (
                 <div
-                    className="rounded-lg p-3 text-center"
+                    className="p-3 text-center"
                     key={label}
                     style={{
                         backgroundColor: "var(--bg-card)",
-                        border: "1px solid var(--border-primary)",
+                        borderBottom: `2px solid ${accent}`,
+                        borderRadius: "8px 8px 4px 4px",
+                        boxShadow: "var(--shadow-sm)",
                     }}
                 >
                     <div
-                        className="text-2xl font-bold"
-                        style={{ color: "var(--text-primary)" }}
+                        className="font-mono text-2xl font-bold"
+                        style={{ color: accent }}
                     >
-                        {value}
+                        <CountUp to={value} />
                     </div>
                     <div className="mt-0.5">
                         <Badge variant={variant}>{label}</Badge>
@@ -100,13 +108,13 @@ const RulesPage = () => (
             "
         >
             <span className="flex items-center gap-1.5">
-                <Badge variant={badgeVariantValuesEnumsData.success}>{rulesIndexStringsData.badgeFixable}</Badge>
+                <Badge variant={badgeVariantValuesEnumsData.lintPass}>{rulesIndexStringsData.badgeFixable}</Badge>
                 {" "}
                 {rulesIndexStringsData.legendFixable}
                 <code>{rulesIndexStringsData.legendFixableCode}</code>
             </span>
             <span className="flex items-center gap-1.5">
-                <Badge variant={badgeVariantValuesEnumsData.info}>{rulesIndexStringsData.badgeConfigurable}</Badge>
+                <Badge variant={badgeVariantValuesEnumsData.lintInfo}>{rulesIndexStringsData.badgeConfigurable}</Badge>
                 {" "}
                 {rulesIndexStringsData.legendConfigurable}
             </span>
@@ -250,8 +258,8 @@ const RulesPage = () => (
                                         gap-1.5
                                     "
                                 >
-                                    {isFixable && <Badge variant={badgeVariantValuesEnumsData.success}>{rulesIndexStringsData.badgeFixable}</Badge>}
-                                    {isConfigurable && <Badge variant={badgeVariantValuesEnumsData.info}>{rulesIndexStringsData.badgeOptions}</Badge>}
+                                    {isFixable && <Badge variant={badgeVariantValuesEnumsData.lintPass}>{rulesIndexStringsData.badgeFixable}</Badge>}
+                                    {isConfigurable && <Badge variant={badgeVariantValuesEnumsData.lintInfo}>{rulesIndexStringsData.badgeOptions}</Badge>}
                                     {isTsOnly && <Badge variant={badgeVariantValuesEnumsData.purple}>{rulesIndexStringsData.badgeTs}</Badge>}
                                 </div>
                             </Link>

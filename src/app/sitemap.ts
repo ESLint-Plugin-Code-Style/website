@@ -16,11 +16,11 @@ const sitemap = (): MetadataRoute.Sitemap => {
         },
     ];
 
-    const docsEntries: MetadataRoute.Sitemap = docsNavigationData.flatMap((section) => section.items.map((item) => ({
+    const docsEntries: MetadataRoute.Sitemap = docsNavigationData.flatMap(({ items }) => items.map(({ href }) => ({
         changeFrequency: "weekly" as const,
         lastModified: now,
-        priority: item.href === "/docs" ? 0.9 : 0.7,
-        url: `${baseUrl}${item.href}`,
+        priority: href === "/docs" ? 0.9 : 0.7,
+        url: `${baseUrl}${href}`,
     })));
 
     return [

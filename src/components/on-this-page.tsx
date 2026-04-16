@@ -74,14 +74,16 @@ export const OnThisPage = ({ headings }: { headings: HeadingInterface[] }) => {
                                     <a
                                         href={`#${id}`}
                                         className={joinClassesHandler(`
-                                            block
+                                            flex
+                                            items-center
+                                            gap-1.5
                                             text-[13px]
                                             leading-relaxed
                                             transition-colors
                                             duration-150
                                         `)}
                                         style={{
-                                            color: isActive ? "var(--text-link)" : "var(--text-tertiary)",
+                                            color: isActive ? "var(--lint-info)" : "var(--text-tertiary)",
                                             fontWeight: isActive ? 500 : 400,
                                             paddingLeft:
                                                 level === 3 ? "0.75rem" : level >= 4 ? "1.5rem" : "0",
@@ -114,7 +116,14 @@ export const OnThisPage = ({ headings }: { headings: HeadingInterface[] }) => {
                                             }
                                         }}
                                     >
-                                        {text}
+                                        {isActive ? (
+                                            <span
+                                                aria-hidden="true"
+                                                className="blinking-caret -ml-0.5"
+                                                style={{ color: "var(--lint-info)" }}
+                                            />
+                                        ) : null}
+                                        <span>{text}</span>
                                     </a>
                                 </li>
                             );

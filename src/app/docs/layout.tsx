@@ -29,8 +29,8 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
                     lg:hidden
                 "
                 style={{
-                    background: "linear-gradient(135deg, oklch(0.52 0.24 270), oklch(0.59 0.22 270))",
-                    color: "white",
+                    backgroundColor: "var(--text-primary)",
+                    color: "var(--bg-primary)",
                 }}
                 onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             >
