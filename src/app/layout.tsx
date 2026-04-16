@@ -1,21 +1,48 @@
 import "./globals.css";
 
 import type { Metadata, Viewport } from "next";
+import { Caveat, Inter, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 import type React from "react";
 
-import { Navbar, OfflineIndicator, ServiceWorkerRegister } from "@/components";
+import {
+    CodeRain,
+    Navbar,
+    OfflineIndicator,
+    ServiceWorkerRegister,
+} from "@/components";
 import { layoutStringsData, metadataStringsData } from "@/data";
 import { ThemeProvider } from "@/providers";
 
+const interFont = Inter({
+    display: "swap",
+    subsets: ["latin"],
+    variable: "--font-inter",
+});
+
+const jetbrainsMonoFont = JetBrains_Mono({
+    display: "swap",
+    subsets: ["latin"],
+    variable: "--font-jetbrains-mono",
+});
+
+const caveatFont = Caveat({
+    display: "swap",
+    subsets: ["latin"],
+    variable: "--font-caveat",
+    weight: ["400", "500", "600"],
+});
+
+const fontVariables = `${interFont.variable} ${jetbrainsMonoFont.variable} ${caveatFont.variable}`;
+
 export const metadata: Metadata = {
     alternates: { canonical: metadataStringsData.canonicalUrl },
-    applicationName: metadataStringsData.applicationName,
     appleWebApp: {
         capable: true,
         statusBarStyle: metadataStringsData.appleWebAppStatusBarStyle,
         title: metadataStringsData.appleWebAppTitle,
     },
+    applicationName: metadataStringsData.applicationName,
     authors: [
         {
             name: metadataStringsData.authorName,
@@ -108,6 +135,7 @@ export const viewport: Viewport = {
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
     <html
+        className={fontVariables}
         lang="en"
         suppressHydrationWarning
     >
@@ -115,17 +143,23 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
             <script dangerouslySetInnerHTML={{ __html: layoutStringsData.themeInitScript }} />
         </head>
         <body
-            className="min-h-screen font-sans antialiased"
+            className="
+                relative
+                min-h-screen
+                font-sans
+                antialiased
+            "
             suppressHydrationWarning
         >
             <ThemeProvider>
+                <CodeRain />
                 <Navbar />
-                <main className="pt-16">{children}</main>
+                <main className="relative z-10 pt-16">{children}</main>
                 <OfflineIndicator />
                 <ServiceWorkerRegister />
             </ThemeProvider>
             <Script
-                data-color="#6d28d9"
+                data-color="#7c3aed"
                 data-library="/eslint-plugin-code-style/plugin"
                 data-placeholder="Ask about the plugin..."
                 src="https://context7.com/widget.js"

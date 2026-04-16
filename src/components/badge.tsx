@@ -15,20 +15,36 @@ const variantStyles: Record<
         color: "var(--text-badge)",
     },
     info: {
-        backgroundColor: "rgba(59, 130, 246, 0.1)",
-        color: "rgb(59, 130, 246)",
+        backgroundColor: "var(--lint-info-bg)",
+        color: "var(--lint-info)",
+    },
+    lintError: {
+        backgroundColor: "var(--lint-error-bg)",
+        color: "var(--lint-error)",
+    },
+    lintInfo: {
+        backgroundColor: "var(--lint-info-bg)",
+        color: "var(--lint-info)",
+    },
+    lintPass: {
+        backgroundColor: "var(--lint-pass-bg)",
+        color: "var(--lint-pass)",
+    },
+    lintWarn: {
+        backgroundColor: "var(--lint-warn-bg)",
+        color: "var(--lint-warn)",
     },
     purple: {
-        backgroundColor: "rgba(139, 92, 246, 0.1)",
-        color: "rgb(139, 92, 246)",
+        backgroundColor: "var(--accent-violet-bg)",
+        color: "var(--accent-violet)",
     },
     success: {
-        backgroundColor: "rgba(34, 197, 94, 0.1)",
-        color: "rgb(34, 197, 94)",
+        backgroundColor: "var(--lint-pass-bg)",
+        color: "var(--lint-pass)",
     },
     warning: {
-        backgroundColor: "rgba(245, 158, 11, 0.1)",
-        color: "rgb(245, 158, 11)",
+        backgroundColor: "var(--lint-warn-bg)",
+        color: "var(--lint-warn)",
     },
 };
 
