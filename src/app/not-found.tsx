@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 
+import { LintButton } from "@/components";
 import { notFoundStringsData } from "@/data";
 
 export const metadata: Metadata = { title: notFoundStringsData.metadataTitle };
@@ -17,16 +17,34 @@ const NotFound = () => (
             text-center
         "
     >
+        <div
+            className="mb-6 font-mono text-sm"
+            style={{ color: "var(--text-tertiary)" }}
+        >
+            <span style={{ color: "var(--lint-error)" }}>error</span>
+            <span>
+                {" "}
+                TS404: file or directory not found
+            </span>
+        </div>
         <h1
-            style={{ lineHeight: "1.1" }}
             className="
-                gradient-text
                 mb-4
+                font-mono
                 text-8xl
                 font-bold
             "
+            style={{
+                color: "var(--lint-error)",
+                lineHeight: "1.1",
+            }}
         >
             {notFoundStringsData.title}
+            <span
+                aria-hidden="true"
+                className="blinking-caret"
+                style={{ color: "var(--lint-info)" }}
+            />
         </h1>
         <h2
             className="mb-4 text-2xl font-semibold"
@@ -49,43 +67,20 @@ const NotFound = () => (
                 gap-3
             "
         >
-            <Link
+            <LintButton
                 href="/"
-                className="
-                    rounded-lg
-                    px-5
-                    py-2.5
-                    text-sm
-                    font-semibold
-                    transition-all
-                    duration-200
-                "
-                style={{
-                    backgroundColor: "var(--bg-button-primary)",
-                    color: "var(--text-button-primary)",
-                }}
+                size="md"
+                tone="primary"
             >
                 {notFoundStringsData.ctaHome}
-            </Link>
-            <Link
+            </LintButton>
+            <LintButton
                 href="/docs"
-                className="
-                    rounded-lg
-                    border
-                    px-5
-                    py-2.5
-                    text-sm
-                    font-semibold
-                    transition-all
-                    duration-200
-                "
-                style={{
-                    borderColor: "var(--border-primary)",
-                    color: "var(--text-primary)",
-                }}
+                size="md"
+                tone="secondary"
             >
                 {notFoundStringsData.ctaDocs}
-            </Link>
+            </LintButton>
         </div>
     </div>
 );

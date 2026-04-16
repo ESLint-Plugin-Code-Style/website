@@ -43,10 +43,20 @@ const OfflinePage = () => (
             </svg>
         </div>
         <h1
-            className="mb-3 text-3xl font-bold"
             style={{ color: "var(--text-primary)" }}
+            className="
+                mb-3
+                font-mono
+                text-3xl
+                font-bold
+            "
         >
             {offlinePageStringsData.title}
+            <span
+                aria-hidden="true"
+                className="blinking-caret"
+                style={{ color: "var(--lint-warn)" }}
+            />
         </h1>
         <p
             className="mb-8 max-w-md text-base"

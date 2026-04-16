@@ -1,98 +1,133 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { CodeBlock } from "@/components";
 import {
+    AnimatedCodeFixer,
+    AutoFixVignette,
+    Card,
+    CodeBlock,
+    ConfigsVignette,
+    CountUp,
+    FlatConfigVignette,
+    LintButton,
+    MarkerHighlight,
+    ReactVignette,
+    SectionDivider,
+    SignedSticker,
+    Squiggle,
+    TypescriptVignette,
+    ZeroDepsVignette,
+} from "@/components";
+import {
+    cardVariantValuesEnumsData,
     codeFilenameValuesEnumsData,
     codeLanguageValuesEnumsData,
     codeSnippetStringsData,
     homeStringsData,
+    redesignStringsData,
 } from "@/data";
 
 export const metadata: Metadata = { title: homeStringsData.metadataTitle };
 
 const categories = [
     {
+        accent: "var(--lint-error)",
         count: 3,
         name: "Arrays",
         slug: "arrays",
     },
     {
+        accent: "var(--lint-warn)",
         count: 4,
         name: "Arrow Functions",
         slug: "arrow-functions",
     },
     {
+        accent: "var(--lint-pass)",
         count: 7,
         name: "Call Expressions",
         slug: "call-expressions",
     },
     {
+        accent: "var(--lint-info)",
         count: 2,
         name: "Classes",
         slug: "classes",
     },
     {
+        accent: "var(--accent-violet)",
         count: 1,
         name: "Comments",
         slug: "comments",
     },
     {
+        accent: "var(--lint-error)",
         count: 6,
         name: "Components",
         slug: "components",
     },
     {
+        accent: "var(--lint-warn)",
         count: 9,
         name: "Control Flow",
         slug: "control-flow",
     },
     {
+        accent: "var(--lint-pass)",
         count: 6,
         name: "Functions",
         slug: "functions",
     },
     {
+        accent: "var(--lint-info)",
         count: 5,
         name: "Hooks",
         slug: "hooks",
     },
     {
+        accent: "var(--accent-violet)",
         count: 9,
         name: "Imports & Exports",
         slug: "imports-exports",
     },
     {
+        accent: "var(--lint-error)",
         count: 13,
         name: "JSX",
         slug: "jsx",
     },
     {
+        accent: "var(--lint-warn)",
         count: 5,
         name: "Objects",
         slug: "objects",
     },
     {
+        accent: "var(--lint-pass)",
         count: 1,
         name: "React",
         slug: "react",
     },
     {
+        accent: "var(--lint-info)",
         count: 2,
         name: "Spacing",
         slug: "spacing",
     },
     {
+        accent: "var(--accent-violet)",
         count: 1,
         name: "Strings",
         slug: "strings",
     },
     {
+        accent: "var(--lint-error)",
         count: 9,
         name: "TypeScript",
         slug: "typescript",
     },
     {
+        accent: "var(--lint-warn)",
         count: 1,
         name: "Variables",
         slug: "variables",
@@ -102,136 +137,70 @@ const categories = [
 const stats = [
     {
         label: homeStringsData.statsRules,
-        value: homeStringsData.statsRulesValue,
+        value: parseInt(
+            homeStringsData.statsRulesValue,
+            10,
+        ),
     },
     {
         label: homeStringsData.statsAutoFixable,
-        value: homeStringsData.statsAutoFixableValue,
+        value: parseInt(
+            homeStringsData.statsAutoFixableValue,
+            10,
+        ),
     },
     {
         label: homeStringsData.statsConfigurable,
-        value: homeStringsData.statsConfigurableValue,
+        value: parseInt(
+            homeStringsData.statsConfigurableValue,
+            10,
+        ),
     },
     {
         label: homeStringsData.statsCategories,
-        value: homeStringsData.statsCategoriesValue,
+        value: parseInt(
+            homeStringsData.statsCategoriesValue,
+            10,
+        ),
     },
 ];
 
 const features = [
     {
+        accent: "var(--lint-pass)",
         description: homeStringsData.featureAutoFixDescription,
-        icon: (
-            <svg
-                className="h-6 w-6"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={1.5}
-                viewBox="0 0 24 24"
-            >
-                <path
-                    d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.048.58.024 1.194-.14 1.743"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                />
-            </svg>
-        ),
         title: homeStringsData.featureAutoFixTitle,
+        Vignette: AutoFixVignette,
     },
     {
+        accent: "var(--lint-info)",
         description: homeStringsData.featureReactDescription,
-        icon: (
-            <svg
-                className="h-6 w-6"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={1.5}
-                viewBox="0 0 24 24"
-            >
-                <path
-                    d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                />
-            </svg>
-        ),
         title: homeStringsData.featureReactTitle,
+        Vignette: ReactVignette,
     },
     {
+        accent: "var(--accent-violet)",
         description: homeStringsData.featureFlatConfigDescription,
-        icon: (
-            <svg
-                className="h-6 w-6"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={1.5}
-                viewBox="0 0 24 24"
-            >
-                <path
-                    d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                />
-            </svg>
-        ),
         title: homeStringsData.featureFlatConfigTitle,
+        Vignette: FlatConfigVignette,
     },
     {
+        accent: "var(--lint-error)",
         description: homeStringsData.featureZeroDepsDescription,
-        icon: (
-            <svg
-                className="h-6 w-6"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={1.5}
-                viewBox="0 0 24 24"
-            >
-                <path
-                    d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                />
-            </svg>
-        ),
         title: homeStringsData.featureZeroDepsTitle,
+        Vignette: ZeroDepsVignette,
     },
     {
+        accent: "var(--lint-warn)",
         description: homeStringsData.featureTypeScriptDescription,
-        icon: (
-            <svg
-                className="h-6 w-6"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={1.5}
-                viewBox="0 0 24 24"
-            >
-                <path
-                    d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                />
-            </svg>
-        ),
         title: homeStringsData.featureTypeScriptTitle,
+        Vignette: TypescriptVignette,
     },
     {
+        accent: "var(--lint-info)",
         description: homeStringsData.featureConfigsDescription,
-        icon: (
-            <svg
-                className="h-6 w-6"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={1.5}
-                viewBox="0 0 24 24"
-            >
-                <path
-                    d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                />
-            </svg>
-        ),
         title: homeStringsData.featureConfigsTitle,
+        Vignette: ConfigsVignette,
     },
 ];
 
@@ -249,64 +218,62 @@ export default [
 
 const HomePage = () => (
     <div className="animate-fade-in">
-        <section
-            className="relative overflow-hidden"
-            style={{ background: "linear-gradient(135deg, oklch(0.97 0.02 270), oklch(0.94 0.04 270) 30%, oklch(0.97 0.02 300) 70%, oklch(0.98 0.01 270))" }}
-        >
+        <section className="relative overflow-hidden">
             <div
-                className="pointer-events-none absolute inset-0"
-                style={{ background: "radial-gradient(ellipse at 30% 20%, oklch(0.88 0.08 270 / 0.3), transparent 60%), radial-gradient(ellipse at 70% 80%, oklch(0.88 0.08 300 / 0.2), transparent 60%)" }}
-            />
-            <div
-                className="pointer-events-none absolute inset-0"
-                style={{
-                    background: "var(--bg-primary)",
-                    opacity: 0,
-                }}
-            />
-            <div className="dark:bg-[var(--bg-primary)]">
-                <div
-                    className="
-                        relative
-                        mx-auto
-                        max-w-5xl
-                        px-4
-                        py-24
-                        text-center
-                        sm:px-6
-                        sm:py-32
-                        lg:py-40
-                    "
-                >
+                className="
+                    relative
+                    z-10
+                    mx-auto
+                    grid
+                    max-w-6xl
+                    gap-12
+                    px-4
+                    pt-16
+                    pb-20
+                    sm:px-6
+                    lg:grid-cols-[1.05fr_1fr]
+                    lg:items-center
+                    lg:gap-16
+                    lg:py-28
+                "
+            >
+                <div className="relative">
                     <div
+                        style={{ color: "var(--text-tertiary)" }}
                         className="
-                            mb-6
+                            mb-5
                             inline-flex
                             items-center
                             gap-2
-                            rounded-full
-                            px-4
-                            py-1.5
+                            font-mono
+                            text-xs
                         "
-                        style={{
-                            backgroundColor: "var(--bg-badge)",
-                            border: "1px solid var(--border-primary)",
-                        }}
                     >
                         <span
-                            className="h-2 w-2 rounded-full"
-                            style={{ backgroundColor: "oklch(0.59 0.22 270)" }}
+                            aria-hidden="true"
+                            className="size-1.5 rounded-full"
+                            style={{ backgroundColor: "var(--lint-pass)" }}
                         />
+                        {homeStringsData.heroEyebrow}
                         <span
-                            className="text-sm font-medium"
-                            style={{ color: "var(--text-secondary)" }}
+                            className="
+                                ml-2
+                                rounded-full
+                                px-2
+                                py-0.5
+                            "
+                            style={{
+                                backgroundColor: "var(--bg-badge)",
+                                color: "var(--text-secondary)",
+                            }}
                         >
                             {homeStringsData.badge}
                         </span>
                     </div>
                     <h1
+                        style={{ color: "var(--text-primary)" }}
                         className="
-                            mb-6
+                            mb-5
                             text-4xl
                             font-extrabold
                             tracking-tight
@@ -314,19 +281,65 @@ const HomePage = () => (
                             lg:text-6xl
                         "
                     >
-                        <span className="gradient-text">{homeStringsData.heroTitle}</span>
-                        <br />
-                        <span style={{ color: "var(--text-primary)" }}>{homeStringsData.heroTitleSuffix}</span>
+                        <span className="block">
+                            <MarkerHighlight status="warn">{homeStringsData.heroTitle}</MarkerHighlight>
+                        </span>
+                        <span
+                            style={{ color: "var(--text-secondary)" }}
+                            className="
+                                block
+                                font-mono
+                                text-2xl
+                                font-medium
+                                sm:text-3xl
+                                lg:text-4xl
+                            "
+                        >
+                            {homeStringsData.heroTitleSuffix}
+                        </span>
+                        <span className="relative inline-block w-full">
+                            <Squiggle
+                                isAnimate
+                                className="-mt-1 h-2 w-1/2"
+                                strokeWidth={1.8}
+                                variant="fix"
+                            />
+                        </span>
                     </h1>
+                    <div
+                        style={{ color: "var(--text-tertiary)" }}
+                        className="
+                            mb-6
+                            flex
+                            flex-col
+                            gap-1
+                            text-sm
+                        "
+                    >
+                        <span
+                            className="line-through"
+                            style={{ color: "var(--lint-error)" }}
+                        >
+                            {homeStringsData.heroCrossedOut}
+                        </span>
+                        <span
+                            className="handwritten text-xl"
+                            style={{ color: "var(--lint-pass)" }}
+                        >
+                            
+                            
+                            ↳ 
+                            {" "}
+                            {homeStringsData.heroCorrection}
+                        </span>
+                    </div>
                     <p
                         style={{ color: "var(--text-secondary)" }}
                         className="
-                            mx-auto
-                            mb-10
-                            max-w-2xl
+                            mb-8
+                            max-w-xl
                             text-lg
                             leading-relaxed
-                            sm:text-xl
                         "
                     >
                         {homeStringsData.heroSubtitle}
@@ -334,70 +347,26 @@ const HomePage = () => (
                     <div
                         className="
                             flex
-                            flex-col
+                            flex-wrap
                             items-center
-                            justify-center
-                            gap-4
-                            sm:flex-row
+                            gap-3
                         "
                     >
-                        <Link
+                        <LintButton
                             href="/docs/getting-started"
-                            style={{ background: "linear-gradient(135deg, oklch(0.52 0.24 270), oklch(0.59 0.22 270))" }}
-                            className="
-                                inline-flex
-                                items-center
-                                gap-2
-                                rounded-xl
-                                px-6
-                                py-3
-                                text-sm
-                                font-semibold
-                                text-white
-                                shadow-lg
-                                transition-all
-                                duration-200
-                                hover:shadow-xl
-                            "
+                            size="lg"
+                            tone="primary"
                         >
                             {homeStringsData.ctaGetStarted}
-                            <svg
-                                className="h-4 w-4"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth={2}
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                />
-                            </svg>
-                        </Link>
-                        <Link
+                            <span aria-hidden="true">→</span>
+                        </LintButton>
+                        <LintButton
                             href="/docs/rules"
-                            className="
-                                inline-flex
-                                items-center
-                                gap-2
-                                rounded-xl
-                                px-6
-                                py-3
-                                text-sm
-                                font-semibold
-                                transition-all
-                                duration-200
-                            "
-                            style={{
-                                backgroundColor: "var(--bg-card)",
-                                border: "1px solid var(--border-primary)",
-                                boxShadow: "var(--shadow-sm)",
-                                color: "var(--text-primary)",
-                            }}
+                            size="lg"
+                            tone="secondary"
                         >
                             {homeStringsData.ctaViewRules}
-                        </Link>
+                        </LintButton>
                         <a
                             href="https://github.com/ESLint-Plugin-Code-Style/plugin"
                             rel="noopener noreferrer"
@@ -407,16 +376,18 @@ const HomePage = () => (
                                 inline-flex
                                 items-center
                                 gap-2
-                                rounded-xl
-                                px-6
-                                py-3
+                                rounded-md
+                                px-4
+                                py-2.5
                                 text-sm
                                 font-semibold
-                                transition-all
+                                transition-colors
                                 duration-200
+                                hover:opacity-80
                             "
                         >
                             <svg
+                                aria-hidden="true"
                                 className="h-5 w-5"
                                 fill="currentColor"
                                 viewBox="0 0 24 24"
@@ -426,88 +397,152 @@ const HomePage = () => (
                             {homeStringsData.ctaGitHub}
                         </a>
                     </div>
-                    <div className="mx-auto mt-12 max-w-xl">
-                        <CodeBlock
-                            code={codeSnippetStringsData.installNpm}
-                            filename={codeFilenameValuesEnumsData.terminal}
-                            language={codeLanguageValuesEnumsData.bash}
-                        />
+                </div>
+                <div className="relative">
+                    <div
+                        style={{ transform: "rotate(-8deg)" }}
+                        className="
+                            absolute
+                            -top-6
+                            -left-6
+                            z-20
+                            hidden
+                            md:block
+                        "
+                    >
+                        <span
+                            className="
+                                handwritten
+                                rounded-md
+                                px-2.5
+                                py-1
+                                text-lg
+                            "
+                            style={{
+                                backgroundColor: "var(--lint-warn-bg)",
+                                color: "var(--lint-warn)",
+                            }}
+                        >
+                            {redesignStringsData.heroAnnotation}
+                        </span>
                     </div>
+                    <AnimatedCodeFixer />
+                    <p
+                        style={{ color: "var(--text-tertiary)" }}
+                        className="
+                            mt-3
+                            text-right
+                            font-mono
+                            text-xs
+                        "
+                    >
+                        {homeStringsData.heroDemoFooter}
+                    </p>
                 </div>
             </div>
         </section>
-        <section
-            style={{
-                backgroundColor: "var(--bg-secondary)",
-                borderBottom: "1px solid var(--border-primary)",
-                borderTop: "1px solid var(--border-primary)",
-            }}
-        >
+        <SectionDivider />
+        <section className="relative">
             <div
                 className="
                     mx-auto
-                    grid
                     max-w-5xl
-                    grid-cols-2
-                    gap-4
                     px-4
-                    py-10
-                    sm:grid-cols-4
+                    py-16
                     sm:px-6
                 "
             >
-                {stats.map(({
-                    label,
-                    value,
-                }) => (
-                    <div
-                        className="text-center"
-                        key={label}
-                    >
-                        <div
-                            className="
-                                gradient-text
-                                text-3xl
-                                font-extrabold
-                                sm:text-4xl
-                            "
+                <p
+                    style={{ color: "var(--text-tertiary)" }}
+                    className="
+                        mb-6
+                        text-center
+                        font-mono
+                        text-xs
+                        tracking-widest
+                        uppercase
+                    "
+                >
+                    {homeStringsData.statsEyebrow}
+                </p>
+                <div
+                    className="
+                        grid
+                        grid-cols-2
+                        gap-6
+                        sm:grid-cols-4
+                    "
+                >
+                    {stats.map(({
+                        label,
+                        value,
+                    }) => (
+                        <Card
+                            className="text-center"
+                            key={label}
+                            variant={cardVariantValuesEnumsData.tab}
                         >
-                            {value}
-                        </div>
-                        <div
-                            className="mt-1 text-sm font-medium"
-                            style={{ color: "var(--text-secondary)" }}
-                        >
-                            {label}
-                        </div>
-                    </div>
-                ))}
+                            <div
+                                className="font-mono text-4xl font-extrabold"
+                                style={{ color: "var(--text-primary)" }}
+                            >
+                                <CountUp to={value} />
+                            </div>
+                            <div
+                                style={{ color: "var(--text-secondary)" }}
+                                className="
+                                    mt-1
+                                    text-xs
+                                    font-medium
+                                    tracking-wide
+                                    uppercase
+                                "
+                            >
+                                {label}
+                            </div>
+                        </Card>
+                    ))}
+                </div>
             </div>
         </section>
-        <section style={{ backgroundColor: "var(--bg-primary)" }}>
+        <SectionDivider />
+        <section className="relative">
             <div
                 className="
                     mx-auto
-                    max-w-5xl
+                    max-w-6xl
                     px-4
                     py-20
                     sm:px-6
                 "
             >
-                <div className="mb-12 text-center">
+                <div className="mb-10 text-center">
+                    <p
+                        style={{ color: "var(--text-tertiary)" }}
+                        className="
+                            mb-2
+                            font-mono
+                            text-xs
+                            tracking-widest
+                            uppercase
+                        "
+                    >
+                        {homeStringsData.featuresEyebrow}
+                    </p>
                     <h2
                         style={{ color: "var(--text-primary)" }}
                         className="
-                            mb-4
+                            mb-3
                             text-3xl
                             font-bold
                             tracking-tight
+                            sm:text-4xl
                         "
                     >
                         {homeStringsData.featuresSectionTitle}
                     </h2>
                     <p
-                        className="mx-auto max-w-2xl text-lg"
+                        className="mx-auto max-w-2xl text-base"
                         style={{ color: "var(--text-secondary)" }}
                     >
                         {homeStringsData.featuresSectionSubtitle}
@@ -517,49 +552,28 @@ const HomePage = () => (
                     className="
                         grid
                         gap-6
-                        sm:grid-cols-2
+                        md:grid-cols-2
                         lg:grid-cols-3
                     "
                 >
                     {features.map(({
                         description,
-                        icon,
                         title,
+                        Vignette,
                     }) => (
-                        <div
+                        <Card
                             key={title}
-                            className="
-                                rounded-xl
-                                p-6
-                                transition-all
-                                duration-200
-                            "
-                            style={{
-                                backgroundColor: "var(--bg-card)",
-                                border: "1px solid var(--border-primary)",
-                                boxShadow: "var(--shadow-sm)",
-                            }}
+                            variant={cardVariantValuesEnumsData.tab}
                         >
-                            <div
-                                className="
-                                    mb-4
-                                    inline-flex
-                                    h-10
-                                    w-10
-                                    items-center
-                                    justify-center
-                                    rounded-lg
-                                "
-                                style={{
-                                    backgroundColor: "oklch(0.59 0.22 270 / 0.1)",
-                                    color: "oklch(0.59 0.22 270)",
-                                }}
-                            >
-                                {icon}
-                            </div>
+                            <Vignette />
                             <h3
-                                className="mb-2 text-base font-semibold"
                                 style={{ color: "var(--text-primary)" }}
+                                className="
+                                    mt-4
+                                    mb-2
+                                    text-base
+                                    font-semibold
+                                "
                             >
                                 {title}
                             </h3>
@@ -569,40 +583,49 @@ const HomePage = () => (
                             >
                                 {description}
                             </p>
-                        </div>
+                        </Card>
                     ))}
                 </div>
             </div>
         </section>
-        <section
-            style={{
-                backgroundColor: "var(--bg-secondary)",
-                borderTop: "1px solid var(--border-primary)",
-            }}
-        >
+        <SectionDivider />
+        <section className="relative">
             <div
                 className="
                     mx-auto
-                    max-w-5xl
+                    max-w-6xl
                     px-4
                     py-20
                     sm:px-6
                 "
             >
-                <div className="mb-12 text-center">
+                <div className="mb-10 text-center">
+                    <p
+                        style={{ color: "var(--text-tertiary)" }}
+                        className="
+                            mb-2
+                            font-mono
+                            text-xs
+                            tracking-widest
+                            uppercase
+                        "
+                    >
+                        {homeStringsData.categoriesEyebrow}
+                    </p>
                     <h2
                         style={{ color: "var(--text-primary)" }}
                         className="
-                            mb-4
+                            mb-3
                             text-3xl
                             font-bold
                             tracking-tight
+                            sm:text-4xl
                         "
                     >
                         {homeStringsData.categoriesSectionTitle}
                     </h2>
                     <p
-                        className="mx-auto max-w-2xl text-lg"
+                        className="mx-auto max-w-2xl text-base"
                         style={{ color: "var(--text-secondary)" }}
                     >
                         {homeStringsData.categoriesSectionSubtitle}
@@ -617,62 +640,67 @@ const HomePage = () => (
                     "
                 >
                     {categories.map(({
+                        accent,
                         count,
                         name,
                         slug,
                     }) => (
                         <Link
+                            className="group block"
                             href={`/docs/rules/${slug}`}
                             key={slug}
-                            className="
-                                group
-                                flex
-                                items-center
-                                justify-between
-                                rounded-xl
-                                px-5
-                                py-4
-                                transition-all
-                                duration-200
-                            "
-                            style={{
-                                backgroundColor: "var(--bg-card)",
-                                border: "1px solid var(--border-primary)",
-                                boxShadow: "var(--shadow-sm)",
-                            }}
                         >
-                            <span
-                                className="text-sm font-medium"
-                                style={{ color: "var(--text-primary)" }}
-                            >
-                                {name}
-                            </span>
-                            <span
+                            <div
                                 className="
-                                    rounded-full
-                                    px-2.5
-                                    py-0.5
-                                    text-xs
-                                    font-semibold
+                                    flex
+                                    items-center
+                                    justify-between
+                                    border
+                                    px-5
+                                    py-4
+                                    transition-all
+                                    duration-200
+                                    group-hover:-translate-y-0.5
                                 "
                                 style={{
-                                    backgroundColor: "oklch(0.59 0.22 270 / 0.1)",
-                                    color: "oklch(0.59 0.22 270)",
+                                    backgroundColor: "var(--bg-card)",
+                                    borderColor: "var(--border-primary)",
+                                    borderLeftColor: accent,
+                                    borderLeftWidth: 3,
+                                    borderRadius: "2px 10px 10px 2px",
+                                    boxShadow: "var(--shadow-sm)",
                                 }}
                             >
-                                {count}
-                            </span>
+                                <span
+                                    className="font-mono text-sm font-medium"
+                                    style={{ color: "var(--text-primary)" }}
+                                >
+                                    {name}
+                                </span>
+                                <span
+                                    className="
+                                        rounded-full
+                                        px-2.5
+                                        py-0.5
+                                        font-mono
+                                        text-xs
+                                        font-semibold
+                                    "
+                                    style={{
+                                        backgroundColor: `${accent}1A`,
+                                        color: accent,
+                                    }}
+                                >
+                                    {count}
+                                </span>
+                            </div>
                         </Link>
                     ))}
                 </div>
             </div>
         </section>
-        <section
-            style={{
-                backgroundColor: "var(--bg-primary)",
-                borderTop: "1px solid var(--border-primary)",
-            }}
-        >
+        <SectionDivider />
+        <section className="relative">
             <div
                 className="
                     mx-auto
@@ -682,27 +710,39 @@ const HomePage = () => (
                     sm:px-6
                 "
             >
-                <div className="mb-12 text-center">
+                <div className="mb-10 text-center">
                     <h2
                         style={{ color: "var(--text-primary)" }}
                         className="
-                            mb-4
+                            mb-3
                             text-3xl
                             font-bold
                             tracking-tight
+                            sm:text-4xl
                         "
                     >
                         {homeStringsData.quickStartSectionTitle}
                     </h2>
                     <p
-                        className="mx-auto max-w-2xl text-lg"
+                        className="mx-auto max-w-2xl text-base"
                         style={{ color: "var(--text-secondary)" }}
                     >
                         {homeStringsData.quickStartSectionSubtitle}
                     </p>
+                    <p
+                        className="handwritten mt-3 text-2xl"
+                        style={{
+                            color: "var(--lint-warn)",
+                            transform: "rotate(-2deg)",
+                        }}
+                    >
+                        {homeStringsData.quickStartTip}
+                        {" "}
+                        ✦
+                    </p>
                 </div>
                 <div className="space-y-8">
-                    <div>
+                    <Card variant={cardVariantValuesEnumsData.notched}>
                         <div
                             className="
                                 mb-3
@@ -712,18 +752,20 @@ const HomePage = () => (
                             "
                         >
                             <span
-                                style={{ background: "linear-gradient(135deg, oklch(0.52 0.24 270), oklch(0.59 0.22 270))" }}
                                 className="
                                     flex
-                                    h-7
-                                    w-7
+                                    size-7
                                     items-center
                                     justify-center
                                     rounded-full
+                                    font-mono
                                     text-xs
                                     font-bold
-                                    text-white
                                 "
+                                style={{
+                                    backgroundColor: "var(--lint-error-bg)",
+                                    color: "var(--lint-error)",
+                                }}
                             >
                                 1
                             </span>
@@ -739,8 +781,8 @@ const HomePage = () => (
                             filename={codeFilenameValuesEnumsData.terminal}
                             language={codeLanguageValuesEnumsData.bash}
                         />
-                    </div>
-                    <div>
+                    </Card>
+                    <Card variant={cardVariantValuesEnumsData.notched}>
                         <div
                             className="
                                 mb-3
@@ -750,18 +792,20 @@ const HomePage = () => (
                             "
                         >
                             <span
-                                style={{ background: "linear-gradient(135deg, oklch(0.52 0.24 270), oklch(0.59 0.22 270))" }}
                                 className="
                                     flex
-                                    h-7
-                                    w-7
+                                    size-7
                                     items-center
                                     justify-center
                                     rounded-full
+                                    font-mono
                                     text-xs
                                     font-bold
-                                    text-white
                                 "
+                                style={{
+                                    backgroundColor: "var(--lint-warn-bg)",
+                                    color: "var(--lint-warn)",
+                                }}
                             >
                                 2
                             </span>
@@ -806,8 +850,8 @@ const HomePage = () => (
                                 language={codeLanguageValuesEnumsData.js}
                             />
                         </div>
-                    </div>
-                    <div>
+                    </Card>
+                    <Card variant={cardVariantValuesEnumsData.notched}>
                         <div
                             className="
                                 mb-3
@@ -817,18 +861,20 @@ const HomePage = () => (
                             "
                         >
                             <span
-                                style={{ background: "linear-gradient(135deg, oklch(0.52 0.24 270), oklch(0.59 0.22 270))" }}
                                 className="
                                     flex
-                                    h-7
-                                    w-7
+                                    size-7
                                     items-center
                                     justify-center
                                     rounded-full
+                                    font-mono
                                     text-xs
                                     font-bold
-                                    text-white
                                 "
+                                style={{
+                                    backgroundColor: "var(--lint-pass-bg)",
+                                    color: "var(--lint-pass)",
+                                }}
                             >
                                 3
                             </span>
@@ -844,126 +890,87 @@ const HomePage = () => (
                             filename={codeFilenameValuesEnumsData.terminal}
                             language={codeLanguageValuesEnumsData.bash}
                         />
-                    </div>
+                    </Card>
                 </div>
                 <div className="mt-12 text-center">
-                    <Link
+                    <LintButton
                         href="/docs/getting-started"
-                        style={{ background: "linear-gradient(135deg, oklch(0.52 0.24 270), oklch(0.59 0.22 270))" }}
-                        className="
-                            inline-flex
-                            items-center
-                            gap-2
-                            rounded-xl
-                            px-6
-                            py-3
-                            text-sm
-                            font-semibold
-                            text-white
-                            shadow-lg
-                            transition-all
-                            duration-200
-                            hover:shadow-xl
-                        "
+                        size="lg"
+                        tone="primary"
                     >
                         {homeStringsData.ctaInstallationGuide}
-                        <svg
-                            className="h-4 w-4"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth={2}
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                            />
-                        </svg>
-                    </Link>
+                        <span aria-hidden="true">→</span>
+                    </LintButton>
                 </div>
             </div>
         </section>
-        <footer
-            style={{
-                backgroundColor: "var(--bg-secondary)",
-                borderTop: "1px solid var(--border-primary)",
-            }}
-        >
+        <SectionDivider />
+        <footer className="relative">
             <div
                 className="
                     mx-auto
+                    flex
                     max-w-5xl
+                    flex-col
+                    items-center
+                    gap-8
                     px-4
                     py-12
+                    sm:flex-row
+                    sm:justify-between
                     sm:px-6
                 "
             >
+                <SignedSticker />
                 <div
                     className="
                         flex
                         flex-col
                         items-center
-                        gap-6
-                        sm:flex-row
-                        sm:justify-between
+                        gap-3
+                        text-center
+                        sm:items-end
+                        sm:text-right
                     "
                 >
-                    <p className="text-sm">
-                        <span className="gradient-text font-bold">{homeStringsData.footerCopyright}</span>
+                    <p
+                        className="text-sm font-medium"
+                        style={{ color: "var(--text-secondary)" }}
+                    >
+                        {homeStringsData.footerCopyright}
                     </p>
-                    <div className="flex items-center gap-6">
+                    <div className="flex items-center gap-5">
                         <a
+                            className="text-sm font-medium hover:underline"
                             href="https://github.com/ESLint-Plugin-Code-Style/website/blob/main/LICENSE"
                             rel="noopener noreferrer"
                             style={{ color: "var(--text-secondary)" }}
                             target="_blank"
-                            className="
-                                text-sm
-                                font-medium
-                                transition-colors
-                                duration-200
-                            "
                         >
                             {homeStringsData.footerLicense}
                         </a>
                         <a
+                            className="text-sm font-medium hover:underline"
                             href="https://www.npmjs.com/package/eslint-plugin-code-style"
                             rel="noopener noreferrer"
                             style={{ color: "var(--text-secondary)" }}
                             target="_blank"
-                            className="
-                                text-sm
-                                font-medium
-                                transition-colors
-                                duration-200
-                            "
                         >
                             {homeStringsData.footerNpm}
                         </a>
                         <a
+                            className="text-sm font-medium hover:underline"
                             href="https://github.com/ESLint-Plugin-Code-Style/plugin"
                             rel="noopener noreferrer"
                             style={{ color: "var(--text-secondary)" }}
                             target="_blank"
-                            className="
-                                text-sm
-                                font-medium
-                                transition-colors
-                                duration-200
-                            "
                         >
                             {homeStringsData.footerGitHub}
                         </a>
                         <Link
+                            className="text-sm font-medium hover:underline"
                             href="/docs/changelog"
                             style={{ color: "var(--text-secondary)" }}
-                            className="
-                                text-sm
-                                font-medium
-                                transition-colors
-                                duration-200
-                            "
                         >
                             {homeStringsData.footerChangelog}
                         </Link>
