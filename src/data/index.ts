@@ -1,14 +1,17 @@
 export { pluginConfigData } from "./config";
 export {
     badgeVariantValuesEnumsData,
+    cardVariantValuesEnumsData,
     codeFilenameValuesEnumsData,
     codeLanguageValuesEnumsData,
     eventNameValuesEnumsData,
     inputTypeValuesEnumsData,
     keyboardKeyValuesEnumsData,
+    lintStatusValuesEnumsData,
     localStorageKeyValuesEnumsData,
     methodNameValuesEnumsData,
     scrollBehaviorValuesEnumsData,
+    squiggleVariantValuesEnumsData,
     themeValuesEnumsData,
 } from "./enums";
 export type { NavItemInterface, NavSectionInterface } from "./navigation";
@@ -34,6 +37,7 @@ export {
     docsOverviewStringsData,
     errorBoundaryStringsData,
     gettingStartedStringsData,
+    heroDemoSnippetsStringsData,
     homeStringsData,
     layoutStringsData,
     metadataStringsData,
@@ -41,6 +45,7 @@ export {
     offlineIndicatorStringsData,
     offlinePageStringsData,
     philosophyStringsData,
+    redesignStringsData,
     ruleConfigFragmentStringsData,
     rulesCategoryStringsData,
     rulesIndexStringsData,

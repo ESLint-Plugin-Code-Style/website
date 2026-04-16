@@ -3,9 +3,37 @@
 export const badgeVariantValuesEnumsData = {
     default: "default",
     info: "info",
+    lintError: "lintError",
+    lintInfo: "lintInfo",
+    lintPass: "lintPass",
+    lintWarn: "lintWarn",
     purple: "purple",
     success: "success",
     warning: "warning",
+} as const;
+
+// Card variants
+
+export const cardVariantValuesEnumsData = {
+    notched: "notched",
+    note: "note",
+    tab: "tab",
+} as const;
+
+// Squiggle variants
+
+export const squiggleVariantValuesEnumsData = {
+    error: "error",
+    fix: "fix",
+} as const;
+
+// Lint status (semantic meaning used across animations/labels)
+
+export const lintStatusValuesEnumsData = {
+    error: "error",
+    info: "info",
+    pass: "pass",
+    warn: "warn",
 } as const;
 
 // CodeBlock filenames

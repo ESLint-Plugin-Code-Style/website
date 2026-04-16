@@ -16,6 +16,7 @@ const categoryCountStringsData = categoriesRulesData.length;
 
 export const homeStringsData = {
     badge: pluginConfigData.versionDisplay,
+    categoriesEyebrow: "browse by topic",
     categoriesSectionSubtitle: "Rules are organized into logical categories for easy discovery and configuration.",
     categoriesSectionTitle: `${categoryCountStringsData} Rule Categories`,
     ctaGetStarted: "Get Started",
@@ -30,6 +31,7 @@ export const homeStringsData = {
     featureFlatConfigTitle: "ESLint v9+ Flat Config",
     featureReactDescription: "Purpose-built for React projects. JSX formatting, component conventions, hook patterns, and prop naming.",
     featureReactTitle: "React & JSX First",
+    featuresEyebrow: "what you get",
     featuresSectionSubtitle: "Built to fill the gaps left by Prettier and existing ESLint plugins.", // eslint-disable-line code-style/classname-multiline, code-style/classname-order
     featuresSectionTitle: "Why eslint-plugin-code-style?",
     featureTypeScriptDescription: `${tsOnlyRulesData} TypeScript-specific rules for enums, interfaces, type annotations, and prop naming.`,
@@ -41,15 +43,23 @@ export const homeStringsData = {
     footerGitHub: "GitHub",
     footerLicense: "MIT License",
     footerNpm: "npm",
+    heroAnnotation: "auto-fixed!",
+    heroCorrection: "code style, opinionated",
+    heroCrossedOut: "yet another linter",
+    heroDemoFooter: "hover the editor to pause →",
+    heroEyebrow: "// eslint-plugin-code-style",
     heroSubtitle: `${totalRulesData} custom ESLint rules for enforcing consistent code formatting in React and JSX projects. ${fixableRulesData} auto-fixable, ${configurableRulesData} configurable, zero dependencies.`,
     heroTitle: "Code Style Rules",
     heroTitleSuffix: "for React Projects",
+    metaCardLabel: "fyi",
+    metaCardText: "All animations respect prefers-reduced-motion. The site is a PWA — install it from your browser.",
     metadataTitle: `eslint-plugin-code-style \u2014 ${totalRulesData} Custom ESLint Rules for React`,
     quickStartSectionSubtitle: "Get up and running in under a minute.",
     quickStartSectionTitle: "Quick Start",
     quickStartStepConfigure: "Configure",
     quickStartStepInstall: "Install",
     quickStartStepLint: "Lint",
+    quickStartTip: "this works in seconds",
     quickStartTypeScriptHint: "Using TypeScript? Use ",
     quickStartTypeScriptHintCode: "react-ts",
     quickStartTypeScriptHintSuffix: " instead:",
@@ -59,6 +69,7 @@ export const homeStringsData = {
     statsCategoriesValue: `${categoryCountStringsData}`,
     statsConfigurable: "Configurable",
     statsConfigurableValue: `${configurableRulesData}`,
+    statsEyebrow: "by the numbers",
     statsRules: "Rules",
     statsRulesValue: `${totalRulesData}`,
 };
@@ -468,10 +479,10 @@ export const componentStringsData = {
 
 // Metadata strings (root layout)
 export const metadataStringsData = {
-    applicationName: "eslint-plugin-code-style",
     appleTouchIconPath: "/apple-icon.svg",
     appleWebAppStatusBarStyle: "black-translucent" as const,
     appleWebAppTitle: "code-style",
+    applicationName: "eslint-plugin-code-style",
     authorName: "Mohamed Elhawary",
     authorUrl: "https://hawary.dev",
     canonicalUrl: pluginConfigData.websiteUrl,
@@ -523,6 +534,168 @@ export const errorBoundaryStringsData = {
 
 // Offline indicator strings
 export const offlineIndicatorStringsData = { message: "You're offline. Some content may not be available." };
+
+// Hero demo code snippets (ordered by animation step)
+export const heroDemoSnippetsStringsData = {
+    fileName: "user-card.tsx",
+    language: "tsx",
+    steps: [
+        {
+            label: "messy",
+            pill: "4 problems found",
+            pillStatus: "error" as const,
+            snippet: `import {useState} from "react"
+import React from "react"
+
+const items = ['a',"b",'c',"d",'e']
+
+const UserCard = (props)=>{
+  return <div onClick={props.onClick} className="text-sm rounded p-2 bg-white">{props.name}</div>
+}`,
+        },
+        {
+            label: "imports-sort",
+            pill: "sort-imports",
+            pillStatus: "info" as const,
+            snippet: `import React from "react"
+import {useState} from "react"
+
+const items = ['a',"b",'c',"d",'e']
+
+const UserCard = (props)=>{
+  return <div onClick={props.onClick} className="text-sm rounded p-2 bg-white">{props.name}</div>
+}`,
+        },
+        {
+            label: "quote-style",
+            pill: "quote-style",
+            pillStatus: "info" as const,
+            snippet: `import React from "react"
+import { useState } from "react"
+
+const items = ["a", "b", "c", "d", "e"]
+
+const UserCard = (props) => {
+  return <div onClick={props.onClick} className="text-sm rounded p-2 bg-white">{props.name}</div>
+}`,
+        },
+        {
+            label: "array-items-per-line",
+            pill: "array-items-per-line",
+            pillStatus: "info" as const,
+            snippet: `import React from "react"
+import { useState } from "react"
+
+const items = [
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+]
+
+const UserCard = (props) => {
+  return <div onClick={props.onClick} className="text-sm rounded p-2 bg-white">{props.name}</div>
+}`,
+        },
+        {
+            label: "classname-order",
+            pill: "classname-order",
+            pillStatus: "info" as const,
+            snippet: `import React from "react"
+import { useState } from "react"
+
+const items = [
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+]
+
+const UserCard = (props) => {
+  return (
+    <div
+      className="rounded bg-white p-2 text-sm"
+      onClick={props.onClick}
+    >
+      {props.name}
+    </div>
+  )
+}`,
+        },
+        {
+            label: "all-clean",
+            pill: "0 problems — auto-fixed ✓",
+            pillStatus: "pass" as const,
+            snippet: `import React from "react"
+import { useState } from "react"
+
+const items = [
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+]
+
+const UserCard = (props) => {
+  return (
+    <div
+      className="rounded bg-white p-2 text-sm"
+      onClick={props.onClick}
+    >
+      {props.name}
+    </div>
+  )
+}`,
+        },
+    ],
+};
+
+// Redesign strings (shared across the new primitives and vignettes)
+export const redesignStringsData = {
+    buttonSquiggleLabel: "error underline",
+    codeRainTokens: [
+        "const",
+        "import",
+        "=>",
+        "{ }",
+        "return",
+        "export",
+        "type",
+        "useState",
+        "<div>",
+        "async",
+        "await",
+        "interface",
+        "props",
+        "</>",
+        "null",
+        "true",
+        "...rest",
+    ],
+    countUpSuffix: "",
+    heroAnnotation: "auto-fixed!",
+    heroCorrection: "the one built for code style",
+    heroCrossedOut: "yet another ESLint plugin",
+    heroDemoLabelArrayWrap: "array-items-per-line",
+    heroDemoLabelImportsSort: "imports-sort",
+    heroDemoLabelJsxOrder: "classname-order",
+    heroDemoLabelQuotes: "quote-style",
+    heroDemoPauseMessage: "// paused — hover off to continue",
+    heroDemoStepAfter: "after",
+    heroDemoStepBefore: "before",
+    sectionDividerLabel: "Section divider",
+    signedBy: "crafted by",
+    signedName: "Mohamed Elhawary",
+    stickyNoteFyi: "fyi",
+    stickyNoteNote: "note",
+    stickyNoteTryThis: "try this →",
+    trafficLightErrorLabel: "error",
+    trafficLightPassLabel: "pass",
+    trafficLightWarnLabel: "warning",
+};
 
 // Version selector strings
 export const versionSelectorStringsData = {
