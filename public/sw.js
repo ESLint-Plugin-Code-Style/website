@@ -1,20 +1,29 @@
 // Service worker for eslint-plugin-code-style website
 // Strategy: cache-first for static assets, network-first for HTML, fallback to /offline
 
-const CACHE_NAME = "code-style-docs-v1";
+const CACHE_NAME = "code-style-docs-v2";
 
 const OFFLINE_URL = "/offline";
 
 const PRECACHE_URLS = [
     "/",
     "/offline",
+    "/docs",
+    "/docs/getting-started",
+    "/docs/configuration",
+    "/docs/philosophy",
+    "/docs/contributing",
+    "/docs/rules",
+    "/docs/changelog",
     "/manifest.json",
     "/icon.svg",
+    "/apple-icon.svg",
+    "/banner.svg",
 ];
 
 self.addEventListener("install", (event) => {
     event.waitUntil(
-        caches.open(CACHE_NAME).then((cache) => cache.addAll(PRECACHE_URLS)),
+        caches.open(CACHE_NAME).then((cache) => cache.addAll(PRECACHE_URLS).catch(() => undefined)),
     );
 
     self.skipWaiting();
@@ -30,6 +39,10 @@ self.addEventListener("activate", (event) => {
     );
 
     self.clients.claim();
+});
+
+self.addEventListener("message", (event) => {
+    if (event.data === "SKIP_WAITING") self.skipWaiting();
 });
 
 self.addEventListener("fetch", (event) => {
@@ -71,7 +84,7 @@ self.addEventListener("fetch", (event) => {
                 }
 
                 return response;
-            });
+            }).catch(() => cached);
         }),
     );
 });

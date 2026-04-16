@@ -1,22 +1,64 @@
 {
+    "id": "/",
     "name": "eslint-plugin-code-style",
     "short_name": "code-style",
-    "description": "Documentation for eslint-plugin-code-style — a powerful ESLint plugin for enforcing consistent code formatting and style rules in React/JSX projects.",
+    "description": "Documentation for eslint-plugin-code-style — 81 custom ESLint rules for enforcing consistent code formatting and style in React/JSX projects.",
     "start_url": "/",
     "scope": "/",
     "display": "standalone",
-    "orientation": "portrait-primary",
-    "background_color": "#0a0a0a",
+    "display_override": ["window-controls-overlay", "standalone", "minimal-ui", "browser"],
+    "orientation": "any",
+    "background_color": "#0b0f1a",
     "theme_color": "#7c3aed",
     "lang": "en",
     "dir": "ltr",
     "categories": ["developer", "productivity", "education"],
+    "prefer_related_applications": false,
+    "launch_handler": { "client_mode": ["navigate-existing", "auto"] },
     "icons": [
         {
             "src": "/icon.svg",
             "sizes": "any",
             "type": "image/svg+xml",
-            "purpose": "any maskable"
+            "purpose": "any"
+        },
+        {
+            "src": "/apple-icon.svg",
+            "sizes": "180x180",
+            "type": "image/svg+xml",
+            "purpose": "maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Rules Reference",
+            "short_name": "Rules",
+            "description": "Browse all rules with examples and options",
+            "url": "/docs/rules",
+            "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+        },
+        {
+            "name": "Getting Started",
+            "short_name": "Setup",
+            "description": "Install and configure the plugin",
+            "url": "/docs/getting-started",
+            "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+        },
+        {
+            "name": "Changelog",
+            "short_name": "Changes",
+            "description": "View all releases and changes",
+            "url": "/docs/changelog",
+            "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "/banner.svg",
+            "sizes": "1280x714",
+            "type": "image/svg+xml",
+            "form_factor": "wide",
+            "label": "eslint-plugin-code-style documentation homepage"
         }
     ]
 }

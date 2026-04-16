@@ -1,6 +1,6 @@
 import "./globals.css";
 
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import type React from "react";
 
@@ -9,28 +9,73 @@ import { layoutStringsData, metadataStringsData } from "@/data";
 import { ThemeProvider } from "@/providers";
 
 export const metadata: Metadata = {
+    alternates: { canonical: metadataStringsData.canonicalUrl },
+    applicationName: metadataStringsData.applicationName,
+    appleWebApp: {
+        capable: true,
+        statusBarStyle: metadataStringsData.appleWebAppStatusBarStyle,
+        title: metadataStringsData.appleWebAppTitle,
+    },
     authors: [
         {
             name: metadataStringsData.authorName,
             url: metadataStringsData.authorUrl,
         },
     ],
+    category: metadataStringsData.category,
     creator: metadataStringsData.authorName,
     description: metadataStringsData.defaultDescription,
+    formatDetection: {
+        address: false,
+        email: false,
+        telephone: false,
+    },
+    generator: metadataStringsData.generator,
+    icons: {
+        apple: [
+            {
+                type: metadataStringsData.ogImageType,
+                url: metadataStringsData.appleTouchIconPath,
+            },
+        ],
+        icon: [
+            {
+                type: metadataStringsData.ogImageType,
+                url: metadataStringsData.iconSvgPath,
+            },
+        ],
+        shortcut: [{ url: metadataStringsData.iconSvgPath }],
+    },
     keywords: metadataStringsData.keywords.split(","),
     manifest: "/manifest.json",
-    metadataBase: new URL("https://www.eslint-plugin-code-style.org"),
+    metadataBase: new URL(metadataStringsData.canonicalUrl),
     openGraph: {
         description: metadataStringsData.ogDescription,
-        locale: "en_US",
+        images: [
+            {
+                alt: metadataStringsData.ogImageAlt,
+                height: metadataStringsData.ogImageHeight,
+                type: metadataStringsData.ogImageType,
+                url: metadataStringsData.ogImagePath,
+                width: metadataStringsData.ogImageWidth,
+            },
+        ],
+        locale: metadataStringsData.locale,
         siteName: metadataStringsData.ogSiteName,
         title: metadataStringsData.ogTitle,
         type: "website",
-        url: "https://www.eslint-plugin-code-style.org",
+        url: metadataStringsData.canonicalUrl,
     },
     publisher: metadataStringsData.authorName,
     robots: {
         follow: true,
+        googleBot: {
+            follow: true,
+            index: true,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+            "max-video-preview": -1,
+        },
         index: true,
     },
     title: {
@@ -40,11 +85,26 @@ export const metadata: Metadata = {
     twitter: {
         card: "summary_large_image",
         description: metadataStringsData.twitterDescription,
+        images: [metadataStringsData.ogImagePath],
         title: metadataStringsData.twitterTitle,
     },
 };
 
-export const viewport = { themeColor: "#7c3aed" };
+export const viewport: Viewport = {
+    colorScheme: "dark light",
+    initialScale: 1,
+    themeColor: [
+        {
+            color: metadataStringsData.themeColorLight,
+            media: "(prefers-color-scheme: light)",
+        },
+        {
+            color: metadataStringsData.themeColorDark,
+            media: "(prefers-color-scheme: dark)",
+        },
+    ],
+    width: "device-width",
+};
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
     <html
@@ -65,7 +125,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
                 <ServiceWorkerRegister />
             </ThemeProvider>
             <Script
+                data-color="#6d28d9"
                 data-library="/eslint-plugin-code-style/plugin"
+                data-placeholder="Ask about the plugin..."
                 src="https://context7.com/widget.js"
                 strategy="afterInteractive"
             />
