@@ -19,6 +19,9 @@ export const homeStringsData = {
     categoriesEyebrow: "browse by topic",
     categoriesSectionSubtitle: "Rules are organized into logical categories for easy discovery and configuration.",
     categoriesSectionTitle: `${categoryCountStringsData} Rule Categories`,
+    colophonEditionLabel: "Edition 01",
+    colophonImprint: "Printed from metadata.json.",
+    colophonMasthead: `A documentation site for ${pluginConfigData.name}.`,
     ctaGetStarted: "Get Started",
     ctaGitHub: "GitHub",
     ctaInstallationGuide: "Full Installation Guide",
@@ -32,20 +35,7 @@ export const homeStringsData = {
     featureReactDescription: "Purpose-built for React projects. JSX formatting, component conventions, hook patterns, and prop naming.",
     featureReactTitle: "React & JSX First",
     featuresEyebrow: "what you get",
-    featuresSectionSubtitle: `
-        and
-        Built
-        by
-        ESLint
-        existing
-        fill
-        gaps
-        left
-        plugins.
-        Prettier
-        the
-        to
-    `,
+    featuresSectionSubtitle: "Built to fill the gaps left by existing ESLint and Prettier plugins.",
     featuresSectionTitle: "Why eslint-plugin-code-style?",
     featureTypeScriptDescription: `${tsOnlyRulesData} TypeScript-specific rules for enums, interfaces, type annotations, and prop naming.`,
     featureTypeScriptTitle: "TypeScript Support",
@@ -56,6 +46,8 @@ export const homeStringsData = {
     footerGitHub: "GitHub",
     footerLicense: "MIT License",
     footerNpm: "npm",
+    gesturesEyebrow: "the gestures",
+    gesturesSectionTitle: "Six things it does.",
     heroAnnotation: "auto-fixed!",
     heroCorrection: "code style, opinionated",
     heroCrossedOut: "yet another linter",
@@ -67,6 +59,24 @@ export const homeStringsData = {
     metaCardLabel: "fyi",
     metaCardText: "All animations respect prefers-reduced-motion. The site is a PWA — install it from your browser.",
     metadataTitle: `eslint-plugin-code-style \u2014 ${totalRulesData} Custom ESLint Rules for React`,
+    prettierAfterLabel: "with this plugin",
+    prettierBeforeLabel: "Prettier only",
+    prettierComparison1After: "<Button disabled={isLoading} type=\"submit\" onClick={onSave}>\n    Save\n</Button>",
+    prettierComparison1Before: "<Button onClick={onSave} disabled={isLoading} type=\"submit\">\n    Save\n</Button>",
+    prettierComparison1Caption: "JSX props \u2014 alphabetical, callbacks last",
+    prettierComparison1Rule: "react/jsx-sort-props",
+    prettierComparison2After: "import { Button } from \"@/components\";\nimport { useTheme } from \"@/hooks\";",
+    prettierComparison2Before: "import { Button } from \"../../components/button\";\nimport { useTheme } from \"../../hooks/use-theme\";",
+    prettierComparison2Caption: "Imports \u2014 absolute via @/ alias",
+    prettierComparison2Rule: "code-style/absolute-imports-only",
+    prettierComparison3After: "<p className=\"text-sm\">{uiStringsData.welcome}</p>",
+    prettierComparison3Before: "<p className=\"text-sm\">Welcome to the dashboard</p>",
+    prettierComparison3Caption: "Strings \u2014 extracted into data files",
+    prettierComparison3Rule: "code-style/no-hardcoded-strings",
+    prettierIntro: "Prettier reformats what's formattable. This plugin enforces what's opinionated. The two are complementary \u2014 run them both.",
+    prettierKicker: "where Prettier stops.",
+    prettierSectionTitle: "The things Prettier won't do.",
+    prettierSeeMoreLabel: "Read the full philosophy",
     quickStartSectionSubtitle: "Get up and running in under a minute.",
     quickStartSectionTitle: "Quick Start",
     quickStartStepConfigure: "Configure",
@@ -76,6 +86,9 @@ export const homeStringsData = {
     quickStartTypeScriptHint: "Using TypeScript? Use ",
     quickStartTypeScriptHintCode: "react-ts",
     quickStartTypeScriptHintSuffix: " instead:",
+    rulesIndexEyebrow: "the index",
+    rulesIndexSectionSubtitle: `All ${totalRulesData} rules, grouped into ${categoryCountStringsData} categories. Every category page lists rules with examples, rationale, and options.`,
+    rulesIndexSectionTitle: "The complete index.",
     statsAutoFixable: "Auto-fixable",
     statsAutoFixableValue: `${fixableRulesData}`,
     statsCategories: "Categories",
@@ -85,6 +98,10 @@ export const homeStringsData = {
     statsEyebrow: "by the numbers",
     statsRules: "Rules",
     statsRulesValue: `${totalRulesData}`,
+    thesisByline: "\u2014 why this plugin exists",
+    thesisKicker: "author's note",
+    thesisParagraph: "Most linters hand you a thousand options and ask you to decide. This one picks for you \u2014 opinionated defaults, auto-fixed where possible. It enforces the decisions Prettier deliberately leaves to you: prop order, absolute imports, extracted strings, component structure. If you disagree, configure it. If you don't, you're already done.",
+    thesisPullQuote: "It enforces the decisions Prettier deliberately leaves to you.",
 };
 
 // Docs overview strings
@@ -815,8 +832,6 @@ export const redesignStringsData = {
     heroDemoStepAfter: "after",
     heroDemoStepBefore: "before",
     sectionDividerLabel: "Section divider",
-    signedBy: "crafted by",
-    signedName: "Mohamed Elhawary",
     stickyNoteFyi: "fyi",
     stickyNoteNote: "note",
     stickyNoteTryThis: "try this →",

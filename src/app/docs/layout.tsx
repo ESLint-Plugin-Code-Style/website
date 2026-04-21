@@ -58,11 +58,11 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
             </button>
             {isSidebarOpen && (
                 <div
+                    style={{ backgroundColor: "var(--overlay)" }}
                     className="
                         fixed
                         inset-0
                         z-40
-                        bg-black/50
                         lg:hidden
                     "
                     onClick={() => setIsSidebarOpen(false)}

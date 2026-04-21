@@ -44,6 +44,16 @@ export const lintStatusValuesEnumsData = {
     warn: "warn",
 } as const;
 
+// Lint accent names — the 5 accent colors used for per-category / per-item theming
+
+export const lintAccentNameValuesEnumsData = {
+    error: "error",
+    info: "info",
+    pass: "pass",
+    violet: "violet",
+    warn: "warn",
+} as const;
+
 // Lint button size
 
 export const lintButtonSizeValuesEnumsData = {

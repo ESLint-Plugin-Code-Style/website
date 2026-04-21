@@ -17,7 +17,6 @@ export { ReactVignette } from "./react-vignette";
 export { SectionDivider } from "./section-divider";
 export { ServiceWorkerRegister } from "./service-worker-register";
 export { Sidebar } from "./sidebar";
-export { SignedSticker } from "./signed-sticker";
 export { SquiggleIcon } from "./squiggle-icon";
 export { ThemeToggle } from "./theme-toggle";
 export { TypescriptVignette } from "./typescript-vignette";

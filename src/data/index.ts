@@ -9,6 +9,7 @@ export {
     eventNameValuesEnumsData,
     inputTypeValuesEnumsData,
     keyboardKeyValuesEnumsData,
+    lintAccentNameValuesEnumsData,
     lintButtonSizeValuesEnumsData,
     lintButtonToneValuesEnumsData,
     lintStatusValuesEnumsData,

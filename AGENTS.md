@@ -167,15 +167,20 @@ These extensions are baked into the plugin's own recommended configs (so every c
 - **New docs page?** Add route under `src/app/docs/<slug>/page.tsx` + entry in `src/data/navigation.ts`.
 - **New vignette?** `src/components/<topic>-vignette.tsx` exporting `<Topic>Vignette`. Use `motion` for keyframes. Gate heavy animations behind `prefers-reduced-motion`.
 
-## Visual identity (redesign reference)
+## Visual identity
 
-The redesign intentionally breaks the "AI-template" aesthetic:
+The full design direction — users, brand personality, aesthetic references, anti-references, typography rules, palette rules, and the non-negotiable design principles — lives in **[.impeccable.md](./.impeccable.md)**.
 
-- **Palette:** 4-color lint-semantic tokens (`--lint-error` / `--lint-warn` / `--lint-pass` / `--lint-info`) + `--accent-violet` as a secondary accent. Paper-cream light mode + near-black editor dark mode. Subtle paper-grain SVG noise on `body`.
-- **Shapes:** mixed card radii via three variants (`.card-tab`, `.card-note`, `.card-notched`). No uniform `rounded-xl` everywhere.
-- **Typography:** Inter (body), JetBrains Mono (code + hero eyebrow), Caveat (handwritten annotations only).
-- **Animations:** every loop references linting — auto-fix squiggles, imports sorting, JSX tree indentation, dependency satellites collapsing, interface fields re-sorting, `eslint --fix` labels.
-- All animations respect `@media (prefers-reduced-motion: reduce)`.
+**Read it before any UI or design change.** It is the source of truth for every Impeccable skill (`critique`, `audit`, `shape`, `craft`, `polish`, etc.) and for any agent doing frontend work.
+
+Short summary (full details in `.impeccable.md`):
+
+- **Direction:** editorial / zine format with linter-as-metaphor content. Opinionated · Editorial · Handmade.
+- **Palette:** 4-color lint-semantic tokens (`--lint-error` / `--lint-warn` / `--lint-pass` / `--lint-info`) + `--accent-violet`. Paper-cream light + near-black editor dark. SVG paper-grain noise on `body`.
+- **Shapes:** mixed card radii via three variants (`.card-tab`, `.card-note`, `.card-notched`). No uniform `rounded-xl`.
+- **Typography:** Inter (body), JetBrains Mono (code + data), Caveat (handwriting — rare by rule). No fourth font.
+- **Animations:** every motion references linting; all respect `@media (prefers-reduced-motion: reduce)`.
+- **Hard bans:** no side-stripe borders >1px, no gradient text, no hero-metric templates, no pure `#000`/`#fff`, no hover-via-JS (CSS `:hover` + `:focus-visible` only).
 
 ## When in doubt
 

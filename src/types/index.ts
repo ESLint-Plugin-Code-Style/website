@@ -3,7 +3,12 @@ export type { ButtonTypeType } from "./button";
 export type { CardAsType, CardVariantType } from "./card";
 export type { ClassInputType } from "./class";
 export type { DriftEntryType } from "./code-rain";
-export type { LintStatusType, SquiggleVariantType } from "./lint";
+export type {
+    LintAccentNameType,
+    LintAccentType,
+    LintStatusType,
+    SquiggleVariantType,
+} from "./lint";
 export type { LintButtonSizeType, LintButtonToneType } from "./lint-button";
 export type { PillColorType } from "./pill";
 export type { SvgWidthType } from "./svg";

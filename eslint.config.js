@@ -466,4 +466,21 @@ export default [
         files: ["src/app/**/\\[*\\]/**/*.{ts,tsx,js,jsx}"],
         rules: { "check-file/folder-naming-convention": "off" },
     },
+    /*
+     * Data files contain user-facing editorial copy, not JSX classNames.
+     * The classname-* rules incorrectly auto-sort long English strings into
+     * alphabetical word salad when a sentence exceeds 80 characters,
+     * corrupting production content. Scoped off for src/data/**.ts files
+     * because no classNames appear in these files.
+     */
+    {
+        files: ["src/data/**/*.ts"],
+        rules: {
+            "code-style/classname-dynamic-at-end": "off",
+            "code-style/classname-multiline": "off",
+            "code-style/classname-no-extra-spaces": "off",
+            "code-style/classname-order": "off",
+            "tailwindcss/classnames-order": "off",
+        },
+    },
 ];

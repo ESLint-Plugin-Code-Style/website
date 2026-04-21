@@ -1,6 +1,7 @@
 # Claude Code Configuration
 
 > For general project instructions, see [AGENTS.md](./AGENTS.md).
+> For design direction (palette, typography, composition rules, anti-patterns), see [.impeccable.md](./.impeccable.md) — the source of truth for every UI/design change.
 
 ## Claude-Specific Behavior
 

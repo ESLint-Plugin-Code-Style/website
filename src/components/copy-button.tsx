@@ -32,7 +32,7 @@ export const CopyButton = ({
     return (
         <button
             aria-label={isCopied ? componentStringsData.copiedLabel : componentStringsData.copyLabel}
-            style={{ color: isCopied ? "var(--color-brand-400)" : "var(--text-tertiary)" }}
+            style={{ color: isCopied ? "var(--lint-pass)" : "var(--text-tertiary)" }}
             className={joinClassesHandler(
                 `
                 flex

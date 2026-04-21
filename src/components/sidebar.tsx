@@ -19,11 +19,11 @@ export const Sidebar = ({
         <>
             {isOpen && (
                 <div
+                    style={{ backgroundColor: "var(--overlay)" }}
                     className="
                         fixed
                         inset-0
                         z-40
-                        bg-black/50
                         md:hidden
                     "
                     onClick={onClose}
