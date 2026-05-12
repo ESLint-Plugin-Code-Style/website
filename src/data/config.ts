@@ -4,7 +4,7 @@
  */
 
 export const pluginConfigData = {
-    description: "81 custom ESLint rules for enforcing consistent code formatting in React/JSX projects. 71 auto-fixable, 20 configurable. Built for ESLint v9 and v10 flat config.",
+    description: "81 custom ESLint rules for enforcing consistent code formatting in React/JSX projects. 71 auto-fixable, 22 configurable. Built for ESLint v9 and v10 flat config.",
     eslintVersions: "v9 and v10",
     githubUrl: "https://github.com/ESLint-Plugin-Code-Style/plugin",
     name: "eslint-plugin-code-style",

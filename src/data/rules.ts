@@ -300,10 +300,19 @@ console.log(message);`,
             },
             {
                 badExample: `// views/dashboard.tsx
-export const Dashboard = () => <div>Dashboard</div>;`,
-                description: "Enforce naming based on folder: suffix for views/layouts/pages/providers, camelCase for data/constants",
+export const Dashboard = () => <div>Dashboard</div>;
+
+// services/services.js — old behavior produced absurd chain
+export const getDataServicesServiceHandlerServicesServiceHandler... = async () => {};`,
+                description: "Enforce naming based on folder: suffix for views/layouts/pages/providers, camelCase for data/constants/strings/reducers/schemas. Services folder function exports drop the Service suffix (Handler from function-naming-convention is enough). Local/private variables are not checked.",
                 goodExample: `// views/dashboard.tsx
-export const DashboardView = () => <div>Dashboard</div>;`,
+export const DashboardView = () => <div>Dashboard</div>;
+
+// services/services.js — function export, no Service suffix
+export const getDataHandler = async () => fetch("/api");
+
+// services/user-service.ts — class/object export, Service suffix kept
+export class UserService { /* ... */ }`,
                 isConfigurable: true,
                 isFixable: true,
                 isTsOnly: false,
@@ -322,7 +331,7 @@ export const DashboardView = () => <div>Dashboard</div>;`,
                         type: "array",
                     },
                 ],
-                rationale: "Consistent naming based on folder structure makes purpose immediately clear",
+                rationale: "Consistent naming based on folder structure makes purpose immediately clear. Service suffix is redundant on function exports because Handler suffix already conveys callability — combining both yields ugly names like getDataServiceHandler when getDataHandler suffices. Plural file names that match the folder suffix (e.g., services/services.js) are deduped to avoid ServicesService.",
             },
             {
                 badExample: `atoms/input.tsx
@@ -628,30 +637,53 @@ console.log("message");`,
             },
             {
                 badExample: `function handleClick() {}
-function getUserData() {}`,
-                description: "Functions use camelCase, start with verb, end with Handler suffix",
+function getUserData() {}
+const postData = async () => {};`,
+                description: "Functions use camelCase, start with verb (get/set/fetch/post/put/patch/delete/...), end with Handler suffix",
                 goodExample: `function getUserDataHandler() {}
-function clickHandler() {}`,
+function clickHandler() {}
+const postDataHandler = async () => {};`,
                 isConfigurable: false,
                 isFixable: true,
                 isTsOnly: false,
                 name: "function-naming-convention",
                 options: [],
-                rationale: "Function names should describe actions clearly",
+                rationale: "Function names should describe actions clearly. Verb prefix communicates intent; Handler suffix marks callables consistently.",
             },
             {
                 badExample: `const createUserHandler = async ({ age, email, name }: CreateUserParamsInterface) => {
-};`,
-                description: "Non-component functions should accept typed params and destructure in the body. Also detects when object params are accessed via dot notation and suggests destructuring instead",
+};
+
+// Module import destructured (smart/strict-dot modes flag this)
+import { api } from "@/api";
+const { getUser } = api;
+const user = getUser(id);`,
+                description: "Non-component functions should accept typed params and destructure in the body. Detects dot notation access of object params and suggests destructuring. Also enforces dot notation for module imports (configurable via moduleImportStyle option). Supports nested destructure with aliases, JSX usage, and three styles: smart (default), strict-dot, destructure.",
                 goodExample: `const createUserHandler = async (data: CreateUserParamsInterface) => {
     const { age, email, name } = data;
-};`,
-                isConfigurable: false,
+};
+
+// Module import — dot notation
+import { api } from "@/api";
+const user = api.getUser(id);
+
+// JSX exception (smart mode default) — destructure kept
+import { ui } from "@/utils";
+const { Button } = ui;
+<Button>Click</Button>`,
+                isConfigurable: true,
                 isFixable: true,
                 isTsOnly: false,
                 name: "function-object-destructure",
-                options: [],
-                rationale: "Keeping function signatures clean and short improves readability",
+                options: [
+                    {
+                        default: "\"smart\"",
+                        description: "How to handle module imports. 'smart' (default): enforce dot notation but keep destructure when used only as JSX elements. 'strict-dot': pure dot notation even for JSX (<ui.Button />). 'destructure': opposite direction — enforce destructure of module imports, autofix dot notation to destructure.",
+                        name: "moduleImportStyle",
+                        type: "\"smart\" | \"strict-dot\" | \"destructure\"",
+                    },
+                ],
+                rationale: "Keeping function signatures clean and short improves readability. Dot notation for module imports (e.g., `api.getUser()` instead of `const { getUser } = api`) improves searchability and prevents naming collisions. JSX usage allowed to keep destructure since `<Button />` reads cleaner than `<ui.Button />`.",
             },
             {
                 badExample: `function createUser(name,
@@ -1368,7 +1400,7 @@ const name = obj[key];`,
             {
                 badExample: `<button>Submit Form</button>
 <span>Something went wrong</span>`,
-                description: "Enforce importing strings from constants/strings modules instead of hardcoding",
+                description: "Enforce importing strings from constants/strings modules instead of hardcoding (skips CSS-style props, CSS-in-JS templates, responsive breakpoint objects)",
                 goodExample: `import { BUTTON_LABEL } from "@/constants";
 
 <button>{BUTTON_LABEL}</button>`,
@@ -1378,8 +1410,14 @@ const name = obj[key];`,
                 name: "no-hardcoded-strings",
                 options: [
                     {
+                        default: "[built-in HTML/SVG/CSS-style attrs]",
+                        description: "JSX attributes to ignore (replaces defaults). Defaults include all HTML, SVG, and CSS-style props (fontWeight, flexDirection, sx, variant, etc.).",
+                        name: "ignoreAttributes",
+                        type: "string[]",
+                    },
+                    {
                         default: "[]",
-                        description: "Additional JSX attributes to ignore",
+                        description: "Additional JSX attributes to ignore (extends defaults). Use for custom CSS-like props in your design system.",
                         name: "extraIgnoreAttributes",
                         type: "string[]",
                     },
@@ -1389,8 +1427,20 @@ const name = obj[key];`,
                         name: "ignorePatterns",
                         type: "string[]",
                     },
+                    {
+                        default: "[]",
+                        description: "Additional tagged-template tag names treated as CSS-in-JS (extends defaults: styled, css, keyframes, createGlobalStyle, Global, globalStyle, globalCss, tw). Use for custom CSS-in-JS factories like vanilla-extract or panda-css.",
+                        name: "cssInJsTags",
+                        type: "string[]",
+                    },
+                    {
+                        default: "[]",
+                        description: "Additional responsive breakpoint object keys (extends defaults: xs, sm, md, lg, xl, 2xl, base, default). Use for custom design system breakpoints (e.g. mobile, tablet, desktop).",
+                        name: "extraBreakpointKeys",
+                        type: "string[]",
+                    },
                 ],
-                rationale: "Centralized strings are easier to maintain, translate, and keep consistent",
+                rationale: "Centralized strings are easier to maintain, translate, and keep consistent. Style values (CSS keywords, theme tokens, breakpoint objects) are not user-facing, so they are skipped automatically.",
             },
         ],
         slug: "strings",
@@ -1579,16 +1629,27 @@ export type ConfigType = { ... }`,
                 badExample: `const user_name = "John";
 const MAX_RETRIES = 3;
 const userProfile = () => <div />;`,
-                description: "camelCase for variables, PascalCase for components, use prefix for hooks",
+                description: "camelCase for variables, PascalCase for components, use prefix for hooks. Supports opt-in path-scoped case allowances (e.g., SCREAMING_SNAKE_CASE in Redux types folders)",
                 goodExample: `const userName = "John";
 const UserProfile = () => <div />;
-const useAuth = () => {};`,
-                isConfigurable: false,
+const useAuth = () => {};
+
+// With allowedCases: [{ paths: ["**/types/**"], cases: ["SCREAMING_SNAKE_CASE"] }]
+// src/types/user.ts
+export const FETCH_USER_REQUEST = "FETCH_USER_REQUEST";`,
+                isConfigurable: true,
                 isFixable: true,
                 isTsOnly: false,
                 name: "variable-naming-convention",
-                options: [],
-                rationale: "Consistent naming makes code predictable",
+                options: [
+                    {
+                        default: "[]",
+                        description: "Path-scoped allowed naming cases. Empty by default — camelCase enforced everywhere until the consumer opts in. Paths use glob syntax (`*`, `**`). Each entry adds the listed cases to the allowed set for files matching any of its paths.",
+                        name: "allowedCases",
+                        type: "Array<{ paths: string[], cases: (\"camelCase\" | \"PascalCase\" | \"SCREAMING_SNAKE_CASE\" | \"snake_case\" | \"kebab-case\")[] }>",
+                    },
+                ],
+                rationale: "Consistent naming makes code predictable. Path-scoped exceptions let teams keep conventions like Redux action types without disabling the rule per file.",
             },
         ],
         slug: "variables",
@@ -1624,7 +1685,7 @@ export const totalRulesData = 81;
 
 export const fixableRulesData = 71;
 
-export const configurableRulesData = 20;
+export const configurableRulesData = 22;
 
 export const reportOnlyRulesData = 10;
 
