@@ -4,6 +4,11 @@ import type { ReleaseVersionInterface } from "@/interfaces";
 
 export const releaseVersionsData: ReleaseVersionInterface[] = [
     {
+        date: "2026-05-12",
+        title: "Community Issue Sweep — 7 Open Issues Resolved (Config + Behavior + New Options)",
+        version: "3.2.0",
+    },
+    {
         date: "2026-04-10",
         title: "Organization Migration, Automated Website Sync & Context7 Integration",
         version: "3.1.0",

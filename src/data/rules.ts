@@ -639,7 +639,7 @@ console.log("message");`,
                 badExample: `function handleClick() {}
 function getUserData() {}
 const postData = async () => {};`,
-                description: "Functions use camelCase, start with verb (get/set/fetch/post/put/patch/delete/...), end with Handler suffix",
+                description: "Functions use camelCase, start with verb (get/set/fetch/post/put/patch/delete/...), end with Handler suffix. Functions in reducers/ folder are exempted (folder-based-naming-convention enforces Reducer suffix there instead).",
                 goodExample: `function getUserDataHandler() {}
 function clickHandler() {}
 const postDataHandler = async () => {};`,
@@ -648,7 +648,7 @@ const postDataHandler = async () => {};`,
                 isTsOnly: false,
                 name: "function-naming-convention",
                 options: [],
-                rationale: "Function names should describe actions clearly. Verb prefix communicates intent; Handler suffix marks callables consistently.",
+                rationale: "Function names should describe actions clearly. Verb prefix communicates intent; Handler suffix marks callables consistently. Reducers follow the `<name>Reducer` convention — combining Handler with Reducer would produce ugly compound names like `authReducerHandler`.",
             },
             {
                 badExample: `const createUserHandler = async ({ age, email, name }: CreateUserParamsInterface) => {
@@ -939,17 +939,26 @@ export { Input } from "./form";`,
                 rationale: "Index files are aggregators and should be compact",
             },
             {
-                badExample: `export const CONSTANT = "value";
-export function helper() {}`,
-                description: "Index files should only contain imports and re-exports, not code definitions",
-                goodExample: `export { Button } from "./Button";
-export { helper } from "./utils";`,
+                badExample: `// Root index with inline code
+export const CONSTANT = "value";
+export function helper() {}
+
+// Non-redux subfolder index that's a barrel (e.g., views/dashboard/index)
+export * from "./header";`,
+                description: "Index files should only contain imports and re-exports, not code definitions. Subfolder indexes must contain component code (not barrel) — except for redux subfolders (types/, actions/, reducers/, etc.), which are each treated as their own module root.",
+                goodExample: `// src/views/index.ts — root barrel
+export { Button } from "./Button";
+export { helper } from "./utils";
+
+// src/redux/types/index.ts — redux subfolder, barrel allowed
+export * from "./auth";
+export * from "./user";`,
                 isConfigurable: false,
                 isFixable: false,
                 isTsOnly: false,
                 name: "index-exports-only",
                 options: [],
-                rationale: "Index files should be barrels that aggregate exports",
+                rationale: "Index files should be barrels that aggregate exports. Redux is an umbrella folder — each subfolder (types, actions, reducers) is conventionally its own module with its own root barrel.",
             },
             {
                 badExample: `const API_URL = "/api";
