@@ -252,8 +252,34 @@ const main = async () => {
     writeFileSync(join(srcDataDir, "navigation.ts"), navigationTs);
     console.log("Generated: src/data/navigation.ts");
 
-    // Generate versions.ts from CHANGELOG.md (only releases with version range)
+    // Bring CHANGELOG.md in first so versions.ts is generated from the fresh copy
     const changelogPath = join(__dirname, "..", "CHANGELOG.md");
+
+    if (!process.argv[2]) {
+        console.log(`Fetching changelog from: ${CHANGELOG_RAW_URL}`);
+        const changelogResponse = await fetch(CHANGELOG_RAW_URL);
+
+        if (changelogResponse.ok) {
+            const changelog = await changelogResponse.text();
+            writeFileSync(changelogPath, changelog);
+            console.log("Fetched: CHANGELOG.md");
+        } else {
+            console.warn(`Warning: could not fetch CHANGELOG.md (${changelogResponse.status})`);
+        }
+    } else {
+        // Local mode: copy from sibling plugin repo if it exists
+        const localChangelog = join(process.argv[2], "..", "CHANGELOG.md");
+
+        try {
+            const changelog = readFileSync(localChangelog, "utf-8");
+            writeFileSync(changelogPath, changelog);
+            console.log(`Copied: CHANGELOG.md from ${localChangelog}`);
+        } catch {
+            console.warn("Warning: could not find local CHANGELOG.md");
+        }
+    }
+
+    // Generate versions.ts from the now-current CHANGELOG.md (every version is a release)
     let changelogContent = "";
 
     try {
@@ -275,20 +301,35 @@ const main = async () => {
             const endIdx = nextMatch ? startIdx + match[0].length + nextMatch.index : changelogContent.length;
             const versionContent = changelogContent.slice(startIdx, endIdx);
 
-            // Only include if it has a version range (i.e., it's a GitHub release)
-            if (versionContent.includes("**Version Range:**")) {
-                const titleMatch = versionContent.match(/\*\*([^V][^*]+)\*\*\n/);
-                releaseVersions.push({
-                    date,
-                    title: titleMatch ? titleMatch[1].trim() : null,
-                    version,
-                });
+            // Title = first **...** line that isn't Version Range / Full Changelog
+            let title = null;
+            const boldLines = versionContent.match(/^\*\*(.+)\*\*$/gm) || [];
+
+            for (const bl of boldLines) {
+                const inner = bl.replace(/^\*\*/, "").replace(/\*\*$/, "").trim();
+
+                if (!/^version range/i.test(inner) && !/^full changelog/i.test(inner)) {
+                    title = inner;
+                    break;
+                }
             }
+
+            const [, minor, patch] = version.split(".");
+            const isMajor = minor === "0" && patch === "0";
+
+            // Every version is a GitHub Release — include all
+            releaseVersions.push({
+                date,
+                isMajor,
+                title,
+                version,
+            });
         }
 
         // Generate TypeScript-formatted output with trailing commas (not JSON.stringify which omits them)
         const versionEntriesTs = releaseVersions.map((release) => `    {
         date: ${JSON.stringify(release.date)},
+        isMajor: ${JSON.stringify(release.isMajor)},
         title: ${JSON.stringify(release.title)},
         version: ${JSON.stringify(release.version)},
     },`).join("\n");
@@ -303,31 +344,6 @@ ${versionEntriesTs}
 `;
         writeFileSync(join(srcDataDir, "versions.ts"), versionsTs);
         console.log(`Generated: src/data/versions.ts (${releaseVersions.length} releases)`);
-    }
-
-    // Fetch CHANGELOG.md from plugin repo
-    if (!process.argv[2]) {
-        console.log(`Fetching changelog from: ${CHANGELOG_RAW_URL}`);
-        const changelogResponse = await fetch(CHANGELOG_RAW_URL);
-
-        if (changelogResponse.ok) {
-            const changelog = await changelogResponse.text();
-            writeFileSync(join(__dirname, "..", "CHANGELOG.md"), changelog);
-            console.log("Fetched: CHANGELOG.md");
-        } else {
-            console.warn(`Warning: could not fetch CHANGELOG.md (${changelogResponse.status})`);
-        }
-    } else {
-        // Local mode: copy from sibling plugin repo if it exists
-        const localChangelog = join(process.argv[2], "..", "CHANGELOG.md");
-
-        try {
-            const changelog = readFileSync(localChangelog, "utf-8");
-            writeFileSync(join(__dirname, "..", "CHANGELOG.md"), changelog);
-            console.log(`Copied: CHANGELOG.md from ${localChangelog}`);
-        } catch {
-            console.warn("Warning: could not find local CHANGELOG.md");
-        }
     }
 
     console.log("Sync complete.");

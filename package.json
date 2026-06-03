@@ -46,6 +46,7 @@
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
     "sync": "node scripts/sync-from-plugin.js",
+    "sync:local": "node scripts/sync-from-plugin.js ../Plugin/metadata.json",
     "prepare": "husky"
   },
   "dependencies": {

@@ -7,6 +7,7 @@ import type React from "react";
 
 import {
     CodeRain,
+    Footer,
     Navbar,
     OfflineIndicator,
     ServiceWorkerRegister,
@@ -155,6 +156,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
                 <CodeRain />
                 <Navbar />
                 <main className="relative z-10 pt-16">{children}</main>
+                <Footer />
                 <OfflineIndicator />
                 <ServiceWorkerRegister />
             </ThemeProvider>

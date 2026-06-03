@@ -169,11 +169,11 @@ These extensions are baked into the plugin's own recommended configs (so every c
 
 ## Visual identity
 
-The full design direction — users, brand personality, aesthetic references, anti-references, typography rules, palette rules, and the non-negotiable design principles — lives in **[.impeccable.md](./.impeccable.md)**.
+The full design direction — users, brand personality, aesthetic references, anti-references, typography rules, palette rules, and the non-negotiable design principles — lives in **[PRODUCT.md](./PRODUCT.md)**.
 
 **Read it before any UI or design change.** It is the source of truth for every Impeccable skill (`critique`, `audit`, `shape`, `craft`, `polish`, etc.) and for any agent doing frontend work.
 
-Short summary (full details in `.impeccable.md`):
+Short summary (full details in `PRODUCT.md`):
 
 - **Direction:** editorial / zine format with linter-as-metaphor content. Opinionated · Editorial · Handmade.
 - **Palette:** 4-color lint-semantic tokens (`--lint-error` / `--lint-warn` / `--lint-pass` / `--lint-info`) + `--accent-violet`. Paper-cream light + near-black editor dark. SVG paper-grain noise on `body`.

@@ -10,9 +10,9 @@ Edit this file to push the direction further. Don't silently override it from a 
 
 ### Users
 
-**Primary — The evaluating developer.** A React / TypeScript engineer choosing linting tooling for a new or existing project. They land on the site, read the hero, and within ~30 seconds decide whether this plugin belongs in their stack alongside ESLint and Prettier. They are skeptical (they've seen many linter plugins), literate (they know what a flat config is), and time-constrained (they are mid-task, not leisure-browsing). They want:
+**Primary — The evaluating developer.** A React / TypeScript engineer choosing linting tooling for a new or existing project. They land on the site, read the hero, and within ~30 seconds decide whether this plugin belongs in their stack alongside ESLint. They are skeptical (they've seen many linter plugins), literate (they know what a flat config is), and time-constrained (they are mid-task, not leisure-browsing). They want:
 
-- A fast answer to *"why not just Prettier?"*
+- A fast answer to *"why not just plain ESLint?"*
 - A rule list they can scan to gauge philosophical fit
 - An install snippet they can copy
 
@@ -111,11 +111,3 @@ These are the operating rules. Every skill's output must conform, or must earn t
 6. **No AI-template shortcuts.** If the shape appears by default in shadcn, Tailwind docs, or a typical AI-generated landing page, don't use it. In particular: no side-stripe borders >1px, no gradient text, no hero-metric templates, no icon-in-box feature cards, no identical card grids repeated across sections, no `rounded-xl` as a default, no dark-mode-with-glowing-accents.
 
 7. **Respect prior invariants.** `src/data/rules.ts` is auto-generated — never edit. All strings live in `src/data/strings.ts`. All magic values live in `src/data/enums.ts`. Components are flat in `src/components/`, kebab-case filenames, single-export PascalCase. These are load-bearing conventions; redesign inside them, not around them.
-
----
-
-## Decision Log
-
-- **2026-04-20** — Phase 1 critique baseline: `31/40` Nielsen design health. Key findings: hero is distinctive; sections 2–5 revert to templated eyebrow→h2→card-grid pattern. Scrambled `featuresSectionSubtitle` copy bug fixed inline ("Built to fill the gaps left by existing ESLint and Prettier plugins.").
-- **2026-04-20** — Phase 1 tech audit baseline: `14/20` across 5 dimensions. Weak: Accessibility (2/4) and Anti-Patterns (2/4). Strong: Theming (4/4). Priority work: focus-visible site-wide, hover-via-JS → CSS migration, double-aside nesting in docs layout, touch targets.
-- **2026-04-20** — Direction chosen: **A + B hybrid** (editorial format, linter content). Scope: **full site**.

@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import { componentStringsData } from "@/data";
 
+import { BrandMarkIcon } from "./brand-mark-icon";
 import { ThemeToggle } from "./theme-toggle";
 import { VersionSelector } from "./version-selector";
 
@@ -64,13 +65,7 @@ export const Navbar = () => {
                         hover:opacity-80
                     "
                 >
-                    <span
-                        aria-hidden="true"
-                        className="font-mono text-lg font-bold"
-                        style={{ color: "var(--lint-pass)" }}
-                    >
-                        {">"}
-                    </span>
+                    <BrandMarkIcon className="h-[18px] w-7 shrink-0" />
                     <span
                         style={{ color: "var(--text-primary)" }}
                         className="

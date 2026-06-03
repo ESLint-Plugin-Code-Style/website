@@ -55,7 +55,7 @@ export const FlatConfigVignette = () => (
             <span style={{ color: "var(--text-tertiary)" }}>{codeSamplesStringsData.flatConfigEslintRcFilename}</span>
             <span>{codeSamplesStringsData.flatConfigEslintRcExtends}</span>
             <span className="pl-3">{codeSamplesStringsData.flatConfigEslintRcAirbnb}</span>
-            <span className="pl-3">{codeSamplesStringsData.flatConfigEslintRcPrettier}</span>
+            <span className="pl-3">{codeSamplesStringsData.flatConfigEslintRcReact}</span>
             <span>{codeSamplesStringsData.flatConfigEslintRcSuffix}</span>
         </motion.div>
         <motion.div

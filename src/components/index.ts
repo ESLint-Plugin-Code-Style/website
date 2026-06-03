@@ -1,6 +1,7 @@
 export { AnimatedCodeFixer } from "./animated-code-fixer";
 export { AutoFixVignette } from "./auto-fix-vignette";
 export { Badge } from "./badge";
+export { BrandMarkIcon } from "./brand-mark-icon";
 export { Card } from "./card";
 export { CodeBlock } from "./code-block";
 export { CodeRain } from "./code-rain";
@@ -8,6 +9,7 @@ export { ConfigsVignette } from "./configs-vignette";
 export { CopyButton } from "./copy-button";
 export { CountUp } from "./count-up";
 export { FlatConfigVignette } from "./flat-config-vignette";
+export { Footer } from "./footer";
 export { LintButton } from "./lint-button";
 export { MarkerHighlight } from "./marker-highlight";
 export { Navbar } from "./navbar";

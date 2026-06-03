@@ -41,7 +41,6 @@ const parseChangelogHandler = (): VersionEntryInterface[] => {
                 date: versionMatch[2],
                 entries: [],
                 fullChangelogUrl: null,
-                isRelease: false,
                 title: null,
                 version: versionMatch[1],
                 versionRange: null,
@@ -57,8 +56,6 @@ const parseChangelogHandler = (): VersionEntryInterface[] => {
                 /\*\*/g,
                 changelogStringsData.emptyString,
             );
-
-            currentVersion.isRelease = true;
 
             continue;
         }
@@ -78,8 +75,6 @@ const parseChangelogHandler = (): VersionEntryInterface[] => {
                 changelogStringsData.versionRangePrefix,
                 "",
             ).trim();
-
-            currentVersion.isRelease = true;
 
             continue;
         }
@@ -212,90 +207,93 @@ const ChangelogPage = () => {
                     date,
                     entries,
                     fullChangelogUrl,
-                    isRelease,
                     title,
                     version,
                     versionRange,
-                }) => (
-                    <div
-                        className="rounded-lg border p-6"
-                        id={`v${version}`}
-                        key={version}
-                        style={{ borderColor: "var(--border-primary)" }}
-                    >
+                }) => {
+                    const isMajor = /^\d+\.0\.0$/.test(version);
+
+                    return (
                         <div
-                            className="
-                                mb-4
-                                flex
-                                flex-wrap
-                                items-center
-                                gap-3
-                            "
+                            className="rounded-lg border p-6"
+                            id={`v${version}`}
+                            key={version}
+                            style={{ borderColor: "var(--border-primary)" }}
                         >
-                            <h2
-                                className="m-0 text-lg font-bold"
-                                style={{ color: "var(--text-primary)" }}
+                            <div
+                                className="
+                                    mb-4
+                                    flex
+                                    flex-wrap
+                                    items-center
+                                    gap-3
+                                "
                             >
-                                {changelogStringsData.versionPrefix}
-                                {version}
-                            </h2>
-                            {isRelease && (
-                                <span
-                                    className="
-                                        rounded-full
-                                        px-2.5
-                                        py-0.5
-                                        text-xs
-                                        font-medium
-                                    "
-                                    style={{
-                                        backgroundColor: "oklch(0.52 0.24 270 / 0.15)",
-                                        color: "oklch(0.52 0.24 270)",
-                                    }}
+                                <h2
+                                    className="m-0 text-lg font-bold"
+                                    style={{ color: "var(--text-primary)" }}
                                 >
-                                    {changelogStringsData.releaseBadge}
+                                    {changelogStringsData.versionPrefix}
+                                    {version}
+                                </h2>
+                                {isMajor && (
+                                    <span
+                                        className="
+                                            rounded-full
+                                            px-2.5
+                                            py-0.5
+                                            text-xs
+                                            font-medium
+                                        "
+                                        style={{
+                                            backgroundColor: "var(--lint-warn-bg)",
+                                            color: "var(--lint-warn)",
+                                        }}
+                                    >
+                                        {changelogStringsData.majorBadge}
+                                    </span>
+                                )}
+                                <span
+                                    className="text-sm"
+                                    style={{ color: "var(--text-tertiary)" }}
+                                >
+                                    {formatDateHandler(date)}
                                 </span>
+                            </div>
+                            {title && (
+                                <p
+                                    className="mb-4 text-sm font-medium"
+                                    style={{ color: "var(--text-secondary)" }}
+                                >
+                                    {title}
+                                </p>
                             )}
-                            <span
-                                className="text-sm"
-                                style={{ color: "var(--text-tertiary)" }}
-                            >
-                                {formatDateHandler(date)}
-                            </span>
+                            {versionRange && (
+                                <p
+                                    className="mb-4 text-xs"
+                                    style={{ color: "var(--text-tertiary)" }}
+                                >
+                                    {changelogStringsData.versionRangePrefix}
+                                    {" "}
+                                    {versionRange}
+                                </p>
+                            )}
+                            {renderEntriesHandler(entries)}
+                            {fullChangelogUrl && (
+                                <a
+                                    className="mt-4 inline-block text-xs"
+                                    href={fullChangelogUrl}
+                                    rel="noopener noreferrer"
+                                    style={{ color: "var(--text-link)" }}
+                                    target="_blank"
+                                >
+                                    {changelogStringsData.fullChangelogMarker}
+                                    {" \u2192"}
+                                </a>
+                            )}
                         </div>
-                        {title && (
-                            <p
-                                className="mb-4 text-sm font-medium"
-                                style={{ color: "var(--text-secondary)" }}
-                            >
-                                {title}
-                            </p>
-                        )}
-                        {versionRange && (
-                            <p
-                                className="mb-4 text-xs"
-                                style={{ color: "var(--text-tertiary)" }}
-                            >
-                                {changelogStringsData.versionRangePrefix}
-                                {" "}
-                                {versionRange}
-                            </p>
-                        )}
-                        {renderEntriesHandler(entries)}
-                        {fullChangelogUrl && (
-                            <a
-                                className="mt-4 inline-block text-xs"
-                                href={fullChangelogUrl}
-                                rel="noopener noreferrer"
-                                style={{ color: "var(--text-link)" }}
-                                target="_blank"
-                            >
-                                {changelogStringsData.fullChangelogMarker}
-                                {" \u2192"}
-                            </a>
-                        )}
-                    </div>
-                ))}
+                    );
+                })}
             </div>
         </div>
     );

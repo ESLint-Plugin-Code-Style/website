@@ -135,7 +135,7 @@ export const Sidebar = ({
                                                 >
                                                     {isActive ? "[" : "·"}
                                                 </span>
-                                                <span className="flex-1">{title}</span>
+                                                <span>{title}</span>
                                                 {isActive ? (
                                                     <span
                                                         aria-hidden="true"

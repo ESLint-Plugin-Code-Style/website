@@ -235,6 +235,7 @@ export const AnimatedCodeFixer = () => {
                         y: 0,
                     }}
                     className="
+                        min-h-[44rem]
                         overflow-auto
                         p-5
                         font-mono

@@ -208,6 +208,7 @@ export const VersionSelector = () => {
                                 {filteredVersions.map((release) => {
                                     const {
                                         date,
+                                        isMajor,
                                         title,
                                         version,
                                     } = release;
@@ -245,28 +246,47 @@ export const VersionSelector = () => {
                                                 >
                                                     <span
                                                         className="font-mono font-medium"
-                                                        style={{ color: "var(--text-primary)" }}
+                                                        style={{ color: isMajor ? "var(--lint-warn)" : "var(--text-primary)" }}
                                                     >
                                                         {versionSelectorStringsData.versionPrefix}
                                                         {version}
                                                     </span>
-                                                    {isCurrent && (
-                                                        <span
-                                                            className="
-                                                                rounded-full
-                                                                px-2
-                                                                py-0.5
-                                                                text-xs
-                                                                font-medium
-                                                            "
-                                                            style={{
-                                                                backgroundColor: "oklch(0.52 0.24 270 / 0.15)",
-                                                                color: "oklch(0.52 0.24 270)",
-                                                            }}
-                                                        >
-                                                            {versionSelectorStringsData.currentBadge}
-                                                        </span>
-                                                    )}
+                                                    <span className="flex items-center gap-1.5">
+                                                        {isMajor && (
+                                                            <span
+                                                                className="
+                                                                    rounded-full
+                                                                    px-2
+                                                                    py-0.5
+                                                                    text-xs
+                                                                    font-medium
+                                                                "
+                                                                style={{
+                                                                    backgroundColor: "var(--lint-warn-bg)",
+                                                                    color: "var(--lint-warn)",
+                                                                }}
+                                                            >
+                                                                {versionSelectorStringsData.majorBadge}
+                                                            </span>
+                                                        )}
+                                                        {isCurrent && (
+                                                            <span
+                                                                className="
+                                                                    rounded-full
+                                                                    px-2
+                                                                    py-0.5
+                                                                    text-xs
+                                                                    font-medium
+                                                                "
+                                                                style={{
+                                                                    backgroundColor: "oklch(0.52 0.24 270 / 0.15)",
+                                                                    color: "oklch(0.52 0.24 270)",
+                                                                }}
+                                                            >
+                                                                {versionSelectorStringsData.currentBadge}
+                                                            </span>
+                                                        )}
+                                                    </span>
                                                 </div>
                                                 {title && (
                                                     <p

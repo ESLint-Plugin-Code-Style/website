@@ -10,13 +10,13 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     return (
-        <div className="mx-auto max-w-[90rem]">
+        <div>
             <button
                 aria-label={componentStringsData.toggleNavigationLabel}
                 className="
                     fixed
-                    right-4
                     bottom-4
+                    left-4
                     z-50
                     flex
                     h-12
@@ -29,16 +29,16 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
                     lg:hidden
                 "
                 style={{
-                    backgroundColor: "var(--text-primary)",
-                    color: "var(--bg-primary)",
+                    backgroundColor: "var(--lint-pass)",
+                    color: "#ffffff",
                 }}
                 onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             >
                 <svg
-                    className="h-5 w-5"
+                    className="h-6 w-6"
                     fill="none"
                     stroke="currentColor"
-                    strokeWidth={2}
+                    strokeWidth={2.2}
                     viewBox="0 0 24 24"
                 >
                     {isSidebarOpen ? (
@@ -48,11 +48,14 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
                             strokeLinejoin="round"
                         />
                     ) : (
-                        <path
-                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                        <g
                             strokeLinecap="round"
                             strokeLinejoin="round"
-                        />
+                        >
+                            <path d="M3 7 q1.5 -1.8 3 0 t3 0 t3 0 t3 0 t3 0 t3 0" />
+                            <path d="M3 12 q1.5 -1.8 3 0 t3 0 t3 0 t3 0 t3 0 t3 0" />
+                            <path d="M3 17 q1.5 -1.8 3 0 t3 0 t3 0 t3 0 t3 0 t3 0" />
+                        </g>
                     )}
                 </svg>
             </button>
@@ -68,47 +71,44 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
                     onClick={() => setIsSidebarOpen(false)}
                 />
             )}
-            <div className="flex">
-                <aside
-                    className={`
-                        fixed
-                        top-16
-                        left-0
-                        z-40
-                        h-[calc(100vh-4rem)]
-                        w-64
-                        shrink-0
-                        overflow-y-auto
-                        transition-transform
-                        duration-300
-                        lg:sticky
-                        lg:translate-x-0
-                        ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}
-                    `}
-                    style={{
-                        backgroundColor: "var(--bg-sidebar)",
-                        borderRight: "1px solid var(--border-primary)",
-                    }}
-                >
-                    <Sidebar
-                        isOpen={isSidebarOpen}
-                        onClose={() => setIsSidebarOpen(false)}
-                    />
-                </aside>
-                <div className="min-w-0 flex-1">
-                    <div
-                        className="
-                            mx-auto
-                            max-w-4xl
-                            px-6
-                            py-10
-                            sm:px-8
-                            lg:px-12
-                        "
-                    >
-                        <article className="prose-docs animate-fade-in">{children}</article>
-                    </div>
-                </div>
+            <aside
+                className={`
+                    fixed
+                    top-16
+                    left-0
+                    z-40
+                    h-[calc(100vh-4rem)]
+                    w-64
+                    shrink-0
+                    overflow-y-auto
+                    transition-transform
+                    duration-300
+                    lg:translate-x-0
+                    ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}
+                `}
+                style={{
+                    backgroundColor: "var(--bg-sidebar)",
+                    borderRight: "1px solid var(--border-primary)",
+                }}
+            >
+                <Sidebar
+                    isOpen={isSidebarOpen}
+                    onClose={() => setIsSidebarOpen(false)}
+                />
+            </aside>
+            <div
+                className="
+                    mx-auto
+                    max-w-7xl
+                    px-6
+                    py-10
+                    sm:px-8
+                    lg:py-12
+                    lg:pr-8
+                    lg:pl-64
+                "
+            >
+                <article className="prose-docs animate-fade-in">{children}</article>
             </div>
         </div>
     );

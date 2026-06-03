@@ -58,6 +58,9 @@ const PhilosophyPage = () => (
             <code>{philosophyStringsData.namingConventionsDescription2Has}</code>
             {philosophyStringsData.namingConventionsDescription2HasSuffix}
         </p>
+        <h2 id="type-based-folder-structure">{philosophyStringsData.folderStructureTitle}</h2>
+        <p>{philosophyStringsData.folderStructureDescription1}</p>
+        <p>{philosophyStringsData.folderStructureDescription2}</p>
         <h2 id="react-first">{philosophyStringsData.reactFirstTitle}</h2>
         <p>{philosophyStringsData.reactFirstDescription1}</p>
         <p>{philosophyStringsData.reactFirstDescription2}</p>

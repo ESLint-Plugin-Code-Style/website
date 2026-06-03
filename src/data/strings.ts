@@ -16,6 +16,24 @@ const categoryCountStringsData = categoriesRulesData.length;
 
 export const homeStringsData = {
     badge: pluginConfigData.versionDisplay,
+    beyondEslintAfterLabel: "With this plugin",
+    beyondEslintBeforeLabel: "Plain ESLint",
+    beyondEslintComparison1After: "<div\n    className=\"\n        flex\n        items-center\n        gap-3\n        p-4\n    \"\n>\n    {label}\n</div>",
+    beyondEslintComparison1Before: "<div className=\"flex items-center gap-3 p-4\">{label}</div>",
+    beyondEslintComparison1Caption: "className \u2014 one class per line when over 3",
+    beyondEslintComparison1Rule: "code-style/classname-multiline",
+    beyondEslintComparison2After: "import { Button } from \"@/components\";\nimport { useTheme } from \"@/hooks\";",
+    beyondEslintComparison2Before: "import { Button } from \"../../components/button\";\nimport { useTheme } from \"../../hooks/use-theme\";",
+    beyondEslintComparison2Caption: "Imports \u2014 absolute via @/ alias",
+    beyondEslintComparison2Rule: "code-style/absolute-imports-only",
+    beyondEslintComparison3After: "<p className=\"text-sm\">{uiStringsData.welcome}</p>",
+    beyondEslintComparison3Before: "<p className=\"text-sm\">Welcome to the dashboard</p>",
+    beyondEslintComparison3Caption: "Strings \u2014 extracted into data files",
+    beyondEslintComparison3Rule: "code-style/no-hardcoded-strings",
+    beyondEslintIntro: "ESLint deprecated its formatting rules and never replaced the opinionated ones \u2014 prop order, import paths, where strings live. We used to enforce them by hand in review, where they were easy to miss. Now they're auto-fixed rules layered on top of ESLint.",
+    beyondEslintKicker: "the layer above ESLint",
+    beyondEslintSectionTitle: "The rules ESLint never shipped.",
+    beyondEslintSeeMoreLabel: "Read the full philosophy",
     categoriesEyebrow: "browse by topic",
     categoriesSectionSubtitle: "Rules are organized into logical categories for easy discovery and configuration.",
     categoriesSectionTitle: `${categoryCountStringsData} Rule Categories`,
@@ -35,7 +53,7 @@ export const homeStringsData = {
     featureReactDescription: "Purpose-built for React projects. JSX formatting, component conventions, hook patterns, and prop naming.",
     featureReactTitle: "React & JSX First",
     featuresEyebrow: "what you get",
-    featuresSectionSubtitle: "Built to fill the gaps left by existing ESLint and Prettier plugins.",
+    featuresSectionSubtitle: "Built to fill the gaps ESLint's built-in rules leave behind.",
     featuresSectionTitle: "Why eslint-plugin-code-style?",
     featureTypeScriptDescription: `${tsOnlyRulesData} TypeScript-specific rules for enums, interfaces, type annotations, and prop naming.`,
     featureTypeScriptTitle: "TypeScript Support",
@@ -59,24 +77,6 @@ export const homeStringsData = {
     metaCardLabel: "fyi",
     metaCardText: "All animations respect prefers-reduced-motion. The site is a PWA — install it from your browser.",
     metadataTitle: `eslint-plugin-code-style \u2014 ${totalRulesData} Custom ESLint Rules for React`,
-    prettierAfterLabel: "with this plugin",
-    prettierBeforeLabel: "Prettier only",
-    prettierComparison1After: "<Button disabled={isLoading} type=\"submit\" onClick={onSave}>\n    Save\n</Button>",
-    prettierComparison1Before: "<Button onClick={onSave} disabled={isLoading} type=\"submit\">\n    Save\n</Button>",
-    prettierComparison1Caption: "JSX props \u2014 alphabetical, callbacks last",
-    prettierComparison1Rule: "react/jsx-sort-props",
-    prettierComparison2After: "import { Button } from \"@/components\";\nimport { useTheme } from \"@/hooks\";",
-    prettierComparison2Before: "import { Button } from \"../../components/button\";\nimport { useTheme } from \"../../hooks/use-theme\";",
-    prettierComparison2Caption: "Imports \u2014 absolute via @/ alias",
-    prettierComparison2Rule: "code-style/absolute-imports-only",
-    prettierComparison3After: "<p className=\"text-sm\">{uiStringsData.welcome}</p>",
-    prettierComparison3Before: "<p className=\"text-sm\">Welcome to the dashboard</p>",
-    prettierComparison3Caption: "Strings \u2014 extracted into data files",
-    prettierComparison3Rule: "code-style/no-hardcoded-strings",
-    prettierIntro: "Prettier reformats what's formattable. This plugin enforces what's opinionated. The two are complementary \u2014 run them both.",
-    prettierKicker: "where Prettier stops.",
-    prettierSectionTitle: "The things Prettier won't do.",
-    prettierSeeMoreLabel: "Read the full philosophy",
     quickStartSectionSubtitle: "Get up and running in under a minute.",
     quickStartSectionTitle: "Quick Start",
     quickStartStepConfigure: "Configure",
@@ -100,8 +100,8 @@ export const homeStringsData = {
     statsRulesValue: `${totalRulesData}`,
     thesisByline: "\u2014 why this plugin exists",
     thesisKicker: "author's note",
-    thesisParagraph: "Most linters hand you a thousand options and ask you to decide. This one picks for you \u2014 opinionated defaults, auto-fixed where possible. It enforces the decisions Prettier deliberately leaves to you: prop order, absolute imports, extracted strings, component structure. If you disagree, configure it. If you don't, you're already done.",
-    thesisPullQuote: "It enforces the decisions Prettier deliberately leaves to you.",
+    thesisParagraph: "For years we enforced these style rules by hand in code review \u2014 which made them easy to miss and impossible to apply consistently. So I packaged the ones ESLint's built-ins never covered into a single, dependency-free rules file: prop order, absolute imports, extracted strings, component structure. Drop it into any ES project, import it, and run eslint --fix like native rules. Across our projects it cut code-style differences between engineers by about 95% \u2014 most of all for the frontend team, where the gaps hurt longest.",
+    thesisPullQuote: "The style decisions ESLint leaves to you \u2014 decided, and auto-fixed.",
 };
 
 // Docs overview strings
@@ -148,7 +148,7 @@ export const gettingStartedStringsData = {
     nextStepsPhilosophy: "Philosophy",
     nextStepsPhilosophySuffix: " \u2014 Understand the design decisions behind the plugin",
     nextStepsRulesReference: "Rules Reference",
-    nextStepsRulesReferenceSuffix: " \u2014 Browse all ${totalRulesData} rules with examples",
+    nextStepsRulesReferenceSuffix: ` \u2014 Browse all ${totalRulesData} rules with examples`,
     pluginName: "eslint-plugin-code-style",
     requirementEslint: "ESLint",
     requirementEslintVersion: ">= 9.0.0 (v9 and v10 supported)",
@@ -182,12 +182,12 @@ export const configurationStringsData = {
     manualConfigDescription: "If you prefer granular control, register the plugin and enable only the rules you need:",
     manualConfigTitle: "Manual Configuration",
     metadataTitle: "Configuration",
-    nextStepsContributing: "Contributing",
-    nextStepsContributingSuffix: " \u2014 Help improve and extend the rules",
+    nextStepsGettingStarted: "Getting Started",
+    nextStepsGettingStartedSuffix: " \u2014 Try the plugin in your own project",
     nextStepsPhilosophy: "Philosophy",
     nextStepsPhilosophySuffix: " \u2014 Learn the design principles behind the plugin",
     nextStepsRulesReference: "Rules Reference",
-    nextStepsRulesReferenceSuffix: " \u2014 Browse all ${totalRulesData} rules with examples and options",
+    nextStepsRulesReferenceSuffix: ` \u2014 Browse all ${totalRulesData} rules with examples and options`,
     nextStepsTitle: "Next Steps",
     pluginName: "eslint-plugin-code-style",
     presetConfigsDescription: `Each preset enables the correct set of rules for your project type. TypeScript presets include ${tsOnlyRulesData} additional TS-only rules. Tailwind presets include 4 className utility rules. This way you avoid enabling rules that do not apply to your stack.`,
@@ -282,52 +282,13 @@ export const philosophyStringsData = {
     `,
     consistencyDescription2: "These rules enforce a single way to format each pattern. The result is a codebase that reads as if one person wrote it, regardless of team size.",
     consistencyTitle: "Consistency at Scale",
-    fillingGapsDescription1: "Prettier handles basic formatting: indentation, semicolons, trailing commas, line width. But it deliberately avoids opinions on many structural patterns. Existing ESLint plugins focus on catching bugs and enforcing best practices, not formatting style.",
-    fillingGapsDescription2: `
-        block
-        across
-        and
-        and
-        are
-        array
-        arrow
-        between
-        bodies,
-        break
-        children
-        consistency
-        covers:
-        dozens
-        enforces
-        fills
-        formatted,
-        functions,
-        gap
-        how
-        how
-        It
-        items
-        JSX
-        lines,
-        linters.
-        logic-focused
-        more.
-        no
-        other
-        plugin
-        Prettier
-        should
-        structural
-        that
-        the
-        This
-        to
-        tool
-        use
-        when
-    `,
+    fillingGapsDescription1: "Base formatters handle whitespace: indentation, semicolons, trailing commas, line width. They deliberately avoid opinions on structural patterns. ESLint's built-in rules and most plugins focus on catching bugs and enforcing best practices, not formatting style. This plugin fills what they leave behind.",
+    fillingGapsDescription2: "It covers the structural consistency no other tool enforces: how array items break across lines, how JSX children are formatted, arrow function bodies, and dozens more. This is the formatting that base formatters and logic-focused linters leave alone.",
     fillingGapsTitle: "Filling the Gaps",
-    intro: " exists because consistent code formatting goes beyond what Prettier and existing ESLint plugins cover. Here are the principles that guide every rule in the plugin.",
+    folderStructureDescription1: "The plugin is designed around a type-based folder structure — source files grouped by their role rather than by feature: components, atoms, views, pages, hooks, providers, services, middlewares, constants, data, and so on. Several rules read the folder a file lives in and build their expectations from it.",
+    folderStructureDescription2: "folder-based-naming-convention applies the right suffix per folder (views become *View, pages become *Page, providers become *Provider), folder-structure-consistency and no-redundant-folder-suffix keep module folders tidy, and the index, hook, function, and variable naming rules are path-scoped to this layout. The closer your project follows it, the more the plugin enforces and auto-fixes for you; rules that do not depend on folders (spacing, JSX, imports, formatting) work the same in any layout.",
+    folderStructureTitle: "Type-Based Folder Structure",
+    intro: " exists because consistent code formatting goes beyond what ESLint's built-in rules cover. Here are the principles that guide every rule in the plugin.",
     metadataTitle: "Philosophy",
     namingConventionsDescription1: "Several rules enforce naming conventions for variables, functions, hooks, components, and files. These rules exist because consistent naming is one of the highest-leverage ways to improve codebase readability.",
     namingConventionsDescription2Has: "has",
@@ -364,12 +325,12 @@ export const philosophyStringsData = {
     selfSufficientDescription2: "This also means rules do not conflict with each other. Enabling the entire plugin produces a consistent output with no contradictory fixes.",
     selfSufficientTitle: "Self-Sufficient Rules",
     title: "Philosophy",
-    worksAlongsideDescription1: "The plugin is designed to work alongside Prettier, ",
+    worksAlongsideDescription1: "The plugin is designed to work alongside ",
     worksAlongsideDescription1Code1: "eslint-plugin-react",
     worksAlongsideDescription1Code2: "@typescript-eslint",
     worksAlongsideDescription1Connector: ", ",
     worksAlongsideDescription1Suffix: ", and any other ESLint plugins you use. It does not duplicate their rules or conflict with their fixes.",
-    worksAlongsideDescription2: "Run Prettier for base formatting, this plugin for structural formatting, and your existing plugins for logic and best practices. They complement each other.",
+    worksAlongsideDescription2: "Run your formatter for base whitespace, this plugin for structural formatting, and your existing plugins for logic and best practices. They complement each other.",
     worksAlongsideTitle: "Works Alongside Existing Tools",
 };
 
@@ -550,9 +511,9 @@ export const changelogStringsData = {
     fullChangelogMarker: "Full Changelog",
     listItemPrefix: "- ",
     locale: "en-US",
+    majorBadge: "major",
     metadataTitle: "Changelog",
     newline: "\n",
-    releaseBadge: "release",
     sectionPrefix: "### ",
     separator: "---",
     strongCodeHtml: "<strong><code class=\"changelog-code\">$1</code></strong>",
@@ -580,6 +541,9 @@ export const componentStringsData = {
     brandName: "eslint-plugin-code-style",
     copiedLabel: "Copied",
     copyLabel: "Copy to clipboard",
+    footerAuthorName: "Mohamed Elhawary",
+    footerAuthorPrefix: "Built by",
+    footerAuthorUrl: "https://hawary.dev",
     intersectionObserverRootMargin: "-80px 0px -70% 0px",
     navLinkDocs: "Docs",
     navLinkGitHub: "GitHub",
@@ -655,46 +619,47 @@ export const offlineIndicatorStringsData = { message: "You're offline. Some cont
 
 // Hero demo code snippets (ordered by animation step)
 export const heroDemoSnippetsStringsData = {
-    fileName: "user-card.tsx",
+    fileName: "card.tsx",
     language: "tsx",
     steps: [
         {
             label: "messy",
-            pill: "4 problems found",
+            pill: "6 problems found",
             pillStatus: "error" as const,
-            snippet: `import {useState} from "react"
-import React from "react"
-
-const items = ['a',"b",'c',"d",'e']
-
-const UserCard = (props)=>{
-  return <div onClick={props.onClick} className="text-sm rounded p-2 bg-white">{props.name}</div>
-}`,
-        },
-        {
-            label: "imports-sort",
-            pill: "sort-imports",
-            pillStatus: "info" as const,
             snippet: `import React from "react"
 import {useState} from "react"
 
-const items = ['a',"b",'c',"d",'e']
+const items = ["a", "b", "c", "d", "e"]
 
-const UserCard = (props)=>{
-  return <div onClick={props.onClick} className="text-sm rounded p-2 bg-white">{props.name}</div>
+const Card = (props) => {
+  return (
+    <div
+      className="text-sm rounded p-2 bg-white"
+      onClick={props.onClick}
+    >
+      {props.name}
+    </div>
+  )
 }`,
         },
         {
-            label: "quote-style",
-            pill: "quote-style",
+            label: "import-format",
+            pill: "import-format",
             pillStatus: "info" as const,
             snippet: `import React from "react"
 import { useState } from "react"
 
 const items = ["a", "b", "c", "d", "e"]
 
-const UserCard = (props) => {
-  return <div onClick={props.onClick} className="text-sm rounded p-2 bg-white">{props.name}</div>
+const Card = (props) => {
+  return (
+    <div
+      className="text-sm rounded p-2 bg-white"
+      onClick={props.onClick}
+    >
+      {props.name}
+    </div>
+  )
 }`,
         },
         {
@@ -712,8 +677,70 @@ const items = [
   "e",
 ]
 
-const UserCard = (props) => {
-  return <div onClick={props.onClick} className="text-sm rounded p-2 bg-white">{props.name}</div>
+const Card = (props) => {
+  return (
+    <div
+      className="text-sm rounded p-2 bg-white"
+      onClick={props.onClick}
+    >
+      {props.name}
+    </div>
+  )
+}`,
+        },
+        {
+            label: "component-props-destructure",
+            pill: "component-props-destructure",
+            pillStatus: "info" as const,
+            snippet: `import React from "react"
+import { useState } from "react"
+
+const items = [
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+]
+
+const Card = ({ onClick, name }) => {
+  return (
+    <div
+      className="text-sm rounded p-2 bg-white"
+      onClick={onClick}
+    >
+      {name}
+    </div>
+  )
+}`,
+        },
+        {
+            label: "function-params-per-line",
+            pill: "function-params-per-line",
+            pillStatus: "info" as const,
+            snippet: `import React from "react"
+import { useState } from "react"
+
+const items = [
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+]
+
+const Card = ({
+  onClick,
+  name,
+}) => {
+  return (
+    <div
+      className="text-sm rounded p-2 bg-white"
+      onClick={onClick}
+    >
+      {name}
+    </div>
+  )
 }`,
         },
         {
@@ -731,13 +758,50 @@ const items = [
   "e",
 ]
 
-const UserCard = (props) => {
+const Card = ({
+  onClick,
+  name,
+}) => {
   return (
     <div
       className="rounded bg-white p-2 text-sm"
-      onClick={props.onClick}
+      onClick={onClick}
     >
-      {props.name}
+      {name}
+    </div>
+  )
+}`,
+        },
+        {
+            label: "classname-multiline",
+            pill: "classname-multiline",
+            pillStatus: "info" as const,
+            snippet: `import React from "react"
+import { useState } from "react"
+
+const items = [
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+]
+
+const Card = ({
+  onClick,
+  name,
+}) => {
+  return (
+    <div
+      className="
+        rounded
+        bg-white
+        p-2
+        text-sm
+      "
+      onClick={onClick}
+    >
+      {name}
     </div>
   )
 }`,
@@ -757,13 +821,21 @@ const items = [
   "e",
 ]
 
-const UserCard = (props) => {
+const Card = ({
+  onClick,
+  name,
+}) => {
   return (
     <div
-      className="rounded bg-white p-2 text-sm"
-      onClick={props.onClick}
+      className="
+        rounded
+        bg-white
+        p-2
+        text-sm
+      "
+      onClick={onClick}
     >
-      {props.name}
+      {name}
     </div>
   )
 }`,
@@ -776,12 +848,13 @@ export const codeSamplesStringsData = {
     autoFixCommand: "eslint --fix",
     autoFixKeyword: "const",
     autoFixOperator: " = ",
+    autoFixOperatorMessy: "=",
     autoFixVariable: "x",
     autoFixVariableValue: "1",
     flatConfigEslintRcAirbnb: "\"airbnb\",",
     flatConfigEslintRcExtends: "{ extends: [",
     flatConfigEslintRcFilename: ".eslintrc",
-    flatConfigEslintRcPrettier: "\"prettier\"",
+    flatConfigEslintRcReact: "\"plugin:react/recommended\"",
     flatConfigEslintRcSuffix: "] }",
     flatConfigModernArrayClose: "]",
     flatConfigModernArrayOpen: "export default [",
@@ -795,6 +868,8 @@ export const codeSamplesStringsData = {
     typescriptInterfaceClose: "}",
     typescriptInterfaceOpen: "interface User {",
     typescriptPropertyTypeAnnotation: ": string;",
+    typescriptVignetteSortedLabel: "sorted ✓",
+    typescriptVignetteUnsortedLabel: "unsorted",
     zeroDepsLabel: "0",
 };
 
@@ -846,6 +921,7 @@ export const versionSelectorStringsData = {
     ariaLabelList: "Available versions",
     ariaLabelSearch: "Search versions",
     currentBadge: "current",
+    majorBadge: "major",
     noResults: "No versions found",
     searchPlaceholder: "Search versions...",
     versionPrefix: "v",

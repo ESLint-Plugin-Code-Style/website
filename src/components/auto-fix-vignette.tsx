@@ -4,6 +4,50 @@ import { motion } from "motion/react";
 
 import { codeSamplesStringsData } from "@/data";
 
+const fadeOut = {
+    animate: {
+        opacity: [
+            1,
+            1,
+            0,
+            0,
+        ],
+    },
+    transition: {
+        duration: 3,
+        ease: "easeInOut" as const,
+        repeat: Infinity,
+        times: [
+            0,
+            0.42,
+            0.52,
+            1,
+        ],
+    },
+};
+
+const fadeIn = {
+    animate: {
+        opacity: [
+            0,
+            0,
+            1,
+            1,
+        ],
+    },
+    transition: {
+        duration: 3,
+        ease: "easeInOut" as const,
+        repeat: Infinity,
+        times: [
+            0,
+            0.48,
+            0.58,
+            1,
+        ],
+    },
+};
+
 export const AutoFixVignette = () => (
     <div
         className="
@@ -23,27 +67,28 @@ export const AutoFixVignette = () => (
             color: "var(--text-code)",
         }}
     >
-        <div className="flex flex-col gap-1.5">
-            <div className="relative">
+        <div className="grid">
+            <motion.div
+                animate={fadeOut.animate}
+                transition={fadeOut.transition}
+                className="
+                    relative
+                    col-start-1
+                    row-start-1
+                    justify-self-center
+                "
+            >
                 <span>{codeSamplesStringsData.autoFixKeyword}</span>
                 {" "}
                 <span style={{ color: "var(--lint-warn)" }}>{codeSamplesStringsData.autoFixVariable}</span>
-                {codeSamplesStringsData.autoFixOperator}
+                <span>{codeSamplesStringsData.autoFixOperatorMessy}</span>
                 <span style={{ color: "var(--lint-info)" }}>{codeSamplesStringsData.autoFixVariableValue}</span>
-                <motion.svg
+                <svg
                     aria-hidden="true"
                     fill="none"
                     preserveAspectRatio="none"
                     viewBox="0 0 120 4"
                     xmlns="http://www.w3.org/2000/svg"
-                    animate={{
-                        opacity: [
-                            1,
-                            1,
-                            0,
-                            0,
-                        ],
-                    }}
                     className="
                         absolute
                         -bottom-1
@@ -51,75 +96,41 @@ export const AutoFixVignette = () => (
                         h-1
                         w-full
                     "
-                    transition={{
-                        duration: 3,
-                        ease: "easeInOut",
-                        repeat: Infinity,
-                        times: [
-                            0,
-                            0.45,
-                            0.55,
-                            1,
-                        ],
-                    }}
                 >
                     <path
                         d="M0 2 Q6 0 12 2 T24 2 T36 2 T48 2 T60 2 T72 2 T84 2 T96 2 T108 2 T120 2"
                         stroke="var(--lint-error)"
                         strokeWidth="1.4"
                     />
-                </motion.svg>
-                <motion.span
-                    aria-hidden="true"
-                    className="absolute top-0 -right-6"
-                    style={{ color: "var(--lint-pass)" }}
-                    animate={{
-                        opacity: [
-                            0,
-                            0,
-                            1,
-                            1,
-                        ],
-                    }}
-                    transition={{
-                        duration: 3,
-                        ease: "easeInOut",
-                        repeat: Infinity,
-                        times: [
-                            0,
-                            0.5,
-                            0.6,
-                            1,
-                        ],
-                    }}
-                >
-                    ✓
-                </motion.span>
-            </div>
+                </svg>
+            </motion.div>
             <motion.div
-                className="text-xs"
-                style={{ color: "var(--lint-pass)" }}
-                animate={{
-                    opacity: [
-                        0,
-                        0,
-                        1,
-                        1,
-                    ],
-                }}
-                transition={{
-                    duration: 3,
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                    times: [
-                        0,
-                        0.5,
-                        0.6,
-                        1,
-                    ],
-                }}
+                animate={fadeIn.animate}
+                transition={fadeIn.transition}
+                className="
+                    col-start-1
+                    row-start-1
+                    flex
+                    flex-col
+                    items-center
+                    gap-1.5
+                "
             >
-                {codeSamplesStringsData.autoFixCommand}
+                <div>
+                    <span>{codeSamplesStringsData.autoFixKeyword}</span>
+                    {" "}
+                    <span style={{ color: "var(--lint-warn)" }}>{codeSamplesStringsData.autoFixVariable}</span>
+                    <span>{codeSamplesStringsData.autoFixOperator}</span>
+                    <span style={{ color: "var(--lint-info)" }}>{codeSamplesStringsData.autoFixVariableValue}</span>
+                    {" "}
+                    <span style={{ color: "var(--lint-pass)" }}>✓</span>
+                </div>
+                <div
+                    className="text-xs"
+                    style={{ color: "var(--lint-pass)" }}
+                >
+                    {codeSamplesStringsData.autoFixCommand}
+                </div>
             </motion.div>
         </div>
     </div>

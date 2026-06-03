@@ -83,27 +83,27 @@ const gesturesData: {
     },
 ];
 
-const prettierComparisonsData = [
+const beyondEslintComparisonsData = [
     {
-        afterCode: homeStringsData.prettierComparison1After,
-        beforeCode: homeStringsData.prettierComparison1Before,
-        caption: homeStringsData.prettierComparison1Caption,
+        afterCode: homeStringsData.beyondEslintComparison1After,
+        beforeCode: homeStringsData.beyondEslintComparison1Before,
+        caption: homeStringsData.beyondEslintComparison1Caption,
         language: codeLanguageValuesEnumsData.javascript,
-        rule: homeStringsData.prettierComparison1Rule,
+        rule: homeStringsData.beyondEslintComparison1Rule,
     },
     {
-        afterCode: homeStringsData.prettierComparison2After,
-        beforeCode: homeStringsData.prettierComparison2Before,
-        caption: homeStringsData.prettierComparison2Caption,
+        afterCode: homeStringsData.beyondEslintComparison2After,
+        beforeCode: homeStringsData.beyondEslintComparison2Before,
+        caption: homeStringsData.beyondEslintComparison2Caption,
         language: codeLanguageValuesEnumsData.js,
-        rule: homeStringsData.prettierComparison2Rule,
+        rule: homeStringsData.beyondEslintComparison2Rule,
     },
     {
-        afterCode: homeStringsData.prettierComparison3After,
-        beforeCode: homeStringsData.prettierComparison3Before,
-        caption: homeStringsData.prettierComparison3Caption,
+        afterCode: homeStringsData.beyondEslintComparison3After,
+        beforeCode: homeStringsData.beyondEslintComparison3Before,
+        caption: homeStringsData.beyondEslintComparison3Caption,
         language: codeLanguageValuesEnumsData.javascript,
-        rule: homeStringsData.prettierComparison3Rule,
+        rule: homeStringsData.beyondEslintComparison3Rule,
     },
 ];
 
@@ -147,15 +147,16 @@ const HomePage = () => (
                     z-10
                     mx-auto
                     grid
-                    max-w-6xl
+                    max-w-7xl
                     gap-12
                     px-4
                     pt-16
                     pb-20
                     sm:px-6
-                    lg:grid-cols-[1.05fr_1fr]
+                    lg:grid-cols-[1.05fr_minmax(0,1fr)]
                     lg:items-center
                     lg:gap-16
+                    lg:px-8
                     lg:py-28
                 "
             >
@@ -382,7 +383,7 @@ const HomePage = () => (
                 className="
                     mx-auto
                     grid
-                    max-w-6xl
+                    max-w-7xl
                     gap-12
                     px-4
                     py-20
@@ -390,6 +391,7 @@ const HomePage = () => (
                     lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]
                     lg:items-center
                     lg:gap-20
+                    lg:px-8
                     lg:py-28
                 "
             >
@@ -450,16 +452,17 @@ const HomePage = () => (
         </section>
         <SectionDivider />
         <section
-            aria-labelledby="prettier-title"
+            aria-labelledby="beyond-eslint-title"
             className="relative"
         >
             <div
                 className="
                     mx-auto
-                    max-w-6xl
+                    max-w-7xl
                     px-4
                     py-20
                     sm:px-6
+                    lg:px-8
                 "
             >
                 <div className="mb-12 max-w-2xl">
@@ -471,10 +474,10 @@ const HomePage = () => (
                             transform: "rotate(-1deg)",
                         }}
                     >
-                        {homeStringsData.prettierKicker}
+                        {homeStringsData.beyondEslintKicker}
                     </p>
                     <h2
-                        id="prettier-title"
+                        id="beyond-eslint-title"
                         style={{ color: "var(--text-primary)" }}
                         className="
                             mb-4
@@ -484,17 +487,17 @@ const HomePage = () => (
                             sm:text-4xl
                         "
                     >
-                        {homeStringsData.prettierSectionTitle}
+                        {homeStringsData.beyondEslintSectionTitle}
                     </h2>
                     <p
                         className="max-w-[60ch] text-base leading-relaxed"
                         style={{ color: "var(--text-secondary)" }}
                     >
-                        {homeStringsData.prettierIntro}
+                        {homeStringsData.beyondEslintIntro}
                     </p>
                 </div>
                 <div className="flex flex-col gap-10">
-                    {prettierComparisonsData.map(({
+                    {beyondEslintComparisonsData.map(({
                         afterCode,
                         beforeCode,
                         caption,
@@ -521,7 +524,7 @@ const HomePage = () => (
                                             uppercase
                                         "
                                     >
-                                        {homeStringsData.prettierBeforeLabel}
+                                        {homeStringsData.beyondEslintBeforeLabel}
                                     </p>
                                     <CodeBlock
                                         code={beforeCode}
@@ -539,7 +542,7 @@ const HomePage = () => (
                                             uppercase
                                         "
                                     >
-                                        {homeStringsData.prettierAfterLabel}
+                                        {homeStringsData.beyondEslintAfterLabel}
                                     </p>
                                     <CodeBlock
                                         code={afterCode}
@@ -595,7 +598,7 @@ const HomePage = () => (
                             focus-visible:outline-[color:var(--border-active)]
                         "
                     >
-                        {homeStringsData.prettierSeeMoreLabel}
+                        {homeStringsData.beyondEslintSeeMoreLabel}
                         <span aria-hidden="true">→</span>
                     </Link>
                 </div>
@@ -608,10 +611,11 @@ const HomePage = () => (
             <div
                 className="
                     mx-auto
-                    max-w-6xl
+                    max-w-7xl
                     px-4
                     py-20
                     sm:px-6
+                    lg:px-8
                 "
             >
                 <div className="mb-16 max-w-2xl">
@@ -730,10 +734,11 @@ const HomePage = () => (
             <div
                 className="
                     mx-auto
-                    max-w-6xl
+                    max-w-7xl
                     px-4
                     py-20
                     sm:px-6
+                    lg:px-8
                 "
             >
                 <div className="mb-12 max-w-2xl">
@@ -878,10 +883,11 @@ const HomePage = () => (
             <div
                 className="
                     mx-auto
-                    max-w-5xl
+                    max-w-7xl
                     px-4
                     py-20
                     sm:px-6
+                    lg:px-8
                 "
             >
                 <div className="mb-12 max-w-2xl">
@@ -920,7 +926,7 @@ const HomePage = () => (
                         className="
                             grid
                             gap-4
-                            lg:grid-cols-[3rem_minmax(0,1fr)_minmax(10rem,14rem)]
+                            lg:grid-cols-[3rem_minmax(0,1fr)]
                             lg:items-start
                             lg:gap-8
                         "
@@ -950,13 +956,12 @@ const HomePage = () => (
                                 language={codeLanguageValuesEnumsData.bash}
                             />
                         </div>
-                        <div className="hidden lg:block" />
                     </div>
                     <div
                         className="
                             grid
                             gap-4
-                            lg:grid-cols-[3rem_minmax(0,1fr)_minmax(10rem,14rem)]
+                            lg:grid-cols-[3rem_minmax(0,1fr)]
                             lg:items-start
                             lg:gap-8
                         "
@@ -1015,29 +1020,12 @@ const HomePage = () => (
                                 />
                             </div>
                         </div>
-                        <aside
-                            className="
-                                handwritten
-                                hidden
-                                max-w-[14rem]
-                                pt-10
-                                text-lg
-                                leading-snug
-                                lg:block
-                            "
-                            style={{
-                                color: "var(--accent-violet)",
-                                transform: "rotate(2deg)",
-                            }}
-                        >
-                            {homeStringsData.quickStartTip}
-                        </aside>
                     </div>
                     <div
                         className="
                             grid
                             gap-4
-                            lg:grid-cols-[3rem_minmax(0,1fr)_minmax(10rem,14rem)]
+                            lg:grid-cols-[3rem_minmax(0,1fr)]
                             lg:items-start
                             lg:gap-8
                         "
@@ -1067,7 +1055,6 @@ const HomePage = () => (
                                 language={codeLanguageValuesEnumsData.bash}
                             />
                         </div>
-                        <div className="hidden lg:block" />
                     </div>
                 </div>
                 <div className="mt-12">
@@ -1082,138 +1069,6 @@ const HomePage = () => (
                 </div>
             </div>
         </section>
-        <footer
-            aria-label={homeStringsData.colophonMasthead}
-            className="relative"
-        >
-            <div
-                style={{ borderColor: "var(--border-secondary)" }}
-                className="
-                    mx-auto
-                    flex
-                    max-w-5xl
-                    flex-col
-                    gap-8
-                    border-t
-                    px-4
-                    py-12
-                    sm:px-6
-                "
-            >
-                <div className="flex flex-col gap-4">
-                    <p
-                        style={{ color: "var(--text-tertiary)" }}
-                        className="
-                            font-mono
-                            text-xs
-                            tracking-widest
-                            uppercase
-                        "
-                    >
-                        {`${homeStringsData.colophonEditionLabel} \u00b7 ${homeStringsData.badge}`}
-                    </p>
-                    <p
-                        className="handwritten text-base leading-snug"
-                        style={{
-                            color: "var(--text-hand)",
-                            display: "inline-block",
-                            transform: "rotate(-1deg)",
-                        }}
-                    >
-                        {homeStringsData.colophonImprint}
-                    </p>
-                    <div
-                        className="
-                            flex
-                            flex-wrap
-                            items-center
-                            gap-5
-                        "
-                    >
-                        <a
-                            href="https://github.com/ESLint-Plugin-Code-Style/website/blob/main/LICENSE"
-                            rel="noopener noreferrer"
-                            style={{ color: "var(--text-secondary)" }}
-                            target="_blank"
-                            className="
-                                text-sm
-                                font-medium
-                                transition-colors
-                                duration-200
-                                hover:text-[color:var(--text-primary)]
-                                hover:underline
-                                focus-visible:outline-2
-                                focus-visible:outline-offset-4
-                                focus-visible:outline-[color:var(--border-active)]
-                            "
-                        >
-                            {homeStringsData.footerLicense}
-                        </a>
-                        <a
-                            href="https://www.npmjs.com/package/eslint-plugin-code-style"
-                            rel="noopener noreferrer"
-                            style={{ color: "var(--text-secondary)" }}
-                            target="_blank"
-                            className="
-                                text-sm
-                                font-medium
-                                transition-colors
-                                duration-200
-                                hover:text-[color:var(--text-primary)]
-                                hover:underline
-                                focus-visible:outline-2
-                                focus-visible:outline-offset-4
-                                focus-visible:outline-[color:var(--border-active)]
-                            "
-                        >
-                            {homeStringsData.footerNpm}
-                        </a>
-                        <a
-                            href={pluginConfigData.githubUrl}
-                            rel="noopener noreferrer"
-                            style={{ color: "var(--text-secondary)" }}
-                            target="_blank"
-                            className="
-                                text-sm
-                                font-medium
-                                transition-colors
-                                duration-200
-                                hover:text-[color:var(--text-primary)]
-                                hover:underline
-                                focus-visible:outline-2
-                                focus-visible:outline-offset-4
-                                focus-visible:outline-[color:var(--border-active)]
-                            "
-                        >
-                            {homeStringsData.footerGitHub}
-                        </a>
-                        <Link
-                            href="/docs/changelog"
-                            style={{ color: "var(--text-secondary)" }}
-                            className="
-                                text-sm
-                                font-medium
-                                transition-colors
-                                duration-200
-                                hover:text-[color:var(--text-primary)]
-                                hover:underline
-                                focus-visible:outline-2
-                                focus-visible:outline-offset-4
-                                focus-visible:outline-[color:var(--border-active)]
-                            "
-                        >
-                            {homeStringsData.footerChangelog}
-                        </Link>
-                    </div>
-                    <p
-                        className="text-xs"
-                        style={{ color: "var(--text-tertiary)" }}
-                    >
-                        {homeStringsData.footerCopyright}
-                    </p>
-                </div>
-            </div>
-        </footer>
     </div>
 );
 

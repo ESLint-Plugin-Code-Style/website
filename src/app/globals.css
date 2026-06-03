@@ -401,6 +401,26 @@
         animation: squiggleDraw 1.2s ease-out 0.3s forwards;
     }
 
+    .brand-mark-squiggle {
+        stroke-dasharray: 60;
+        stroke-dashoffset: 60;
+        animation: brandMarkSquiggle 3.4s ease-in-out infinite;
+    }
+
+    .brand-mark-line {
+        stroke-dasharray: 22;
+        stroke-dashoffset: 22;
+        opacity: 0;
+        animation: brandMarkLine 3.4s ease-in-out infinite;
+    }
+
+    .brand-mark-check {
+        stroke-dasharray: 16;
+        stroke-dashoffset: 16;
+        opacity: 0;
+        animation: brandMarkCheck 3.4s ease-in-out infinite;
+    }
+
     .traffic-lights {
         display: inline-flex;
         gap: 6px;
@@ -478,6 +498,30 @@
     to { stroke-dashoffset: 0; }
 }
 
+@keyframes brandMarkSquiggle {
+    0% { stroke-dashoffset: 60; opacity: 1; }
+    25% { stroke-dashoffset: 0; opacity: 1; }
+    42% { stroke-dashoffset: 0; opacity: 1; }
+    52% { stroke-dashoffset: 0; opacity: 0; }
+    100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+@keyframes brandMarkLine {
+    0% { stroke-dashoffset: 22; opacity: 0; }
+    46% { stroke-dashoffset: 22; opacity: 0; }
+    52% { stroke-dashoffset: 22; opacity: 1; }
+    70% { stroke-dashoffset: 0; opacity: 1; }
+    100% { stroke-dashoffset: 0; opacity: 1; }
+}
+
+@keyframes brandMarkCheck {
+    0% { stroke-dashoffset: 16; opacity: 0; }
+    68% { stroke-dashoffset: 16; opacity: 0; }
+    73% { stroke-dashoffset: 16; opacity: 1; }
+    86% { stroke-dashoffset: 0; opacity: 1; }
+    100% { stroke-dashoffset: 0; opacity: 1; }
+}
+
 @keyframes highlightSweep {
     from { clip-path: inset(0 100% 0 0); }
     to { clip-path: inset(0 0 0 0); }
@@ -499,9 +543,20 @@
     .code-rain span,
     .blinking-caret::after,
     .squiggle-draw path,
+    .brand-mark-squiggle,
+    .brand-mark-line,
+    .brand-mark-check,
     .animate-highlight-sweep {
         animation: none !important;
     }
 
     .squiggle-draw path { stroke-dashoffset: 0; }
+
+    /* Freeze brand mark to the fixed end-frame: clean green line + check */
+    .brand-mark-squiggle { opacity: 0; }
+    .brand-mark-line,
+    .brand-mark-check {
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
 }

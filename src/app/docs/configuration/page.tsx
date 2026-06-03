@@ -284,8 +284,8 @@ const ConfigurationPage = () => (
                 {configurationStringsData.nextStepsPhilosophySuffix}
             </li>
             <li>
-                <Link href="/docs/contributing">{configurationStringsData.nextStepsContributing}</Link>
-                {configurationStringsData.nextStepsContributingSuffix}
+                <Link href="/docs/getting-started">{configurationStringsData.nextStepsGettingStarted}</Link>
+                {configurationStringsData.nextStepsGettingStartedSuffix}
             </li>
         </ul>
     </div>
