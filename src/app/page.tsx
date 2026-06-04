@@ -504,7 +504,10 @@ const HomePage = () => (
                         language,
                         rule,
                     }) => (
-                        <div key={rule}>
+                        <div
+                            className="min-w-0"
+                            key={rule}
+                        >
                             <div
                                 className="
                                     grid
@@ -513,7 +516,7 @@ const HomePage = () => (
                                     lg:gap-6
                                 "
                             >
-                                <div>
+                                <div className="min-w-0">
                                     <p
                                         style={{ color: "var(--text-tertiary)" }}
                                         className="
@@ -531,7 +534,7 @@ const HomePage = () => (
                                         language={language}
                                     />
                                 </div>
-                                <div>
+                                <div className="min-w-0">
                                     <p
                                         style={{ color: "var(--lint-pass)" }}
                                         className="
@@ -943,7 +946,7 @@ const HomePage = () => (
                         >
                             {"01"}
                         </span>
-                        <div>
+                        <div className="min-w-0">
                             <h3
                                 className="mb-3 text-lg font-semibold"
                                 style={{ color: "var(--text-primary)" }}
@@ -978,7 +981,7 @@ const HomePage = () => (
                         >
                             {"02"}
                         </span>
-                        <div>
+                        <div className="min-w-0">
                             <h3
                                 className="mb-3 text-lg font-semibold"
                                 style={{ color: "var(--text-primary)" }}
@@ -1042,7 +1045,7 @@ const HomePage = () => (
                         >
                             {"03"}
                         </span>
-                        <div>
+                        <div className="min-w-0">
                             <h3
                                 className="mb-3 text-lg font-semibold"
                                 style={{ color: "var(--text-primary)" }}

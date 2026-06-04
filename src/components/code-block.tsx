@@ -21,6 +21,8 @@ export const CodeBlock = ({
             className="
                 group
                 relative
+                w-full
+                min-w-0
                 overflow-hidden
                 rounded-xl
             "

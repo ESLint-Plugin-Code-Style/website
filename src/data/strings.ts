@@ -235,51 +235,7 @@ export const philosophyStringsData = {
     autoFixDescription1Suffix: " to apply formatting automatically. This reduces the cognitive overhead of remembering style rules and eliminates back-and-forth in code reviews over formatting issues.",
     autoFixDescription2: `The remaining ${reportOnlyRulesData} rules are report-only because their fixes would be ambiguous or could change runtime behavior. In those cases, the rule reports the issue and lets the developer decide how to resolve it.`,
     autoFixTitle: "Auto-Fix First",
-    consistencyDescription1: `
-        block
-        10,
-        5,
-        50
-        a
-        a
-        across
-        another
-        another
-        array
-        arrow
-        bodies.
-        breaks
-        codebase,
-        compound
-        developer
-        developers
-        functions,
-        implicit
-        in
-        inconsistencies
-        items
-        line,
-        lines.
-        of
-        on
-        on
-        One
-        One
-        or
-        puts
-        quickly.
-        returns
-        same
-        single
-        small
-        team
-        the
-        them
-        uses
-        uses
-        When
-        works
-    `,
+    consistencyDescription1: "On a team, small formatting differences compound quickly. One developer puts array items on one line, another breaks them across lines. One uses implicit arrow returns, another always uses block bodies. These inconsistencies make a codebase read as if ten different people wrote it.",
     consistencyDescription2: "These rules enforce a single way to format each pattern. The result is a codebase that reads as if one person wrote it, regardless of team size.",
     consistencyTitle: "Consistency at Scale",
     fillingGapsDescription1: "Base formatters handle whitespace: indentation, semicolons, trailing commas, line width. They deliberately avoid opinions on structural patterns. ESLint's built-in rules and most plugins focus on catching bugs and enforcing best practices, not formatting style. This plugin fills what they leave behind.",
@@ -561,8 +517,8 @@ export const componentStringsData = {
 export const metadataStringsData = {
     appleTouchIconPath: "/apple-icon.svg",
     appleWebAppStatusBarStyle: "black-translucent" as const,
-    appleWebAppTitle: "code-style",
-    applicationName: "eslint-plugin-code-style",
+    appleWebAppTitle: "ESLint Plugin Code Style",
+    applicationName: "ESLint Plugin Code Style",
     authorName: "Mohamed Elhawary",
     authorUrl: "https://hawary.dev",
     canonicalUrl: pluginConfigData.websiteUrl,
