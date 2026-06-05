@@ -4,7 +4,8 @@ import { AnimatePresence, motion } from "motion/react";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { componentStringsData, eventNameValuesEnumsData, scrollBehaviorValuesEnumsData } from "@/data";
+import { componentStringsData, scrollBehaviorValuesConstantsData } from "@/data";
+import { EventNameEnum } from "@/enums";
 
 export const BackToTop = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -26,13 +27,13 @@ export const BackToTop = () => {
             checkScrollHandler();
 
             window.addEventListener(
-                eventNameValuesEnumsData.scroll,
+                EventNameEnum.SCROLL,
                 checkScrollHandler,
                 { passive: true },
             );
 
             return () => window.removeEventListener(
-                eventNameValuesEnumsData.scroll,
+                EventNameEnum.SCROLL,
                 checkScrollHandler,
             );
         },
@@ -74,12 +75,11 @@ export const BackToTop = () => {
                         scale: 0.8,
                     }}
                     style={{
-                        backgroundColor: "var(--bg-tertiary)",
-                        border: "1px solid var(--border-primary)",
-                        color: "var(--text-primary)",
+                        backgroundColor: "var(--text-primary)",
+                        color: "var(--bg-primary)",
                     }}
                     onClick={() => window.scrollTo({
-                        behavior: scrollBehaviorValuesEnumsData.smooth,
+                        behavior: scrollBehaviorValuesConstantsData.smooth,
                         top: 0,
                     })}
                 >

@@ -3,9 +3,11 @@
 import Link from "next/link";
 import { useState } from "react";
 
-import { componentStringsData } from "@/data";
+import { componentStringsData, ruleSearchStringsData } from "@/data";
+import { ButtonTypeEnum } from "@/enums";
 
 import { BrandMarkIcon } from "./brand-mark-icon";
+import { MagnifierIcon } from "./magnifier-icon";
 import { RuleSearch } from "./rule-search";
 import { RuleSearchTrigger } from "./rule-search-trigger";
 import { ThemeToggle } from "./theme-toggle";
@@ -203,10 +205,12 @@ export const Navbar = () => {
                             md:hidden
                         "
                     >
-                        <RuleSearchTrigger
-                            isCompact
-                            onOpen={() => setIsSearchOpen(true)}
-                        />
+                        <div className="hidden min-[400px]:block">
+                            <RuleSearchTrigger
+                                isCompact
+                                onOpen={() => setIsSearchOpen(true)}
+                            />
+                        </div>
                         <ThemeToggle />
                         <button
                             aria-label={componentStringsData.toggleMenuLabel}
@@ -360,6 +364,33 @@ export const Navbar = () => {
                                     {label}
                                 </Link>
                             ))}
+                            <button
+                                aria-label={ruleSearchStringsData.triggerAriaLabel}
+                                style={{ color: "var(--text-secondary)" }}
+                                type={ButtonTypeEnum.BUTTON}
+                                className="
+                                    flex
+                                    w-full
+                                    items-center
+                                    gap-2
+                                    rounded-lg
+                                    px-3
+                                    py-2.5
+                                    text-sm
+                                    font-medium
+                                    transition-colors
+                                    duration-200
+                                    min-[400px]:hidden
+                                "
+                                onClick={() => {
+                                    setIsSearchOpen(true);
+
+                                    setIsMobileMenuOpen(false);
+                                }}
+                            >
+                                <MagnifierIcon className="size-4" />
+                                {ruleSearchStringsData.triggerLabel}
+                            </button>
                             <div
                                 className="my-2 h-px"
                                 style={{ backgroundColor: "var(--border-primary)" }}
