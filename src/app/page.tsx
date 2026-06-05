@@ -2,18 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
+import { Card, LintButton, SquiggleIcon } from "@/atoms";
 import {
     AnimatedCodeFixer,
     AutoFixVignette,
-    Card,
     CodeBlock,
     ConfigsVignette,
     FlatConfigVignette,
-    LintButton,
     MarkerHighlight,
     ReactVignette,
     SectionDivider,
-    SquiggleIcon,
     TypescriptVignette,
     ZeroDepsVignette,
 } from "@/components";

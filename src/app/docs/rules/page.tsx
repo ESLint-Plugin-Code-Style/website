@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { Badge, CountUp } from "@/components";
+import { Badge, CountUp } from "@/atoms";
 import {
     categoriesRulesData,
     configurableRulesData,

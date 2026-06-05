@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { LintButton } from "@/components";
+import { LintButton } from "@/atoms";
 import { notFoundStringsData } from "@/data";
 import { LintButtonSizeEnum, LintButtonToneEnum } from "@/enums";
 

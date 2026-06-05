@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { Badge } from "@/components";
+import { Badge } from "@/atoms";
 import { CodeBlock } from "@/components";
 import { categoriesRulesData, codeFilenameValuesConstantsData, getCategoryBySlugRulesDataHandler } from "@/data";
 import { ruleConfigFragmentStringsData, rulesCategoryStringsData } from "@/data";

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { Card } from "@/components";
+import { Card } from "@/atoms";
 import { docsOverviewStringsData } from "@/data";
 import { CardVariantEnum } from "@/enums";
 

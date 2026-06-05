@@ -1,4 +1,4 @@
-import { CopyButton } from "./copy-button";
+import { CopyButton } from "@/atoms";
 
 export const CodeBlock = ({
     code,

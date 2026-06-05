@@ -3,12 +3,10 @@
 import Link from "next/link";
 import { useState } from "react";
 
+import { BrandMarkIcon, IconButton, MagnifierIcon } from "@/atoms";
 import { componentStringsData, ruleSearchStringsData } from "@/data";
 import { ButtonTypeEnum } from "@/enums";
 
-import { BrandMarkIcon } from "./brand-mark-icon";
-import { IconButton } from "./icon-button";
-import { MagnifierIcon } from "./magnifier-icon";
 import { RuleSearch } from "./rule-search";
 import { RuleSearchTrigger } from "./rule-search-trigger";
 import { ThemeToggle } from "./theme-toggle";
@@ -352,7 +350,6 @@ export const Navbar = () => {
                             ))}
                             <button
                                 aria-label={ruleSearchStringsData.triggerAriaLabel}
-                                style={{ color: "var(--text-secondary)" }}
                                 type={ButtonTypeEnum.BUTTON}
                                 className="
                                     flex
@@ -360,14 +357,19 @@ export const Navbar = () => {
                                     items-center
                                     gap-2
                                     rounded-lg
+                                    border
                                     px-3
                                     py-2.5
                                     text-sm
-                                    font-medium
                                     transition-colors
                                     duration-200
                                     min-[400px]:hidden
                                 "
+                                style={{
+                                    backgroundColor: "var(--bg-tertiary)",
+                                    borderColor: "var(--border-primary)",
+                                    color: "var(--text-tertiary)",
+                                }}
                                 onClick={() => {
                                     setIsSearchOpen(true);
 

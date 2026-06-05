@@ -10,16 +10,10 @@ import {
     useState,
 } from "react";
 
+import { Input, MagnifierIcon } from "@/atoms";
 import { categoriesRulesData, ruleSearchStringsData, scrollBehaviorValuesConstantsData } from "@/data";
-import {
-    ButtonTypeEnum,
-    EventNameEnum,
-    InputTypeEnum,
-    KeyboardKeyEnum,
-} from "@/enums";
+import { ButtonTypeEnum, EventNameEnum, KeyboardKeyEnum } from "@/enums";
 import type { SearchRuleEntryInterface } from "@/interfaces";
-
-import { MagnifierIcon } from "./magnifier-icon";
 
 const searchIndexData: SearchRuleEntryInterface[] = categoriesRulesData.flatMap(({
     name: categoryName,
@@ -289,19 +283,12 @@ export const RuleSearch = ({
                             "
                         >
                             <MagnifierIcon className="size-5 shrink-0" />
-                            <input
-                                aria-label={ruleSearchStringsData.inputAriaLabel}
+                            <Input
+                                ariaLabel={ruleSearchStringsData.inputAriaLabel}
+                                className="text-base"
+                                inputRef={inputRef}
                                 placeholder={ruleSearchStringsData.placeholder}
-                                ref={inputRef}
-                                style={{ color: "var(--text-primary)" }}
-                                type={InputTypeEnum.TEXT}
                                 value={query}
-                                className="
-                                    w-full
-                                    bg-transparent
-                                    text-base
-                                    outline-none
-                                "
                                 onChange={({ target }) => setQuery(target.value)}
                             />
                         </div>

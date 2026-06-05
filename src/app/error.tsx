@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-import { Button } from "@/components";
+import { Button } from "@/atoms";
 import { errorBoundaryStringsData } from "@/data";
 import { LintButtonToneEnum } from "@/enums";
 

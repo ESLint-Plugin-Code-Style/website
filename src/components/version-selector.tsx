@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
+import { Input } from "@/atoms";
 import { pluginConfigData, releaseVersionsData, versionSelectorStringsData } from "@/data";
 import { EventNameEnum, InputTypeEnum, KeyboardKeyEnum } from "@/enums";
 
@@ -163,27 +164,20 @@ export const VersionSelector = ({ isAlignLeft }: { isAlignLeft?: boolean }) => {
                         className="border-b p-2"
                         style={{ borderColor: "var(--border-primary)" }}
                     >
-                        <input
-                            aria-label={versionSelectorStringsData.ariaLabelSearch}
+                        <Input
+                            ariaLabel={versionSelectorStringsData.ariaLabelSearch}
+                            inputRef={inputRef}
                             placeholder={versionSelectorStringsData.searchPlaceholder}
-                            ref={inputRef}
-                            type={InputTypeEnum.TEXT}
+                            style={{ borderColor: "var(--border-primary)" }}
                             value={searchQuery}
                             className="
-                                w-full
                                 rounded-md
                                 border
-                                bg-transparent
                                 px-2
                                 py-1.5
                                 text-sm
-                                outline-none
                                 focus:ring-1
                             "
-                            style={{
-                                borderColor: "var(--border-primary)",
-                                color: "var(--text-primary)",
-                            }}
                             onChange={({ target }) => setSearchQuery(target.value)}
                         />
                     </div>
