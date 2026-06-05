@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { MouseEventHandler, ReactNode } from "react";
 
-import { buttonTypeValuesEnumsData, lintButtonSizeValuesEnumsData, lintButtonToneValuesEnumsData } from "@/data";
+import { ButtonTypeEnum, LintButtonSizeEnum, LintButtonToneEnum } from "@/enums";
 import { joinClassesHandler } from "@/lib";
 import type {
     ButtonTypeType,
@@ -114,11 +114,11 @@ export const LintButton = ({
     tone?: LintButtonToneType,
     type?: ButtonTypeType,
 }) => {
-    const resolvedSize: LintButtonSizeType = size ?? lintButtonSizeValuesEnumsData.md;
+    const resolvedSize: LintButtonSizeType = size ?? LintButtonSizeEnum.MD;
 
-    const resolvedTone: LintButtonToneType = tone ?? lintButtonToneValuesEnumsData.primary;
+    const resolvedTone: LintButtonToneType = tone ?? LintButtonToneEnum.PRIMARY;
 
-    const isSecondary = resolvedTone === lintButtonToneValuesEnumsData.secondary;
+    const isSecondary = resolvedTone === LintButtonToneEnum.SECONDARY;
 
     const toneBackground = styleByTone[resolvedTone].background;
 
@@ -169,7 +169,7 @@ export const LintButton = ({
             aria-label={ariaLabel}
             className={sharedClass}
             style={style}
-            type={type ?? buttonTypeValuesEnumsData.button}
+            type={type ?? ButtonTypeEnum.BUTTON}
             onClick={onClick as MouseEventHandler<HTMLButtonElement>}
         >
             <span

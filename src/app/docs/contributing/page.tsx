@@ -2,13 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { CodeBlock } from "@/components";
-import {
-    codeFilenameValuesEnumsData,
-    codeLanguageValuesEnumsData,
-    codeSnippetStringsData,
-    contributingStringsData,
-} from "@/data";
+import { codeFilenameValuesConstantsData, codeSnippetStringsData, contributingStringsData } from "@/data";
 import { totalRulesData, tsOnlyRulesData } from "@/data";
+import { CodeLanguageEnum } from "@/enums";
 
 export const metadata: Metadata = { title: contributingStringsData.metadataTitle };
 
@@ -106,14 +102,14 @@ const ContributingPage = () => {
             <p>{contributingStringsData.cloneDescription}</p>
             <CodeBlock
                 code={cloneAndInstall}
-                filename={codeFilenameValuesEnumsData.terminal}
-                language={codeLanguageValuesEnumsData.bash}
+                filename={codeFilenameValuesConstantsData.terminal}
+                language={CodeLanguageEnum.BASH}
             />
             <p>{contributingStringsData.gettingStartedBuildDescription}</p>
             <CodeBlock
                 code={buildCommand}
-                filename={codeFilenameValuesEnumsData.terminal}
-                language={codeLanguageValuesEnumsData.bash}
+                filename={codeFilenameValuesConstantsData.terminal}
+                language={CodeLanguageEnum.BASH}
             />
             <p>
                 {contributingStringsData.gettingStartedBuildNote}
@@ -128,8 +124,8 @@ const ContributingPage = () => {
             </p>
             <CodeBlock
                 code={projectStructure}
-                filename={codeFilenameValuesEnumsData.projectStructure}
-                language={codeLanguageValuesEnumsData.text}
+                filename={codeFilenameValuesConstantsData.projectStructure}
+                language={CodeLanguageEnum.TEXT}
             />
             <h3>{contributingStringsData.keyFilesTitle}</h3>
             <ul>
@@ -154,8 +150,8 @@ const ContributingPage = () => {
             <p>{contributingStringsData.rulePatternDescription}</p>
             <CodeBlock
                 code={rulePattern}
-                filename={codeFilenameValuesEnumsData.rulesArrays}
-                language={codeLanguageValuesEnumsData.js}
+                filename={codeFilenameValuesConstantsData.rulesArrays}
+                language={CodeLanguageEnum.JS}
                 isShowLineNumbers
             />
             <h3>{contributingStringsData.guidelinesTitle}</h3>
@@ -242,8 +238,8 @@ const ContributingPage = () => {
             </ol>
             <CodeBlock
                 code={testCommand}
-                filename={codeFilenameValuesEnumsData.terminal}
-                language={codeLanguageValuesEnumsData.bash}
+                filename={codeFilenameValuesConstantsData.terminal}
+                language={CodeLanguageEnum.BASH}
             />
             <p>{contributingStringsData.testAllProjectsNote}</p>
             <h2 id="build">{contributingStringsData.buildTitle}</h2>
@@ -265,8 +261,8 @@ const ContributingPage = () => {
             </ul>
             <CodeBlock
                 code={buildCommand}
-                filename={codeFilenameValuesEnumsData.terminal}
-                language={codeLanguageValuesEnumsData.bash}
+                filename={codeFilenameValuesConstantsData.terminal}
+                language={CodeLanguageEnum.BASH}
             />
             <h2 id="commit-conventions">{contributingStringsData.commitConventionsTitle}</h2>
             <p>{contributingStringsData.commitConventionsDescription}</p>

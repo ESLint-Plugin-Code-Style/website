@@ -10,15 +10,13 @@ import {
     useState,
 } from "react";
 
+import { categoriesRulesData, ruleSearchStringsData, scrollBehaviorValuesConstantsData } from "@/data";
 import {
-    buttonTypeValuesEnumsData,
-    categoriesRulesData,
-    eventNameValuesEnumsData,
-    inputTypeValuesEnumsData,
-    keyboardKeyValuesEnumsData,
-    ruleSearchStringsData,
-    scrollBehaviorValuesEnumsData,
-} from "@/data";
+    ButtonTypeEnum,
+    EventNameEnum,
+    InputTypeEnum,
+    KeyboardKeyEnum,
+} from "@/enums";
 import type { SearchRuleEntryInterface } from "@/interfaces";
 
 import { MagnifierIcon } from "./magnifier-icon";
@@ -119,7 +117,7 @@ export const RuleSearch = ({
         if (pathname === target) {
             const element = document.getElementById(name);
 
-            if (element) element.scrollIntoView({ behavior: scrollBehaviorValuesEnumsData.smooth });
+            if (element) element.scrollIntoView({ behavior: scrollBehaviorValuesConstantsData.smooth });
         } else router.push(`${target}#${name}`);
     };
 
@@ -152,7 +150,7 @@ export const RuleSearch = ({
                     metaKey,
                 } = event;
 
-                if (key === keyboardKeyValuesEnumsData.keyK && (metaKey || ctrlKey)) {
+                if (key === KeyboardKeyEnum.KEY_K && (metaKey || ctrlKey)) {
                     event.preventDefault();
 
                     if (isOpen) onClose();
@@ -163,13 +161,13 @@ export const RuleSearch = ({
 
                 if (!isOpen) return;
 
-                if (key === keyboardKeyValuesEnumsData.escape) {
+                if (key === KeyboardKeyEnum.ESCAPE) {
                     onClose();
 
                     return;
                 }
 
-                if (key === keyboardKeyValuesEnumsData.arrowDown) {
+                if (key === KeyboardKeyEnum.ARROW_DOWN) {
                     event.preventDefault();
 
                     setActiveIndex((previous) => Math.min(
@@ -180,7 +178,7 @@ export const RuleSearch = ({
                     return;
                 }
 
-                if (key === keyboardKeyValuesEnumsData.arrowUp) {
+                if (key === KeyboardKeyEnum.ARROW_UP) {
                     event.preventDefault();
 
                     setActiveIndex((previous) => Math.max(
@@ -191,7 +189,7 @@ export const RuleSearch = ({
                     return;
                 }
 
-                if (key === keyboardKeyValuesEnumsData.enter) {
+                if (key === KeyboardKeyEnum.ENTER) {
                     const match = results[activeIndex];
 
                     if (match) {
@@ -204,12 +202,12 @@ export const RuleSearch = ({
             };
 
             document.addEventListener(
-                eventNameValuesEnumsData.keydown,
+                EventNameEnum.KEYDOWN,
                 processKeyHandler,
             );
 
             return () => document.removeEventListener(
-                eventNameValuesEnumsData.keydown,
+                EventNameEnum.KEYDOWN,
                 processKeyHandler,
             );
         },
@@ -296,7 +294,7 @@ export const RuleSearch = ({
                                 placeholder={ruleSearchStringsData.placeholder}
                                 ref={inputRef}
                                 style={{ color: "var(--text-primary)" }}
-                                type={inputTypeValuesEnumsData.text}
+                                type={InputTypeEnum.TEXT}
                                 value={query}
                                 className="
                                     w-full
@@ -390,7 +388,7 @@ export const RuleSearch = ({
                                                 role="option"
                                             >
                                                 <button
-                                                    type={buttonTypeValuesEnumsData.button}
+                                                    type={ButtonTypeEnum.BUTTON}
                                                     className="
                                                         flex
                                                         w-full

@@ -2,7 +2,8 @@
 
 import { useEffect } from "react";
 
-import { errorBoundaryStringsData, inputTypeValuesEnumsData } from "@/data";
+import { errorBoundaryStringsData } from "@/data";
+import { InputTypeEnum } from "@/enums";
 
 const ErrorBoundary = ({
     error,
@@ -174,7 +175,7 @@ const ErrorBoundary = ({
                 </div>
                 <div className="flex flex-wrap gap-3">
                     <button
-                        type={inputTypeValuesEnumsData.button}
+                        type={InputTypeEnum.BUTTON}
                         className="
                             rounded-lg
                             px-5
@@ -193,7 +194,7 @@ const ErrorBoundary = ({
                         {errorBoundaryStringsData.ctaTryAgain}
                     </button>
                     <button
-                        type={inputTypeValuesEnumsData.button}
+                        type={InputTypeEnum.BUTTON}
                         className="
                             rounded-lg
                             border

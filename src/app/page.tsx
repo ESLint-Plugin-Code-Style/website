@@ -18,22 +18,24 @@ import {
     ZeroDepsVignette,
 } from "@/components";
 import {
-    cardVariantValuesEnumsData,
     categoriesRulesData,
-    codeFilenameValuesEnumsData,
-    codeLanguageValuesEnumsData,
+    codeFilenameValuesConstantsData,
     codeSnippetStringsData,
     fixableRulesData,
     homeStringsData,
-    lintAccentNameValuesEnumsData,
-    lintButtonSizeValuesEnumsData,
-    lintButtonToneValuesEnumsData,
-    lintStatusValuesEnumsData,
     pluginConfigData,
     redesignStringsData,
-    squiggleVariantValuesEnumsData,
     totalRulesData,
 } from "@/data";
+import {
+    CardVariantEnum,
+    CodeLanguageEnum,
+    LintAccentNameEnum,
+    LintButtonSizeEnum,
+    LintButtonToneEnum,
+    LintStatusEnum,
+    SquiggleVariantEnum,
+} from "@/enums";
 import { getLintAccentHandler } from "@/lib";
 import type { LintAccentNameType } from "@/types";
 
@@ -46,37 +48,37 @@ const gesturesData: {
     vignette: ReactNode,
 }[] = [
     {
-        accent: lintAccentNameValuesEnumsData.pass,
+        accent: LintAccentNameEnum.PASS,
         description: homeStringsData.featureAutoFixDescription,
         title: homeStringsData.featureAutoFixTitle,
         vignette: <AutoFixVignette />,
     },
     {
-        accent: lintAccentNameValuesEnumsData.info,
+        accent: LintAccentNameEnum.INFO,
         description: homeStringsData.featureReactDescription,
         title: homeStringsData.featureReactTitle,
         vignette: <ReactVignette />,
     },
     {
-        accent: lintAccentNameValuesEnumsData.violet,
+        accent: LintAccentNameEnum.VIOLET,
         description: homeStringsData.featureFlatConfigDescription,
         title: homeStringsData.featureFlatConfigTitle,
         vignette: <FlatConfigVignette />,
     },
     {
-        accent: lintAccentNameValuesEnumsData.error,
+        accent: LintAccentNameEnum.ERROR,
         description: homeStringsData.featureZeroDepsDescription,
         title: homeStringsData.featureZeroDepsTitle,
         vignette: <ZeroDepsVignette />,
     },
     {
-        accent: lintAccentNameValuesEnumsData.warn,
+        accent: LintAccentNameEnum.WARN,
         description: homeStringsData.featureTypeScriptDescription,
         title: homeStringsData.featureTypeScriptTitle,
         vignette: <TypescriptVignette />,
     },
     {
-        accent: lintAccentNameValuesEnumsData.info,
+        accent: LintAccentNameEnum.INFO,
         description: homeStringsData.featureConfigsDescription,
         title: homeStringsData.featureConfigsTitle,
         vignette: <ConfigsVignette />,
@@ -88,38 +90,34 @@ const beyondEslintComparisonsData = [
         afterCode: homeStringsData.beyondEslintComparison1After,
         beforeCode: homeStringsData.beyondEslintComparison1Before,
         caption: homeStringsData.beyondEslintComparison1Caption,
-        language: codeLanguageValuesEnumsData.javascript,
+        language: CodeLanguageEnum.JAVASCRIPT,
         rule: homeStringsData.beyondEslintComparison1Rule,
     },
     {
         afterCode: homeStringsData.beyondEslintComparison2After,
         beforeCode: homeStringsData.beyondEslintComparison2Before,
         caption: homeStringsData.beyondEslintComparison2Caption,
-        language: codeLanguageValuesEnumsData.js,
+        language: CodeLanguageEnum.JS,
         rule: homeStringsData.beyondEslintComparison2Rule,
     },
     {
         afterCode: homeStringsData.beyondEslintComparison3After,
         beforeCode: homeStringsData.beyondEslintComparison3Before,
         caption: homeStringsData.beyondEslintComparison3Caption,
-        language: codeLanguageValuesEnumsData.javascript,
+        language: CodeLanguageEnum.JAVASCRIPT,
         rule: homeStringsData.beyondEslintComparison3Rule,
     },
 ];
 
 const rulesIndexAccentCycleData: LintAccentNameType[] = [
-    lintAccentNameValuesEnumsData.error,
-    lintAccentNameValuesEnumsData.warn,
-    lintAccentNameValuesEnumsData.pass,
-    lintAccentNameValuesEnumsData.info,
-    lintAccentNameValuesEnumsData.violet,
+    LintAccentNameEnum.ERROR,
+    LintAccentNameEnum.WARN,
+    LintAccentNameEnum.PASS,
+    LintAccentNameEnum.INFO,
+    LintAccentNameEnum.VIOLET,
 ];
 
-const quickStartStepAccentsData: LintAccentNameType[] = [
-    lintAccentNameValuesEnumsData.error,
-    lintAccentNameValuesEnumsData.warn,
-    lintAccentNameValuesEnumsData.pass,
-];
+const quickStartStepAccentsData: LintAccentNameType[] = [LintAccentNameEnum.ERROR, LintAccentNameEnum.WARN, LintAccentNameEnum.PASS];
 
 const eslintConfigCode = `import codeStyle from "eslint-plugin-code-style";
 
@@ -205,7 +203,7 @@ const HomePage = () => (
                         "
                     >
                         <span className="block">
-                            <MarkerHighlight status={lintStatusValuesEnumsData.warn}>{homeStringsData.heroTitle}</MarkerHighlight>
+                            <MarkerHighlight status={LintStatusEnum.WARN}>{homeStringsData.heroTitle}</MarkerHighlight>
                         </span>
                         <span
                             style={{ color: "var(--text-secondary)" }}
@@ -224,7 +222,7 @@ const HomePage = () => (
                             <SquiggleIcon
                                 className="-mt-1 h-2 w-1/2"
                                 strokeWidth={1.8}
-                                variant={squiggleVariantValuesEnumsData.fix}
+                                variant={SquiggleVariantEnum.FIX}
                                 isAnimate
                             />
                         </span>
@@ -284,16 +282,16 @@ const HomePage = () => (
                     >
                         <LintButton
                             href="/docs/rules"
-                            size={lintButtonSizeValuesEnumsData.lg}
-                            tone={lintButtonToneValuesEnumsData.primary}
+                            size={LintButtonSizeEnum.LG}
+                            tone={LintButtonToneEnum.PRIMARY}
                         >
                             {homeStringsData.ctaViewRules}
                             <span aria-hidden="true">→</span>
                         </LintButton>
                         <LintButton
                             href="/docs/getting-started"
-                            size={lintButtonSizeValuesEnumsData.lg}
-                            tone={lintButtonToneValuesEnumsData.ghost}
+                            size={LintButtonSizeEnum.LG}
+                            tone={LintButtonToneEnum.GHOST}
                         >
                             {homeStringsData.ctaGetStarted}
                         </LintButton>
@@ -413,7 +411,7 @@ const HomePage = () => (
                 </div>
                 <Card
                     className="relative"
-                    variant={cardVariantValuesEnumsData.tab}
+                    variant={CardVariantEnum.TAB}
                 >
                     <blockquote
                         className="text-xl leading-snug font-semibold"
@@ -953,8 +951,8 @@ const HomePage = () => (
                             </h3>
                             <CodeBlock
                                 code={codeSnippetStringsData.installNpm}
-                                filename={codeFilenameValuesEnumsData.terminal}
-                                language={codeLanguageValuesEnumsData.bash}
+                                filename={codeFilenameValuesConstantsData.terminal}
+                                language={CodeLanguageEnum.BASH}
                             />
                         </div>
                     </div>
@@ -988,8 +986,8 @@ const HomePage = () => (
                             </h3>
                             <CodeBlock
                                 code={eslintConfigCode}
-                                filename={codeFilenameValuesEnumsData.eslintConfig}
-                                language={codeLanguageValuesEnumsData.js}
+                                filename={codeFilenameValuesConstantsData.eslintConfig}
+                                language={CodeLanguageEnum.JS}
                             />
                             <p
                                 className="mt-3 text-sm"
@@ -1016,8 +1014,8 @@ const HomePage = () => (
                             <div className="mt-2">
                                 <CodeBlock
                                     code={eslintConfigTsCode}
-                                    filename={codeFilenameValuesEnumsData.eslintConfig}
-                                    language={codeLanguageValuesEnumsData.js}
+                                    filename={codeFilenameValuesConstantsData.eslintConfig}
+                                    language={CodeLanguageEnum.JS}
                                 />
                             </div>
                         </div>
@@ -1052,8 +1050,8 @@ const HomePage = () => (
                             </h3>
                             <CodeBlock
                                 code={codeSnippetStringsData.eslintFixCommand}
-                                filename={codeFilenameValuesEnumsData.terminal}
-                                language={codeLanguageValuesEnumsData.bash}
+                                filename={codeFilenameValuesConstantsData.terminal}
+                                language={CodeLanguageEnum.BASH}
                             />
                         </div>
                     </div>
@@ -1061,8 +1059,8 @@ const HomePage = () => (
                 <div className="mt-12">
                     <LintButton
                         href="/docs/getting-started"
-                        size={lintButtonSizeValuesEnumsData.lg}
-                        tone={lintButtonToneValuesEnumsData.primary}
+                        size={LintButtonSizeEnum.LG}
+                        tone={LintButtonToneEnum.PRIMARY}
                     >
                         {homeStringsData.ctaInstallationGuide}
                         <span aria-hidden="true">→</span>

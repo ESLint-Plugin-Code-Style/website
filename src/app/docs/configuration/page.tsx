@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { CodeBlock } from "@/components";
-import { codeFilenameValuesEnumsData, codeLanguageValuesEnumsData, configurationStringsData } from "@/data";
+import { codeFilenameValuesConstantsData, configurationStringsData } from "@/data";
 import { totalRulesData, tsOnlyRulesData } from "@/data";
+import { CodeLanguageEnum } from "@/enums";
 
 export const metadata: Metadata = { title: configurationStringsData.metadataTitle };
 
@@ -170,8 +171,8 @@ const ConfigurationPage = () => (
                     <div className="px-0">
                         <CodeBlock
                             code={code}
-                            filename={codeFilenameValuesEnumsData.eslintConfig}
-                            language={codeLanguageValuesEnumsData.js}
+                            filename={codeFilenameValuesConstantsData.eslintConfig}
+                            language={CodeLanguageEnum.JS}
                         />
                     </div>
                 </div>
@@ -181,15 +182,15 @@ const ConfigurationPage = () => (
         <p>{configurationStringsData.manualConfigDescription}</p>
         <CodeBlock
             code={manualConfig}
-            filename={codeFilenameValuesEnumsData.eslintConfig}
-            language={codeLanguageValuesEnumsData.js}
+            filename={codeFilenameValuesConstantsData.eslintConfig}
+            language={CodeLanguageEnum.JS}
         />
         <h2 id="rule-options">{configurationStringsData.ruleOptionsTitle}</h2>
         <p>{configurationStringsData.ruleOptionsDescription}</p>
         <CodeBlock
             code={configurableRuleExample}
-            filename={codeFilenameValuesEnumsData.eslintConfig}
-            language={codeLanguageValuesEnumsData.js}
+            filename={codeFilenameValuesConstantsData.eslintConfig}
+            language={CodeLanguageEnum.JS}
         />
         <p>
             {configurationStringsData.ruleOptionsLinkPrefix}

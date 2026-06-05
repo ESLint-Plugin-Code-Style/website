@@ -9,32 +9,27 @@ import {
 } from "react";
 
 import { ThemeContext } from "@/contexts";
-import {
-    componentStringsData,
-    eventNameValuesEnumsData,
-    localStorageKeyValuesEnumsData,
-    methodNameValuesEnumsData,
-    themeValuesEnumsData,
-} from "@/data";
+import { componentStringsData, localStorageKeyValuesConstantsData, methodNameValuesConstantsData } from "@/data";
+import { EventNameEnum, ThemeEnum } from "@/enums";
 import type { ResolvedThemeType, ThemeSnapshotType, ThemeType } from "@/types";
 
 const getStoredThemeHandler = (): ThemeType => {
-    const stored = localStorage.getItem(localStorageKeyValuesEnumsData.theme);
+    const stored = localStorage.getItem(localStorageKeyValuesConstantsData.theme);
 
-    return stored === themeValuesEnumsData.light || stored === themeValuesEnumsData.dark || stored === themeValuesEnumsData.system ? stored : themeValuesEnumsData.system;
+    return stored === ThemeEnum.LIGHT || stored === ThemeEnum.DARK || stored === ThemeEnum.SYSTEM ? stored : ThemeEnum.SYSTEM;
 };
 
 const getSystemDarkHandler = (): boolean => window.matchMedia(componentStringsData.prefersColorSchemeDark).matches;
 
 const resolveThemeHandler = (theme: ThemeType): ResolvedThemeType => {
-    if (theme === themeValuesEnumsData.system) return getSystemDarkHandler() ? themeValuesEnumsData.dark : themeValuesEnumsData.light;
+    if (theme === ThemeEnum.SYSTEM) return getSystemDarkHandler() ? ThemeEnum.DARK : ThemeEnum.LIGHT;
 
     return theme;
 };
 
 let themeStore: ThemeSnapshotType = {
-    resolved: themeValuesEnumsData.light,
-    theme: themeValuesEnumsData.system,
+    resolved: ThemeEnum.LIGHT,
+    theme: ThemeEnum.SYSTEM,
 };
 
 const themeListeners = new Set<() => void>();
@@ -44,14 +39,14 @@ const notifyListenersHandler = () => themeListeners.forEach((listener) => listen
 const subscribeToThemeHandler = (callback: () => void) => {
     themeListeners.add(callback);
 
-    return () => themeListeners[methodNameValuesEnumsData.deleteMethod](callback);
+    return () => themeListeners[methodNameValuesConstantsData.deleteMethod](callback);
 };
 
 const getThemeSnapshotHandler = () => themeStore;
 
 const themeServerSnapshot: ThemeSnapshotType = {
-    resolved: themeValuesEnumsData.light,
-    theme: themeValuesEnumsData.system,
+    resolved: ThemeEnum.LIGHT,
+    theme: ThemeEnum.SYSTEM,
 };
 
 const getThemeServerSnapshotHandler = (): ThemeSnapshotType => themeServerSnapshot;
@@ -65,13 +60,13 @@ const updateThemeStoreHandler = (newTheme: ThemeType) => {
     };
 
     localStorage.setItem(
-        localStorageKeyValuesEnumsData.theme,
+        localStorageKeyValuesConstantsData.theme,
         newTheme,
     );
 
     document.documentElement.classList.toggle(
-        themeValuesEnumsData.dark,
-        resolved === themeValuesEnumsData.dark,
+        ThemeEnum.DARK,
+        resolved === ThemeEnum.DARK,
     );
 
     notifyListenersHandler();
@@ -88,8 +83,8 @@ const initializeThemeStoreHandler = () => {
     };
 
     document.documentElement.classList.toggle(
-        themeValuesEnumsData.dark,
-        resolved === themeValuesEnumsData.dark,
+        ThemeEnum.DARK,
+        resolved === ThemeEnum.DARK,
     );
 
     notifyListenersHandler();
@@ -130,8 +125,8 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
             const mediaQuery = window.matchMedia(componentStringsData.prefersColorSchemeDark);
 
             const changeHandler = () => {
-                if (themeStore.theme === themeValuesEnumsData.system) {
-                    const resolved = getSystemDarkHandler() ? themeValuesEnumsData.dark : themeValuesEnumsData.light;
+                if (themeStore.theme === ThemeEnum.SYSTEM) {
+                    const resolved = getSystemDarkHandler() ? ThemeEnum.DARK : ThemeEnum.LIGHT;
 
                     themeStore = {
                         ...themeStore,
@@ -139,8 +134,8 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
                     };
 
                     document.documentElement.classList.toggle(
-                        themeValuesEnumsData.dark,
-                        resolved === themeValuesEnumsData.dark,
+                        ThemeEnum.DARK,
+                        resolved === ThemeEnum.DARK,
                     );
 
                     notifyListenersHandler();
@@ -148,12 +143,12 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
             };
 
             mediaQuery.addEventListener(
-                eventNameValuesEnumsData.change,
+                EventNameEnum.CHANGE,
                 changeHandler,
             );
 
             return () => mediaQuery.removeEventListener(
-                eventNameValuesEnumsData.change,
+                EventNameEnum.CHANGE,
                 changeHandler,
             );
         },

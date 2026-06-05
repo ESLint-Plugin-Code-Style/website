@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 
 import { LintButton } from "@/components";
-import { lintButtonSizeValuesEnumsData, lintButtonToneValuesEnumsData, notFoundStringsData } from "@/data";
+import { notFoundStringsData } from "@/data";
+import { LintButtonSizeEnum, LintButtonToneEnum } from "@/enums";
 
 export const metadata: Metadata = { title: notFoundStringsData.metadataTitle };
 
@@ -66,15 +67,15 @@ const NotFound = () => (
         >
             <LintButton
                 href="/"
-                size={lintButtonSizeValuesEnumsData.md}
-                tone={lintButtonToneValuesEnumsData.primary}
+                size={LintButtonSizeEnum.MD}
+                tone={LintButtonToneEnum.PRIMARY}
             >
                 {notFoundStringsData.ctaHome}
             </LintButton>
             <LintButton
                 href="/docs"
-                size={lintButtonSizeValuesEnumsData.md}
-                tone={lintButtonToneValuesEnumsData.secondary}
+                size={LintButtonSizeEnum.MD}
+                tone={LintButtonToneEnum.SECONDARY}
             >
                 {notFoundStringsData.ctaDocs}
             </LintButton>

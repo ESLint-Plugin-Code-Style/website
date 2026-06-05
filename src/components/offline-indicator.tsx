@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 
-import { eventNameValuesEnumsData, offlineIndicatorStringsData } from "@/data";
+import { offlineIndicatorStringsData } from "@/data";
+import { EventNameEnum } from "@/enums";
 
 export const OfflineIndicator = () => {
     const [isOffline, setIsOffline] = useState(false);
@@ -18,23 +19,23 @@ export const OfflineIndicator = () => {
             const setOfflineHandler = () => setIsOffline(true);
 
             window.addEventListener(
-                eventNameValuesEnumsData.online,
+                EventNameEnum.ONLINE,
                 setOnlineHandler,
             );
 
             window.addEventListener(
-                eventNameValuesEnumsData.offline,
+                EventNameEnum.OFFLINE,
                 setOfflineHandler,
             );
 
             return () => {
                 window.removeEventListener(
-                    eventNameValuesEnumsData.online,
+                    EventNameEnum.ONLINE,
                     setOnlineHandler,
                 );
 
                 window.removeEventListener(
-                    eventNameValuesEnumsData.offline,
+                    EventNameEnum.OFFLINE,
                     setOfflineHandler,
                 );
             };

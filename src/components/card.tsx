@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { cardAsValuesEnumsData, cardVariantValuesEnumsData } from "@/data";
+import { CardAsEnum, CardVariantEnum } from "@/enums";
 import { joinClassesHandler } from "@/lib";
 import type { CardAsType, CardVariantType } from "@/types";
 
@@ -16,7 +16,7 @@ const resolveClassHandler = (
     className: string | undefined,
 ): string => joinClassesHandler(
     classByVariant[variant],
-    isRotateRight && variant === cardVariantValuesEnumsData.note && "rotate-right",
+    isRotateRight && variant === CardVariantEnum.NOTE && "rotate-right",
     className,
 );
 
@@ -33,9 +33,9 @@ export const Card = ({
     isRotateRight?: boolean,
     variant?: CardVariantType,
 }) => {
-    const resolvedVariant: CardVariantType = variant ?? cardVariantValuesEnumsData.tab;
+    const resolvedVariant: CardVariantType = variant ?? CardVariantEnum.TAB;
 
-    const resolvedAs: CardAsType = as ?? cardAsValuesEnumsData.div;
+    const resolvedAs: CardAsType = as ?? CardAsEnum.DIV;
 
     const resolvedClass = resolveClassHandler(
         resolvedVariant,
@@ -43,9 +43,9 @@ export const Card = ({
         className,
     );
 
-    if (resolvedAs === cardAsValuesEnumsData.article) return <article className={resolvedClass}>{children}</article>;
+    if (resolvedAs === CardAsEnum.ARTICLE) return <article className={resolvedClass}>{children}</article>;
 
-    if (resolvedAs === cardAsValuesEnumsData.section) return <section className={resolvedClass}>{children}</section>;
+    if (resolvedAs === CardAsEnum.SECTION) return <section className={resolvedClass}>{children}</section>;
 
     return <div className={resolvedClass}>{children}</div>;
 };

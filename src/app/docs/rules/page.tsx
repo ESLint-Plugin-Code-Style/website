@@ -3,7 +3,6 @@ import Link from "next/link";
 
 import { Badge, CountUp } from "@/components";
 import {
-    badgeVariantValuesEnumsData,
     categoriesRulesData,
     configurableRulesData,
     fixableRulesData,
@@ -12,6 +11,7 @@ import {
     totalRulesData,
     tsOnlyRulesData,
 } from "@/data";
+import { BadgeVariantEnum } from "@/enums";
 
 export const metadata: Metadata = {
     description: rulesIndexStringsData.metadataDescription,
@@ -43,31 +43,31 @@ const RulesPage = () => (
                     accent: "var(--text-secondary)",
                     label: rulesIndexStringsData.statTotal,
                     value: totalRulesData,
-                    variant: badgeVariantValuesEnumsData["default"],
+                    variant: BadgeVariantEnum.DEFAULT,
                 },
                 {
                     accent: "var(--lint-pass)",
                     label: rulesIndexStringsData.statAutoFixable,
                     value: fixableRulesData,
-                    variant: badgeVariantValuesEnumsData.lintPass,
+                    variant: BadgeVariantEnum.LINT_PASS,
                 },
                 {
                     accent: "var(--lint-info)",
                     label: rulesIndexStringsData.statConfigurable,
                     value: configurableRulesData,
-                    variant: badgeVariantValuesEnumsData.lintInfo,
+                    variant: BadgeVariantEnum.LINT_INFO,
                 },
                 {
                     accent: "var(--lint-warn)",
                     label: rulesIndexStringsData.statReportOnly,
                     value: reportOnlyRulesData,
-                    variant: badgeVariantValuesEnumsData.lintWarn,
+                    variant: BadgeVariantEnum.LINT_WARN,
                 },
                 {
                     accent: "var(--accent-violet)",
                     label: rulesIndexStringsData.statTsOnly,
                     value: tsOnlyRulesData,
-                    variant: badgeVariantValuesEnumsData.purple,
+                    variant: BadgeVariantEnum.PURPLE,
                 },
             ].map(({
                 accent,
@@ -108,18 +108,18 @@ const RulesPage = () => (
             "
         >
             <span className="flex items-center gap-1.5">
-                <Badge variant={badgeVariantValuesEnumsData.lintPass}>{rulesIndexStringsData.badgeFixable}</Badge>
+                <Badge variant={BadgeVariantEnum.LINT_PASS}>{rulesIndexStringsData.badgeFixable}</Badge>
                 {" "}
                 {rulesIndexStringsData.legendFixable}
                 <code>{rulesIndexStringsData.legendFixableCode}</code>
             </span>
             <span className="flex items-center gap-1.5">
-                <Badge variant={badgeVariantValuesEnumsData.lintInfo}>{rulesIndexStringsData.badgeConfigurable}</Badge>
+                <Badge variant={BadgeVariantEnum.LINT_INFO}>{rulesIndexStringsData.badgeConfigurable}</Badge>
                 {" "}
                 {rulesIndexStringsData.legendConfigurable}
             </span>
             <span className="flex items-center gap-1.5">
-                <Badge variant={badgeVariantValuesEnumsData.purple}>{rulesIndexStringsData.badgeTs}</Badge>
+                <Badge variant={BadgeVariantEnum.PURPLE}>{rulesIndexStringsData.badgeTs}</Badge>
                 {" "}
                 {rulesIndexStringsData.legendTsOnly}
             </span>
@@ -258,9 +258,9 @@ const RulesPage = () => (
                                         gap-1.5
                                     "
                                 >
-                                    {isFixable && <Badge variant={badgeVariantValuesEnumsData.lintPass}>{rulesIndexStringsData.badgeFixable}</Badge>}
-                                    {isConfigurable && <Badge variant={badgeVariantValuesEnumsData.lintInfo}>{rulesIndexStringsData.badgeOptions}</Badge>}
-                                    {isTsOnly && <Badge variant={badgeVariantValuesEnumsData.purple}>{rulesIndexStringsData.badgeTs}</Badge>}
+                                    {isFixable && <Badge variant={BadgeVariantEnum.LINT_PASS}>{rulesIndexStringsData.badgeFixable}</Badge>}
+                                    {isConfigurable && <Badge variant={BadgeVariantEnum.LINT_INFO}>{rulesIndexStringsData.badgeOptions}</Badge>}
+                                    {isTsOnly && <Badge variant={BadgeVariantEnum.PURPLE}>{rulesIndexStringsData.badgeTs}</Badge>}
                                 </div>
                             </Link>
                         ))}

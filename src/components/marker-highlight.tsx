@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { lintStatusValuesEnumsData } from "@/data";
+import { LintStatusEnum } from "@/enums";
 import { joinClassesHandler } from "@/lib";
 import type { LintStatusType } from "@/types";
 
@@ -20,7 +20,7 @@ export const MarkerHighlight = ({
     className?: string,
     status?: LintStatusType,
 }) => {
-    const resolvedStatus: LintStatusType = status ?? lintStatusValuesEnumsData.warn;
+    const resolvedStatus: LintStatusType = status ?? LintStatusEnum.WARN;
 
     const color = colorByStatus[resolvedStatus];
 

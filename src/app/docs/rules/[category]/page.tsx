@@ -4,14 +4,9 @@ import { notFound } from "next/navigation";
 
 import { Badge } from "@/components";
 import { CodeBlock } from "@/components";
-import {
-    badgeVariantValuesEnumsData,
-    categoriesRulesData,
-    codeFilenameValuesEnumsData,
-    codeLanguageValuesEnumsData,
-    getCategoryBySlugRulesDataHandler,
-} from "@/data";
+import { categoriesRulesData, codeFilenameValuesConstantsData, getCategoryBySlugRulesDataHandler } from "@/data";
 import { ruleConfigFragmentStringsData, rulesCategoryStringsData } from "@/data";
+import { BadgeVariantEnum, CodeLanguageEnum } from "@/enums";
 import type { CategoryPagePropsInterface } from "@/interfaces";
 
 export const generateStaticParams = async () => categoriesRulesData.map(({ slug }) => ({ category: slug }));
@@ -91,24 +86,24 @@ const CategoryPage = async ({ params }: { params: Promise<{ category: string }> 
                     gap-2
                 "
             >
-                <Badge variant={badgeVariantValuesEnumsData["default"]}>
+                <Badge variant={BadgeVariantEnum.DEFAULT}>
                     {category.rules.length}
                     {rulesCategoryStringsData.badgeRules}
                 </Badge>
                 {category.rules.filter(({ isFixable }) => isFixable).length > 0 && (
-                    <Badge variant={badgeVariantValuesEnumsData.success}>
+                    <Badge variant={BadgeVariantEnum.SUCCESS}>
                         {category.rules.filter(({ isFixable }) => isFixable).length}
                         {` ${rulesCategoryStringsData.badgeAutoFixable}`}
                     </Badge>
                 )}
                 {category.rules.filter(({ isConfigurable }) => isConfigurable).length > 0 && (
-                    <Badge variant={badgeVariantValuesEnumsData.info}>
+                    <Badge variant={BadgeVariantEnum.INFO}>
                         {category.rules.filter(({ isConfigurable }) => isConfigurable).length}
                         {` ${rulesCategoryStringsData.badgeConfigurable}`}
                     </Badge>
                 )}
                 {category.rules.filter(({ isTsOnly }) => isTsOnly).length > 0 && (
-                    <Badge variant={badgeVariantValuesEnumsData.purple}>
+                    <Badge variant={BadgeVariantEnum.PURPLE}>
                         {category.rules.filter(({ isTsOnly }) => isTsOnly).length}
                         {rulesCategoryStringsData.badgeTypeScriptOnly}
                     </Badge>
@@ -203,10 +198,10 @@ const CategoryPage = async ({ params }: { params: Promise<{ category: string }> 
                                 </code>
                             </h2>
                             <div className="flex items-center gap-1.5">
-                                {isFixable && <Badge variant={badgeVariantValuesEnumsData.success}>{rulesCategoryStringsData.badgeAutoFixable}</Badge>}
-                                {isConfigurable && <Badge variant={badgeVariantValuesEnumsData.info}>{rulesCategoryStringsData.badgeConfigurable}</Badge>}
-                                {isTsOnly && <Badge variant={badgeVariantValuesEnumsData.purple}>{rulesCategoryStringsData.typeScriptOnlyBadge}</Badge>}
-                                {!isFixable && <Badge variant={badgeVariantValuesEnumsData.warning}>{rulesCategoryStringsData.reportOnlyBadge}</Badge>}
+                                {isFixable && <Badge variant={BadgeVariantEnum.SUCCESS}>{rulesCategoryStringsData.badgeAutoFixable}</Badge>}
+                                {isConfigurable && <Badge variant={BadgeVariantEnum.INFO}>{rulesCategoryStringsData.badgeConfigurable}</Badge>}
+                                {isTsOnly && <Badge variant={BadgeVariantEnum.PURPLE}>{rulesCategoryStringsData.typeScriptOnlyBadge}</Badge>}
+                                {!isFixable && <Badge variant={BadgeVariantEnum.WARNING}>{rulesCategoryStringsData.reportOnlyBadge}</Badge>}
                             </div>
                         </div>
                         <p>{description}</p>
@@ -249,8 +244,8 @@ const CategoryPage = async ({ params }: { params: Promise<{ category: string }> 
                                     </tbody>
                                 </table>
                                 <CodeBlock
-                                    filename={codeFilenameValuesEnumsData.eslintConfig}
-                                    language={codeLanguageValuesEnumsData.javascript}
+                                    filename={codeFilenameValuesConstantsData.eslintConfig}
+                                    language={CodeLanguageEnum.JAVASCRIPT}
                                     code={`${ruleConfigFragmentStringsData.rulePrefix}${name}${ruleConfigFragmentStringsData.configOptionsSuffix}${options.map(({
                                         default: d,
                                         name: n,
@@ -295,7 +290,7 @@ const CategoryPage = async ({ params }: { params: Promise<{ category: string }> 
                                 </div>
                                 <CodeBlock
                                     code={goodExample}
-                                    language={codeLanguageValuesEnumsData.javascript}
+                                    language={CodeLanguageEnum.JAVASCRIPT}
                                 />
                             </div>
                             <div>
@@ -327,15 +322,15 @@ const CategoryPage = async ({ params }: { params: Promise<{ category: string }> 
                                 </div>
                                 <CodeBlock
                                     code={badExample}
-                                    language={codeLanguageValuesEnumsData.javascript}
+                                    language={CodeLanguageEnum.JAVASCRIPT}
                                 />
                             </div>
                         </div>
                         <div className="mt-4">
                             <CodeBlock
                                 code={`${ruleConfigFragmentStringsData.rulePrefix}${name}${ruleConfigFragmentStringsData.configErrorSuffix}`}
-                                filename={codeFilenameValuesEnumsData.eslintConfig}
-                                language={codeLanguageValuesEnumsData.javascript}
+                                filename={codeFilenameValuesConstantsData.eslintConfig}
+                                language={CodeLanguageEnum.JAVASCRIPT}
                             />
                         </div>
                     </section>

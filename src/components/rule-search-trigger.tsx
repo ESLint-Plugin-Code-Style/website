@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 
-import { buttonTypeValuesEnumsData, ruleSearchStringsData } from "@/data";
+import { ruleSearchStringsData } from "@/data";
+import { ButtonTypeEnum } from "@/enums";
 
 import { MagnifierIcon } from "./magnifier-icon";
 
@@ -26,7 +27,7 @@ export const RuleSearchTrigger = ({
         return (
             <button
                 aria-label={ruleSearchStringsData.triggerAriaLabel}
-                type={buttonTypeValuesEnumsData.button}
+                type={ButtonTypeEnum.BUTTON}
                 className="
                     flex
                     h-9
@@ -52,7 +53,7 @@ export const RuleSearchTrigger = ({
     return (
         <button
             aria-label={ruleSearchStringsData.triggerAriaLabel}
-            type={buttonTypeValuesEnumsData.button}
+            type={ButtonTypeEnum.BUTTON}
             className="
                 flex
                 cursor-pointer

@@ -2,7 +2,8 @@
 
 import { useSyncExternalStore } from "react";
 
-import { componentStringsData, themeValuesEnumsData } from "@/data";
+import { componentStringsData } from "@/data";
+import { ThemeEnum } from "@/enums";
 import { useTheme } from "@/hooks";
 
 const emptySubscribeHandler = () => () => {};
@@ -41,11 +42,11 @@ export const ThemeToggle = () => {
                 backgroundColor: "var(--bg-tertiary)",
                 color: "var(--text-secondary)",
             }}
-            onClick={() => onSetTheme(resolvedTheme === themeValuesEnumsData.dark ? themeValuesEnumsData.light : themeValuesEnumsData.dark)}
+            onClick={() => onSetTheme(resolvedTheme === ThemeEnum.DARK ? ThemeEnum.LIGHT : ThemeEnum.DARK)}
             onMouseEnter={({ currentTarget }) => currentTarget.style.color = "var(--text-primary)"}
             onMouseLeave={({ currentTarget }) => currentTarget.style.color = "var(--text-secondary)"}
         >
-            {!isMounted ? <span className="h-[18px] w-[18px]" /> : resolvedTheme === themeValuesEnumsData.dark ? (
+            {!isMounted ? <span className="h-[18px] w-[18px]" /> : resolvedTheme === ThemeEnum.DARK ? (
                 <svg
                     fill="none"
                     height="18"

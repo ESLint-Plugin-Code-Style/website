@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { Card } from "@/components";
-import { cardVariantValuesEnumsData, docsOverviewStringsData } from "@/data";
+import { docsOverviewStringsData } from "@/data";
+import { CardVariantEnum } from "@/enums";
 
 export const metadata: Metadata = { title: docsOverviewStringsData.metadataTitle };
 
@@ -66,7 +67,7 @@ const DocsPage = () => (
                     key={href}
                     style={{ textDecoration: "none" }}
                 >
-                    <Card variant={cardVariantValuesEnumsData.tab}>
+                    <Card variant={CardVariantEnum.TAB}>
                         <div
                             className="
                                 mb-4

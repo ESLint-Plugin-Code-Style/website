@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import { eventNameValuesEnumsData, mediaQueryValuesEnumsData, redesignStringsData } from "@/data";
+import { mediaQueryValuesConstantsData, redesignStringsData } from "@/data";
+import { EventNameEnum } from "@/enums";
 import type { DriftEntryType } from "@/types";
 
 const minDuration = 22;
@@ -58,7 +59,7 @@ export const CodeRain = () => {
         () => {
             if (typeof window === "undefined") return undefined;
 
-            const mediaQuery = window.matchMedia(mediaQueryValuesEnumsData.prefersReducedMotion);
+            const mediaQuery = window.matchMedia(mediaQueryValuesConstantsData.prefersReducedMotion);
 
             prefersReducedRef.current = mediaQuery.matches;
 
@@ -77,12 +78,12 @@ export const CodeRain = () => {
             };
 
             mediaQuery.addEventListener(
-                eventNameValuesEnumsData.change,
+                EventNameEnum.CHANGE,
                 changeHandler,
             );
 
             return () => mediaQuery.removeEventListener(
-                eventNameValuesEnumsData.change,
+                EventNameEnum.CHANGE,
                 changeHandler,
             );
         },

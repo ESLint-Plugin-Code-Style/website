@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 
-import { motionRepeatTypeValuesEnumsData } from "@/data";
+import { MotionRepeatTypeEnum } from "@/enums";
 
 const configs = [
     {
@@ -71,7 +71,7 @@ export const ConfigsVignette = () => (
                         ease: "easeOut",
                         repeat: Infinity,
                         repeatDelay: 2,
-                        repeatType: motionRepeatTypeValuesEnumsData.mirror,
+                        repeatType: MotionRepeatTypeEnum.MIRROR,
                     }}
                 >
                     <span

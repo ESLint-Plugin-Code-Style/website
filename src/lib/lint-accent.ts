@@ -1,24 +1,24 @@
-import { lintAccentNameValuesEnumsData } from "@/data";
+import { LintAccentNameEnum } from "@/enums";
 import type { LintAccentNameType, LintAccentType } from "@/types";
 
 const lintAccentTokensData: Record<LintAccentNameType, LintAccentType> = {
-    [lintAccentNameValuesEnumsData.error]: {
+    [LintAccentNameEnum.ERROR]: {
         background: "var(--lint-error-bg)",
         color: "var(--lint-error)",
     },
-    [lintAccentNameValuesEnumsData.info]: {
+    [LintAccentNameEnum.INFO]: {
         background: "var(--lint-info-bg)",
         color: "var(--lint-info)",
     },
-    [lintAccentNameValuesEnumsData.pass]: {
+    [LintAccentNameEnum.PASS]: {
         background: "var(--lint-pass-bg)",
         color: "var(--lint-pass)",
     },
-    [lintAccentNameValuesEnumsData.violet]: {
+    [LintAccentNameEnum.VIOLET]: {
         background: "var(--accent-violet-bg)",
         color: "var(--accent-violet)",
     },
-    [lintAccentNameValuesEnumsData.warn]: {
+    [LintAccentNameEnum.WARN]: {
         background: "var(--lint-warn-bg)",
         color: "var(--lint-warn)",
     },

@@ -3,14 +3,8 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-import {
-    eventNameValuesEnumsData,
-    inputTypeValuesEnumsData,
-    keyboardKeyValuesEnumsData,
-    pluginConfigData,
-    releaseVersionsData,
-    versionSelectorStringsData,
-} from "@/data";
+import { pluginConfigData, releaseVersionsData, versionSelectorStringsData } from "@/data";
+import { EventNameEnum, InputTypeEnum, KeyboardKeyEnum } from "@/enums";
 
 export const VersionSelector = ({ isAlignLeft }: { isAlignLeft?: boolean }) => {
     const dropdownRef = useRef<HTMLDivElement>(null);
@@ -55,7 +49,7 @@ export const VersionSelector = ({ isAlignLeft }: { isAlignLeft?: boolean }) => {
             const escapeHandler = (event: KeyboardEvent) => {
                 const { key } = event;
 
-                if (key === keyboardKeyValuesEnumsData.escape) {
+                if (key === KeyboardKeyEnum.ESCAPE) {
                     setIsOpen(false);
 
                     setSearchQuery("");
@@ -63,23 +57,23 @@ export const VersionSelector = ({ isAlignLeft }: { isAlignLeft?: boolean }) => {
             };
 
             document.addEventListener(
-                eventNameValuesEnumsData.mousedown,
+                EventNameEnum.MOUSEDOWN,
                 clickOutsideHandler,
             );
 
             document.addEventListener(
-                eventNameValuesEnumsData.keydown,
+                EventNameEnum.KEYDOWN,
                 escapeHandler,
             );
 
             return () => {
                 document.removeEventListener(
-                    eventNameValuesEnumsData.mousedown,
+                    EventNameEnum.MOUSEDOWN,
                     clickOutsideHandler,
                 );
 
                 document.removeEventListener(
-                    eventNameValuesEnumsData.keydown,
+                    EventNameEnum.KEYDOWN,
                     escapeHandler,
                 );
             };
@@ -103,7 +97,7 @@ export const VersionSelector = ({ isAlignLeft }: { isAlignLeft?: boolean }) => {
                 aria-expanded={isOpen}
                 aria-haspopup="listbox"
                 aria-label={versionSelectorStringsData.ariaLabel}
-                type={inputTypeValuesEnumsData.button}
+                type={InputTypeEnum.BUTTON}
                 className="
                     flex
                     cursor-pointer
@@ -173,7 +167,7 @@ export const VersionSelector = ({ isAlignLeft }: { isAlignLeft?: boolean }) => {
                             aria-label={versionSelectorStringsData.ariaLabelSearch}
                             placeholder={versionSelectorStringsData.searchPlaceholder}
                             ref={inputRef}
-                            type={inputTypeValuesEnumsData.text}
+                            type={InputTypeEnum.TEXT}
                             value={searchQuery}
                             className="
                                 w-full

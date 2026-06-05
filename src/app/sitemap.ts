@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 
-import { docsNavigationData, metadataStringsData, sitemapChangeFrequencyValuesEnumsData } from "@/data";
+import { docsNavigationData, metadataStringsData } from "@/data";
+import { SitemapChangeFrequencyEnum } from "@/enums";
 
 const getSitemapHandler = (): MetadataRoute.Sitemap => {
     const now = new Date();
@@ -9,7 +10,7 @@ const getSitemapHandler = (): MetadataRoute.Sitemap => {
 
     const staticEntries: MetadataRoute.Sitemap = [
         {
-            changeFrequency: sitemapChangeFrequencyValuesEnumsData.weekly,
+            changeFrequency: SitemapChangeFrequencyEnum.WEEKLY,
             lastModified: now,
             priority: 1,
             url: baseUrl,
@@ -17,7 +18,7 @@ const getSitemapHandler = (): MetadataRoute.Sitemap => {
     ];
 
     const docsEntries: MetadataRoute.Sitemap = docsNavigationData.flatMap(({ items }) => items.map(({ href }) => ({
-        changeFrequency: sitemapChangeFrequencyValuesEnumsData.weekly,
+        changeFrequency: SitemapChangeFrequencyEnum.WEEKLY,
         lastModified: now,
         priority: href === "/docs" ? 0.9 : 0.7,
         url: `${baseUrl}${href}`,
