@@ -6,6 +6,8 @@ import { useState } from "react";
 import { componentStringsData } from "@/data";
 
 import { BrandMarkIcon } from "./brand-mark-icon";
+import { RuleSearch } from "./rule-search";
+import { RuleSearchTrigger } from "./rule-search-trigger";
 import { ThemeToggle } from "./theme-toggle";
 import { VersionSelector } from "./version-selector";
 
@@ -28,270 +30,72 @@ const navLinks = [
 export const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+
     return (
-        <header
-            className="
-                fixed
-                inset-x-0
-                top-0
-                z-50
-            "
-            style={{
-                backdropFilter: "blur(12px)",
-                backgroundColor: "var(--bg-nav)",
-                borderBottom: "1px solid var(--border-primary)",
-            }}
-        >
-            <nav
+        <>
+            <header
                 className="
-                    mx-auto
-                    flex
-                    h-16
-                    max-w-7xl
-                    items-center
-                    justify-between
-                    px-4
-                    sm:px-6
-                    lg:px-8
+                    fixed
+                    inset-x-0
+                    top-0
+                    z-50
                 "
+                style={{
+                    backdropFilter: "blur(12px)",
+                    backgroundColor: "var(--bg-nav)",
+                    borderBottom: "1px solid var(--border-primary)",
+                }}
             >
-                <Link
-                    href="/"
+                <nav
                     className="
+                        mx-auto
                         flex
+                        h-16
+                        max-w-7xl
                         items-center
-                        gap-2
-                        transition-opacity
-                        hover:opacity-80
+                        justify-between
+                        px-4
+                        sm:px-6
+                        lg:px-8
                     "
                 >
-                    <BrandMarkIcon className="h-[18px] w-7 shrink-0" />
-                    <span
-                        style={{ color: "var(--text-primary)" }}
-                        className="
-                            font-mono
-                            text-base
-                            font-semibold
-                            tracking-tight
-                        "
-                    >
-                        {componentStringsData.brandName}
-                    </span>
-                    <span
-                        aria-hidden="true"
-                        className="blinking-caret -ml-1"
-                        style={{ color: "var(--lint-info)" }}
-                    />
-                </Link>
-                <div
-                    className="
-                        hidden
-                        items-center
-                        gap-1
-                        md:flex
-                    "
-                >
-                    {navLinks.map(({
-                        external,
-                        href,
-                        label,
-                    }) => external ? (
-                        <a
-                            href={href}
-                            key={label}
-                            rel="noopener noreferrer"
-                            style={{ color: "var(--text-secondary)" }}
-                            target="_blank"
-                            className="
-                                flex
-                                items-center
-                                gap-1
-                                rounded-lg
-                                px-3
-                                py-2
-                                text-sm
-                                font-medium
-                                transition-colors
-                                duration-200
-                            "
-                            onMouseEnter={(e) => {
-                                const { currentTarget: { style } } = e;
-
-                                style.color =
-                                    "var(--text-primary)";
-
-                                style.backgroundColor =
-                                    "var(--bg-tertiary)";
-                            }}
-                            onMouseLeave={(e) => {
-                                const { currentTarget: { style } } = e;
-
-                                style.color =
-                                    "var(--text-secondary)";
-
-                                style.backgroundColor =
-                                    "transparent";
-                            }}
-                        >
-                            {label}
-                            <svg
-                                fill="none"
-                                height="12"
-                                stroke="currentColor"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                viewBox="0 0 24 24"
-                                width="12"
-                            >
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                                <polyline points="15 3 21 3 21 9" />
-                                <line
-                                    x1="10"
-                                    x2="21"
-                                    y1="14"
-                                    y2="3"
-                                />
-                            </svg>
-                        </a>
-                    ) : (
-                        <Link
-                            href={href}
-                            key={label}
-                            style={{ color: "var(--text-secondary)" }}
-                            className="
-                                rounded-lg
-                                px-3
-                                py-2
-                                text-sm
-                                font-medium
-                                transition-colors
-                                duration-200
-                            "
-                            onMouseEnter={(e) => {
-                                const { currentTarget: { style } } = e;
-
-                                style.color =
-                                    "var(--text-primary)";
-
-                                style.backgroundColor =
-                                    "var(--bg-tertiary)";
-                            }}
-                            onMouseLeave={(e) => {
-                                const { currentTarget: { style } } = e;
-
-                                style.color =
-                                    "var(--text-secondary)";
-
-                                style.backgroundColor =
-                                    "transparent";
-                            }}
-                        >
-                            {label}
-                        </Link>
-                    ))}
-                    <div
-                        className="mx-2 h-5 w-px"
-                        style={{ backgroundColor: "var(--border-primary)" }}
-                    />
-                    <ThemeToggle />
-                    <VersionSelector />
-                </div>
-                <div
-                    className="
-                        flex
-                        items-center
-                        gap-2
-                        md:hidden
-                    "
-                >
-                    <ThemeToggle />
-                    <button
-                        aria-label={componentStringsData.toggleMenuLabel}
+                    <Link
+                        href="/"
                         className="
                             flex
-                            h-9
-                            w-9
-                            cursor-pointer
                             items-center
-                            justify-center
-                            rounded-lg
-                            transition-colors
-                            duration-200
+                            gap-2
+                            transition-opacity
+                            hover:opacity-80
                         "
-                        style={{
-                            backgroundColor: "var(--bg-tertiary)",
-                            color: "var(--text-secondary)",
-                        }}
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                     >
-                        {isMobileMenuOpen ? (
-                            <svg
-                                fill="none"
-                                height="20"
-                                stroke="currentColor"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                viewBox="0 0 24 24"
-                                width="20"
-                            >
-                                <line
-                                    x1="18"
-                                    x2="6"
-                                    y1="6"
-                                    y2="18"
-                                />
-                                <line
-                                    x1="6"
-                                    x2="18"
-                                    y1="6"
-                                    y2="18"
-                                />
-                            </svg>
-                        ) : (
-                            <svg
-                                fill="none"
-                                height="20"
-                                stroke="currentColor"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                viewBox="0 0 24 24"
-                                width="20"
-                            >
-                                <line
-                                    x1="3"
-                                    x2="21"
-                                    y1="6"
-                                    y2="6"
-                                />
-                                <line
-                                    x1="3"
-                                    x2="21"
-                                    y1="12"
-                                    y2="12"
-                                />
-                                <line
-                                    x1="3"
-                                    x2="21"
-                                    y1="18"
-                                    y2="18"
-                                />
-                            </svg>
-                        )}
-                    </button>
-                </div>
-            </nav>
-            {isMobileMenuOpen && (
-                <div
-                    className="animate-slide-up border-t md:hidden"
-                    style={{
-                        backgroundColor: "var(--bg-nav)",
-                        borderColor: "var(--border-primary)",
-                    }}
-                >
-                    <div className="space-y-1 px-4 py-3">
+                        <BrandMarkIcon className="h-[18px] w-7 shrink-0" />
+                        <span
+                            style={{ color: "var(--text-primary)" }}
+                            className="
+                                font-mono
+                                text-base
+                                font-semibold
+                                tracking-tight
+                            "
+                        >
+                            {componentStringsData.brandName}
+                        </span>
+                        <span
+                            aria-hidden="true"
+                            className="blinking-caret -ml-1"
+                            style={{ color: "var(--lint-info)" }}
+                        />
+                    </Link>
+                    <div
+                        className="
+                            hidden
+                            items-center
+                            gap-1
+                            md:flex
+                        "
+                    >
                         {navLinks.map(({
                             external,
                             href,
@@ -306,16 +110,29 @@ export const Navbar = () => {
                                 className="
                                     flex
                                     items-center
-                                    gap-2
+                                    gap-1
                                     rounded-lg
                                     px-3
-                                    py-2.5
+                                    py-2
                                     text-sm
                                     font-medium
                                     transition-colors
                                     duration-200
                                 "
-                                onClick={() => setIsMobileMenuOpen(false)}
+                                onMouseEnter={(e) => {
+                                    const { currentTarget: { style } } = e;
+
+                                    style.color = "var(--text-primary)";
+
+                                    style.backgroundColor = "var(--bg-tertiary)";
+                                }}
+                                onMouseLeave={(e) => {
+                                    const { currentTarget: { style } } = e;
+
+                                    style.color = "var(--text-secondary)";
+
+                                    style.backgroundColor = "transparent";
+                                }}
                             >
                                 {label}
                                 <svg
@@ -344,37 +161,228 @@ export const Navbar = () => {
                                 key={label}
                                 style={{ color: "var(--text-secondary)" }}
                                 className="
-                                    block
                                     rounded-lg
                                     px-3
-                                    py-2.5
+                                    py-2
                                     text-sm
                                     font-medium
                                     transition-colors
                                     duration-200
                                 "
-                                onClick={() => setIsMobileMenuOpen(false)}
+                                onMouseEnter={(e) => {
+                                    const { currentTarget: { style } } = e;
+
+                                    style.color = "var(--text-primary)";
+
+                                    style.backgroundColor = "var(--bg-tertiary)";
+                                }}
+                                onMouseLeave={(e) => {
+                                    const { currentTarget: { style } } = e;
+
+                                    style.color = "var(--text-secondary)";
+
+                                    style.backgroundColor = "transparent";
+                                }}
                             >
                                 {label}
                             </Link>
                         ))}
+                        <RuleSearchTrigger onOpen={() => setIsSearchOpen(true)} />
                         <div
-                            className="my-2 h-px"
+                            className="mx-2 h-5 w-px"
                             style={{ backgroundColor: "var(--border-primary)" }}
                         />
-                        <div
+                        <ThemeToggle />
+                        <VersionSelector />
+                    </div>
+                    <div
+                        className="
+                            flex
+                            items-center
+                            gap-2
+                            md:hidden
+                        "
+                    >
+                        <RuleSearchTrigger
+                            isCompact
+                            onOpen={() => setIsSearchOpen(true)}
+                        />
+                        <ThemeToggle />
+                        <button
+                            aria-label={componentStringsData.toggleMenuLabel}
                             className="
                                 flex
+                                h-9
+                                w-9
+                                cursor-pointer
                                 items-center
-                                px-3
-                                py-2
+                                justify-center
+                                rounded-lg
+                                transition-colors
+                                duration-200
                             "
+                            style={{
+                                backgroundColor: "var(--bg-tertiary)",
+                                color: "var(--text-secondary)",
+                            }}
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         >
-                            <VersionSelector />
+                            {isMobileMenuOpen ? (
+                                <svg
+                                    fill="none"
+                                    height="20"
+                                    stroke="currentColor"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    viewBox="0 0 24 24"
+                                    width="20"
+                                >
+                                    <line
+                                        x1="18"
+                                        x2="6"
+                                        y1="6"
+                                        y2="18"
+                                    />
+                                    <line
+                                        x1="6"
+                                        x2="18"
+                                        y1="6"
+                                        y2="18"
+                                    />
+                                </svg>
+                            ) : (
+                                <svg
+                                    fill="none"
+                                    height="20"
+                                    stroke="currentColor"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    viewBox="0 0 24 24"
+                                    width="20"
+                                >
+                                    <line
+                                        x1="3"
+                                        x2="21"
+                                        y1="6"
+                                        y2="6"
+                                    />
+                                    <line
+                                        x1="3"
+                                        x2="21"
+                                        y1="12"
+                                        y2="12"
+                                    />
+                                    <line
+                                        x1="3"
+                                        x2="21"
+                                        y1="18"
+                                        y2="18"
+                                    />
+                                </svg>
+                            )}
+                        </button>
+                    </div>
+                </nav>
+                {isMobileMenuOpen && (
+                    <div
+                        className="animate-slide-up border-t md:hidden"
+                        style={{
+                            backgroundColor: "var(--bg-nav)",
+                            borderColor: "var(--border-primary)",
+                        }}
+                    >
+                        <div className="space-y-1 px-4 py-3">
+                            {navLinks.map(({
+                                external,
+                                href,
+                                label,
+                            }) => external ? (
+                                <a
+                                    href={href}
+                                    key={label}
+                                    rel="noopener noreferrer"
+                                    style={{ color: "var(--text-secondary)" }}
+                                    target="_blank"
+                                    className="
+                                        flex
+                                        items-center
+                                        gap-2
+                                        rounded-lg
+                                        px-3
+                                        py-2.5
+                                        text-sm
+                                        font-medium
+                                        transition-colors
+                                        duration-200
+                                    "
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                >
+                                    {label}
+                                    <svg
+                                        fill="none"
+                                        height="12"
+                                        stroke="currentColor"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        viewBox="0 0 24 24"
+                                        width="12"
+                                    >
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                        <polyline points="15 3 21 3 21 9" />
+                                        <line
+                                            x1="10"
+                                            x2="21"
+                                            y1="14"
+                                            y2="3"
+                                        />
+                                    </svg>
+                                </a>
+                            ) : (
+                                <Link
+                                    href={href}
+                                    key={label}
+                                    style={{ color: "var(--text-secondary)" }}
+                                    className="
+                                        block
+                                        rounded-lg
+                                        px-3
+                                        py-2.5
+                                        text-sm
+                                        font-medium
+                                        transition-colors
+                                        duration-200
+                                    "
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                >
+                                    {label}
+                                </Link>
+                            ))}
+                            <div
+                                className="my-2 h-px"
+                                style={{ backgroundColor: "var(--border-primary)" }}
+                            />
+                            <div
+                                className="
+                                    flex
+                                    items-center
+                                    px-3
+                                    py-2
+                                "
+                            >
+                                <VersionSelector isAlignLeft />
+                            </div>
                         </div>
                     </div>
-                </div>
-            )}
-        </header>
+                )}
+            </header>
+            <RuleSearch
+                isOpen={isSearchOpen}
+                onClose={() => setIsSearchOpen(false)}
+                onOpen={() => setIsSearchOpen(true)}
+            />
+        </>
     );
 };

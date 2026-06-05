@@ -135,7 +135,13 @@ export const eventNameValuesEnumsData = {
 } as const;
 
 // Keyboard keys
-export const keyboardKeyValuesEnumsData = { escape: "Escape" } as const;
+export const keyboardKeyValuesEnumsData = {
+    arrowDown: "ArrowDown",
+    arrowUp: "ArrowUp",
+    enter: "Enter",
+    escape: "Escape",
+    keyK: "k",
+} as const;
 
 // HTML input types
 export const inputTypeValuesEnumsData = {
