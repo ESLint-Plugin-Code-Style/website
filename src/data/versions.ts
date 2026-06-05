@@ -6,6 +6,12 @@ export const releaseVersionsData: ReleaseVersionInterface[] = [
     {
         date: "2026-06-05",
         isMajor: false,
+        title: "`opening-brackets-same-line` false positive on `??` fixed",
+        version: "3.3.4",
+    },
+    {
+        date: "2026-06-05",
+        isMajor: false,
         title: "`no-empty-lines-in-arrays` ignores comments",
         version: "3.3.3",
     },
