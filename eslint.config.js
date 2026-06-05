@@ -427,7 +427,6 @@ export default [
             react: { version: "detect" },
         },
     },
-    // Next.js framework exceptions — default exports are required by the framework
     {
         files: [
             "src/app/**/{page,layout,not-found,error,loading,template,route,sitemap,robots,manifest,opengraph-image,apple-icon,icon,twitter-image,default}.{js,jsx,ts,tsx}",
@@ -439,26 +438,8 @@ export default [
         ],
         rules: { "import-x/no-default-export": "off" },
     },
-    // Next.js dynamic-route folders — bracket syntax is required by the file-router
     {
         files: ["src/app/**/\\[*\\]/**/*.{ts,tsx,js,jsx}"],
         rules: { "check-file/folder-naming-convention": "off" },
-    },
-    /*
-     * Data files hold user-facing editorial copy AND code-sample strings that
-     * contain literal className markup (e.g. the home-page before/after
-     * examples). The prose guard in eslint-plugin-code-style >= 3.3.1 stops the
-     * classname-* rules firing on prose, but the code-sample strings are real
-     * class lists, so the classname rules are still scoped off for data files.
-     */
-    {
-        files: ["src/data/**/*.ts"],
-        rules: {
-            "code-style/classname-dynamic-at-end": "off",
-            "code-style/classname-multiline": "off",
-            "code-style/classname-no-extra-spaces": "off",
-            "code-style/classname-order": "off",
-            "tailwindcss/classnames-order": "off",
-        },
     },
 ];
