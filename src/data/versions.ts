@@ -4,6 +4,12 @@ import type { ReleaseVersionInterface } from "@/interfaces";
 
 export const releaseVersionsData: ReleaseVersionInterface[] = [
     {
+        date: "2026-06-04",
+        isMajor: false,
+        title: "New `no-empty-lines-in-arrays` Rule + Blank-Line/Assignment Spacing + Prose-Safe className Detection",
+        version: "3.3.0",
+    },
+    {
         date: "2026-05-19",
         isMajor: false,
         title: "Fix `index-exports-only` Redux Subfolder Handling",

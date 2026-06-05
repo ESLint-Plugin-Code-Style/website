@@ -61,6 +61,24 @@ const weekdays = [
                 options: [],
                 rationale: "Object literals in arrays are visually complex. Own lines make it easier to scan, compare, and edit",
             },
+            {
+                badExample: `const items = [
+    "a",
+
+    "b",
+];`,
+                description: "Disallow blank lines inside array literals — after the opening bracket, before the closing bracket, and between elements",
+                goodExample: `const items = [
+    "a",
+    "b",
+];`,
+                isConfigurable: false,
+                isFixable: true,
+                isTsOnly: false,
+                name: "no-empty-lines-in-arrays",
+                options: [],
+                rationale: "Blank lines inside an array break the visual grouping of its items; the array container should read as one contiguous block",
+            },
         ],
         slug: "arrays",
     },
@@ -1341,12 +1359,15 @@ const point = {
 const config =
     {
         host: "localhost",
-    };`,
-                description: "Assignment values start on same line as =",
+    };
+element.style.color =
+    "red";`,
+                description: "Assignment values start on same line as = (declarations and assignment expressions)",
                 goodExample: `const name = "John";
 const config = {
     host: "localhost",
-};`,
+};
+element.style.color = "red";`,
                 isConfigurable: false,
                 isFixable: true,
                 isTsOnly: false,
@@ -1690,9 +1711,9 @@ export const getRuleByNameRulesDataHandler = (targetName: string): {
     return undefined;
 };
 
-export const totalRulesData = 81;
+export const totalRulesData = 82;
 
-export const fixableRulesData = 71;
+export const fixableRulesData = 72;
 
 export const configurableRulesData = 22;
 
