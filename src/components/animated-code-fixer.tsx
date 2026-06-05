@@ -125,7 +125,7 @@ export const AnimatedCodeFixer = () => {
     const changedLines = useMemo(
         () => {
             if (isInitialTyping || stepIndex === 0) return new Set<string>();
-
+            
             const prevSnippet = heroDemoSnippetsStringsData.steps[stepIndex - 1].snippet;
 
             const prevLines = new Set(prevSnippet.split("\n").map((line) => line.trim()));
@@ -227,6 +227,8 @@ export const AnimatedCodeFixer = () => {
             className="
                 group
                 relative
+                w-full
+                min-w-0
                 overflow-hidden
                 rounded-xl
                 border
@@ -249,8 +251,8 @@ export const AnimatedCodeFixer = () => {
                     py-2.5
                 "
                 style={{
-                    backgroundColor: "rgba(255,255,255,0.04)",
-                    borderColor: "rgba(255,255,255,0.08)",
+                    backgroundColor: "var(--code-chrome-bg)",
+                    borderColor: "var(--code-chrome-border)",
                 }}
             >
                 <div
@@ -271,7 +273,7 @@ export const AnimatedCodeFixer = () => {
                     </span>
                     <span
                         className="truncate font-mono text-xs"
-                        style={{ color: "rgba(255,255,255,0.6)" }}
+                        style={{ color: "var(--code-filename)" }}
                     >
                         {heroDemoSnippetsStringsData.fileName}
                     </span>
@@ -364,7 +366,7 @@ export const AnimatedCodeFixer = () => {
                                 >
                                     <span
                                         aria-hidden="true"
-                                        style={{ color: "rgba(148,163,184,0.35)" }}
+                                        style={{ color: "var(--code-gutter)" }}
                                         className="
                                             w-10
                                             shrink-0
@@ -377,7 +379,10 @@ export const AnimatedCodeFixer = () => {
                                     </span>
                                     <code
                                         className="pr-5"
-                                        style={{ color: "var(--text-code)" }}
+                                        style={{
+                                            color: "var(--text-code)",
+                                            whiteSpace: "pre",
+                                        }}
                                     >
                                         {getLineTokensHandler(line)}
                                         {isInitialTyping && index === allLines.length - 1 ? (
@@ -407,8 +412,8 @@ export const AnimatedCodeFixer = () => {
                         text-[10px]
                     "
                     style={{
-                        backgroundColor: "rgba(0,0,0,0.3)",
-                        color: "rgba(255,255,255,0.5)",
+                        backgroundColor: "var(--code-overlay-bg)",
+                        color: "var(--code-overlay-text)",
                     }}
                 >
                     {redesignStringsData.heroDemoPauseMessage}

@@ -106,22 +106,18 @@ export const Sidebar = ({
                                                     const { currentTarget: { style } } = e;
 
                                                     if (!isActive) {
-                                                        style.color =
-                                                            "var(--text-primary)";
+                                                        style.color = "var(--text-primary)";
 
-                                                        style.backgroundColor =
-                                                            "var(--bg-secondary)";
+                                                        style.backgroundColor = "var(--bg-secondary)";
                                                     }
                                                 }}
                                                 onMouseLeave={(e) => {
                                                     const { currentTarget: { style } } = e;
 
                                                     if (!isActive) {
-                                                        style.color =
-                                                            "var(--text-secondary)";
+                                                        style.color = "var(--text-secondary)";
 
-                                                        style.backgroundColor =
-                                                            "transparent";
+                                                        style.backgroundColor = "transparent";
                                                     }
                                                 }}
                                             >

@@ -56,18 +56,29 @@ export const Footer = () => {
                     flex
                     max-w-7xl
                     flex-col
+                    items-center
                     gap-6
                     border-t
                     px-4
                     py-8
+                    text-center
                     sm:px-6
                     md:flex-row
                     md:items-end
                     md:justify-between
+                    md:text-left
                     lg:px-8
                 "
             >
-                <div className="flex flex-col gap-2">
+                <div
+                    className="
+                        flex
+                        flex-col
+                        items-center
+                        gap-2
+                        md:items-start
+                    "
+                >
                     <p
                         style={{ color: "var(--text-tertiary)" }}
                         className="
@@ -90,7 +101,7 @@ export const Footer = () => {
                         {homeStringsData.colophonImprint}
                     </p>
                     <p
-                        className="text-xs"
+                        className="hidden text-xs md:block"
                         style={{ color: "var(--text-tertiary)" }}
                     >
                         {homeStringsData.footerCopyright}
@@ -100,6 +111,7 @@ export const Footer = () => {
                     className="
                         flex
                         flex-col
+                        items-center
                         gap-3
                         md:items-end
                     "
@@ -109,6 +121,7 @@ export const Footer = () => {
                             flex
                             flex-wrap
                             items-center
+                            justify-center
                             gap-5
                             md:justify-end
                         "
@@ -156,6 +169,12 @@ export const Footer = () => {
                         >
                             {componentStringsData.footerAuthorName}
                         </a>
+                    </p>
+                    <p
+                        className="text-xs md:hidden"
+                        style={{ color: "var(--text-tertiary)" }}
+                    >
+                        {homeStringsData.footerCopyright}
                     </p>
                 </div>
             </div>

@@ -54,8 +54,7 @@ export const CopyButton = ({
                 if (!isCopied) {
                     style.color = "var(--text-secondary)";
 
-                    style.backgroundColor =
-                        "rgba(255, 255, 255, 0.1)";
+                    style.backgroundColor = "var(--code-chrome-hover)";
                 }
             }}
             onMouseLeave={(e) => {

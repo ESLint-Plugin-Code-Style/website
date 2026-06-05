@@ -102,18 +102,12 @@ export const OnThisPage = ({ headings }: { headings: HeadingInterface[] }) => {
                                         onMouseEnter={(e) => {
                                             const { currentTarget: { style } } = e;
 
-                                            if (!isActive) {
-                                                style.color =
-                                                    "var(--text-primary)";
-                                            }
+                                            if (!isActive) style.color = "var(--text-primary)";
                                         }}
                                         onMouseLeave={(e) => {
                                             const { currentTarget: { style } } = e;
 
-                                            if (!isActive) {
-                                                style.color =
-                                                    "var(--text-tertiary)";
-                                            }
+                                            if (!isActive) style.color = "var(--text-tertiary)";
                                         }}
                                     >
                                         {isActive ? (

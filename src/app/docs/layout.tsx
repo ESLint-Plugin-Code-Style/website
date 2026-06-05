@@ -13,6 +13,7 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
         <div>
             <button
                 aria-label={componentStringsData.toggleNavigationLabel}
+                style={{ backgroundColor: "var(--accent-violet)" }}
                 className="
                     fixed
                     bottom-4
@@ -25,13 +26,10 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
                     items-center
                     justify-center
                     rounded-full
+                    text-white
                     shadow-lg
                     lg:hidden
                 "
-                style={{
-                    backgroundColor: "var(--lint-pass)",
-                    color: "#ffffff",
-                }}
                 onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             >
                 <svg
@@ -105,7 +103,7 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
                     sm:px-8
                     lg:py-12
                     lg:pr-8
-                    lg:pl-64
+                    lg:pl-72
                 "
             >
                 <article className="prose-docs animate-fade-in">{children}</article>

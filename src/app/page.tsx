@@ -157,7 +157,6 @@ const HomePage = () => (
                     lg:items-center
                     lg:gap-16
                     lg:px-8
-                    lg:py-28
                 "
             >
                 <div className="relative">
@@ -332,7 +331,7 @@ const HomePage = () => (
                         </a>
                     </div>
                 </div>
-                <div className="relative">
+                <div className="relative min-w-0">
                     <div
                         style={{ transform: "rotate(-8deg)" }}
                         className="
@@ -392,7 +391,6 @@ const HomePage = () => (
                     lg:items-center
                     lg:gap-20
                     lg:px-8
-                    lg:py-28
                 "
             >
                 <div>

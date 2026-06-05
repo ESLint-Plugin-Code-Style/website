@@ -34,7 +34,7 @@ export const CodeBlock = ({
         >
             {(filename || language) && (
                 <div
-                    style={{ borderBottom: "1px solid rgba(255, 255, 255, 0.06)" }}
+                    style={{ borderBottom: "1px solid var(--code-chrome-border)" }}
                     className="
                         flex
                         items-center
@@ -76,7 +76,7 @@ export const CodeBlock = ({
                                     uppercase
                                 "
                                 style={{
-                                    backgroundColor: "rgba(255, 255, 255, 0.06)",
+                                    backgroundColor: "var(--code-chrome-bg)",
                                     color: "var(--text-tertiary)",
                                 }}
                             >
@@ -133,7 +133,7 @@ export const CodeBlock = ({
                                 >
                                     {isShowLineNumbers && (
                                         <span
-                                            style={{ color: "rgba(148, 163, 184, 0.3)" }}
+                                            style={{ color: "var(--code-gutter)" }}
                                             className="
                                                 mr-4
                                                 inline-block

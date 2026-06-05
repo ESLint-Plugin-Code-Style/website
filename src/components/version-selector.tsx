@@ -12,7 +12,7 @@ import {
     versionSelectorStringsData,
 } from "@/data";
 
-export const VersionSelector = () => {
+export const VersionSelector = ({ isAlignLeft }: { isAlignLeft?: boolean }) => {
     const dropdownRef = useRef<HTMLDivElement>(null);
 
     const inputRef = useRef<HTMLInputElement>(null);
@@ -148,17 +148,18 @@ export const VersionSelector = () => {
             </button>
             {isOpen && (
                 <div
-                    className="
+                    className={`
                         absolute
-                        right-0
                         z-50
                         mt-2
                         w-72
+                        max-w-[calc(100vw-2rem)]
                         overflow-hidden
                         rounded-lg
                         border
                         shadow-lg
-                    "
+                        ${isAlignLeft ? "left-0" : "right-0"}
+                    `}
                     style={{
                         backgroundColor: "var(--bg-primary)",
                         borderColor: "var(--border-primary)",
@@ -232,7 +233,7 @@ export const VersionSelector = () => {
                                                     text-sm
                                                     transition-colors
                                                     duration-150
-                                                    hover:bg-[var(--bg-hover)]
+                                                    hover:bg-(--bg-hover)
                                                 "
                                                 onClick={closeDropdownHandler}
                                             >

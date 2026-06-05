@@ -45,6 +45,19 @@
         --accent-violet: #7c3aed;
         --accent-violet-bg: rgba(124, 58, 237, 0.10);
 
+        /*
+         * Editor-chrome tints. The code box is always dark (--bg-code) in
+         * both themes, so these white/black/slate alphas are theme-constant
+         * and defined once here instead of hardcoded at call sites.
+         */
+        --code-chrome-bg: rgba(255, 255, 255, 0.05);
+        --code-chrome-hover: rgba(255, 255, 255, 0.1);
+        --code-chrome-border: rgba(255, 255, 255, 0.08);
+        --code-filename: rgba(255, 255, 255, 0.6);
+        --code-gutter: rgba(148, 163, 184, 0.32);
+        --code-overlay-bg: rgba(0, 0, 0, 0.3);
+        --code-overlay-text: rgba(255, 255, 255, 0.5);
+
         --shadow-sm: 0 1px 2px 0 rgba(26, 26, 46, 0.05);
         --shadow-md: 0 4px 6px -1px rgba(26, 26, 46, 0.07), 0 2px 4px -2px rgba(26, 26, 46, 0.05);
         --shadow-lg: 0 10px 15px -3px rgba(26, 26, 46, 0.08), 0 4px 6px -4px rgba(26, 26, 46, 0.05);
@@ -98,8 +111,8 @@
         --lint-pass-bg: rgba(61, 214, 140, 0.14);
         --lint-info: #6e8afa;
         --lint-info-bg: rgba(110, 138, 250, 0.14);
-        --accent-violet: #a78bfa;
-        --accent-violet-bg: rgba(167, 139, 250, 0.14);
+        --accent-violet: #7c3aed;
+        --accent-violet-bg: rgba(124, 58, 237, 0.14);
 
         --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.35);
         --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -2px rgba(0, 0, 0, 0.35);
