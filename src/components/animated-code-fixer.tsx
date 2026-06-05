@@ -391,11 +391,11 @@ export const AnimatedCodeFixer = () => {
                         ) => {
                             const trimmedLine = line.trim();
 
-                            const isChanged = trimmedLine.length > 0 ? changedLines.has(trimmedLine) : false;
+                            const isChanged = trimmedLine.length > 0 && changedLines.has(trimmedLine);
 
                             const lineErrors = errorLineMap.get(index + 1);
 
-                            const isLastTypedLine = isInitialTyping ? index === allLines.length - 1 : false;
+                            const isLastTypedLine = isInitialTyping && index === allLines.length - 1;
 
                             return (
                                 <div
