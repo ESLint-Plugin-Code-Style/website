@@ -1,5 +1,4 @@
 export { Badge } from "./badge";
-export { BrandMarkIcon } from "./brand-mark-icon";
 export {
     Button,
     CopyButton,
@@ -8,6 +7,7 @@ export {
 } from "./button";
 export { Card } from "./card";
 export { CountUp } from "./count-up";
+export { BrandMarkIcon } from "./icon/brand-mark";
+export { MagnifierIcon } from "./icon/magnifier";
+export { SquiggleIcon } from "./icon/squiggle";
 export { Input } from "./input";
-export { MagnifierIcon } from "./magnifier-icon";
-export { SquiggleIcon } from "./squiggle-icon";

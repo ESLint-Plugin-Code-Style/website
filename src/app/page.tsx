@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-import { Card, LintButton, SquiggleIcon } from "@/atoms";
 import {
     AnimatedCodeFixer,
     AutoFixVignette,
@@ -36,6 +35,7 @@ import {
 } from "@/enums";
 import { getLintAccentHandler } from "@/lib";
 import type { LintAccentNameType } from "@/types";
+import { Card, LintButton, SquiggleIcon } from "@/ui";
 
 export const metadata: Metadata = { title: homeStringsData.metadataTitle };
 

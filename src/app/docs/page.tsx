@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { Card } from "@/atoms";
 import { docsOverviewStringsData } from "@/data";
 import { CardVariantEnum } from "@/enums";
+import { Card } from "@/ui";
 
 export const metadata: Metadata = { title: docsOverviewStringsData.metadataTitle };
 

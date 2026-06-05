@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { Badge } from "@/atoms";
 import { CodeBlock } from "@/components";
 import { categoriesRulesData, codeFilenameValuesConstantsData, getCategoryBySlugRulesDataHandler } from "@/data";
 import { ruleConfigFragmentStringsData, rulesCategoryStringsData } from "@/data";
 import { BadgeVariantEnum, CodeLanguageEnum } from "@/enums";
 import type { CategoryPagePropsInterface } from "@/interfaces";
+import { Badge } from "@/ui";
 
 export const generateStaticParams = async () => categoriesRulesData.map(({ slug }) => ({ category: slug }));
 

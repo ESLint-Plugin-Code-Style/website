@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { Badge, CountUp } from "@/atoms";
 import {
     categoriesRulesData,
     configurableRulesData,
@@ -12,6 +11,7 @@ import {
     tsOnlyRulesData,
 } from "@/data";
 import { BadgeVariantEnum } from "@/enums";
+import { Badge, CountUp } from "@/ui";
 
 export const metadata: Metadata = {
     description: rulesIndexStringsData.metadataDescription,

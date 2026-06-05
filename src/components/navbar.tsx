@@ -3,9 +3,9 @@
 import Link from "next/link";
 import { useState } from "react";
 
-import { BrandMarkIcon, IconButton, MagnifierIcon } from "@/atoms";
 import { componentStringsData, ruleSearchStringsData } from "@/data";
 import { ButtonTypeEnum } from "@/enums";
+import { BrandMarkIcon, IconButton, MagnifierIcon } from "@/ui";
 
 import { RuleSearch } from "./rule-search";
 import { RuleSearchTrigger } from "./rule-search-trigger";
@@ -355,6 +355,7 @@ export const Navbar = () => {
                                     flex
                                     w-full
                                     items-center
+                                    justify-between
                                     gap-2
                                     rounded-lg
                                     border
@@ -376,8 +377,25 @@ export const Navbar = () => {
                                     setIsMobileMenuOpen(false);
                                 }}
                             >
-                                <MagnifierIcon className="size-4" />
-                                {ruleSearchStringsData.triggerLabel}
+                                <span className="flex items-center gap-2">
+                                    <MagnifierIcon className="size-4" />
+                                    {ruleSearchStringsData.triggerLabel}
+                                </span>
+                                <kbd
+                                    className="
+                                        rounded
+                                        px-1.5
+                                        py-0.5
+                                        font-mono
+                                        text-xs
+                                    "
+                                    style={{
+                                        backgroundColor: "var(--bg-badge)",
+                                        color: "var(--text-badge)",
+                                    }}
+                                >
+                                    {ruleSearchStringsData.shortcutMac}
+                                </kbd>
                             </button>
                             <div
                                 className="my-2 h-px"

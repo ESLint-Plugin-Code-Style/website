@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
-import { LintButton } from "@/atoms";
 import { notFoundStringsData } from "@/data";
 import { LintButtonSizeEnum, LintButtonToneEnum } from "@/enums";
+import { LintButton } from "@/ui";
 
 export const metadata: Metadata = { title: notFoundStringsData.metadataTitle };
 

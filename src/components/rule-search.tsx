@@ -10,10 +10,10 @@ import {
     useState,
 } from "react";
 
-import { Input, MagnifierIcon } from "@/atoms";
 import { categoriesRulesData, ruleSearchStringsData, scrollBehaviorValuesConstantsData } from "@/data";
 import { ButtonTypeEnum, EventNameEnum, KeyboardKeyEnum } from "@/enums";
 import type { SearchRuleEntryInterface } from "@/interfaces";
+import { Input, MagnifierIcon } from "@/ui";
 
 const searchIndexData: SearchRuleEntryInterface[] = categoriesRulesData.flatMap(({
     name: categoryName,

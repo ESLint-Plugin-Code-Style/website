@@ -2,10 +2,10 @@
 
 import { useSyncExternalStore } from "react";
 
-import { IconButton } from "@/atoms";
 import { componentStringsData } from "@/data";
 import { ThemeEnum } from "@/enums";
 import { useTheme } from "@/hooks";
+import { IconButton } from "@/ui";
 
 const emptySubscribeHandler = () => () => {};
 

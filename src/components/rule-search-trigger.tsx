@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 
-import { IconButton, MagnifierIcon } from "@/atoms";
 import { ruleSearchStringsData } from "@/data";
 import { ButtonTypeEnum } from "@/enums";
+import { IconButton, MagnifierIcon } from "@/ui";
 
 export const RuleSearchTrigger = ({
     isCompact,

@@ -3,9 +3,9 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-import { Input } from "@/atoms";
 import { pluginConfigData, releaseVersionsData, versionSelectorStringsData } from "@/data";
 import { EventNameEnum, InputTypeEnum, KeyboardKeyEnum } from "@/enums";
+import { Input } from "@/ui";
 
 export const VersionSelector = ({ isAlignLeft }: { isAlignLeft?: boolean }) => {
     const dropdownRef = useRef<HTMLDivElement>(null);
