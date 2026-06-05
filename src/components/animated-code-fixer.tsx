@@ -141,6 +141,39 @@ export const AnimatedCodeFixer = () => {
         ],
     );
 
+    /*
+     * On the first (messy) step, map each 1-based line number to the rule(s) it
+     * violates so the render can underline it in red and label the problem.
+     */
+    const errorLineMap = useMemo(
+        () => {
+            const map = new Map<number, string[]>();
+
+            if (isInitialTyping || stepIndex !== 0) return map;
+
+            for (const {
+                label,
+                line,
+            } of heroDemoSnippetsStringsData.firstStepErrors) {
+                const existing = map.get(line) ?? [];
+
+                existing.push(label);
+
+                map.set(
+                    line,
+                    existing,
+                );
+            }
+
+            return map;
+        },
+        [
+            activeStep,
+            stepIndex,
+            isInitialTyping,
+        ],
+    );
+
     useEffect(
         () => {
             if (isPaused) return undefined;
@@ -356,7 +389,13 @@ export const AnimatedCodeFixer = () => {
                             index,
                             allLines,
                         ) => {
-                            const isChanged = changedLines.has(line.trim()) && line.trim().length > 0;
+                            const trimmedLine = line.trim();
+
+                            const isChanged = trimmedLine.length > 0 ? changedLines.has(trimmedLine) : false;
+
+                            const lineErrors = errorLineMap.get(index + 1);
+
+                            const isLastTypedLine = isInitialTyping ? index === allLines.length - 1 : false;
 
                             return (
                                 <div
@@ -381,17 +420,34 @@ export const AnimatedCodeFixer = () => {
                                         className="pr-5"
                                         style={{
                                             color: "var(--text-code)",
+                                            textDecorationColor: "var(--lint-error)",
+                                            textDecorationLine: lineErrors ? "underline" : "none",
+                                            textDecorationStyle: "wavy",
+                                            textUnderlineOffset: "3px",
                                             whiteSpace: "pre",
                                         }}
                                     >
                                         {getLineTokensHandler(line)}
-                                        {isInitialTyping && index === allLines.length - 1 ? (
+                                        {isLastTypedLine ? (
                                             <span
                                                 aria-hidden="true"
                                                 className="blinking-caret"
                                             />
                                         ) : null}
                                     </code>
+                                    {lineErrors ? (
+                                        <span
+                                            style={{ color: "var(--lint-error)" }}
+                                            className="
+                                                shrink-0
+                                                pr-5
+                                                pl-3
+                                                text-[11px]
+                                            "
+                                        >
+                                            {lineErrors.join(" · ")}
+                                        </span>
+                                    ) : null}
                                 </div>
                             );
                         })}

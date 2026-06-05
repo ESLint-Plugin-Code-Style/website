@@ -597,6 +597,32 @@ export const offlineIndicatorStringsData = { message: "You're offline. Some cont
 // Hero demo code snippets (ordered by animation step)
 export const heroDemoSnippetsStringsData = {
     fileName: "card.tsx",
+    firstStepErrors: [
+        {
+            label: "import-format",
+            line: 2,
+        },
+        {
+            label: "array-items-per-line",
+            line: 4,
+        },
+        {
+            label: "component-props-destructure",
+            line: 6,
+        },
+        {
+            label: "function-params-per-line",
+            line: 6,
+        },
+        {
+            label: "classname-order",
+            line: 9,
+        },
+        {
+            label: "classname-multiline",
+            line: 9,
+        },
+    ],
     language: "tsx",
     steps: [
         {
