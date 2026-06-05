@@ -132,6 +132,7 @@ export const eventNameValuesEnumsData = {
     mousedown: "mousedown",
     offline: "offline",
     online: "online",
+    scroll: "scroll",
 } as const;
 
 // Keyboard keys

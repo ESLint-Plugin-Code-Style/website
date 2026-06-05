@@ -1,5 +1,6 @@
 export { AnimatedCodeFixer } from "./animated-code-fixer";
 export { AutoFixVignette } from "./auto-fix-vignette";
+export { BackToTop } from "./back-to-top";
 export { Badge } from "./badge";
 export { BrandMarkIcon } from "./brand-mark-icon";
 export { Card } from "./card";

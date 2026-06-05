@@ -514,6 +514,7 @@ export const layoutStringsData = { themeInitScript: "(function(){try{var t=local
 
 // Component strings (shared across components)
 export const componentStringsData = {
+    backToTopLabel: "Back to top",
     brandName: "eslint-plugin-code-style",
     copiedLabel: "Copied",
     copyLabel: "Copy to clipboard",

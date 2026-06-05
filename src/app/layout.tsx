@@ -6,6 +6,7 @@ import Script from "next/script";
 import type React from "react";
 
 import {
+    BackToTop,
     CodeRain,
     Footer,
     Navbar,
@@ -157,6 +158,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
                 <Navbar />
                 <main className="relative z-10 pt-16">{children}</main>
                 <Footer />
+                <BackToTop />
                 <OfflineIndicator />
                 <ServiceWorkerRegister />
             </ThemeProvider>
