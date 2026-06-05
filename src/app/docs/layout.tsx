@@ -78,6 +78,7 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
                     h-[calc(100vh-4rem)]
                     w-64
                     shrink-0
+                    overflow-x-hidden
                     overflow-y-auto
                     transition-transform
                     duration-300

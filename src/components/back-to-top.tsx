@@ -76,7 +76,7 @@ export const BackToTop = () => {
                     style={{
                         backgroundColor: "var(--bg-tertiary)",
                         border: "1px solid var(--border-primary)",
-                        color: "var(--text-secondary)",
+                        color: "var(--text-primary)",
                     }}
                     onClick={() => window.scrollTo({
                         behavior: scrollBehaviorValuesEnumsData.smooth,
