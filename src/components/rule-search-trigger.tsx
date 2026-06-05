@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { ruleSearchStringsData } from "@/data";
 import { ButtonTypeEnum } from "@/enums";
 
+import { IconButton } from "./icon-button";
 import { MagnifierIcon } from "./magnifier-icon";
 
 export const RuleSearchTrigger = ({
@@ -25,28 +26,12 @@ export const RuleSearchTrigger = ({
 
     if (isCompact) {
         return (
-            <button
-                aria-label={ruleSearchStringsData.triggerAriaLabel}
-                type={ButtonTypeEnum.BUTTON}
-                className="
-                    flex
-                    h-9
-                    w-9
-                    cursor-pointer
-                    items-center
-                    justify-center
-                    rounded-lg
-                    transition-colors
-                    duration-200
-                "
-                style={{
-                    backgroundColor: "var(--bg-tertiary)",
-                    color: "var(--text-secondary)",
-                }}
+            <IconButton
+                ariaLabel={ruleSearchStringsData.triggerAriaLabel}
                 onClick={onOpen}
             >
                 <MagnifierIcon className="size-5" />
-            </button>
+            </IconButton>
         );
     }
 

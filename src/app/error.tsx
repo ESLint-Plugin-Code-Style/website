@@ -2,8 +2,9 @@
 
 import { useEffect } from "react";
 
+import { Button } from "@/components";
 import { errorBoundaryStringsData } from "@/data";
-import { InputTypeEnum } from "@/enums";
+import { LintButtonToneEnum } from "@/enums";
 
 const ErrorBoundary = ({
     error,
@@ -174,45 +175,13 @@ const ErrorBoundary = ({
                     )}
                 </div>
                 <div className="flex flex-wrap gap-3">
-                    <button
-                        type={InputTypeEnum.BUTTON}
-                        className="
-                            rounded-lg
-                            px-5
-                            py-2.5
-                            text-sm
-                            font-semibold
-                            transition-all
-                            duration-200
-                        "
-                        style={{
-                            backgroundColor: "var(--bg-button-primary)",
-                            color: "var(--text-button-primary)",
-                        }}
-                        onClick={resetHandler}
-                    >
-                        {errorBoundaryStringsData.ctaTryAgain}
-                    </button>
-                    <button
-                        type={InputTypeEnum.BUTTON}
-                        className="
-                            rounded-lg
-                            border
-                            px-5
-                            py-2.5
-                            text-sm
-                            font-semibold
-                            transition-all
-                            duration-200
-                        "
-                        style={{
-                            borderColor: "var(--border-primary)",
-                            color: "var(--text-primary)",
-                        }}
+                    <Button onClick={resetHandler}>{errorBoundaryStringsData.ctaTryAgain}</Button>
+                    <Button
+                        tone={LintButtonToneEnum.SECONDARY}
                         onClick={reloadHandler}
                     >
                         {errorBoundaryStringsData.ctaGoHome}
-                    </button>
+                    </Button>
                 </div>
             </div>
         </div>

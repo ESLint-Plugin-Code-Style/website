@@ -7,6 +7,7 @@ import { componentStringsData, ruleSearchStringsData } from "@/data";
 import { ButtonTypeEnum } from "@/enums";
 
 import { BrandMarkIcon } from "./brand-mark-icon";
+import { IconButton } from "./icon-button";
 import { MagnifierIcon } from "./magnifier-icon";
 import { RuleSearch } from "./rule-search";
 import { RuleSearchTrigger } from "./rule-search-trigger";
@@ -212,23 +213,8 @@ export const Navbar = () => {
                             />
                         </div>
                         <ThemeToggle />
-                        <button
-                            aria-label={componentStringsData.toggleMenuLabel}
-                            className="
-                                flex
-                                h-9
-                                w-9
-                                cursor-pointer
-                                items-center
-                                justify-center
-                                rounded-lg
-                                transition-colors
-                                duration-200
-                            "
-                            style={{
-                                backgroundColor: "var(--bg-tertiary)",
-                                color: "var(--text-secondary)",
-                            }}
+                        <IconButton
+                            ariaLabel={componentStringsData.toggleMenuLabel}
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         >
                             {isMobileMenuOpen ? (
@@ -286,7 +272,7 @@ export const Navbar = () => {
                                     />
                                 </svg>
                             )}
-                        </button>
+                        </IconButton>
                     </div>
                 </nav>
                 {isMobileMenuOpen && (

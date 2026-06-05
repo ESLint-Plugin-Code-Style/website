@@ -6,6 +6,8 @@ import { componentStringsData } from "@/data";
 import { ThemeEnum } from "@/enums";
 import { useTheme } from "@/hooks";
 
+import { IconButton } from "./icon-button";
+
 const emptySubscribeHandler = () => () => {};
 
 const getClientSnapshotHandler = () => true;
@@ -25,26 +27,9 @@ export const ThemeToggle = () => {
     );
 
     return (
-        <button
-            aria-label={componentStringsData.toggleThemeLabel}
-            className="
-                flex
-                h-9
-                w-9
-                cursor-pointer
-                items-center
-                justify-center
-                rounded-lg
-                transition-colors
-                duration-200
-            "
-            style={{
-                backgroundColor: "var(--bg-tertiary)",
-                color: "var(--text-secondary)",
-            }}
+        <IconButton
+            ariaLabel={componentStringsData.toggleThemeLabel}
             onClick={() => onSetTheme(resolvedTheme === ThemeEnum.DARK ? ThemeEnum.LIGHT : ThemeEnum.DARK)}
-            onMouseEnter={({ currentTarget }) => currentTarget.style.color = "var(--text-primary)"}
-            onMouseLeave={({ currentTarget }) => currentTarget.style.color = "var(--text-secondary)"}
         >
             {!isMounted ? <span className="h-[18px] w-[18px]" /> : resolvedTheme === ThemeEnum.DARK ? (
                 <svg
@@ -125,6 +110,6 @@ export const ThemeToggle = () => {
                     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                 </svg>
             )}
-        </button>
+        </IconButton>
     );
 };
