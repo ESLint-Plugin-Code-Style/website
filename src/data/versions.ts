@@ -6,7 +6,13 @@ export const releaseVersionsData: ReleaseVersionInterface[] = [
     {
         date: "2026-06-05",
         isMajor: false,
-        title: "className detection: skip JSX/HTML code-sample strings",
+        title: "`no-empty-lines-in-arrays` ignores comments",
+        version: "3.3.3",
+    },
+    {
+        date: "2026-06-05",
+        isMajor: false,
+        title: "className detection skips JSX/HTML code-sample strings",
         version: "3.3.2",
     },
     {
