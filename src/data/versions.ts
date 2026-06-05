@@ -6,6 +6,12 @@ export const releaseVersionsData: ReleaseVersionInterface[] = [
     {
         date: "2026-06-05",
         isMajor: false,
+        title: "className detection: skip JSX/HTML code-sample strings",
+        version: "3.3.2",
+    },
+    {
+        date: "2026-06-05",
+        isMajor: false,
         title: "Add `no-empty-lines-in-arrays` to the TypeScript definitions",
         version: "3.3.1",
     },
