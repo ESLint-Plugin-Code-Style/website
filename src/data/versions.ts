@@ -4,6 +4,12 @@ import type { ReleaseVersionInterface } from "@/interfaces";
 
 export const releaseVersionsData: ReleaseVersionInterface[] = [
     {
+        date: "2026-06-05",
+        isMajor: false,
+        title: "Add `no-empty-lines-in-arrays` to the TypeScript definitions",
+        version: "3.3.1",
+    },
+    {
         date: "2026-06-04",
         isMajor: false,
         title: "New `no-empty-lines-in-arrays` Rule + Blank-Line/Assignment Spacing + Prose-Safe className Detection",
