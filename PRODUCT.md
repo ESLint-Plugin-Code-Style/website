@@ -68,6 +68,7 @@ Both light and dark modes, with equal design priority. Neither is the "default" 
 **No fourth font.** If a design asks for a display serif, a slab, or a script, answer it with typographic contrast inside the existing three (weight, size, case, color, rotation) — not by adding a font.
 
 **Scale rules:**
+
 - Hero headings use fluid `clamp()`.
 - App UI and docs navigation use fixed `rem` scale.
 - Body line length 65–75ch.
@@ -111,3 +112,5 @@ These are the operating rules. Every skill's output must conform, or must earn t
 6. **No AI-template shortcuts.** If the shape appears by default in shadcn, Tailwind docs, or a typical AI-generated landing page, don't use it. In particular: no side-stripe borders >1px, no gradient text, no hero-metric templates, no icon-in-box feature cards, no identical card grids repeated across sections, no `rounded-xl` as a default, no dark-mode-with-glowing-accents.
 
 7. **Respect prior invariants.** `src/data/rules.ts` is auto-generated — never edit. All strings live in `src/data/strings.ts`. All magic values live in `src/data/enums.ts`. Components are flat in `src/components/`, kebab-case filenames, single-export PascalCase. These are load-bearing conventions; redesign inside them, not around them.
+
+8. **Color and class split.** Layout, spacing, sizing, flex, and typography are Tailwind utility classes in `className`. **Theme colors are applied via inline `style={{ ...: "var(--token)" }}`**, never the Tailwind color palette (`bg-violet-500`) — the design tokens in `globals.css` are the only color source. The lone exception is pseudo-state colors (`hover:`, `focus:`), which can't be inlined: use an arbitrary class `bg-[var(--token)]` or the v4 shorthand `bg-(--token)`. Note: `tailwindcss/no-custom-classname` can't resolve CSS-first `@theme` tokens, so registered utilities like `bg-token` are not available.

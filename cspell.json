@@ -1,0 +1,40 @@
+{
+    "version": "0.2",
+    "language": "en",
+    "ignorePaths": [
+        "node_modules/**",
+        ".next/**",
+        "dist/**",
+        "build/**",
+        "pnpm-lock.yaml",
+        "src/data/rules.ts"
+    ],
+    "words": [
+        "browserslistrc",
+        "callability",
+        "chakra",
+        "codestyle",
+        "commitlintrc",
+        "destructures",
+        "elhawary",
+        "ftrain",
+        "glassmorphism",
+        "hawary",
+        "inprogress",
+        "kottke",
+        "loggedin",
+        "loggedout",
+        "multilines",
+        "mydb",
+        "nonblock",
+        "oklch",
+        "opengraph",
+        "prebuild",
+        "precaches",
+        "prerendered",
+        "risograph",
+        "subfolders",
+        "turbopack",
+        "wcag"
+    ]
+}

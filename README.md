@@ -77,7 +77,7 @@ Uses the exact `react-ts-tw` recommended ESLint config from the plugin itself.
 
 ## Project Structure
 
-```
+```text
 website/
 ├── src/
 │   ├── app/                    # Next.js App Router pages
@@ -111,6 +111,7 @@ To deploy: push to the `main` branch. Vercel automatically builds and deploys.
 ## Sync with Plugin
 
 The website syncs automatically from the plugin repo's `metadata.json` via GitHub Actions. These files are auto-generated — do NOT edit manually:
+
 - `src/data/config.ts` — Plugin version and metadata
 - `src/data/rules.ts` — All rules with metadata and examples
 - `src/data/navigation.ts` — Sidebar navigation structure

@@ -58,6 +58,7 @@ export {
     redesignStringsData,
     ruleConfigFragmentStringsData,
     rulesCategoryStringsData,
+    ruleSearchStringsData,
     rulesIndexStringsData,
     versionSelectorStringsData,
 } from "./strings";

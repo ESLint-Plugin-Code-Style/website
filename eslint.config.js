@@ -120,6 +120,18 @@ export default [
                 {
                     blankLine: "always",
                     next: "*",
+                    prev: [
+                        "if",
+                        "for",
+                        "while",
+                        "do",
+                        "switch",
+                        "try",
+                    ],
+                },
+                {
+                    blankLine: "always",
+                    next: "*",
                     prev: "expression",
                 },
                 {
@@ -217,6 +229,7 @@ export default [
             "code-style/module-index-exports": "error",
             "code-style/multiline-if-conditions": "error",
             "code-style/nested-call-closing-brackets": "error",
+            "code-style/no-empty-lines-in-arrays": "error",
             "code-style/no-empty-lines-in-function-calls": "error",
             "code-style/no-empty-lines-in-function-params": "error",
             "code-style/no-empty-lines-in-jsx": "error",
@@ -432,11 +445,11 @@ export default [
         rules: { "check-file/folder-naming-convention": "off" },
     },
     /*
-     * Data files contain user-facing editorial copy, not JSX classNames.
-     * The classname-* rules incorrectly auto-sort long English strings into
-     * alphabetical word salad when a sentence exceeds 80 characters,
-     * corrupting production content. Scoped off for src/data/**.ts files
-     * because no classNames appear in these files.
+     * Data files hold user-facing editorial copy AND code-sample strings that
+     * contain literal className markup (e.g. the home-page before/after
+     * examples). The prose guard in eslint-plugin-code-style >= 3.3.1 stops the
+     * classname-* rules firing on prose, but the code-sample strings are real
+     * class lists, so the classname rules are still scoped off for data files.
      */
     {
         files: ["src/data/**/*.ts"],

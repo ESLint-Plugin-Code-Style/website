@@ -12,7 +12,7 @@ This is the **official documentation website** for `eslint-plugin-code-style`, b
 
 ## Folder Structure
 
-```
+```text
 website/
 ├── .husky/                      # Git hooks (pre-commit, pre-push, commit-msg)
 ├── public/

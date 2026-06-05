@@ -216,6 +216,11 @@ const ConfigurationPage = () => (
             <code>{configurationStringsData.tsOnlyManualNoteCode}</code>
             {configurationStringsData.tsOnlyManualNoteSuffix}
         </p>
+        <h2 id="nextjs-support">{configurationStringsData.nextjsTitle}</h2>
+        <p>
+            <strong>{configurationStringsData.pluginName}</strong>
+            {configurationStringsData.nextjsDescription}
+        </p>
         <h2 id="eslint-v9-vs-v10">{configurationStringsData.v9v10Title}</h2>
         <p>{configurationStringsData.v9v10Description}</p>
         <table>

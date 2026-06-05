@@ -182,6 +182,8 @@ export const configurationStringsData = {
     manualConfigDescription: "If you prefer granular control, register the plugin and enable only the rules you need:",
     manualConfigTitle: "Manual Configuration",
     metadataTitle: "Configuration",
+    nextjsDescription: " auto-detects Next.js per file \u2014 the App Router folder, reserved filenames (page, layout, route), reserved exports, framework prop names, and special folders ([slug], (group), @parallel) are respected with no extra config. Only two third-party rules (default exports for special files, bracket route folders) need an opt-in block, included commented-out at the bottom of every preset config.",
+    nextjsTitle: "Next.js Support",
     nextStepsGettingStarted: "Getting Started",
     nextStepsGettingStartedSuffix: " \u2014 Try the plugin in your own project",
     nextStepsPhilosophy: "Philosophy",
@@ -416,6 +418,24 @@ export const rulesIndexStringsData = {
     statTotal: "Total",
     statTsOnly: "TS-only",
     title: "Rules Reference",
+};
+
+// Spotlight rule search
+export const ruleSearchStringsData = {
+    badgeConfigurable: "configurable",
+    badgeFixable: "fixable",
+    browseLabel: "Browse by category",
+    dialogAriaLabel: "Rule search",
+    emptyHint: `Type to search ${totalRulesData} rules`,
+    inputAriaLabel: "Search rules by name or description",
+    macPlatformToken: "Mac",
+    noResults: "No rules found",
+    placeholder: "Find a rule…",
+    resultsAriaLabel: "Rule results",
+    shortcutMac: "⌘K",
+    shortcutOther: "Ctrl K",
+    triggerAriaLabel: "Open rule search",
+    triggerLabel: "Search rules",
 };
 
 // Rule config code snippet fragments
