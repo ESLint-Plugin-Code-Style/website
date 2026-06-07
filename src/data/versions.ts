@@ -4,6 +4,12 @@ import type { ReleaseVersionInterface } from "@/interfaces";
 
 export const releaseVersionsData: ReleaseVersionInterface[] = [
     {
+        date: "2026-06-07",
+        isMajor: false,
+        title: "Two folder-structure rules for component-variant families",
+        version: "3.4.0",
+    },
+    {
         date: "2026-06-05",
         isMajor: false,
         title: "`opening-brackets-same-line` false positive on `??` fixed",

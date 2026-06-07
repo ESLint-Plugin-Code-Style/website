@@ -390,6 +390,30 @@ atoms/calendar.tsx`,
                 rationale: "The folder already provides context, so the name doesn't need to repeat it",
             },
             {
+                badExample: "ui/copy-button.tsx",
+                description: "Disallow scattered component variants that share a trailing name token — collapse them into one folder named by the shared token",
+                goodExample: "ui/button/copy.tsx",
+                isConfigurable: true,
+                isFixable: false,
+                isTsOnly: false,
+                name: "no-scattered-component-variants",
+                options: [
+                    {
+                        default: "(built-in list)",
+                        description: "Module folders to check",
+                        name: "moduleFolders",
+                        type: "string[]",
+                    },
+                    {
+                        default: "[]",
+                        description: "Additional folders to check",
+                        name: "extraModuleFolders",
+                        type: "string[]",
+                    },
+                ],
+                rationale: "Siblings like copy-button and icon-button repeat the same suffix on every name; collapsing them into button/{copy,icon}.tsx groups related variants and removes the redundant suffix",
+            },
+            {
                 badExample: `export const Success = () => (
     <svg><path d="M9 12l2 2 4-4" /></svg>
 );`,
@@ -963,7 +987,7 @@ export function helper() {}
 
 // Non-redux subfolder index that's a barrel (e.g., views/dashboard/index)
 export * from "./header";`,
-                description: "Index files should only contain imports and re-exports, not code definitions. Subfolder indexes must contain component code (not barrel) — except for redux subfolders (types/, actions/, reducers/, etc.), which are each treated as their own module root.",
+                description: "Index files should only contain imports and re-exports, not code definitions. Subfolder indexes must contain component code (not a barrel); a component index must not re-export sibling modules it does not use — those belong in the module root barrel. Redux subfolders (types/, actions/, reducers/, etc.) are each treated as their own module root.",
                 goodExample: `// src/views/index.ts — root barrel
 export { Button } from "./Button";
 export { helper } from "./utils";
@@ -1004,7 +1028,7 @@ export const MAX_RETRIES = 3;`,
             {
                 badExample: `// components/index.js (missing Input export)
 export { Button } from "./Button";`,
-                description: "Index files must export all folder contents",
+                description: "Index files must export all folder contents. A nested folder item is also considered exported when the module root barrel deep-exports it (e.g. export { CopyButton } from \"./button/copy\"), so a component index need not re-export its own siblings.",
                 goodExample: `// components/index.js
 export { Button } from "./Button";
 export { Input } from "./Input";`,
@@ -1641,7 +1665,7 @@ export interface UserInterface { ... }
 
 // src/types/config.ts
 export type ConfigType = { ... }`,
-                isConfigurable: true,
+                isConfigurable: false,
                 isFixable: false,
                 isTsOnly: true,
                 name: "typescript-definition-location",
@@ -1711,12 +1735,12 @@ export const getRuleByNameRulesDataHandler = (targetName: string): {
     return undefined;
 };
 
-export const totalRulesData = 82;
+export const totalRulesData = 83;
 
 export const fixableRulesData = 72;
 
-export const configurableRulesData = 22;
+export const configurableRulesData = 24;
 
-export const reportOnlyRulesData = 10;
+export const reportOnlyRulesData = 11;
 
 export const tsOnlyRulesData = 9;
