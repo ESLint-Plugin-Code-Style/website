@@ -23,16 +23,19 @@ export const IconButton = ({
     ariaLabel,
     children,
     className,
+    isAriaExpanded,
     onClick,
     type,
 }: {
     ariaLabel: string,
     children: ReactNode,
     className?: string,
+    isAriaExpanded?: boolean,
     onClick?: MouseEventHandler<HTMLButtonElement>,
     type?: ButtonTypeType,
 }) => (
     <button
+        aria-expanded={isAriaExpanded}
         aria-label={ariaLabel}
         type={type ?? ButtonTypeEnum.BUTTON}
         className={joinClassesHandler(

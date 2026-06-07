@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import { mediaQueryValuesConstantsData, redesignStringsData } from "@/data";
+import { constantsData, redesignStringsData } from "@/data";
 import { EventNameEnum } from "@/enums";
 import type { DriftEntryType } from "@/types";
 
@@ -59,7 +59,7 @@ export const CodeRain = () => {
         () => {
             if (typeof window === "undefined") return undefined;
 
-            const mediaQuery = window.matchMedia(mediaQueryValuesConstantsData.prefersReducedMotion);
+            const mediaQuery = window.matchMedia(constantsData.mediaQueryValues.prefersReducedMotion);
 
             prefersReducedRef.current = mediaQuery.matches;
 

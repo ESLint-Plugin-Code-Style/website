@@ -573,3 +573,10 @@
         opacity: 1;
     }
 }
+
+/* Visible keyboard focus on every interactive element (WCAG 2.4.7) */
+:focus-visible {
+    outline: 2px solid var(--lint-info);
+    outline-offset: 2px;
+    border-radius: 3px;
+}

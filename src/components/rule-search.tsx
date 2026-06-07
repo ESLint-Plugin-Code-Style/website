@@ -10,7 +10,7 @@ import {
     useState,
 } from "react";
 
-import { categoriesRulesData, ruleSearchStringsData, scrollBehaviorValuesConstantsData } from "@/data";
+import { categoriesRulesData, constantsData, ruleSearchStringsData } from "@/data";
 import { ButtonTypeEnum, EventNameEnum, KeyboardKeyEnum } from "@/enums";
 import type { SearchRuleEntryInterface } from "@/interfaces";
 import { Input, MagnifierIcon } from "@/ui";
@@ -90,6 +90,10 @@ export const RuleSearch = ({
 }) => {
     const inputRef = useRef<HTMLInputElement>(null);
 
+    const panelRef = useRef<HTMLDivElement>(null);
+
+    const previousFocusRef = useRef<HTMLElement | null>(null);
+
     const [query, setQuery] = useState("");
 
     const [activeIndex, setActiveIndex] = useState(0);
@@ -111,13 +115,15 @@ export const RuleSearch = ({
         if (pathname === target) {
             const element = document.getElementById(name);
 
-            if (element) element.scrollIntoView({ behavior: scrollBehaviorValuesConstantsData.smooth });
+            if (element) element.scrollIntoView({ behavior: constantsData.scrollBehaviors.smooth });
         } else router.push(`${target}#${name}`);
     };
 
     useEffect(
         () => {
             if (isOpen) {
+                previousFocusRef.current = document.activeElement as HTMLElement | null;
+
                 inputRef.current?.focus();
 
                 return;
@@ -126,6 +132,8 @@ export const RuleSearch = ({
             setQuery("");
 
             setActiveIndex(0);
+
+            previousFocusRef.current?.focus();
         },
         [isOpen],
     );
@@ -138,6 +146,8 @@ export const RuleSearch = ({
     useEffect(
         () => {
             const processKeyHandler = (event: KeyboardEvent) => {
+                const { shiftKey } = event;
+
                 const {
                     ctrlKey,
                     key,
@@ -154,6 +164,32 @@ export const RuleSearch = ({
                 }
 
                 if (!isOpen) return;
+
+                if (key === KeyboardKeyEnum.TAB) {
+                    const panel = panelRef.current;
+
+                    if (!panel) return;
+
+                    const focusables = [...panel.querySelectorAll<HTMLElement>(ruleSearchStringsData.focusableSelector)];
+
+                    if (focusables.length === 0) return;
+
+                    const first = focusables[0];
+
+                    const last = focusables[focusables.length - 1];
+
+                    if (shiftKey && document.activeElement === first) {
+                        event.preventDefault();
+
+                        last.focus();
+                    } else if (!shiftKey && document.activeElement === last) {
+                        event.preventDefault();
+
+                        first.focus();
+                    }
+
+                    return;
+                }
 
                 if (key === KeyboardKeyEnum.ESCAPE) {
                     onClose();
@@ -238,6 +274,7 @@ export const RuleSearch = ({
                     onClick={onClose}
                 >
                     <motion.div
+                        ref={panelRef}
                         animate={{
                             opacity: 1,
                             y: 0,

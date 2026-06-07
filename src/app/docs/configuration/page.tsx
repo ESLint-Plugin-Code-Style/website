@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { CodeBlock } from "@/components";
-import { codeFilenameValuesConstantsData, configurationStringsData } from "@/data";
+import { configurationStringsData, constantsData } from "@/data";
 import { totalRulesData, tsOnlyRulesData } from "@/data";
 import { CodeLanguageEnum } from "@/enums";
 
@@ -171,7 +171,7 @@ const ConfigurationPage = () => (
                     <div className="px-0">
                         <CodeBlock
                             code={code}
-                            filename={codeFilenameValuesConstantsData.eslintConfig}
+                            filename={constantsData.codeFileNames.eslintConfig}
                             language={CodeLanguageEnum.JS}
                         />
                     </div>
@@ -182,14 +182,14 @@ const ConfigurationPage = () => (
         <p>{configurationStringsData.manualConfigDescription}</p>
         <CodeBlock
             code={manualConfig}
-            filename={codeFilenameValuesConstantsData.eslintConfig}
+            filename={constantsData.codeFileNames.eslintConfig}
             language={CodeLanguageEnum.JS}
         />
         <h2 id="rule-options">{configurationStringsData.ruleOptionsTitle}</h2>
         <p>{configurationStringsData.ruleOptionsDescription}</p>
         <CodeBlock
             code={configurableRuleExample}
-            filename={codeFilenameValuesConstantsData.eslintConfig}
+            filename={constantsData.codeFileNames.eslintConfig}
             language={CodeLanguageEnum.JS}
         />
         <p>

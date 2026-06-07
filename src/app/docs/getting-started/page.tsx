@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { CodeBlock } from "@/components";
-import { codeFilenameValuesConstantsData, codeSnippetStringsData, gettingStartedStringsData } from "@/data";
+import { codeSnippetStringsData, constantsData, gettingStartedStringsData } from "@/data";
 import { CodeLanguageEnum } from "@/enums";
 
 export const metadata: Metadata = { title: gettingStartedStringsData.metadataTitle };
@@ -155,17 +155,17 @@ const GettingStartedPage = () => (
         <div className="space-y-4">
             <CodeBlock
                 code={codeSnippetStringsData.installNpm}
-                filename={codeFilenameValuesConstantsData.npm}
+                filename={constantsData.codeFileNames.npm}
                 language={CodeLanguageEnum.BASH}
             />
             <CodeBlock
                 code={codeSnippetStringsData.installPnpm}
-                filename={codeFilenameValuesConstantsData.pnpm}
+                filename={constantsData.codeFileNames.pnpm}
                 language={CodeLanguageEnum.BASH}
             />
             <CodeBlock
                 code={codeSnippetStringsData.installYarn}
-                filename={codeFilenameValuesConstantsData.yarn}
+                filename={constantsData.codeFileNames.yarn}
                 language={CodeLanguageEnum.BASH}
             />
         </div>
@@ -177,7 +177,7 @@ const GettingStartedPage = () => (
         </p>
         <CodeBlock
             code={basicConfig}
-            filename={codeFilenameValuesConstantsData.eslintConfig}
+            filename={constantsData.codeFileNames.eslintConfig}
             language={CodeLanguageEnum.JS}
         />
         <p>
@@ -193,14 +193,14 @@ const GettingStartedPage = () => (
         </p>
         <CodeBlock
             code={codeSnippetStringsData.eslintFixCommand}
-            filename={codeFilenameValuesConstantsData.terminal}
+            filename={constantsData.codeFileNames.terminal}
             language={CodeLanguageEnum.BASH}
         />
         <h2 id="all-rules">{gettingStartedStringsData.sectionEnableAllRules}</h2>
         <p>{gettingStartedStringsData.enableAllRulesDescription}</p>
         <CodeBlock
             code={allRulesConfig}
-            filename={codeFilenameValuesConstantsData.eslintConfig}
+            filename={constantsData.codeFileNames.eslintConfig}
             language={CodeLanguageEnum.JS}
             isShowLineNumbers
         />
@@ -229,7 +229,7 @@ const GettingStartedPage = () => (
         </p>
         <CodeBlock
             code={disableRulesConfig}
-            filename={codeFilenameValuesConstantsData.eslintConfig}
+            filename={constantsData.codeFileNames.eslintConfig}
             language={CodeLanguageEnum.JS}
         />
         <h2 id="next-steps">{gettingStartedStringsData.sectionNextSteps}</h2>

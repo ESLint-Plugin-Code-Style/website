@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { componentStringsData, scrollBehaviorValuesConstantsData } from "@/data";
+import { componentStringsData, constantsData } from "@/data";
 import type { HeadingInterface } from "@/interfaces";
 import { joinClassesHandler } from "@/lib";
 
@@ -94,7 +94,7 @@ export const OnThisPage = ({ headings }: { headings: HeadingInterface[] }) => {
                                             const element = document.getElementById(id);
 
                                             if (element) {
-                                                element.scrollIntoView({ behavior: scrollBehaviorValuesConstantsData.smooth });
+                                                element.scrollIntoView({ behavior: constantsData.scrollBehaviors.smooth });
 
                                                 setActiveId(id);
                                             }

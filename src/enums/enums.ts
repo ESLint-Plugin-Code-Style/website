@@ -55,6 +55,7 @@ export enum KeyboardKeyEnum {
     ENTER = "Enter",
     ESCAPE = "Escape",
     KEY_K = "k",
+    TAB = "Tab",
 }
 
 export enum LintAccentNameEnum {

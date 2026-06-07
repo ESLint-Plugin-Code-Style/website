@@ -80,6 +80,7 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
                     shrink-0
                     overflow-x-hidden
                     overflow-y-auto
+                    overscroll-contain
                     transition-transform
                     duration-300
                     lg:translate-x-0
@@ -90,10 +91,7 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
                     borderRight: "1px solid var(--border-primary)",
                 }}
             >
-                <Sidebar
-                    isOpen={isSidebarOpen}
-                    onClose={() => setIsSidebarOpen(false)}
-                />
+                <Sidebar onClose={() => setIsSidebarOpen(false)} />
             </aside>
             <div
                 className="

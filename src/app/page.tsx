@@ -5,8 +5,8 @@ import type { ReactNode } from "react";
 import { AnimatedCodeFixer, CodeBlock } from "@/components";
 import {
     categoriesRulesData,
-    codeFilenameValuesConstantsData,
     codeSnippetStringsData,
+    constantsData,
     fixableRulesData,
     homeStringsData,
     pluginConfigData,
@@ -950,7 +950,7 @@ const HomePage = () => (
                             </h3>
                             <CodeBlock
                                 code={codeSnippetStringsData.installNpm}
-                                filename={codeFilenameValuesConstantsData.terminal}
+                                filename={constantsData.codeFileNames.terminal}
                                 language={CodeLanguageEnum.BASH}
                             />
                         </div>
@@ -985,7 +985,7 @@ const HomePage = () => (
                             </h3>
                             <CodeBlock
                                 code={eslintConfigCode}
-                                filename={codeFilenameValuesConstantsData.eslintConfig}
+                                filename={constantsData.codeFileNames.eslintConfig}
                                 language={CodeLanguageEnum.JS}
                             />
                             <p
@@ -1013,7 +1013,7 @@ const HomePage = () => (
                             <div className="mt-2">
                                 <CodeBlock
                                     code={eslintConfigTsCode}
-                                    filename={codeFilenameValuesConstantsData.eslintConfig}
+                                    filename={constantsData.codeFileNames.eslintConfig}
                                     language={CodeLanguageEnum.JS}
                                 />
                             </div>
@@ -1049,7 +1049,7 @@ const HomePage = () => (
                             </h3>
                             <CodeBlock
                                 code={codeSnippetStringsData.eslintFixCommand}
-                                filename={codeFilenameValuesConstantsData.terminal}
+                                filename={constantsData.codeFileNames.terminal}
                                 language={CodeLanguageEnum.BASH}
                             />
                         </div>

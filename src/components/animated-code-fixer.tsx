@@ -1,8 +1,13 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import type { ReactNode } from "react";
-import { useEffect, useMemo, useState } from "react";
+import {
+    useEffect,
+    useMemo,
+    useRef,
+    useState,
+} from "react";
 
 import { heroDemoSnippetsStringsData, redesignStringsData } from "@/data";
 import type { LintStatusType, PillColorType } from "@/types";
@@ -92,6 +97,8 @@ const getLineTokensHandler = (line: string): ReactNode[] => {
 };
 
 export const AnimatedCodeFixer = () => {
+    const containerRef = useRef<HTMLDivElement>(null);
+
     const [stepIndex, setStepIndex] = useState(0);
 
     const [typed, setTyped] = useState("");
@@ -99,6 +106,10 @@ export const AnimatedCodeFixer = () => {
     const [isTyping, setIsTyping] = useState(true);
 
     const [isPaused, setIsPaused] = useState(false);
+
+    const [isInView, setIsInView] = useState(true);
+
+    const shouldReduceMotion = useReducedMotion();
 
     const stepDurationMs = 2400;
 
@@ -141,10 +152,6 @@ export const AnimatedCodeFixer = () => {
         ],
     );
 
-    /*
-     * On the first (messy) step, map each 1-based line number to the rule(s) it
-     * violates so the render can underline it in red and label the problem.
-     */
     const errorLineMap = useMemo(
         () => {
             const map = new Map<number, string[]>();
@@ -177,6 +184,10 @@ export const AnimatedCodeFixer = () => {
     useEffect(
         () => {
             if (isPaused) return undefined;
+
+            if (!isInView) return undefined;
+
+            if (shouldReduceMotion) return undefined;
 
             if (!isTyping) return undefined;
 
@@ -216,8 +227,10 @@ export const AnimatedCodeFixer = () => {
         },
         [
             activeStep,
+            isInView,
             isPaused,
             isTyping,
+            shouldReduceMotion,
             stepIndex,
         ],
     );
@@ -225,6 +238,10 @@ export const AnimatedCodeFixer = () => {
     useEffect(
         () => {
             if (isPaused) return undefined;
+
+            if (!isInView) return undefined;
+
+            if (shouldReduceMotion) return undefined;
 
             if (isTyping) return undefined;
 
@@ -248,15 +265,49 @@ export const AnimatedCodeFixer = () => {
             return () => window.clearTimeout(timer);
         },
         [
+            isInView,
             isPaused,
             isTyping,
+            shouldReduceMotion,
             stepIndex,
             totalSteps,
         ],
     );
 
+    useEffect(
+        () => {
+            if (!shouldReduceMotion) return undefined;
+
+            setTyped(heroDemoSnippetsStringsData.steps[0].snippet);
+
+            setIsTyping(false);
+
+            return undefined;
+        },
+        [shouldReduceMotion],
+    );
+
+    useEffect(
+        () => {
+            const node = containerRef.current;
+
+            if (!node) return undefined;
+
+            const observer = new IntersectionObserver(
+                ([entry]) => setIsInView(entry.isIntersecting),
+                { threshold: 0 },
+            );
+
+            observer.observe(node);
+
+            return () => observer.disconnect();
+        },
+        [],
+    );
+
     return (
         <div
+            ref={containerRef}
             className="
                 group
                 relative

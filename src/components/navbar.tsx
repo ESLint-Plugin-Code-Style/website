@@ -72,22 +72,24 @@ export const Navbar = () => {
                         "
                     >
                         <BrandMarkIcon className="h-[18px] w-7 shrink-0" />
-                        <span
-                            style={{ color: "var(--text-primary)" }}
-                            className="
-                                font-mono
-                                text-base
-                                font-semibold
-                                tracking-tight
-                            "
-                        >
-                            {componentStringsData.brandName}
+                        <span className="flex items-center">
+                            <span
+                                style={{ color: "var(--text-primary)" }}
+                                className="
+                                    font-mono
+                                    text-base
+                                    font-semibold
+                                    tracking-tight
+                                "
+                            >
+                                {componentStringsData.brandName}
+                            </span>
+                            <span
+                                aria-hidden="true"
+                                className="blinking-caret"
+                                style={{ color: "var(--lint-info)" }}
+                            />
                         </span>
-                        <span
-                            aria-hidden="true"
-                            className="blinking-caret -ml-1"
-                            style={{ color: "var(--lint-info)" }}
-                        />
                     </Link>
                     <div
                         className="
@@ -188,7 +190,15 @@ export const Navbar = () => {
                                 {label}
                             </Link>
                         ))}
-                        <RuleSearchTrigger onOpen={() => setIsSearchOpen(true)} />
+                        <div className="hidden lg:block">
+                            <RuleSearchTrigger onOpen={() => setIsSearchOpen(true)} />
+                        </div>
+                        <div className="hidden md:block lg:hidden">
+                            <RuleSearchTrigger
+                                isCompact
+                                onOpen={() => setIsSearchOpen(true)}
+                            />
+                        </div>
                         <div
                             className="mx-2 h-5 w-px"
                             style={{ backgroundColor: "var(--border-primary)" }}
@@ -213,6 +223,7 @@ export const Navbar = () => {
                         <ThemeToggle />
                         <IconButton
                             ariaLabel={componentStringsData.toggleMenuLabel}
+                            isAriaExpanded={isMobileMenuOpen}
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         >
                             {isMobileMenuOpen ? (

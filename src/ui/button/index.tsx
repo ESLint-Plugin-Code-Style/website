@@ -6,11 +6,6 @@ import { ButtonTypeEnum, LintButtonSizeEnum, LintButtonToneEnum } from "@/enums"
 import { joinClassesHandler } from "@/lib";
 import type { ButtonTypeType, LintButtonSizeType, LintButtonToneType } from "@/types";
 
-export { BackToTop } from "./back-to-top";
-export { CopyButton } from "./copy";
-export { IconButton } from "./icon";
-export { LintButton } from "./lint";
-
 const baseClass = `
     inline-flex
     items-center

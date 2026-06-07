@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { componentStringsData, scrollBehaviorValuesConstantsData } from "@/data";
+import { componentStringsData, constantsData } from "@/data";
 import { EventNameEnum } from "@/enums";
 
 export const BackToTop = () => {
@@ -79,7 +79,7 @@ export const BackToTop = () => {
                         color: "var(--bg-primary)",
                     }}
                     onClick={() => window.scrollTo({
-                        behavior: scrollBehaviorValuesConstantsData.smooth,
+                        behavior: constantsData.scrollBehaviors.smooth,
                         top: 0,
                     })}
                 >

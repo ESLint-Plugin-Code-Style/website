@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { CodeBlock } from "@/components";
-import { categoriesRulesData, codeFilenameValuesConstantsData, getCategoryBySlugRulesDataHandler } from "@/data";
+import { categoriesRulesData, constantsData, getCategoryBySlugRulesDataHandler } from "@/data";
 import { ruleConfigFragmentStringsData, rulesCategoryStringsData } from "@/data";
 import { BadgeVariantEnum, CodeLanguageEnum } from "@/enums";
 import type { CategoryPagePropsInterface } from "@/interfaces";
@@ -244,7 +244,7 @@ const CategoryPage = async ({ params }: { params: Promise<{ category: string }> 
                                     </tbody>
                                 </table>
                                 <CodeBlock
-                                    filename={codeFilenameValuesConstantsData.eslintConfig}
+                                    filename={constantsData.codeFileNames.eslintConfig}
                                     language={CodeLanguageEnum.JAVASCRIPT}
                                     code={`${ruleConfigFragmentStringsData.rulePrefix}${name}${ruleConfigFragmentStringsData.configOptionsSuffix}${options.map(({
                                         default: d,
@@ -329,7 +329,7 @@ const CategoryPage = async ({ params }: { params: Promise<{ category: string }> 
                         <div className="mt-4">
                             <CodeBlock
                                 code={`${ruleConfigFragmentStringsData.rulePrefix}${name}${ruleConfigFragmentStringsData.configErrorSuffix}`}
-                                filename={codeFilenameValuesConstantsData.eslintConfig}
+                                filename={constantsData.codeFileNames.eslintConfig}
                                 language={CodeLanguageEnum.JAVASCRIPT}
                             />
                         </div>

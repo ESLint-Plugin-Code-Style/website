@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { CodeBlock } from "@/components";
-import { codeFilenameValuesConstantsData, codeSnippetStringsData, contributingStringsData } from "@/data";
+import { codeSnippetStringsData, constantsData, contributingStringsData } from "@/data";
 import { totalRulesData, tsOnlyRulesData } from "@/data";
 import { CodeLanguageEnum } from "@/enums";
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = { title: contributingStringsData.metadataTitle
 
 const cloneAndInstall = `git clone https://github.com/ESLint-Plugin-Code-Style/plugin.git
 cd eslint-plugin-code-style
-npm install`;
+pnpm install`;
 
 const projectStructure = `eslint-plugin-code-style/
 ├── src/
@@ -83,7 +83,7 @@ const arrayCallbackDestructure = {
 };`;
 
 const testCommand = `cd _tests_/v9/react-ts
-npx eslint . --fix`;
+pnpm eslint . --fix`;
 
 const jsRulesCount = totalRulesData - tsOnlyRulesData;
 
@@ -102,13 +102,13 @@ const ContributingPage = () => {
             <p>{contributingStringsData.cloneDescription}</p>
             <CodeBlock
                 code={cloneAndInstall}
-                filename={codeFilenameValuesConstantsData.terminal}
+                filename={constantsData.codeFileNames.terminal}
                 language={CodeLanguageEnum.BASH}
             />
             <p>{contributingStringsData.gettingStartedBuildDescription}</p>
             <CodeBlock
                 code={buildCommand}
-                filename={codeFilenameValuesConstantsData.terminal}
+                filename={constantsData.codeFileNames.terminal}
                 language={CodeLanguageEnum.BASH}
             />
             <p>
@@ -124,7 +124,7 @@ const ContributingPage = () => {
             </p>
             <CodeBlock
                 code={projectStructure}
-                filename={codeFilenameValuesConstantsData.projectStructure}
+                filename={constantsData.codeFileNames.projectStructure}
                 language={CodeLanguageEnum.TEXT}
             />
             <h3>{contributingStringsData.keyFilesTitle}</h3>
@@ -150,7 +150,7 @@ const ContributingPage = () => {
             <p>{contributingStringsData.rulePatternDescription}</p>
             <CodeBlock
                 code={rulePattern}
-                filename={codeFilenameValuesConstantsData.rulesArrays}
+                filename={constantsData.codeFileNames.rulesArrays}
                 language={CodeLanguageEnum.JS}
                 isShowLineNumbers
             />
@@ -238,7 +238,7 @@ const ContributingPage = () => {
             </ol>
             <CodeBlock
                 code={testCommand}
-                filename={codeFilenameValuesConstantsData.terminal}
+                filename={constantsData.codeFileNames.terminal}
                 language={CodeLanguageEnum.BASH}
             />
             <p>{contributingStringsData.testAllProjectsNote}</p>
@@ -261,7 +261,7 @@ const ContributingPage = () => {
             </ul>
             <CodeBlock
                 code={buildCommand}
-                filename={codeFilenameValuesConstantsData.terminal}
+                filename={constantsData.codeFileNames.terminal}
                 language={CodeLanguageEnum.BASH}
             />
             <h2 id="commit-conventions">{contributingStringsData.commitConventionsTitle}</h2>

@@ -30,7 +30,7 @@ export const homeStringsData = {
     beyondEslintComparison3Before: "<p className=\"text-sm\">Welcome to the dashboard</p>",
     beyondEslintComparison3Caption: "Strings \u2014 extracted into data files",
     beyondEslintComparison3Rule: "code-style/no-hardcoded-strings",
-    beyondEslintIntro: "ESLint deprecated its formatting rules and never replaced the opinionated ones \u2014 prop order, import paths, where strings live. We used to enforce them by hand in review, where they were easy to miss. Now they're auto-fixed rules layered on top of ESLint.",
+    beyondEslintIntro: "When ESLint deprecated its formatting rules, ESLint Stylistic picked them up \u2014 spacing, quotes, semicolons. But the opinionated structural calls were never covered by either: prop order, import paths, where strings live. We used to enforce those by hand in review, where they were easy to miss. This plugin turns them into auto-fixed rules on top of ESLint.",
     beyondEslintKicker: "the layer above ESLint",
     beyondEslintSectionTitle: "The rules ESLint never shipped.",
     beyondEslintSeeMoreLabel: "Read the full philosophy",
@@ -101,7 +101,7 @@ export const homeStringsData = {
     thesisByline: "\u2014 why this plugin exists",
     thesisKicker: "author's note",
     thesisParagraph: "For years we enforced these style rules by hand in code review \u2014 which made them easy to miss and impossible to apply consistently. So I packaged the ones ESLint's built-ins never covered into a single, dependency-free rules file: prop order, absolute imports, extracted strings, component structure. Drop it into any ES project, import it, and run eslint --fix like native rules. Across our projects it cut code-style differences between engineers by about 95% \u2014 most of all for the frontend team, where the gaps hurt longest.",
-    thesisPullQuote: "The style decisions ESLint leaves to you \u2014 decided, and auto-fixed.",
+    thesisPullQuote: "ESLint catches what's broken. This plugin settles what's subjective \u2014 prop order, imports, where strings live \u2014 and auto-fixes it.",
 };
 
 // Docs overview strings
@@ -377,7 +377,7 @@ export const contributingStringsData = {
     tableHeaderTestProject: "Test Project",
     testAllProjectsNote: "Test your rule against all 4 projects to ensure it works correctly across stacks.",
     testBuildStep: "Run ",
-    testBuildStepCode: "npm run build",
+    testBuildStepCode: "pnpm build",
     testBuildStepSuffix: " from the project root.",
     testDescription: "The project uses 4 test projects that reference the built plugin via ",
     testDescriptionCode: "\"file:../..\"",
@@ -427,6 +427,7 @@ export const ruleSearchStringsData = {
     browseLabel: "Browse by category",
     dialogAriaLabel: "Rule search",
     emptyHint: `Type to search ${totalRulesData} rules`,
+    focusableSelector: "a[href], button:not([disabled]), input, [tabindex]:not([tabindex=\"-1\"])",
     inputAriaLabel: "Search rules by name or description",
     macPlatformToken: "Mac",
     noResults: "No rules found",
@@ -506,7 +507,7 @@ export const codeSnippetStringsData = {
     installNpm: "npm install -D eslint-plugin-code-style",
     installPnpm: "pnpm add -D eslint-plugin-code-style",
     installYarn: "yarn add -D eslint-plugin-code-style",
-    npmRunBuild: "npm run build",
+    npmRunBuild: "pnpm build",
 };
 
 // Layout strings (root layout)
@@ -519,7 +520,7 @@ export const componentStringsData = {
     copiedLabel: "Copied",
     copyLabel: "Copy to clipboard",
     footerAuthorName: "Mohamed Elhawary",
-    footerAuthorPrefix: "Built by",
+    footerAuthorPrefix: "Authored by",
     footerAuthorUrl: "https://hawary.dev",
     intersectionObserverRootMargin: "-80px 0px -70% 0px",
     navLinkDocs: "Docs",
@@ -527,6 +528,8 @@ export const componentStringsData = {
     navLinkRules: "Rules",
     onThisPageTitle: "On this page",
     prefersColorSchemeDark: "(prefers-color-scheme: dark)",
+    skipToContentLabel: "Skip to content",
+    skipToContentTargetId: "main-content",
     toggleMenuLabel: "Toggle menu",
     toggleNavigationLabel: "Toggle navigation",
     toggleThemeLabel: "Toggle theme",
@@ -863,6 +866,7 @@ export const codeSamplesStringsData = {
     flatConfigModernArrayOpen: "export default [",
     flatConfigModernFilename: "eslint.config.js",
     flatConfigModernPreset: "codeStyle.configs.react,",
+    reactJsxBefore: "<Card><Header /><Body /><Footer /></Card>",
     reactJsxBody: "<Body />",
     reactJsxCardClose: "</Card>",
     reactJsxCardOpen: "<Card>",

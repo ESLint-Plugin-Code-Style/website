@@ -1,5 +1,6 @@
 "use client";
 
+import { MotionConfig } from "motion/react";
 import type React from "react";
 import {
     useCallback,
@@ -9,12 +10,12 @@ import {
 } from "react";
 
 import { ThemeContext } from "@/contexts";
-import { componentStringsData, localStorageKeyValuesConstantsData, methodNameValuesConstantsData } from "@/data";
+import { componentStringsData, constantsData } from "@/data";
 import { EventNameEnum, ThemeEnum } from "@/enums";
 import type { ResolvedThemeType, ThemeSnapshotType, ThemeType } from "@/types";
 
 const getStoredThemeHandler = (): ThemeType => {
-    const stored = localStorage.getItem(localStorageKeyValuesConstantsData.theme);
+    const stored = localStorage.getItem(constantsData.localStorageKeys.theme);
 
     return stored === ThemeEnum.LIGHT || stored === ThemeEnum.DARK || stored === ThemeEnum.SYSTEM ? stored : ThemeEnum.SYSTEM;
 };
@@ -39,7 +40,7 @@ const notifyListenersHandler = () => themeListeners.forEach((listener) => listen
 const subscribeToThemeHandler = (callback: () => void) => {
     themeListeners.add(callback);
 
-    return () => themeListeners[methodNameValuesConstantsData.deleteMethod](callback);
+    return () => themeListeners[constantsData.methodNames.deleteMethod](callback);
 };
 
 const getThemeSnapshotHandler = () => themeStore;
@@ -60,7 +61,7 @@ const updateThemeStoreHandler = (newTheme: ThemeType) => {
     };
 
     localStorage.setItem(
-        localStorageKeyValuesConstantsData.theme,
+        constantsData.localStorageKeys.theme,
         newTheme,
     );
 
@@ -156,6 +157,8 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     );
 
     return (
-        <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+        <ThemeContext.Provider value={value}>
+            <MotionConfig reducedMotion={constantsData.motionValues.user}>{children}</MotionConfig>
+        </ThemeContext.Provider>
     );
 };

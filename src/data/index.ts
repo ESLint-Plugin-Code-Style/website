@@ -1,13 +1,6 @@
 export { sizeClassesButtonData, toneClassesButtonData, toneStylesButtonData } from "./button";
 export { pluginConfigData } from "./config";
-export {
-    codeFilenameValuesConstantsData,
-    localStorageKeyValuesConstantsData,
-    mediaQueryValuesConstantsData,
-    methodNameValuesConstantsData,
-    propertyKeyValuesConstantsData,
-    scrollBehaviorValuesConstantsData,
-} from "./constants";
+export { constantsData } from "./constants";
 export type { NavItemInterface, NavSectionInterface } from "./navigation";
 export { docsNavigationData } from "./navigation";
 export type { CategoryInterface, RuleInterface, RuleOptionInterface } from "./rules";

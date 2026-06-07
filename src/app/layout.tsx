@@ -12,7 +12,7 @@ import {
     OfflineIndicator,
     ServiceWorkerRegister,
 } from "@/components";
-import { layoutStringsData, metadataStringsData } from "@/data";
+import { componentStringsData, layoutStringsData, metadataStringsData } from "@/data";
 import { ThemeProvider } from "@/providers";
 import { BackToTop } from "@/ui";
 
@@ -153,10 +153,37 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
             "
             suppressHydrationWarning
         >
+            <a
+                href={`#${componentStringsData.skipToContentTargetId}`}
+                className="
+                    sr-only
+                    focus:not-sr-only
+                    focus:fixed
+                    focus:top-4
+                    focus:left-4
+                    focus:z-[100]
+                    focus:rounded-lg
+                    focus:px-4
+                    focus:py-2
+                    focus:font-semibold
+                "
+                style={{
+                    backgroundColor: "var(--bg-primary)",
+                    border: "1px solid var(--border-primary)",
+                    color: "var(--text-primary)",
+                }}
+            >
+                {componentStringsData.skipToContentLabel}
+            </a>
             <ThemeProvider>
                 <CodeRain />
                 <Navbar />
-                <main className="relative z-10 pt-16">{children}</main>
+                <main
+                    className="relative z-10 pt-16"
+                    id={componentStringsData.skipToContentTargetId}
+                >
+                    {children}
+                </main>
                 <Footer />
                 <BackToTop />
                 <OfflineIndicator />
