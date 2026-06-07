@@ -2,18 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-import {
-    AnimatedCodeFixer,
-    AutoFixVignette,
-    CodeBlock,
-    ConfigsVignette,
-    FlatConfigVignette,
-    MarkerHighlight,
-    ReactVignette,
-    SectionDivider,
-    TypescriptVignette,
-    ZeroDepsVignette,
-} from "@/components";
+import { AnimatedCodeFixer, CodeBlock } from "@/components";
 import {
     categoriesRulesData,
     codeFilenameValuesConstantsData,
@@ -35,7 +24,19 @@ import {
 } from "@/enums";
 import { getLintAccentHandler } from "@/lib";
 import type { LintAccentNameType } from "@/types";
-import { Card, LintButton, SquiggleIcon } from "@/ui";
+import {
+    AutoFixVignette,
+    Card,
+    ConfigsVignette,
+    FlatConfigVignette,
+    LintButton,
+    MarkerHighlight,
+    ReactVignette,
+    SectionDivider,
+    SquiggleIcon,
+    TypescriptVignette,
+    ZeroDepsVignette,
+} from "@/ui";
 
 export const metadata: Metadata = { title: homeStringsData.metadataTitle };
 

@@ -6,7 +6,6 @@ import Script from "next/script";
 import type React from "react";
 
 import {
-    BackToTop,
     CodeRain,
     Footer,
     Navbar,
@@ -15,6 +14,7 @@ import {
 } from "@/components";
 import { layoutStringsData, metadataStringsData } from "@/data";
 import { ThemeProvider } from "@/providers";
+import { BackToTop } from "@/ui";
 
 const interFont = Inter({
     display: "swap",
