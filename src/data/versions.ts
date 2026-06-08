@@ -6,6 +6,12 @@ export const releaseVersionsData: ReleaseVersionInterface[] = [
     {
         date: "2026-06-08",
         isMajor: false,
+        title: "Completed rule documentation positions and synced docs",
+        version: "3.4.2",
+    },
+    {
+        date: "2026-06-08",
+        isMajor: false,
         title: "Corrected published rule counts in README and banner",
         version: "3.4.1",
     },
