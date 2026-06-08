@@ -80,5 +80,11 @@
         "husky": "^9.1.7",
         "tailwindcss": "^4.1.7",
         "typescript": "^5.8.3"
+    },
+    "pnpm": {
+        "onlyBuiltDependencies": [
+            "sharp",
+            "unrs-resolver"
+        ]
     }
 }
