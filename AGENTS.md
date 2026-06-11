@@ -4,7 +4,7 @@ Instructions for AI coding agents working on this codebase.
 
 ## Project Overview
 
-This is the **official documentation website** for `eslint-plugin-code-style`, built with Next.js 15 (App Router). The plugin lives in a sibling directory and publishes 81 custom React/JSX formatting rules. This website renders the rule reference, installation docs, configuration guide, and changelog — all **auto-synced** from the plugin's `metadata.json` via a build-time script.
+This is the **official documentation website** for `eslint-plugin-code-style`, built with Next.js 15 (App Router). The plugin lives in a sibling directory and publishes 83 custom React/JSX formatting rules. This website renders the rule reference, installation docs, configuration guide, and changelog — all **auto-synced** from the plugin's `metadata.json` via a build-time script.
 
 - **Stack:** Next.js 15 + React 19 + TypeScript 5.8 + Tailwind v4 + motion (framer-motion successor)
 - **Deploy target:** Static export on Vercel (`next build` → fully prerendered, installable as a PWA)

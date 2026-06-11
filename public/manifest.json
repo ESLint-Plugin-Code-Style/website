@@ -2,7 +2,7 @@
     "id": "/",
     "name": "ESLint Plugin Code Style",
     "short_name": "ESLint Plugin Code Style",
-    "description": "Documentation for eslint-plugin-code-style — 81 custom ESLint rules for enforcing consistent code formatting and style in React/JSX projects.",
+    "description": "Documentation for eslint-plugin-code-style — 83 custom ESLint rules for enforcing consistent code formatting and style in React/JSX projects.",
     "start_url": "/",
     "scope": "/",
     "display": "standalone",
